@@ -29,7 +29,7 @@
   <div class="header-inner">
     <div data-led-text="L'ATELIER" data-led-cols="34" aria-label="L'Atelier"></div>
     <nav class="site-nav">
-      <a href="index.html">Journal</a>
+      <a href="index.html">Accueil</a>
       <a href="forbidden.html"></a>
     </nav>
   </div>
@@ -96,11 +96,11 @@ function renderList() {
 function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
   if (!article) {
-    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour au journal</a>`;
+    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour à l'accueil</a>`;
     return;
   }
   app.innerHTML = `
-    <a class="article-back" href="#">← Retour au journal</a>
+    <a class="article-back" href="#">← Retour à l'accueil</a>
     <header class="article-header">
       <span class="log-date">${formatDate(article.date)}</span>
       <h1>${escapeHtml(article.title)}</h1>
