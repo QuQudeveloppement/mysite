@@ -17,10 +17,8 @@ jobs:
           ID="${{ github.event.client_payload.id }}"
           FILE="likes.json"
 
-          # Lire le fichier existant
           CONTENT=$(cat $FILE)
 
-          # Ajouter +1 au compteur
           NEW=$(jq --arg id "$ID" '
             .[$id] = ( .[$id] // 0 ) + 1
           ' <<< "$CONTENT")
