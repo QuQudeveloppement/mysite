@@ -1,15 +1,1 @@
-[
-  {
-    "id": "bienvenue-sur-l-atelier",
-    "title": "Bienvenue dans l'atelier",
-    "date": "2026-08-19",
-    "excerpt": "",
-    "cover": "",
-    "blocks": [
-      {
-        "type": "text",
-        "value": "Cet atelier va parler de projets Arduino, Python, et bien d'autres !\nNous publierons les dernières actualités de l'éléctronique , Raspberry Pi, et des logiciels!\nimage : VectorStock"
-      }
-    ]
-  }
-]
+[]
