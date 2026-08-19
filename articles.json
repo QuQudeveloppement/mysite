@@ -142,22 +142,5 @@
         "caption": ""
       }
     ]
-  },
-  {
-    "id": "e444",
-    "title": "e444",
-    "date": "2026-08-19",
-    "excerpt": "",
-    "cover": "",
-    "blocks": [
-      {
-        "type": "file",
-        "value": "",
-        "url": "Fichiers/1787141445662-favicon.png",
-        "caption": "tste ",
-        "label": "ok c bon",
-        "filename": "favicon.png"
-      }
-    ]
   }
 ]
