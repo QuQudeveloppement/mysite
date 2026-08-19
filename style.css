@@ -275,10 +275,6 @@ figcaption{
 }
 .like-btn span{ color: var(--amber); }
 
-.comments-section{
-  margin-top: 34px;
-}
-
 .block-code{
   background: #0c0b08;
   border: 1px solid var(--line);
