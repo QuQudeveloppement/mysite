@@ -16,8 +16,8 @@
 <meta property="og:url" content="https://ququdeveloppement.github.io/mysite/">
 <meta property="og:site_name" content="QuQudeveloppement">
 
-<title>L'Atelier — Accueil</title>
-<meta name="description" content="Journal des nouveautées, des projets : électronique, code.">
+<title>L'Atelier — Journal de bord</title>
+<meta name="description" content="Journal de bord des projets : électronique, code.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -29,7 +29,7 @@
   <div class="header-inner">
     <div data-led-text="L'ATELIER" data-led-cols="34" aria-label="L'Atelier"></div>
     <nav class="site-nav">
-      <a href="index.html">Accueil</a>
+      <a href="index.html">Journal</a>
       <a href="forbidden.html"></a>
     </nav>
   </div>
@@ -49,7 +49,6 @@
 <script src="render.js"></script>
 <script src="download.js"></script>
 <script>
- 
 const app = document.getElementById("app");
 let ARTICLES = [];
 
@@ -82,21 +81,26 @@ function renderList() {
         <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
         <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
         <div class="log-meta">
-          <span class="like-count" data-like-display="${escapeHtml(a.id)}">♥ ${getLikeCount(a.id)}</span>
+          <span class="like-count" data-like-display="${escapeHtml(a.id)}">♥ …</span>
         </div>
       </div>
     </article>
   `).join("")}</div>`;
+
+  sorted.forEach(async (a) => {
+    const count = await fetchLikeCount(a.id);
+    updateLikeDisplays(a.id, count);
+  });
 }
 
 function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
   if (!article) {
-    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour à l'accueil</a>`;
+    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour au journal</a>`;
     return;
   }
   app.innerHTML = `
-    <a class="article-back" href="#">← Retour à l'accueil</a>
+    <a class="article-back" href="#">← Retour au journal</a>
     <header class="article-header">
       <span class="log-date">${formatDate(article.date)}</span>
       <h1>${escapeHtml(article.title)}</h1>
@@ -105,14 +109,15 @@ function renderArticle(id) {
     <div class="article-body">${renderArticleBody(article)}</div>
 
     <div class="like-bar">
-      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}">
-        ${hasLiked(article.id) ? "♥ Aimé" : "♡ J'aime"}
-        <span data-like-display="${escapeHtml(article.id)}">${getLikeCount(article.id)}</span>
+      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}" ${hasLikedLocally(article.id) ? "disabled" : ""}>
+        ${hasLikedLocally(article.id) ? "♥ Aimé" : "♡ J'aime"}
+        <span data-like-display="${escapeHtml(article.id)}">…</span>
       </button>
     </div>
   `;
 
   wireLikeButton(article.id);
+  fetchLikeCount(article.id).then(count => updateLikeDisplays(article.id, count));
 }
 
 function render() {
@@ -126,68 +131,74 @@ function render() {
 }
 
 /* ---------------------------------------------------------------------
-   Likes — stockés localement dans le navigateur du visiteur (localStorage).
-   Sans backend, il n'existe pas de compteur global "vrai" sur un site
-   100% statique : chaque visiteur voit et fait évoluer son propre compteur.
+   Likes — compteur PARTAGÉ entre tous les visiteurs, via un service public
+   gratuit sans inscription (Abacus : abacus.jasoncameron.dev). Chaque
+   article a son propre compteur (namespace + id de l'article).
+   Limite assumée : pas de compte visiteur, donc pas de "unlike" possible
+   une fois cliqué — juste un like par visiteur, mémorisé dans son navigateur
+   pour éviter qu'il clique plusieurs fois.
    --------------------------------------------------------------------- */
-const LIKES_KEY = "atelier_likes";
+const LIKES_NAMESPACE = "ququdeveloppement-mysite";
+const LIKED_LOCALLY_KEY = "atelier_liked_articles";
 
-function getLikesStore() {
-  try { return JSON.parse(localStorage.getItem(LIKES_KEY) || "{}"); }
-  catch { return {}; }
-}
-function getLikeCount(id) {
-  const store = getLikesStore();
-  return store[id] ? store[id].count : 0;
-}
-function hasLiked(id) {
-  const store = getLikesStore();
-  return !!(store[id] && store[id].liked);
-}
-function toggleLike(id) {
-  const store = getLikesStore();
-  const entry = store[id] || { count: 0, liked: false };
-
-  if (entry.liked) { entry.liked = false; entry.count = Math.max(0, entry.count - 1); }
-  else { entry.liked = true; entry.count += 1; }
-
-  /* 🔥 CORRECTION : ligne indispensable */
-  store[id] = entry;
-
-  localStorage.setItem(LIKES_KEY, JSON.stringify(store));
-  return entry;
-}
-async function sendLikeToGitHub(id) {
+function hasLikedLocally(id) {
   try {
-    await fetch("https://ququdeveloppement.github.io/mysite/trigger-like.json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ id })
-    });
-  } catch (e) {
-    console.error("Erreur envoi like :", e);
+    const arr = JSON.parse(localStorage.getItem(LIKED_LOCALLY_KEY) || "[]");
+    return arr.includes(id);
+  } catch { return false; }
+}
+function markLikedLocally(id) {
+  try {
+    const arr = JSON.parse(localStorage.getItem(LIKED_LOCALLY_KEY) || "[]");
+    if (!arr.includes(id)) arr.push(id);
+    localStorage.setItem(LIKED_LOCALLY_KEY, JSON.stringify(arr));
+  } catch { /* localStorage indisponible : tant pis, pas bloquant */ }
+}
+
+async function fetchLikeCount(id) {
+  try {
+    const res = await fetch(`https://abacus.jasoncameron.dev/get/${LIKES_NAMESPACE}/${encodeURIComponent(id)}`);
+    if (!res.ok) return 0;
+    const data = await res.json();
+    return data.value || 0;
+  } catch {
+    return 0;
   }
+}
+
+async function incrementLikeCount(id) {
+  const res = await fetch(`https://abacus.jasoncameron.dev/hit/${LIKES_NAMESPACE}/${encodeURIComponent(id)}`);
+  if (!res.ok) throw new Error("Service de likes indisponible pour le moment");
+  const data = await res.json();
+  return data.value || 0;
+}
+
+function updateLikeDisplays(id, count) {
+  document.querySelectorAll(`[data-like-display="${CSS.escape(id)}"]`).forEach(el => {
+    el.textContent = String(count);
+  });
 }
 
 function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
-
   btn.addEventListener("click", async () => {
-    const entry = toggleLike(id);
-
-    btn.innerHTML = `${entry.liked ? "♥ Aimé" : "♡ J'aime"} <span data-like-display="${escapeHtml(id)}">${entry.count}</span>`;
-
-    await sendLikeToGitHub(id);
+    if (hasLikedLocally(id)) return;
+    btn.disabled = true;
+    try {
+      const count = await incrementLikeCount(id);
+      markLikedLocally(id);
+      btn.innerHTML = `♥ Aimé <span data-like-display="${escapeHtml(id)}">${count}</span>`;
+      updateLikeDisplays(id, count);
+    } catch (e) {
+      btn.disabled = false;
+      alert("Impossible d'enregistrer ton like pour le moment, réessaie plus tard.");
+    }
   });
 }
 
 window.addEventListener("hashchange", render);
 loadArticles();
-
-
 </script>
 </body>
 </html>
