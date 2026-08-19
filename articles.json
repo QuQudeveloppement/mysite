@@ -3,8 +3,8 @@
     "id": "bienvenue-sur-l-atelier",
     "title": "Bienvenue dans l'atelier",
     "date": "2026-08-19",
-    "excerpt": "Premier article de test, à modifier ou supprimer depuis l'interface admin.",
-    "cover": "",
+    "excerpt": "Cet atelier va parler de projets Arduino, Python, et bien d'autres !\nNous publierons les dernières actualités de l'éléctronique , Raspberry Pi, et des logiciels!\nimage : VectorStock",
+    "cover": "https://cdn1.vectorstock.com/i/thumb-large/12/95/welcome-poster-with-brush-strokes-vector-21131295.jpg",
     "blocks": [
       {
         "type": "text",
