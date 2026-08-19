@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — L'Atelier</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div data-led-text="ADMIN" data-led-cols="24" aria-label="Admin"></div>
+    <nav class="site-nav">
+      <a href="index.html">Voir le site</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= Écran de connexion ================= -->
+  <section id="login-screen" class="card">
+    <h1 style="font-family:var(--font-display);font-size:1.2rem;margin-top:0;">Connexion</h1>
+    <p class="field-hint" style="margin-top:-6px;">
+      GitHub Pages n'a pas de serveur : la connexion se fait avec ton
+      <strong>nom d'utilisateur GitHub</strong> et un <strong>token d'accès personnel</strong>
+      (qui joue le rôle de mot de passe). Le token reste uniquement dans ton navigateur,
+      pour cette session — il n'est jamais écrit dans le dépôt.
+    </p>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="f-owner">Nom d'utilisateur GitHub</label>
+        <input type="text" id="f-owner" required placeholder="ex : quentin">
+      </div>
+      <div class="field">
+        <label for="f-repo">Nom du dépôt</label>
+        <input type="text" id="f-repo" required placeholder="ex : mon-atelier">
+      </div>
+      <div class="field">
+        <label for="f-branch">Branche</label>
+        <input type="text" id="f-branch" value="main">
+      </div>
+      <div class="field">
+        <label for="f-token">Token d'accès personnel (mot de passe)</label>
+        <input type="password" id="f-token" required placeholder="ghp_...">
+        <p class="field-hint">
+          Crée-le sur GitHub → Settings → Developer settings → Personal access tokens
+          (Fine-grained), avec accès en lecture/écriture sur « Contents » pour ce seul dépôt.
+        </p>
+      </div>
+      <div id="login-status" class="status-line" hidden></div>
+      <button type="submit" class="btn btn-primary">Se connecter</button>
+    </form>
+  </section>
+
+  <!-- ================= Tableau de bord ================= -->
+  <section id="dashboard-screen" hidden>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+      <div>
+        <h1 style="font-family:var(--font-display);font-size:1.2rem;margin:0;">Articles</h1>
+        <p class="field-hint" id="session-label" style="margin:4px 0 0;"></p>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button id="btn-new-article" class="btn btn-primary">+ Nouvel article</button>
+        <button id="btn-logout" class="btn btn-ghost">Déconnexion</button>
+      </div>
+    </div>
+    <div id="dashboard-status" class="status-line" hidden></div>
+    <div id="article-admin-list"></div>
+  </section>
+
+  <!-- ================= Éditeur d'article ================= -->
+  <section id="editor-screen" hidden>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+      <h1 id="editor-title-label" style="font-family:var(--font-display);font-size:1.2rem;margin:0;">Article</h1>
+      <div style="display:flex;gap:8px;">
+        <button id="btn-back-dashboard" class="btn btn-ghost">← Liste</button>
+        <button id="btn-save-article" class="btn btn-primary">Enregistrer et publier</button>
+      </div>
+    </div>
+
+    <div id="editor-status" class="status-line" hidden></div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div class="field">
+        <label for="f-title">Titre</label>
+        <input type="text" id="f-title" placeholder="Titre de l'article">
+      </div>
+      <div class="field">
+        <label for="f-date">Date</label>
+        <input type="date" id="f-date">
+      </div>
+      <div class="field">
+        <label for="f-excerpt">Résumé (affiché dans la liste)</label>
+        <textarea id="f-excerpt" placeholder="Une ou deux phrases"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-cover">Image de couverture (URL, optionnelle)</label>
+        <input type="text" id="f-cover" placeholder="images/couverture.jpg">
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-dim);">Contenu</h2>
+    <div id="blocks-list"></div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 32px;">
+      <button type="button" id="btn-add-heading" class="btn">+ Titre de section</button>
+      <button type="button" id="btn-add-text" class="btn">+ Texte</button>
+      <button type="button" id="btn-add-image" class="btn">+ Image</button>
+      <button type="button" id="btn-add-video" class="btn">+ Vidéo</button>
+      <button type="button" id="btn-add-code" class="btn">+ Code</button>
+    </div>
+
+    <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-dim);">Aperçu</h2>
+    <div class="card" id="editor-preview"></div>
+  </section>
+
+</main>
+
+<script src="js/matrix.js"></script>
+<script src="js/render.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

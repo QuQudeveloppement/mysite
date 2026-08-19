@@ -1,0 +1,321 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+:root{
+  --bg: #15140f;
+  --surface: #1e1c15;
+  --surface-2: #262418;
+  --line: #38352a;
+  --text: #eae6d9;
+  --text-dim: #a49d89;
+  --amber: #ffb020;
+  --amber-dim: #8a6a2a;
+  --teal: #4fb8ae;
+  --danger: #d9634a;
+
+  --font-display: 'Space Mono', 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+
+  --radius: 3px;
+  --max-w: 740px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(234,230,217,0.045) 1px, transparent 0) 0 0/22px 22px,
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--teal); text-decoration: none; }
+a:hover{ color: var(--amber); text-decoration: underline; }
+
+:focus-visible{
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ==========================================================================
+   Matrice LED (signature)
+   ========================================================================== */
+.led-matrix{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: #0c0b08;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.led-row{ display: flex; gap: 2px; }
+.led-dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: #2a2718;
+  transition: background 60ms linear;
+}
+.led-dot.on{
+  background: var(--amber);
+  box-shadow: 0 0 4px rgba(255,176,32,0.85);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+.site-header{
+  border-bottom: 1px solid var(--line);
+  padding: 22px 20px;
+}
+.site-header .header-inner{
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-nav{
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  gap: 18px;
+}
+.site-nav a{ color: var(--text-dim); }
+.site-nav a:hover{ color: var(--amber); }
+
+main{
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.site-footer{
+  border-top: 1px solid var(--line);
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Journal / liste d'articles — présentée comme un carnet de bord technique
+   ========================================================================== */
+.log{
+  position: relative;
+  padding-left: 26px;
+}
+.log::before{
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(var(--line), var(--line) 70%, transparent);
+}
+.log-entry{
+  position: relative;
+  padding-bottom: 42px;
+}
+.log-entry::before{
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--teal);
+}
+.log-date{
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--teal);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.log-title{
+  margin: 6px 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+.log-title a{ color: var(--text); }
+.log-title a:hover{ color: var(--amber); }
+.log-excerpt{ color: var(--text-dim); margin: 0; }
+.log-empty{
+  color: var(--text-dim);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  padding: 24px 0;
+}
+
+/* ==========================================================================
+   Article
+   ========================================================================== */
+.article-header{ margin-bottom: 28px; }
+.article-header .log-date{ display: block; margin-bottom: 10px; }
+.article-header h1{
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.25;
+  margin: 0;
+}
+.article-back{
+  display: inline-block;
+  margin-bottom: 22px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.block-heading{
+  font-family: var(--font-display);
+  color: var(--amber);
+  margin: 28px 0 10px;
+  font-size: 1.05rem;
+}
+.block-text{ margin: 0 0 16px; }
+.block-image, .block-video{
+  margin: 22px 0;
+}
+.block-image img{
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  display: block;
+}
+.media-frame{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+.media-frame iframe, .media-frame video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+figcaption{
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  font-family: var(--font-display);
+}
+.block-code{
+  background: #0c0b08;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  overflow-x: auto;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Composants communs (boutons, champs, cartes) — utilisés dans l'admin aussi
+   ========================================================================== */
+.btn{
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 120ms, color 120ms;
+}
+.btn:hover{ border-color: var(--amber); color: var(--amber); }
+.btn-primary{
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #191509;
+  font-weight: 700;
+}
+.btn-primary:hover{ color: #191509; opacity: 0.9; border-color: var(--amber); }
+.btn-danger{ border-color: var(--danger); color: var(--danger); }
+.btn-danger:hover{ background: var(--danger); color: #191509; }
+.btn-ghost{ background: transparent; }
+.btn:disabled{ opacity: 0.5; cursor: not-allowed; }
+
+.field{ margin-bottom: 16px; }
+.field label{
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.field input[type="text"],
+.field input[type="password"],
+.field input[type="date"],
+.field input[type="url"],
+.field textarea{
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+.field textarea{ resize: vertical; min-height: 90px; }
+.field input:focus, .field textarea:focus{ border-color: var(--amber); }
+.field-hint{ color: var(--text-dim); font-size: 0.8rem; margin-top: 6px; }
+
+.card{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.badge{
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+}
+.badge.ok{ color: var(--teal); border-color: var(--teal); }
+.badge.err{ color: var(--danger); border-color: var(--danger); }
+
+.status-line{
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+.status-line.ok{ border-color: var(--teal); color: var(--teal); }
+.status-line.err{ border-color: var(--danger); color: var(--danger); }

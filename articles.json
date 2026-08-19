@@ -1,0 +1,19 @@
+[
+  {
+    "id": "bienvenue-sur-l-atelier",
+    "title": "Bienvenue dans l'atelier",
+    "date": "2026-08-19",
+    "excerpt": "Premier article de test, à modifier ou supprimer depuis l'interface admin.",
+    "cover": "",
+    "blocks": [
+      {
+        "type": "text",
+        "value": "Ceci est un article de démonstration. Connecte-toi sur **admin.html** pour le modifier ou en publier un nouveau : texte, images et vidéos."
+      },
+      {
+        "type": "text",
+        "value": "Chaque article est une fiche de l'atelier : le contexte, ce qui a été construit, et ce qu'il reste à faire."
+      }
+    ]
+  }
+]
