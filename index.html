@@ -156,12 +156,33 @@ function toggleLike(id) {
   localStorage.setItem(LIKES_KEY, JSON.stringify(store));
   return entry;
 }
+ async function sendLikeToGitHub(id) {
+  await fetch("https://api.github.com/repos/QuQuDeveloppement/mysite/dispatches", {
+    method: "POST",
+    headers: {
+      "Accept": "application/vnd.github.everest-preview+json",
+      "Authorization": `Bearer ${GITHUB_DISPATCH_TOKEN}`
+    },
+    body: JSON.stringify({
+      event_type: "update-like",
+      client_payload: { id }
+    })
+  });
+}
+
+
+   
+
 function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
-  btn.addEventListener("click", () => {
+
+  btn.addEventListener("click", async () => {
     const entry = toggleLike(id);
+
     btn.innerHTML = `${entry.liked ? "♥ Aimé" : "♡ J'aime"} <span data-like-display="${escapeHtml(id)}">${entry.count}</span>`;
+
+    await sendLikeToGitHub(id);
   });
 }
 
