@@ -5,7 +5,7 @@
    ========================================================================== */
 
 const SESSION_KEY = "atelier_admin_session";
-const ARTICLES_PATH = "data/articles.json";
+const ARTICLES_PATH = "articles.json";
 
 let session = null;      // { owner, repo, branch, token }
 let articles = [];        // tableau en mémoire
