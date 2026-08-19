@@ -91,7 +91,7 @@ function renderList() {
 function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
   if (!article) {
-    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour au journal</a>`;
+    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour à l'accueil</a>`;
     return;
   }
   app.innerHTML = `
