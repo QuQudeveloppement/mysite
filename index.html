@@ -109,12 +109,9 @@ function renderArticle(id) {
         <span data-like-display="${escapeHtml(article.id)}">${getLikeCount(article.id)}</span>
       </button>
     </div>
-
-    <div id="giscus-comments" class="comments-section"></div>
   `;
 
   wireLikeButton(article.id);
-  loadGiscus(article.id, article.title);
 }
 
 function render() {
@@ -162,47 +159,6 @@ function wireLikeButton(id) {
     const entry = toggleLike(id);
     btn.innerHTML = `${entry.liked ? "♥ Aimé" : "♡ J'aime"} <span data-like-display="${escapeHtml(id)}">${entry.count}</span>`;
   });
-}
-
-/* ---------------------------------------------------------------------
-   Commentaires — giscus (Discussions GitHub). Voir README pour la
-   configuration (activer Discussions + récupérer les identifiants sur
-   giscus.app).
-   --------------------------------------------------------------------- */
-const GISCUS_CONFIG = {
-  repo: "QuQudeveloppement/mysite",
-  repoId: "REMPLACE_MOI_repo-id",
-  category: "Comments",
-  categoryId: "REMPLACE_MOI_category-id"
-};
-
-function loadGiscus(articleId, articleTitle) {
-  const container = document.getElementById("giscus-comments");
-  if (!container) return;
-
-  if (GISCUS_CONFIG.repoId.startsWith("REMPLACE_MOI")) {
-    container.innerHTML = `<p class="field-hint">Commentaires non configurés — voir README.md (section giscus).</p>`;
-    return;
-  }
-
-  container.innerHTML = "";
-  const script = document.createElement("script");
-  script.src = "https://giscus.app/client.js";
-  script.setAttribute("data-repo", GISCUS_CONFIG.repo);
-  script.setAttribute("data-repo-id", GISCUS_CONFIG.repoId);
-  script.setAttribute("data-category", GISCUS_CONFIG.category);
-  script.setAttribute("data-category-id", GISCUS_CONFIG.categoryId);
-  script.setAttribute("data-mapping", "specific");
-  script.setAttribute("data-term", articleId);
-  script.setAttribute("data-strict", "0");
-  script.setAttribute("data-reactions-enabled", "1");
-  script.setAttribute("data-emit-metadata", "0");
-  script.setAttribute("data-input-position", "top");
-  script.setAttribute("data-theme", "dark_dimmed");
-  script.setAttribute("data-lang", "fr");
-  script.crossOrigin = "anonymous";
-  script.async = true;
-  container.appendChild(script);
 }
 
 window.addEventListener("hashchange", render);
