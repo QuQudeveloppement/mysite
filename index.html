@@ -157,22 +157,19 @@ function toggleLike(id) {
   localStorage.setItem(LIKES_KEY, JSON.stringify(store));
   return entry;
 }
- async function sendLikeToGitHub(id) {
-  await fetch("https://api.github.com/repos/QuQuDeveloppement/mysite/dispatches", {
-    method: "POST",
-    headers: {
-      "Accept": "application/vnd.github.everest-preview+json",
-      "Authorization": `Bearer ${GITHUB_DISPATCH_TOKEN}`
-    },
-    body: JSON.stringify({
-      event_type: "update-like",
-      client_payload: { id }
-    })
-  });
+async function sendLikeToGitHub(id) {
+  try {
+    await fetch("https://ququdeveloppement.github.io/mysite/trigger-like.json", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id })
+    });
+  } catch (e) {
+    console.error("Erreur envoi like :", e);
+  }
 }
-
-
-   
 
 function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
@@ -189,6 +186,8 @@ function wireLikeButton(id) {
 
 window.addEventListener("hashchange", render);
 loadArticles();
+
+
 </script>
 </body>
 </html>
