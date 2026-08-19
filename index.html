@@ -43,8 +43,11 @@
   Publié par QuQuDeveloppement, tous droits réservés 
 </footer>
 
+<!-- Génération de ZIP à la volée pour les téléchargements de fichiers -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="matrix.js"></script>
 <script src="render.js"></script>
+<script src="download.js"></script>
 <script>
 const app = document.getElementById("app");
 let ARTICLES = [];
@@ -69,10 +72,18 @@ function renderList() {
     return;
   }
   app.innerHTML = `<div class="log">${sorted.map(a => `
-    <article class="log-entry">
-      <div class="log-date">${formatDate(a.date)}</div>
-      <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
-      <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
+    <article class="log-entry ${a.cover ? "has-cover" : ""}">
+      ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
+        <img src="${a.cover}" alt="" loading="lazy">
+      </a>` : ""}
+      <div class="log-entry-body">
+        <div class="log-date">${formatDate(a.date)}</div>
+        <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
+        <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
+        <div class="log-meta">
+          <span class="like-count" data-like-display="${escapeHtml(a.id)}">♥ ${getLikeCount(a.id)}</span>
+        </div>
+      </div>
     </article>
   `).join("")}</div>`;
 }
@@ -91,7 +102,19 @@ function renderArticle(id) {
     </header>
     ${article.cover ? `<figure class="block-image"><img src="${article.cover}" alt=""></figure>` : ""}
     <div class="article-body">${renderArticleBody(article)}</div>
+
+    <div class="like-bar">
+      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}">
+        ${hasLiked(article.id) ? "♥ Aimé" : "♡ J'aime"}
+        <span data-like-display="${escapeHtml(article.id)}">${getLikeCount(article.id)}</span>
+      </button>
+    </div>
+
+    <div id="giscus-comments" class="comments-section"></div>
   `;
+
+  wireLikeButton(article.id);
+  loadGiscus(article.id, article.title);
 }
 
 function render() {
@@ -102,6 +125,84 @@ function render() {
     renderList();
   }
   window.scrollTo(0, 0);
+}
+
+/* ---------------------------------------------------------------------
+   Likes — stockés localement dans le navigateur du visiteur (localStorage).
+   Sans backend, il n'existe pas de compteur global "vrai" sur un site
+   100% statique : chaque visiteur voit et fait évoluer son propre compteur.
+   --------------------------------------------------------------------- */
+const LIKES_KEY = "atelier_likes";
+
+function getLikesStore() {
+  try { return JSON.parse(localStorage.getItem(LIKES_KEY) || "{}"); }
+  catch { return {}; }
+}
+function getLikeCount(id) {
+  const store = getLikesStore();
+  return store[id] ? store[id].count : 0;
+}
+function hasLiked(id) {
+  const store = getLikesStore();
+  return !!(store[id] && store[id].liked);
+}
+function toggleLike(id) {
+  const store = getLikesStore();
+  const entry = store[id] || { count: 0, liked: false };
+  if (entry.liked) { entry.liked = false; entry.count = Math.max(0, entry.count - 1); }
+  else { entry.liked = true; entry.count += 1; }
+  store[id] = entry;
+  localStorage.setItem(LIKES_KEY, JSON.stringify(store));
+  return entry;
+}
+function wireLikeButton(id) {
+  const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const entry = toggleLike(id);
+    btn.innerHTML = `${entry.liked ? "♥ Aimé" : "♡ J'aime"} <span data-like-display="${escapeHtml(id)}">${entry.count}</span>`;
+  });
+}
+
+/* ---------------------------------------------------------------------
+   Commentaires — giscus (Discussions GitHub). Voir README pour la
+   configuration (activer Discussions + récupérer les identifiants sur
+   giscus.app).
+   --------------------------------------------------------------------- */
+const GISCUS_CONFIG = {
+  repo: "QuQudeveloppement/mysite",
+  repoId: "REMPLACE_MOI_repo-id",
+  category: "Comments",
+  categoryId: "REMPLACE_MOI_category-id"
+};
+
+function loadGiscus(articleId, articleTitle) {
+  const container = document.getElementById("giscus-comments");
+  if (!container) return;
+
+  if (GISCUS_CONFIG.repoId.startsWith("REMPLACE_MOI")) {
+    container.innerHTML = `<p class="field-hint">Commentaires non configurés — voir README.md (section giscus).</p>`;
+    return;
+  }
+
+  container.innerHTML = "";
+  const script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", GISCUS_CONFIG.repo);
+  script.setAttribute("data-repo-id", GISCUS_CONFIG.repoId);
+  script.setAttribute("data-category", GISCUS_CONFIG.category);
+  script.setAttribute("data-category-id", GISCUS_CONFIG.categoryId);
+  script.setAttribute("data-mapping", "specific");
+  script.setAttribute("data-term", articleId);
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "1");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "top");
+  script.setAttribute("data-theme", "dark_dimmed");
+  script.setAttribute("data-lang", "fr");
+  script.crossOrigin = "anonymous";
+  script.async = true;
+  container.appendChild(script);
 }
 
 window.addEventListener("hashchange", render);
