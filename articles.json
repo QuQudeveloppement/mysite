@@ -1,1 +1,77 @@
-[]
+[
+  {
+    "id": "arduino-mega-quels-avantages",
+    "title": "Arduino Mega, quels avantages ?",
+    "date": "2026-08-19",
+    "excerpt": "Cet article révèle les avantages des cartes Arduino Mega",
+    "cover": "https://bossgarage.eu/cdn/shop/files/Arduino-Mega-2560_1024x1024.png?v=1684671774",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Les avantages de l’Arduino Mega : la carte idéale pour les projets ambitieux",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’Arduino Mega 2560 est une carte très utilisée pour les projets électroniques complexes. Grâce à son microcontrôleur ATmega2560, elle offre une grande polyvalence, beaucoup de mémoire et un nombre impressionnant d’entrées/sorties.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un nombre de broches exceptionnel",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’un des principaux atouts de l’Arduino Mega est son grand nombre de broches :\n      -54 broches numériques, dont 15 PWM\n      -16 entrées analogiques\nCette quantité permet de connecter simultanément des capteurs, des moteurs, des écrans, des relais ou des modules spécialisés sans devoir ajouter des cartes supplémentaires.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une mémoire largement supérieure à celle de l’Uno",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La Mega dispose d’une mémoire très confortable :\n     -256 KB de Flash\n     -8 KB de SRAM\n     -4 KB d’EEPROM\nCette capacité permet d’utiliser des bibliothèques lourdes, des interfaces graphiques, des systèmes multi-capteurs ou des communications série complexes sans se heurter aux limites mémoire.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Quatre ports UART matériels pour la communication série",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La présence de 4 ports UART matériels est un avantage rare dans l’univers Arduino.\nElle permet de connecter en même temps :\n     -des modules GPS\n     -des modules GSM / 4G\n     -des lecteurs RFID\n     -des écrans série\n     -des cartes de communication industrielles\nPour les projets nécessitant plusieurs flux de données simultanés, c’est un atout majeur.\n",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Si ton projet nécessite beaucoup de broches, plusieurs communications série, une mémoire confortable et une architecture stable, l’Arduino Mega est l’une des meilleures cartes disponibles.\nElle n’est pas la plus moderne pour le Wi‑Fi ou le Bluetooth, mais pour les projets électroniques ambitieux, elle reste un choix fiable et efficace",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "video",
+        "value": "",
+        "url": "https://www.bing.com/ck/a?!&&p=e1627f4dbda02984bf591e8bd8b0847dfdec4ef5122cbd7b9a28bfae2fdc009bJmltdHM9MTc4NzEyNzUwMg&ptn=3&fclid=8a9b2326-9ba6-11f1-86ef-a01bbaa86df5&u=a1L3ZpZGVvcy9yaXZlcnZpZXcvcmVsYXRlZHZpZGVvP3E9dmlkJWMzJWE5bytkZStwciVjMyVhOXNlbnRhdGlvbithcmR1aW5vK21lZ2ElMmMrc2FucytwYXJvbGVzJnFzPW4mc3A9LTEmZ2hjPTEmbHE9MCZwcT12aWQlYzMlYTlvK2RlK3ByJWMzJWE5c2VudGF0aW9uK2FyZHVpbm8rbWVnYSUyYytzYW5zK3Bhcm9sZXMmc2M9MTItNDgmc2s9JmN2aWQ9OEI5QTBGMzFFNzQyNEYwMDg3MEI0RkQ2QzBCMTkwRDYmYWRsdD1zdHJpY3QmdG9Xd3c9MSZyZWRpZz0yRDUyMDVBM0I4MzU0NDFBQkUzOTQyREE5N0Y2RkM5MyZydT0lMmZzZWFyY2glM2ZxJTNkdmlkJTI1QzMlMjVBOW8lMjUyMGRlJTI1MjBwciUyNUMzJTI1QTlzZW50YXRpb24lMjUyMGFyZHVpbm8lMjUyMG1lZ2ElMjUyQyUyNTIwc2FucyUyNTIwcGFyb2xlcyUyNnFzJTNkbiUyNmZvcm0lM2RRQlJFJTI2c3AlM2QtMSUyNmdoYyUzZDElMjZscSUzZDAlMjZwcSUzZHZpZCUyNUMzJTI1QTlvJTI1MjBkZSUyNTIwcHIlMjVDMyUyNUE5c2VudGF0aW9uJTI1MjBhcmR1aW5vJTI1MjBtZWdhJTI1MkMlMjUyMHNhbnMlMjUyMHBhcm9sZXMlMjZzYyUzZDEyLTQ4JTI2c2slM2QlMjZjdmlkJTNkOEI5QTBGMzFFNzQyNEYwMDg3MEI0RkQ2QzBCMTkwRDYlMjZhZGx0JTNkc3RyaWN0JTI2dG9Xd3clM2QxJTI2cmVkaWclM2QyRDUyMDVBM0I4MzU0NDFBQkUzOTQyREE5N0Y2RkM5MyZtbXNjbj12d3JjJm1pZD1BMzlDMDMxMTIzOTQ4RTIzMDU4NEEzOUMwMzExMjM5NDhFMjMwNTg0JkZPUk09V1JWT1JDJm50Yj0xJm1zb2NraWQ9OGE5YjIzMjY5YmE2MTFmMTg2ZWZhMDFiYmFhODZkZjU",
+        "caption": "Voici une vidéo expliquant la programmation de ce type de carte, et le fonctionnement.  #Bertrand.Tech"
+      }
+    ]
+  }
+]
