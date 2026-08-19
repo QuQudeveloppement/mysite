@@ -49,20 +49,7 @@
 <script src="render.js"></script>
 <script src="download.js"></script>
 <script>
- async function sendLikeToGitHub(id) {
-  try {
-    await fetch("https://ququdeveloppement.github.io/mysite/trigger-like.json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ id })
-    });
-  } catch (e) {
-    console.error("Erreur envoi like :", e);
-  }
-}
-
+ 
 const app = document.getElementById("app");
 let ARTICLES = [];
 
