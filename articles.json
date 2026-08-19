@@ -73,5 +73,74 @@
         "caption": "Voici une vidéo expliquant la programmation de ce type de carte, et le fonctionnement.  #Bertrand.Tech"
       }
     ]
+  },
+  {
+    "id": "google-domine-l-evolution-des-assistants-vocaux-modernes-et-transforme-l-usage-quotidien-de-la-technologie",
+    "title": "Google domine l’évolution des assistants vocaux modernes et transforme l’usage quotidien de la technologie",
+    "date": "2026-08-19",
+    "excerpt": "Google avance plus vite que ses concurrents grâce à une compréhension du langage très naturelle et une utilisation simple pour tout le monde.\nLes assistants vocaux deviennent des outils essentiels dans la maison, le travail et la vie quotidienne.\nLes autres marques suivent le rythme imposé par Google",
+    "cover": "https://media.adeo.com/media/887852/media.jpg?width=650&height=650&format=jpg&quality=80&fit=bounds",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Google Assistant, le moteur principal de la nouvelle génération d’assistants vocaux  ",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google Assistant reste le leader du marché grâce à sa capacité à comprendre les phrases complètes et à répondre de manière fluide. Google mise sur une intelligence artificielle qui apprend chaque jour et qui s’adapte aux habitudes des utilisateurs, ce qui rend l’expérience très simple et très naturelle. - Marc, utilisateur régulier, explique que « Google Assistant comprend ce que je veux même quand je parle vite ». Cette phrase montre à quel point Google a réussi à rendre son assistant accessible à tous. Google Assistant devient un outil central dans la maison, dans la voiture et sur le smartphone, ce qui renforce encore sa position dominante.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": " Google Home, le cœur de la maison connectée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google Home permet de contrôler la maison sans toucher un seul bouton. Les utilisateurs peuvent allumer les lumières, régler la température, lancer de la musique ou vérifier la météo simplement en parlant. Google a conçu son système pour qu’il soit simple, rapide et agréable à utiliser. ",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Les concurrents suivent le rythme imposé par Google",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Apple améliore Siri pour le rendre plus rapide et plus précis, Amazon continue de développer Alexa pour la maison connectée, et Microsoft adapte ses assistants à des usages professionnels. Malgré ces efforts, Google reste devant grâce à une intelligence artificielle plus avancée et une meilleure compréhension du langage naturel. ",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une technologie qui devient indispensable au quotidien  ",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les assistants vocaux deviennent des partenaires numériques capables d’aider, de rappeler, de conseiller et même d’anticiper les besoins. Google pousse cette idée plus loin en créant des assistants capables de fonctionner même sans internet, ce qui rend l’expérience encore plus fiable et plus pratique. Les utilisateurs profitent d’une aide simple, rapide et toujours disponible, ce qui transforme la manière d’utiliser la technologie au quotidien.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "\n\n",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Credits: \nGoogle Home\nGoogle Assistant\nApple Siri\nAmazon Alexa",
+        "url": "",
+        "caption": ""
+      }
+    ]
   }
 ]
