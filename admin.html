@@ -100,8 +100,10 @@
         <textarea id="f-excerpt" placeholder="Une ou deux phrases"></textarea>
       </div>
       <div class="field">
-        <label for="f-cover">Image de couverture (URL, optionnelle)</label>
+        <label for="f-cover">Image de couverture (affichée sur la page d'accueil)</label>
         <input type="text" id="f-cover" placeholder="images/couverture.jpg">
+        <p class="field-hint">Ou envoie directement une photo :</p>
+        <input type="file" id="f-cover-upload" accept="image/*">
       </div>
     </div>
 
@@ -114,6 +116,7 @@
       <button type="button" id="btn-add-image" class="btn">+ Image</button>
       <button type="button" id="btn-add-video" class="btn">+ Vidéo</button>
       <button type="button" id="btn-add-code" class="btn">+ Code</button>
+      <button type="button" id="btn-add-file" class="btn">+ Fichier joint</button>
     </div>
 
     <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-dim);">Aperçu</h2>
