@@ -4,31 +4,44 @@ on:
   repository_dispatch:
     types: [update-like]
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read event payload
+        run: |
+          echo "ARTICLE_ID=${{ github.event.client_payload.id }}" >> $GITHUB_ENV
 
       - name: Update likes.json
         run: |
-          ID="${{ github.event.client_payload.id }}"
           FILE="likes.json"
 
-          CONTENT=$(cat $FILE)
+          # Si le fichier n'existe pas, on le crée
+          if [ ! -f "$FILE" ]; then
+            echo "{}" > "$FILE"
+          fi
 
-          NEW=$(jq --arg id "$ID" '
-            .[$id] = ( .[$id] // 0 ) + 1
-          ' <<< "$CONTENT")
+          # Lire l'ancien compteur
+          OLD_COUNT=$(jq -r --arg id "$ARTICLE_ID" '.[$id] // 0' "$FILE")
 
-          echo "$NEW" > $FILE
+          # Nouveau compteur
+          NEW_COUNT=$((OLD_COUNT + 1))
 
-      - name: Commit changes
+          # Écrire dans likes.json
+          jq --arg id "$ARTICLE_ID" --argjson count "$NEW_COUNT" \
+            '.[$id] = $count' "$FILE" > tmp.json && mv tmp.json "$FILE"
+
+      - name: Commit and push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add likes.json
-          git commit -m "Update likes for ${{ github.event.client_payload.id }}"
+          git commit -m "Update likes for $ARTICLE_ID"
           git push
