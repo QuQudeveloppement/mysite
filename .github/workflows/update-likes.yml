@@ -1,0 +1,36 @@
+name: Update Likes
+
+on:
+  repository_dispatch:
+    types: [update-like]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update likes.json
+        run: |
+          ID="${{ github.event.client_payload.id }}"
+          FILE="likes.json"
+
+          # Lire le fichier existant
+          CONTENT=$(cat $FILE)
+
+          # Ajouter +1 au compteur
+          NEW=$(jq --arg id "$ID" '
+            .[$id] = ( .[$id] // 0 ) + 1
+          ' <<< "$CONTENT")
+
+          echo "$NEW" > $FILE
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add likes.json
+          git commit -m "Update likes for ${{ github.event.client_payload.id }}"
+          git push
