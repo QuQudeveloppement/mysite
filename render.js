@@ -53,6 +53,16 @@ function renderBlock(block) {
       </figure>`;
     case "code":
       return `<pre class="block-code"><code>${escapeHtml(block.value)}</code></pre>`;
+    case "file": {
+      const label = block.label || block.filename || "le fichier";
+      const filename = escapeHtml(block.filename || (block.url || "").split("/").pop());
+      return `<div class="block-file">
+        <button type="button" class="btn js-download-file" data-file-url="${block.url}" data-file-name="${filename}">
+          ⬇ Télécharger ${escapeHtml(label)} (.zip)
+        </button>
+        ${block.caption ? `<p class="field-hint">${escapeHtml(block.caption)}</p>` : ""}
+      </div>`;
+    }
     default:
       return "";
   }
