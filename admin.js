@@ -200,16 +200,23 @@ async function deleteArticle(id) {
   if (!confirm(`Supprimer définitivement « ${article.title} » ?`)) return;
 
   const statusEl = $("#dashboard-status");
+  showStatus(statusEl, "Suppression en cours…", "ok");
   try {
-    articles = articles.filter(a => a.id !== id);
+    // Relit toujours l'état actuel du fichier juste avant d'écrire,
+    // pour ne jamais utiliser un sha périmé (source du "une fois sur deux").
+    const fresh = await ghGetFile(ARTICLES_PATH);
+    const current = fresh ? JSON.parse(fresh.text) : [];
+    const freshSha = fresh ? fresh.sha : null;
+
+    articles = current.filter(a => a.id !== id);
     const result = await ghPutTextFile(
       ARTICLES_PATH,
       JSON.stringify(articles, null, 2),
       `Suppression: ${article.title}`,
-      articlesSha
+      freshSha
     );
     articlesSha = result.content.sha;
-    showStatus(statusEl, "Article supprimé.", "ok");
+    showStatus(statusEl, "Article supprimé. (l'affichage public peut prendre 1-2 min à se mettre à jour)", "ok");
     renderDashboard();
   } catch (e) {
     showStatus(statusEl, `Erreur : ${e.message}`, "err");
@@ -263,6 +270,9 @@ function renderBlocksEditor() {
   });
   wrap.querySelectorAll("[data-image-upload]").forEach(input => {
     input.addEventListener("change", (e) => handleBlockImageUpload(e, +input.dataset.imageUpload));
+  });
+  wrap.querySelectorAll("[data-file-upload]").forEach(input => {
+    input.addEventListener("change", (e) => handleBlockFileUpload(e, +input.dataset.fileUpload));
   });
 }
 
@@ -323,6 +333,26 @@ function blockEditorHtml(b, i) {
       </div>
     </div>`;
   }
+  if (b.type === "file") {
+    return `<div class="card" style="margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span class="badge">Fichier joint</span>${controls}
+      </div>
+      <div class="field" style="margin-top:10px;">
+        <label>Fichier à envoyer (.ino, .zip, .pdf, etc. — sera proposé en téléchargement zippé avec la licence)</label>
+        <input type="file" data-file-upload="${i}">
+        ${b.filename ? `<p class="field-hint">Fichier actuel : ${escapeHtml(b.filename)}</p>` : ""}
+      </div>
+      <div class="field">
+        <label>Texte du bouton (optionnel)</label>
+        <input type="text" data-field="${i}:label" value="${escapeHtml(b.label || "")}" placeholder="ex : le code Arduino">
+      </div>
+      <div class="field">
+        <label>Légende (optionnelle)</label>
+        <input type="text" data-field="${i}:caption" value="${escapeHtml(b.caption || "")}">
+      </div>
+    </div>`;
+  }
   if (b.type === "video") {
     return `<div class="card" style="margin-bottom:12px;">
       <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -368,6 +398,46 @@ async function handleBlockImageUpload(e, index) {
   }
 }
 
+async function handleBlockFileUpload(e, index) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const statusEl = $("#editor-status");
+  showStatus(statusEl, "Envoi du fichier en cours…", "ok");
+  try {
+    const base64 = await fileToBase64(file);
+    const ext = (file.name.match(/\.[^.]+$/) || [""])[0];
+    const safeName = `${Date.now()}-${slugify(file.name.replace(/\.[^.]+$/, ""))}${ext}`;
+    const path = `Fichiers/${safeName}`;
+    await ghPutBinaryFile(path, base64, `Ajout fichier: ${safeName}`);
+    blocks[index].url = path;
+    blocks[index].filename = file.name; // nom d'origine, utilisé dans le ZIP téléchargé
+    hideStatus(statusEl);
+    renderBlocksEditor();
+    renderPreview();
+  } catch (err) {
+    showStatus(statusEl, `Erreur d'envoi : ${err.message}`, "err");
+  }
+}
+
+async function handleCoverUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const statusEl = $("#editor-status");
+  showStatus(statusEl, "Envoi de la photo de couverture…", "ok");
+  try {
+    const base64 = await fileToBase64(file);
+    const ext = (file.name.match(/\.[^.]+$/) || [""])[0];
+    const safeName = `${Date.now()}-cover-${slugify(file.name.replace(/\.[^.]+$/, ""))}${ext}`;
+    const path = `images/${safeName}`;
+    await ghPutBinaryFile(path, base64, `Ajout couverture: ${safeName}`);
+    $("#f-cover").value = path;
+    hideStatus(statusEl);
+    renderPreview();
+  } catch (err) {
+    showStatus(statusEl, `Erreur d'envoi : ${err.message}`, "err");
+  }
+}
+
 function addBlock(type) {
   blocks.push({ type, value: "", url: "", caption: "" });
   renderBlocksEditor();
@@ -404,21 +474,28 @@ async function saveArticle() {
     blocks
   };
 
-  const idx = articles.findIndex(a => a.id === id);
-  if (idx >= 0) articles[idx] = articleData; else articles.push(articleData);
-
   showStatus(statusEl, "Enregistrement…", "ok");
   try {
+    // Relit toujours l'état actuel du fichier juste avant d'écrire,
+    // pour ne jamais utiliser un sha périmé (source du "une fois sur deux").
+    const fresh = await ghGetFile(ARTICLES_PATH);
+    const current = fresh ? JSON.parse(fresh.text) : [];
+    const freshSha = fresh ? fresh.sha : null;
+
+    const idx = current.findIndex(a => a.id === id);
+    if (idx >= 0) current[idx] = articleData; else current.push(articleData);
+    articles = current;
+
     const result = await ghPutTextFile(
       ARTICLES_PATH,
       JSON.stringify(articles, null, 2),
       `${editingId ? "Modification" : "Publication"}: ${title}`,
-      articlesSha
+      freshSha
     );
     articlesSha = result.content.sha;
     editingId = id;
-    showStatus(statusEl, "Article enregistré et publié.", "ok");
-    setTimeout(() => renderDashboard(), 500);
+    showStatus(statusEl, "Article enregistré et publié. (l'affichage public peut prendre 1-2 min à se mettre à jour)", "ok");
+    setTimeout(() => renderDashboard(), 800);
   } catch (e) {
     showStatus(statusEl, `Erreur : ${e.message}`, "err");
   }
@@ -470,6 +547,8 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#btn-add-image").addEventListener("click", () => addBlock("image"));
   $("#btn-add-video").addEventListener("click", () => addBlock("video"));
   $("#btn-add-code").addEventListener("click", () => addBlock("code"));
+  $("#btn-add-file").addEventListener("click", () => addBlock("file"));
+  $("#f-cover-upload").addEventListener("change", handleCoverUpload);
 
   $("#btn-save-article").addEventListener("click", saveArticle);
 });
