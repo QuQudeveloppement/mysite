@@ -144,6 +144,32 @@ main{
   background: var(--bg);
   border: 2px solid var(--teal);
 }
+.log-entry.has-cover{
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.log-thumb{
+  flex: 0 0 150px;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.log-thumb img{
+  width: 150px;
+  height: 105px;
+  object-fit: cover;
+  display: block;
+  transition: transform 200ms ease;
+}
+.log-thumb:hover img{ transform: scale(1.05); }
+.log-entry-body{ flex: 1 1 auto; min-width: 0; }
+@media (max-width: 560px){
+  .log-entry.has-cover{ flex-direction: column; }
+  .log-thumb, .log-thumb img{ width: 100%; height: 160px; }
+}
+
 .log-date{
   font-family: var(--font-display);
   font-size: 0.75rem;
@@ -160,6 +186,12 @@ main{
 .log-title a{ color: var(--text); }
 .log-title a:hover{ color: var(--amber); }
 .log-excerpt{ color: var(--text-dim); margin: 0; }
+.log-meta{ margin-top: 10px; }
+.like-count{
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
 .log-empty{
   color: var(--text-dim);
   font-family: var(--font-display);
@@ -224,6 +256,29 @@ figcaption{
   color: var(--text-dim);
   font-family: var(--font-display);
 }
+.block-file{
+  margin: 20px 0;
+}
+.block-file .btn{
+  font-size: 0.85rem;
+}
+
+.like-bar{
+  margin: 34px 0 10px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.like-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.like-btn span{ color: var(--amber); }
+
+.comments-section{
+  margin-top: 34px;
+}
+
 .block-code{
   background: #0c0b08;
   border: 1px solid var(--line);
