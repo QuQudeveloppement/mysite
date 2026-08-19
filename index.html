@@ -7,7 +7,7 @@
 <meta name="description" content="Journal de bord des projets : électronique, code et bidouilles maison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -29,15 +29,15 @@
   Publié depuis GitHub Pages — géré via l'interface admin.
 </footer>
 
-<script src="js/matrix.js"></script>
-<script src="js/render.js"></script>
+<script src="matrix.js"></script>
+<script src="render.js"></script>
 <script>
 const app = document.getElementById("app");
 let ARTICLES = [];
 
 async function loadArticles() {
   try {
-    const res = await fetch("data/articles.json", { cache: "no-store" });
+    const res = await fetch("articles.json", { cache: "no-store" });
     if (!res.ok) throw new Error("Fichier articles.json introuvable");
     ARTICLES = await res.json();
   } catch (e) {
