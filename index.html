@@ -146,9 +146,13 @@ function hasLiked(id) {
 function toggleLike(id) {
   const store = getLikesStore();
   const entry = store[id] || { count: 0, liked: false };
+
   if (entry.liked) { entry.liked = false; entry.count = Math.max(0, entry.count - 1); }
   else { entry.liked = true; entry.count += 1; }
+
+  /* 🔥 CORRECTION : ligne indispensable */
   store[id] = entry;
+
   localStorage.setItem(LIKES_KEY, JSON.stringify(store));
   return entry;
 }
