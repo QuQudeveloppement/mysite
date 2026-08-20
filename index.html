@@ -30,6 +30,7 @@
     <div data-led-text="L'ATELIER" data-led-cols="34" aria-label="L'Atelier"></div>
     <nav class="site-nav">
       <a href="index.html">Journal</a>
+      <a href="#archives">Archives</a>
       <a href="forbidden.html"></a>
     </nav>
   </div>
@@ -65,19 +66,14 @@ async function loadArticles() {
   render();
 }
 
-function renderList() {
-  const sorted = [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1));
-  if (sorted.length === 0) {
-    app.innerHTML = `<p class="log-empty">Aucun article publié pour l'instant.</p>`;
-    return;
-  }
-  app.innerHTML = `<div class="log">${sorted.map(a => `
+function articleCardHtml(a) {
+  return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
       ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
         <img src="${a.cover}" alt="" loading="lazy">
       </a>` : ""}
       <div class="log-entry-body">
-        <div class="log-date">${formatDate(a.date)}</div>
+        <div class="log-date">${formatDate(a.date)} ${isArchived(a) ? '<span class="badge">Archivé</span>' : ""}</div>
         <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
         <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
         <div class="log-meta">
@@ -85,7 +81,36 @@ function renderList() {
         </div>
       </div>
     </article>
-  `).join("")}</div>`;
+  `;
+}
+
+function renderList() {
+  const active = ARTICLES.filter(a => !isArchived(a));
+  const sorted = [...active].sort((a, b) => (a.date < b.date ? 1 : -1));
+  if (sorted.length === 0) {
+    app.innerHTML = `<p class="log-empty">Aucun article publié pour l'instant.</p>`;
+    return;
+  }
+  app.innerHTML = `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
+
+  sorted.forEach(async (a) => {
+    const count = await fetchLikeCount(a.id);
+    updateLikeDisplays(a.id, count);
+  });
+}
+
+function renderArchives() {
+  const archived = ARTICLES.filter(isArchived);
+  const sorted = [...archived].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const header = `
+    <a class="article-back" href="#">← Retour au journal</a>
+    <h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>
+  `;
+  if (sorted.length === 0) {
+    app.innerHTML = header + `<p class="log-empty">Aucun article archivé pour l'instant.</p>`;
+    return;
+  }
+  app.innerHTML = header + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
@@ -124,6 +149,8 @@ function render() {
   const hash = location.hash;
   if (hash.startsWith("#article/")) {
     renderArticle(decodeURIComponent(hash.replace("#article/", "")));
+  } else if (hash === "#archives") {
+    renderArchives();
   } else {
     renderList();
   }
