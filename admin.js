@@ -176,11 +176,12 @@ function renderDashboard() {
   list.innerHTML = sorted.map(a => `
     <div class="card" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
       <div>
-        <div class="log-date">${formatDate(a.date)}</div>
+        <div class="log-date">${formatDate(a.date)} ${isArchived(a) ? '<span class="badge">Archivé</span>' : '<span class="badge ok">Actif</span>'}</div>
         <div style="font-family:var(--font-display);margin-top:4px;">${escapeHtml(a.title)}</div>
       </div>
       <div style="display:flex;gap:8px;">
         <button class="btn" data-edit="${a.id}">Modifier</button>
+        <button class="btn" data-toggle-archive="${a.id}">${isArchived(a) ? "Désarchiver" : "Archiver"}</button>
         <button class="btn btn-danger" data-delete="${a.id}">Supprimer</button>
       </div>
     </div>
@@ -192,6 +193,45 @@ function renderDashboard() {
   list.querySelectorAll("[data-delete]").forEach(btn => {
     btn.addEventListener("click", () => deleteArticle(btn.dataset.delete));
   });
+  list.querySelectorAll("[data-toggle-archive]").forEach(btn => {
+    btn.addEventListener("click", () => toggleArchive(btn.dataset.toggleArchive));
+  });
+}
+
+async function toggleArchive(id) {
+  const statusEl = $("#dashboard-status");
+  showStatus(statusEl, "Mise à jour…", "ok");
+  try {
+    const fresh = await ghGetFile(ARTICLES_PATH);
+    const current = fresh ? JSON.parse(fresh.text) : [];
+    const freshSha = fresh ? fresh.sha : null;
+
+    const article = current.find(a => a.id === id);
+    if (!article) throw new Error("Article introuvable");
+
+    if (isArchived(article)) {
+      // Désarchiver : force la sortie d'archive, même si la règle d'ancienneté s'appliquerait encore.
+      article.archivedManually = false;
+      article.keepActive = true;
+    } else {
+      // Archiver manuellement, quelle que soit la règle d'ancienneté.
+      article.archivedManually = true;
+      article.keepActive = false;
+    }
+
+    articles = current;
+    const result = await ghPutTextFile(
+      ARTICLES_PATH,
+      JSON.stringify(articles, null, 2),
+      `${isArchived(article) ? "Archivage" : "Désarchivage"}: ${article.title}`,
+      freshSha
+    );
+    articlesSha = result.content.sha;
+    showStatus(statusEl, "Statut mis à jour.", "ok");
+    renderDashboard();
+  } catch (e) {
+    showStatus(statusEl, `Erreur : ${e.message}`, "err");
+  }
 }
 
 async function deleteArticle(id) {
@@ -240,6 +280,9 @@ function openEditor(id) {
   $("#f-date").value = article ? article.date : new Date().toISOString().slice(0, 10);
   $("#f-excerpt").value = article ? article.excerpt || "" : "";
   $("#f-cover").value = article ? article.cover || "" : "";
+  $("#f-archive-never").checked = article ? (article.archiveAfterMonths === null || article.archiveAfterMonths === undefined) : false;
+  $("#f-archive-months").value = article && typeof article.archiveAfterMonths === "number" ? article.archiveAfterMonths : 6;
+  $("#f-archive-months").disabled = $("#f-archive-never").checked;
   blocks = article ? JSON.parse(JSON.stringify(article.blocks || [])) : [];
 
   hideStatus($("#editor-status"));
@@ -465,13 +508,18 @@ async function saveArticle() {
   if (!date) { showStatus(statusEl, "La date est obligatoire.", "err"); return; }
 
   const id = editingId || uniqueSlug(slugify(title));
+  const article = editingId ? articles.find(a => a.id === editingId) : null;
+  const archiveNever = $("#f-archive-never").checked;
   const articleData = {
     id,
     title,
     date,
     excerpt: $("#f-excerpt").value.trim(),
     cover: $("#f-cover").value.trim(),
-    blocks
+    blocks,
+    archiveAfterMonths: archiveNever ? null : (parseInt($("#f-archive-months").value, 10) || 6),
+    archivedManually: article ? !!article.archivedManually : false,
+    keepActive: article ? !!article.keepActive : false
   };
 
   showStatus(statusEl, "Enregistrement…", "ok");
@@ -549,6 +597,9 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#btn-add-code").addEventListener("click", () => addBlock("code"));
   $("#btn-add-file").addEventListener("click", () => addBlock("file"));
   $("#f-cover-upload").addEventListener("change", handleCoverUpload);
+  $("#f-archive-never").addEventListener("change", () => {
+    $("#f-archive-months").disabled = $("#f-archive-never").checked;
+  });
 
   $("#btn-save-article").addEventListener("click", saveArticle);
 });
