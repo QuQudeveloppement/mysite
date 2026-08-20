@@ -221,6 +221,6 @@
     "archiveAfterMonths": null,
     "archivedManually": false,
     "keepActive": false,
-    "pinned": false
+    "pinned": true
   }
 ]
