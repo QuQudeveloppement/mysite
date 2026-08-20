@@ -29,7 +29,7 @@
   <div class="header-inner">
     <div data-led-text="L'ATELIER" data-led-cols="34" aria-label="L'Atelier"></div>
     <nav class="site-nav">
-      <a href="index.html">Accueil</a>
+      <a href="index.html">Journal</a>
       <a href="forbidden.html"></a>
     </nav>
   </div>
@@ -81,7 +81,7 @@ function renderList() {
         <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
         <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
         <div class="log-meta">
-          <span class="like-count" data-like-display="${escapeHtml(a.id)}">♥ …</span>
+          <span class="like-count">♥ <span data-like-display="${escapeHtml(a.id)}">…</span></span>
         </div>
       </div>
     </article>
@@ -96,11 +96,11 @@ function renderList() {
 function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
   if (!article) {
-    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour à l'accueil</a>`;
+    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour au journal</a>`;
     return;
   }
   app.innerHTML = `
-    <a class="article-back" href="#">← Retour à l'accueil</a>
+    <a class="article-back" href="#">← Retour au journal</a>
     <header class="article-header">
       <span class="log-date">${formatDate(article.date)}</span>
       <h1>${escapeHtml(article.title)}</h1>
@@ -110,7 +110,7 @@ function renderArticle(id) {
 
     <div class="like-bar">
       <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}" ${hasLikedLocally(article.id) ? "disabled" : ""}>
-        ${hasLikedLocally(article.id) ? "♥ Aimé" : "♡ J'aime"}
+        <span class="like-label">${hasLikedLocally(article.id) ? "♥ Aimé" : "♡ J'aime"}</span>
         <span data-like-display="${escapeHtml(article.id)}">…</span>
       </button>
     </div>
@@ -188,7 +188,8 @@ function wireLikeButton(id) {
     try {
       const count = await incrementLikeCount(id);
       markLikedLocally(id);
-      btn.innerHTML = `♥ Aimé <span data-like-display="${escapeHtml(id)}">${count}</span>`;
+      const label = btn.querySelector(".like-label");
+      if (label) label.textContent = "♥ Aimé";
       updateLikeDisplays(id, count);
     } catch (e) {
       btn.disabled = false;
