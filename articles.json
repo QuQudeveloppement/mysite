@@ -72,7 +72,10 @@
         "url": "https://www.youtube.com/watch?v=oLi_ot9F0dA&t=2s",
         "caption": "Voici une vidéo expliquant la programmation de ce type de carte, et le fonctionnement.  #Bertrand.Tech"
       }
-    ]
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false
   },
   {
     "id": "google-domine-l-evolution-des-assistants-vocaux-modernes-et-transforme-l-usage-quotidien-de-la-technologie",
