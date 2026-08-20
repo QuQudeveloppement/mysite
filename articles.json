@@ -141,6 +141,9 @@
         "url": "",
         "caption": ""
       }
-    ]
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false
   }
 ]
