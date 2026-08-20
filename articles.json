@@ -149,5 +149,78 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "softonic-et-les-sites-de-telechargements-a-eviter-comprendre-les-risques-pour-votre-ordinateur",
+    "title": "Softonic et les sites de téléchargements à éviter : comprendre les risques pour votre ordinateur",
+    "date": "2026-08-20",
+    "excerpt": "Les sites de téléchargements gratuits attirent chaque jour des millions d’utilisateurs. Pourtant, certains d’entre eux, comme Softonic, sont aujourd’hui considérés comme risqués pour la sécurité de votre ordinateur. Cet article explique pourquoi ces plateformes sont déconseillées et quelles alternatives privilégier.",
+    "cover": "https://www.techtimes.vn/wp-content/uploads/2025/03/f469b7c4-cd7b-4c3a-8997-4cf4f8ec10e8.png",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Softonic : un site populaire devenu problématique",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Créé en 1997, Softonic était autrefois une référence pour télécharger des logiciels. Avec le temps, le site a été associé à des pratiques douteuses. De nombreux utilisateurs signalent des téléchargements contenant des PUPs (programmes potentiellement indésirables), des adwares, des barres d’outils intrusives, et parfois des installateurs modifiés.\n\nLe problème principal vient de l’utilisation d’installateurs maison, qui ajoutent des logiciels tiers non désirés, parfois difficiles à désinstaller.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Risques courants sur Softonic",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "•**Adwares**: logiciels publicitaires qui affichent des pubs intrusives.\n•**PUPs** : programmes indésirables installés en douce.\n•**Installateurs trompeurs** : plusieurs boutons *Download* sont en réalité des publicités qui vous redirigent vers un site malveillant.\n•**Versions modifiées de logiciels** : certains programmes ne proviennent pas du site officiel.\n•**APK** non vérifiés : pour Android, cela peut contourner les protections de Google Play.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Autres sites similaires à éviter",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Softonic n’est pas le seul site problématique. Voici d’autres plateformes présentant des risques similaires :\n•**CNET Download.com**\n•**Soft32**\n•**SourceForge** Bien que globalement fiable, le site a déjà distribué des versions modifiées de logiciels contenant de l’adware.\n•**FileHippo clones**",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Pourquoi ces sites sont dangereux ?",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ces plateformes utilisent souvent des gestionnaires de téléchargement qui ajoutent des logiciels tiers. Elles affichent également des publicités déguisées en boutons de téléchargement, ce qui pousse l’utilisateur à cliquer sur de faux liens.\n\nEnfin, les fichiers proposés ne proviennent pas toujours des développeurs officiels, ce qui augmente le risque de malware, de spyware, ou de corruption système.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comment se protéger ?",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour éviter les mauvaises surprises :\n•Téléchargez toujours depuis le site officiel du logiciel.\n•Analysez les fichiers avec VirusTotal avant installation.\n•Évitez les download managers proposés par les sites tiers.\n•Lisez les avis des utilisateurs avant de télécharger un programme.\n•Préférez les plateformes reconnues pour leur sécurité.",
+        "url": "",
+        "caption": ""
+      }
+    ],
+    "archiveAfterMonths": null,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
