@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="QuQudeveloppement">
 
 <title>L'Atelier — Accueil</title>
-<meta name="description" content="Journal de bord des projets : électronique, code.">
+<meta name="description" content="Accueil des projets : électronique, code.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -37,7 +37,7 @@
 </header>
 
 <main id="app">
-  <p class="log-empty">Chargement du journal…</p>
+  <p class="log-empty">Chargement de l'accueil…</p>
 </main>
 
 <footer class="site-footer">
@@ -73,7 +73,11 @@ function articleCardHtml(a) {
         <img src="${a.cover}" alt="" loading="lazy">
       </a>` : ""}
       <div class="log-entry-body">
-        <div class="log-date">${formatDate(a.date)} ${isArchived(a) ? '<span class="badge">Archivé</span>' : ""}</div>
+        <div class="log-date">
+          ${a.pinned ? '<span class="badge pinned">📌 Épinglé</span>' : ""}
+          ${formatDate(a.date)}
+          ${isArchived(a) ? '<span class="badge">Archivé</span>' : ""}
+        </div>
         <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
         <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
         <div class="log-meta">
@@ -86,7 +90,11 @@ function articleCardHtml(a) {
 
 function renderList() {
   const active = ARTICLES.filter(a => !isArchived(a));
-  const sorted = [...active].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const sorted = [...active].sort((a, b) => {
+    const pa = a.pinned ? 1 : 0, pb = b.pinned ? 1 : 0;
+    if (pa !== pb) return pb - pa; // épinglés en premier
+    return (a.date < b.date ? 1 : -1);
+  });
   if (sorted.length === 0) {
     app.innerHTML = `<p class="log-empty">Aucun article publié pour l'instant.</p>`;
     return;
