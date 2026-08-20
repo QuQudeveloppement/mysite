@@ -219,8 +219,8 @@
       }
     ],
     "archiveAfterMonths": null,
-    "archivedManually": true,
-    "keepActive": false,
+    "archivedManually": false,
+    "keepActive": true,
     "pinned": true
   }
 ]
