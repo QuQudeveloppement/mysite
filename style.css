@@ -363,6 +363,7 @@ figcaption{
 }
 .badge.ok{ color: var(--teal); border-color: var(--teal); }
 .badge.err{ color: var(--danger); border-color: var(--danger); }
+.badge.pinned{ color: var(--amber); border-color: var(--amber); }
 
 .status-line{
   font-family: var(--font-display);
