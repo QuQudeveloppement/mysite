@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://ququdeveloppement.github.io/mysite/">
 <meta property="og:site_name" content="QuQudeveloppement">
 
-<title>L'Atelier — Journal de bord</title>
+<title>L'Atelier — Accueil</title>
 <meta name="description" content="Journal de bord des projets : électronique, code.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
   <div class="header-inner">
     <div data-led-text="L'ATELIER" data-led-cols="34" aria-label="L'Atelier"></div>
     <nav class="site-nav">
-      <a href="index.html">Journal</a>
+      <a href="index.html">Accueil</a>
       <a href="#archives">Archives</a>
       <a href="forbidden.html"></a>
     </nav>
@@ -103,7 +103,7 @@ function renderArchives() {
   const archived = ARTICLES.filter(isArchived);
   const sorted = [...archived].sort((a, b) => (a.date < b.date ? 1 : -1));
   const header = `
-    <a class="article-back" href="#">← Retour au journal</a>
+    <a class="article-back" href="#">← Retour à l'accueil</a>
     <h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>
   `;
   if (sorted.length === 0) {
@@ -121,11 +121,11 @@ function renderArchives() {
 function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
   if (!article) {
-    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour au journal</a>`;
+    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="#">← Retour à l'accueil</a>`;
     return;
   }
   app.innerHTML = `
-    <a class="article-back" href="#">← Retour au journal</a>
+    <a class="article-back" href="#">← Retour à l'accueil</a>
     <header class="article-header">
       <span class="log-date">${formatDate(article.date)}</span>
       <h1>${escapeHtml(article.title)}</h1>
