@@ -80,3 +80,26 @@ function formatDate(iso) {
     return iso;
   }
 }
+
+/* ---------------------------------------------------------------------
+   Archivage — calculé à la volée (pas de tâche planifiée possible sur un
+   site statique). Règles, dans l'ordre de priorité :
+   1. archivedManually === true  -> toujours archivé
+   2. keepActive === true        -> jamais archivé (force la sortie d'archive)
+   3. archiveAfterMonths = null  -> jamais archivé automatiquement
+   4. sinon, archivé dès que la date de l'article dépasse ce nombre de mois
+   --------------------------------------------------------------------- */
+function monthsSince(dateStr) {
+  const d = new Date(dateStr + "T00:00:00");
+  const now = new Date();
+  let months = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+  if (now.getDate() < d.getDate()) months -= 1;
+  return months;
+}
+
+function isArchived(article) {
+  if (article.archivedManually) return true;
+  if (article.keepActive) return false;
+  if (article.archiveAfterMonths === null || article.archiveAfterMonths === undefined) return false;
+  return monthsSince(article.date) >= article.archiveAfterMonths;
+}
