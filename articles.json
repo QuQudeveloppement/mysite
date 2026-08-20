@@ -219,7 +219,7 @@
       }
     ],
     "archiveAfterMonths": null,
-    "archivedManually": false,
+    "archivedManually": true,
     "keepActive": false,
     "pinned": true
   }
