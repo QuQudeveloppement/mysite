@@ -238,7 +238,7 @@
       },
       {
         "type": "text",
-        "value": "Ce projet a pour objectif d’automatiser vos lampes Philips Hue sans passer par l’interface basique fournie par défaut. Il nécessite une légère phase de configuration, mais offre ensuite un contrôle beaucoup plus complet et personnalisé.",
+        "value": "Ce projet a pour objectif d’automatiser vos lampes Philips Hue sans passer par l’interface basique fournie par défaut. Il nécessite une légère phase de configuration, mais offre ensuite un contrôle beaucoup plus complet et personnalisé.\nIl est recommandé pour de meilleurs performances de l'éxecuter sur un nano ESP32",
         "url": "",
         "caption": ""
       },
