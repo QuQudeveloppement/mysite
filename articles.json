@@ -222,5 +222,73 @@
     "archivedManually": false,
     "keepActive": true,
     "pinned": true
+  },
+  {
+    "id": "arduino-esp32-uno-r4-projet",
+    "title": "Arduino ESP32/Uno R4 projet",
+    "date": "2026-08-20",
+    "excerpt": "J'ai crée un système de gestion HUE avec un Arduino Nano ESP32 qui fonctionne aussi avec un Arduino Uno R4 wifi. Pour ceci, il faut avoir un pont Philips hue.\nLe lien de téléchargement du projet est en bas de cet article",
+    "cover": "https://cdn.bodanius.com/media/1/59e159511_arduino-nano-esp32-with-headers_x.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Présentation ",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ce projet a pour objectif d’automatiser vos lampes Philips Hue sans passer par l’interface basique fournie par défaut. Il nécessite une légère phase de configuration, mais offre ensuite un contrôle beaucoup plus complet et personnalisé.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Mise en place ",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Il vous faut :\n– Un Arduino Nano ESP32 ou un Uno R4 WiFi\n– Un pont Philips Hue (version basique ou Pro)\n– Un câble USB‑C fiable pour l’alimenter en continu",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Première utilisation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Téléversez le code ci‑dessous.\nOuvrez le moniteur série (115200 bauds) dans l’application Arduino, puis sélectionnez votre ESP32.\nSuivez les instructions affichées dans le moniteur série.\nUne fois la configuration terminée, ouvrez l’adresse IP indiquée dans le moniteur série, puis saisissez le mot de passe par défaut (modifiable). Une interface va alors apparaître : vous pourrez gérer vos automatisations et vos lampes, avec un léger délai d’exécution \n(~5 s).",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Voilà, votre gestionnaire HUE est prêt !",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "fichier non disponible pour le moment, réessayez plus tard.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "file",
+        "value": "",
+        "url": "",
+        "caption": "© QuQudeveloppement 2026, toute reproduction entière ou partielle est interdite.",
+        "label": "Projet ESP32 HUE"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
