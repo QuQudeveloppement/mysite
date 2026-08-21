@@ -262,7 +262,7 @@
       },
       {
         "type": "text",
-        "value": "Téléversez le code ci‑dessous.\nOuvrez le moniteur série (115200 bauds) dans l’application Arduino, puis sélectionnez votre ESP32.\nSuivez les instructions affichées dans le moniteur série.\nUne fois la configuration terminée, ouvrez l’adresse IP indiquée dans le moniteur série, puis saisissez le mot de passe par défaut (modifiable). Une interface va alors apparaître : vous pourrez gérer vos automatisations et vos lampes, avec un léger délai d’exécution \n(~5 s).",
+        "value": "Téléversez le code ci‑dessous.\nOuvrez le moniteur série (115200 bauds) dans l’application Arduino, puis sélectionnez votre ESP32.\nSuivez les instructions affichées dans le moniteur série.\nUne fois la configuration terminée, ouvrez l’adresse IP indiquée dans le moniteur série, puis saisissez le mot de passe par défaut (modifiable). Une interface va alors apparaître : vous pourrez gérer vos automatisations et vos lampes, avec un léger délai d’exécution \n(~5 s).\nVous pouvez utiliser l'interface web de votre routeur pour trouver l'adresse IP du pont HUE, ou utiliser un outil gratuit comme fing.",
         "url": "",
         "caption": ""
       },
