@@ -1,0 +1,291 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ququdeveloppement</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            color: #ffffff;
+
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(70, 100, 220, 0.35),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 90%,
+                    rgba(150, 70, 220, 0.30),
+                    transparent 35%
+                ),
+                #0b0d14;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            text-align: center;
+        }
+
+        /* =========================
+           TITRE
+        ========================= */
+
+        .title {
+            font-size: clamp(42px, 8vw, 76px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -3px;
+
+            margin-bottom: 35px;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 5px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* =========================
+           PHOTO
+        ========================= */
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 42px;
+        }
+
+        .profile {
+            display: block;
+
+            width: 170px;
+            height: 170px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 4px solid rgba(255, 255, 255, 0.9);
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.45);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .profile:hover {
+            transform: scale(1.04);
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.55);
+        }
+
+        /* =========================
+           MES SITES
+        ========================= */
+
+        .sites-title {
+            font-size: 26px;
+            font-weight: 600;
+
+            margin-bottom: 22px;
+
+            color: #eeeeee;
+        }
+
+        .sites {
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           BOUTONS
+        ========================= */
+
+        .site-button {
+            width: 260px;
+
+            min-height: 62px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 16px 22px;
+
+            border-radius: 15px;
+
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            text-decoration: none;
+
+            font-size: 17px;
+            font-weight: 600;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.25);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .site-button:hover {
+            transform: translateY(-4px);
+
+            background: rgba(255, 255, 255, 0.14);
+
+            border-color: rgba(255, 255, 255, 0.30);
+
+            box-shadow:
+                0 14px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .site-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           PIED DE PAGE
+        ========================= */
+
+        .footer {
+            margin-top: 50px;
+
+            font-size: 13px;
+
+            color: rgba(255, 255, 255, 0.40);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 30px 16px;
+            }
+
+            .title {
+                font-size: 43px;
+                letter-spacing: -2px;
+            }
+
+            .profile {
+                width: 145px;
+                height: 145px;
+            }
+
+            .sites {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .site-button {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1 class="title">
+            Ququdeveloppement
+        </h1>
+
+        <div class="profile-container">
+            <img
+                class="profile"
+                src="Fichiers/Images/Img_2026_09_13_15_09_32.jpeg"
+                alt="Photo de profil de Ququdeveloppement"
+            >
+        </div>
+
+        <h2 class="sites-title">
+            Mes sites :
+        </h2>
+
+        <div class="sites">
+
+            <a
+                class="site-button"
+                href="https://TON-PREMIER-SITE.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🌐 Mon site
+            </a>
+
+            <a
+                class="site-button"
+                href="https://TON-DEUXIEME-SITE.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🚀 Mon deuxième site
+            </a>
+
+        </div>
+
+        <p class="footer">
+            © 2026 Ququdeveloppement
+        </p>
+
+    </main>
+
+</body>
+</html>
+```
