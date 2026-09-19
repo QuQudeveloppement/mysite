@@ -6,6 +6,9 @@
 
     <title>Lium Player — Lecteur multimédia</title>
 
+    <!-- Icône de l'onglet du navigateur -->
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/QuQudeveloppement/mysite/main/Lium/favicon.ico">
+
     <meta
         name="description"
         content="Lium Player — Un lecteur multimédia moderne, gratuit et indépendant."
@@ -23,11 +26,9 @@
             --background-light: #0d1120;
             --card: rgba(255,255,255,0.055);
             --border: rgba(255,255,255,0.10);
-
             --white: #ffffff;
             --text: #e9ecf5;
             --muted: #9da5bb;
-
             --blue: #4f8cff;
             --purple: #8b5cf6;
             --pink: #ec4899;
@@ -39,7 +40,6 @@
 
         body {
             min-height: 100vh;
-
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -47,27 +47,12 @@
                 Roboto,
                 Arial,
                 sans-serif;
-
             color: var(--text);
-
             background:
-                radial-gradient(
-                    circle at 10% 5%,
-                    rgba(79,140,255,.18),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 90% 15%,
-                    rgba(139,92,246,.16),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 50% 100%,
-                    rgba(236,72,153,.10),
-                    transparent 35%
-                ),
+                radial-gradient(circle at 10% 5%, rgba(79,140,255,.18), transparent 30%),
+                radial-gradient(circle at 90% 15%, rgba(139,92,246,.16), transparent 30%),
+                radial-gradient(circle at 50% 100%, rgba(236,72,153,.10), transparent 35%),
                 var(--background);
-
             overflow-x: hidden;
         }
 
@@ -75,43 +60,30 @@
             color: inherit;
         }
 
-        /* =========================
-           NAVBAR
-        ========================= */
+        /* NAVBAR */
 
         nav {
             position: fixed;
-
             top: 0;
             left: 0;
             right: 0;
-
             height: 70px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 0 7%;
-
             background: rgba(7,9,20,.70);
-
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-
             border-bottom: 1px solid rgba(255,255,255,.06);
-
             z-index: 1000;
         }
 
         .logo {
             display: flex;
             align-items: center;
-
             gap: 11px;
-
             text-decoration: none;
-
             font-size: 20px;
             font-weight: 800;
         }
@@ -119,11 +91,8 @@
         .logo-icon {
             width: 38px;
             height: 38px;
-
             display: block;
-
             object-fit: contain;
-
             border-radius: 9px;
         }
 
@@ -134,12 +103,9 @@
 
         .nav-links a {
             color: var(--muted);
-
             text-decoration: none;
-
             font-size: 14px;
             font-weight: 600;
-
             transition: .2s;
         }
 
@@ -147,227 +113,149 @@
             color: white;
         }
 
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
             min-height: 100vh;
-
             display: flex;
             flex-direction: column;
-
             align-items: center;
             justify-content: center;
-
             text-align: center;
-
             padding: 130px 20px 100px;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-
             gap: 8px;
-
             padding: 8px 15px;
-
             border-radius: 100px;
-
             background: rgba(255,255,255,.05);
-
             border: 1px solid var(--border);
-
             color: #cbd2e6;
-
             font-size: 13px;
             font-weight: 600;
-
             margin-bottom: 25px;
         }
 
         .dot {
             width: 7px;
             height: 7px;
-
             border-radius: 50%;
-
             background: #4ade80;
-
-            box-shadow:
-                0 0 12px #4ade80;
+            box-shadow: 0 0 12px #4ade80;
         }
 
         .hero h1 {
             font-size: clamp(60px, 10vw, 110px);
-
             line-height: .95;
-
             letter-spacing: -6px;
-
             font-weight: 900;
-
             margin-bottom: 30px;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    #ffffff,
-                    #9dbdff,
-                    #b58cff,
-                    #f28cc7
-                );
-
+            background: linear-gradient(
+                100deg,
+                #ffffff,
+                #9dbdff,
+                #b58cff,
+                #f28cc7
+            );
             -webkit-background-clip: text;
             background-clip: text;
-
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             max-width: 700px;
-
             color: var(--muted);
-
             font-size: 19px;
-
             line-height: 1.7;
-
             margin-bottom: 35px;
         }
 
         .buttons {
             display: flex;
-
             justify-content: center;
-
             gap: 15px;
-
             flex-wrap: wrap;
         }
 
         .button {
             min-height: 56px;
-
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             gap: 10px;
-
             padding: 0 28px;
-
             border-radius: 14px;
-
             text-decoration: none;
-
             font-size: 16px;
-
             font-weight: 700;
-
-            transition:
-                transform .2s,
-                box-shadow .2s,
-                background .2s;
+            transition: transform .2s, box-shadow .2s, background .2s;
         }
 
         .primary {
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--blue),
-                    var(--purple)
-                );
-
-            box-shadow:
-                0 12px 35px rgba(79,140,255,.25);
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            box-shadow: 0 12px 35px rgba(79,140,255,.25);
         }
 
         .primary:hover {
             transform: translateY(-3px);
-
-            box-shadow:
-                0 18px 45px rgba(79,140,255,.4);
+            box-shadow: 0 18px 45px rgba(79,140,255,.4);
         }
 
         .secondary {
             background: rgba(255,255,255,.06);
-
             border: 1px solid var(--border);
         }
 
         .secondary:hover {
             transform: translateY(-3px);
-
             background: rgba(255,255,255,.11);
         }
 
-        /* =========================
-           SECTIONS
-        ========================= */
+        /* SECTIONS */
 
         section {
             width: min(1150px, 92vw);
-
             margin: auto;
-
             padding: 100px 0;
         }
 
         .section-title {
             text-align: center;
-
             margin-bottom: 70px;
         }
 
         .section-title span {
             color: #91aaff;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
-
             font-size: 12px;
-
             font-weight: 800;
         }
 
         .section-title h2 {
             margin-top: 12px;
-
             font-size: clamp(34px,5vw,52px);
-
             letter-spacing: -2px;
-
             color: white;
         }
 
         .section-title p {
             max-width: 650px;
-
             margin: 15px auto 0;
-
             color: var(--muted);
-
             line-height: 1.7;
         }
 
-        /* =========================
-           PRÉSENTATIONS
-        ========================= */
+        /* PRÉSENTATIONS */
 
         .presentation {
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
+            grid-template-columns: 1fr 1fr;
             gap: 70px;
-
             align-items: center;
-
             margin-bottom: 130px;
         }
 
@@ -385,31 +273,22 @@
 
         .text .number {
             color: #7f9cff;
-
             font-size: 13px;
-
             font-weight: 800;
-
             letter-spacing: 2px;
-
             margin-bottom: 12px;
         }
 
         .text h3 {
             font-size: 38px;
-
             letter-spacing: -1.5px;
-
             margin-bottom: 18px;
-
             color: white;
         }
 
         .text p {
             color: var(--muted);
-
             font-size: 16px;
-
             line-height: 1.8;
         }
 
@@ -419,121 +298,77 @@
 
         .image::before {
             content: "";
-
             position: absolute;
-
             inset: -25px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(79,140,255,.18),
-                    transparent 70%
-                );
-
+            background: radial-gradient(
+                circle,
+                rgba(79,140,255,.18),
+                transparent 70%
+            );
             filter: blur(25px);
-
             z-index: -1;
         }
 
         .image-frame {
             padding: 6px;
-
             border-radius: 18px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(79,140,255,.45),
-                    rgba(139,92,246,.35),
-                    rgba(236,72,153,.25)
-                );
-
-            box-shadow:
-                0 25px 70px rgba(0,0,0,.45);
+            background: linear-gradient(
+                135deg,
+                rgba(79,140,255,.45),
+                rgba(139,92,246,.35),
+                rgba(236,72,153,.25)
+            );
+            box-shadow: 0 25px 70px rgba(0,0,0,.45);
         }
 
         .image-frame img {
             display: block;
-
             width: 100%;
-
             border-radius: 13px;
-
             background: #111522;
-
-            transition:
-                transform .35s ease;
+            transition: transform .35s ease;
         }
 
         .image-frame:hover img {
             transform: scale(1.015);
         }
 
-        /* =========================
-           DOWNLOAD
-        ========================= */
+        /* DOWNLOAD */
 
         .download-box {
             text-align: center;
-
             padding: 80px 30px;
-
             border-radius: 28px;
-
             background:
-                radial-gradient(
-                    circle at top left,
-                    rgba(79,140,255,.18),
-                    transparent 40%
-                ),
-                radial-gradient(
-                    circle at bottom right,
-                    rgba(139,92,246,.18),
-                    transparent 40%
-                ),
+                radial-gradient(circle at top left, rgba(79,140,255,.18), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(139,92,246,.18), transparent 40%),
                 rgba(255,255,255,.035);
-
             border: 1px solid var(--border);
         }
 
         .download-box h2 {
             font-size: clamp(34px,5vw,52px);
-
             letter-spacing: -2px;
-
             margin-bottom: 15px;
         }
 
         .download-box p {
             max-width: 650px;
-
             margin: auto auto 30px;
-
             color: var(--muted);
-
             line-height: 1.7;
         }
 
-        /* =========================
-           WARNING
-        ========================= */
+        /* AVERTISSEMENT */
 
         .warning {
             margin-top: 25px;
-
             padding: 25px;
-
             border-radius: 18px;
-
             background: rgba(255,190,70,.06);
-
             border: 1px solid rgba(255,190,70,.15);
-
             color: #bdb7a6;
-
             line-height: 1.7;
-
             font-size: 14px;
         }
 
@@ -545,44 +380,31 @@
             color: #9eb5ff;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
             padding: 35px 20px;
-
             text-align: center;
-
-            border-top:
-                1px solid rgba(255,255,255,.07);
-
+            border-top: 1px solid rgba(255,255,255,.07);
             color: #666d80;
-
             font-size: 13px;
         }
 
         footer a {
             color: #8da8ff;
-
             text-decoration: none;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 800px) {
-
             .nav-links {
                 display: none;
             }
 
             .presentation {
                 grid-template-columns: 1fr;
-
                 gap: 35px;
-
                 margin-bottom: 90px;
             }
 
@@ -604,10 +426,8 @@
         }
 
         @media (max-width: 500px) {
-
             .hero h1 {
                 font-size: 58px;
-
                 letter-spacing: -4px;
             }
 
@@ -617,7 +437,6 @@
 
             .buttons {
                 width: 100%;
-
                 max-width: 360px;
             }
 
@@ -632,66 +451,35 @@
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+    <!-- NAVIGATION -->
 
     <nav>
-
-        <a
-            class="logo"
-            href="#"
-        >
-
+        <a class="logo" href="#">
             <img
                 class="logo-icon"
-                src="https://github.com/QuQudeveloppement/mysite/Lium/favicon.ico"
+                src="https://github.com/QuQudeveloppement/mysite/raw/refs/heads/main/favicon.ico"
                 alt="Logo Ququdeveloppement"
             >
-
             Lium Player
-
         </a>
 
-
         <div class="nav-links">
-
-            <a href="#features">
-                Fonctionnalités
-            </a>
-
-            <a href="#download">
-                Télécharger
-            </a>
-
+            <a href="#features">Fonctionnalités</a>
+            <a href="#download">Télécharger</a>
         </div>
-
     </nav>
 
-
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
     <header class="hero">
-
         <div class="badge">
-
             <span class="dot"></span>
-
             Projet indépendant
-
         </div>
 
-
-        <h1>
-            Lium Player
-        </h1>
-
+        <h1>Lium Player</h1>
 
         <p>
             Un lecteur multimédia moderne, simple et gratuit.
@@ -699,9 +487,7 @@
             sans complications inutiles.
         </p>
 
-
         <div class="buttons">
-
             <a
                 class="button primary"
                 href="https://github.com/QuQudeveloppement/Lium-player/releases/latest"
@@ -710,50 +496,31 @@
             >
                 ⬇ Télécharger Lium Player
             </a>
-
         </div>
-
     </header>
 
-
-    <!-- =========================
-         PRÉSENTATION
-    ========================== -->
+    <!-- PRÉSENTATION -->
 
     <section id="features">
-
         <div class="section-title">
+            <span>Découvrez Lium Player</span>
 
-            <span>
-                Découvrez Lium Player
-            </span>
-
-            <h2>
-                Pensé pour être simple.
-            </h2>
+            <h2>Pensé pour être simple.</h2>
 
             <p>
                 Découvrez les principales fonctionnalités de
                 Lium Player à travers quelques captures de
                 l'application.
             </p>
-
         </div>
-
 
         <!-- ACCUEIL -->
 
         <div class="presentation">
-
             <div class="text">
+                <div class="number">01 — ACCUEIL</div>
 
-                <div class="number">
-                    01 — ACCUEIL
-                </div>
-
-                <h3>
-                    Une interface claire
-                </h3>
+                <h3>Une interface claire</h3>
 
                 <p>
                     Retrouvez rapidement vos médias et les
@@ -761,167 +528,108 @@
                     interface pensée pour rester simple et
                     intuitive.
                 </p>
-
             </div>
 
-
             <div class="image">
-
                 <div class="image-frame">
-
                     <img
                         src="https://github.com/QuQudeveloppement/Lium-player/raw/refs/heads/main/Pictures/Accueil.png"
                         alt="Interface principale de Lium Player"
                         loading="lazy"
                     >
-
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- ÉGALISEUR -->
 
         <div class="presentation reverse">
-
             <div class="text">
+                <div class="number">02 — AUDIO</div>
 
-                <div class="number">
-                    02 — AUDIO
-                </div>
-
-                <h3>
-                    Égaliseur audio
-                </h3>
+                <h3>Égaliseur audio</h3>
 
                 <p>
                     Ajustez votre expérience audio grâce à
                     l'égaliseur intégré à Lium Player.
                 </p>
-
             </div>
 
-
             <div class="image">
-
                 <div class="image-frame">
-
                     <img
                         src="https://github.com/QuQudeveloppement/Lium-player/raw/refs/heads/main/Pictures/Equaliseur.png"
                         alt="Égaliseur audio de Lium Player"
                         loading="lazy"
                     >
-
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- PLEIN ÉCRAN -->
 
         <div class="presentation">
-
             <div class="text">
+                <div class="number">03 — IMMERSION</div>
 
-                <div class="number">
-                    03 — IMMERSION
-                </div>
-
-                <h3>
-                    Plein écran
-                </h3>
+                <h3>Plein écran</h3>
 
                 <p>
                     Profitez de vos vidéos avec une interface
                     plein écran pour une expérience plus immersive.
                 </p>
-
             </div>
 
-
             <div class="image">
-
                 <div class="image-frame">
-
                     <img
                         src="https://github.com/QuQudeveloppement/Lium-player/raw/refs/heads/main/Pictures/Fullscreen.png"
                         alt="Mode plein écran de Lium Player"
                         loading="lazy"
                     >
-
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- LECTEUR RÉDUIT -->
 
         <div class="presentation reverse">
-
             <div class="text">
+                <div class="number">04 — LECTEUR</div>
 
-                <div class="number">
-                    04 — LECTEUR
-                </div>
-
-                <h3>
-                    Lecteur réduit
-                </h3>
+                <h3>Lecteur réduit</h3>
 
                 <p>
                     Continuez à utiliser votre ordinateur tout en
                     gardant le contrôle de votre lecture grâce au
                     lecteur réduit.
                 </p>
-
             </div>
 
-
             <div class="image">
-
                 <div class="image-frame">
-
                     <img
                         src="https://github.com/QuQudeveloppement/Lium-player/raw/refs/heads/main/Pictures/Lecteurreduit.png"
                         alt="Lecteur réduit de Lium Player"
                         loading="lazy"
                     >
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- =========================
-         TÉLÉCHARGEMENT
-    ========================== -->
+    <!-- TÉLÉCHARGEMENT -->
 
     <section id="download">
-
         <div class="download-box">
-
-            <h2>
-                Prêt à essayer ?
-            </h2>
+            <h2>Prêt à essayer ?</h2>
 
             <p>
                 Téléchargez gratuitement la dernière version
                 officielle de Lium Player depuis GitHub Releases.
             </p>
 
-
             <div class="buttons">
-
                 <a
                     class="button primary"
                     href="https://github.com/QuQudeveloppement/Lium-player/releases/latest"
@@ -939,16 +647,12 @@
                 >
                     Voir toutes les releases
                 </a>
-
             </div>
-
         </div>
-
 
         <!-- AVERTISSEMENT -->
 
         <div class="warning">
-
             <strong>
                 ⚠️ Pourquoi Windows peut-il afficher un avertissement ?
             </strong>
@@ -989,26 +693,17 @@
 
             Si quelqu'un vous demande de payer pour le logiciel,
             vérifiez qu'il s'agit bien d'une source officielle.
-
         </div>
-
     </section>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer>
-
-        <p>
-            © 2026 Ququdeveloppement · Lium Player
-        </p>
+        <p>© 2026 Ququdeveloppement · Lium Player</p>
 
         <br>
 
         <p>
-
             <a
                 href="https://github.com/QuQudeveloppement/Lium-player/releases/latest"
                 target="_blank"
@@ -1016,11 +711,8 @@
             >
                 Dernière version
             </a>
-
         </p>
-
     </footer>
-
 
 </body>
 </html>
