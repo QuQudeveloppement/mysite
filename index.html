@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -157,6 +158,7 @@
             min-height: 62px;
 
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
 
@@ -197,6 +199,42 @@
 
         .site-button:active {
             transform: translateY(-1px);
+        }
+
+        /* =========================
+           DESCRIPTION AU SURVOL
+        ========================= */
+
+        .site-description {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.4;
+
+            color: rgba(255, 255, 255, 0.75);
+
+            margin-top: 0;
+
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+
+            transition:
+                max-height 0.3s ease,
+                opacity 0.3s ease,
+                margin-top 0.3s ease;
+
+            /* Limite visuelle à 5 lignes */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            line-clamp: 5;
+        }
+
+        .site-button:hover .site-description,
+        .site-button:focus-visible .site-description {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 10px;
         }
 
         /* =========================
@@ -272,7 +310,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                L'atelier
+                <span>L'atelier</span>
+
+                <span class="site-description">
+                    Écris ta description ici...
+                </span>
             </a>
 
             <a
@@ -281,7 +323,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                🎵 Lium
+                <span>🎵 Lium</span>
+
+                <span class="site-description">
+                    Écris ta description ici...
+                </span>
             </a>
 
         </div>
