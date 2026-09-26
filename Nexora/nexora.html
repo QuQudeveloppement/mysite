@@ -1,1 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Nexora — Navigateur web</title>
+
+    <!-- Favicon Ququdeveloppement -->
+    <link rel="icon" type="image/png"
+          href="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Nexora.ico">
+
+    <style>
+        :root {
+            --bg: #070a13;
+            --bg-soft: #0d1220;
+            --card: rgba(18, 24, 40, 0.78);
+            --card-solid: #11182a;
+            --text: #f5f7ff;
+            --muted: #aab3c7;
+            --line: rgba(255,255,255,.10);
+            --primary: #7c5cff;
+            --primary-2: #4cc9f0;
+            --accent: #ff6b9d;
+            --success: #63e6be;
+            --shadow: 0 25px 80px rgba(0,0,0,.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(124,92,255,.18), transparent 30%),
+                radial-gradient(circle at 85% 15%, rgba(76,201,240,.13), transparent 28%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(7,10,19,.72);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 800;
+            letter-spacing: -.3px;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 9px;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            padding: 10px 16px;
+            border: 1px solid rgba(124,92,255,.45);
+            border-radius: 10px;
+            background: rgba(124,92,255,.12);
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 560px;
+            display: grid;
+            place-items: center;
+            padding: 90px 0 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(124,92,255,.10);
+            border: 1px solid rgba(124,92,255,.25);
+            color: #cfc6ff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 14px var(--success);
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 92px);
+            line-height: .98;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(100deg, #ffffff 10%, #a99cff 48%, #5bd7f7 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: var(--muted);
+            font-size: clamp(17px, 2vw, 21px);
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 21px;
+            border-radius: 12px;
+            font-weight: 800;
+            border: 1px solid var(--line);
+            transition: transform .2s, border-color .2s, background .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,.25);
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, var(--primary), #5e8dff);
+            box-shadow: 0 15px 40px rgba(124,92,255,.28);
+        }
+
+        .button-secondary {
+            background: rgba(255,255,255,.045);
+        }
+
+        /* BROWSER MOCKUP */
+        .browser-preview {
+            margin: 45px auto 0;
+            width: min(980px, 100%);
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 18px;
+            background: #0b0f1b;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transform: perspective(1200px) rotateX(2deg);
+        }
+
+        .browser-bar {
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 13px;
+            border-bottom: 1px solid var(--line);
+            background: #111727;
+        }
+
+        .traffic {
+            display: flex;
+            gap: 6px;
+        }
+
+        .traffic span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #343c4e;
+        }
+
+        .address {
+            flex: 1;
+            height: 32px;
+            border-radius: 9px;
+            background: #080c16;
+            border: 1px solid rgba(255,255,255,.07);
+            color: #8993aa;
+            display: flex;
+            align-items: center;
+            padding: 0 13px;
+            font-size: 12px;
+        }
+
+        .browser-screen {
+            height: 300px;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(124,92,255,.20), transparent 35%),
+                linear-gradient(145deg, #0a0e19, #10182a);
+        }
+
+        .browser-screen-content {
+            text-align: center;
+        }
+
+        .browser-screen-content .logo {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 7px;
+            background: linear-gradient(135deg, #8f7cff, #55d6f4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .browser-screen-content span {
+            color: #78839a;
+            font-size: 13px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 45px;
+        }
+
+        .section-number {
+            color: var(--primary-2);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 14px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .feature {
+            padding: 27px;
+            min-height: 210px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--card);
+            backdrop-filter: blur(15px);
+            transition: transform .2s, border-color .2s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124,92,255,.45);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: rgba(124,92,255,.14);
+            margin-bottom: 20px;
+            font-size: 21px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* SCREENSHOTS */
+        .screenshots {
+            display: grid;
+            gap: 75px;
+        }
+
+        .shot {
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .shot:nth-child(even) {
+            grid-template-columns: 1.25fr .75fr;
+        }
+
+        .shot:nth-child(even) .shot-image {
+            order: -1;
+        }
+
+        .shot-label {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .shot h3 {
+            font-size: 32px;
+            line-height: 1.1;
+            margin-bottom: 13px;
+        }
+
+        .shot p {
+            color: var(--muted);
+        }
+
+        .shot-image {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 8px;
+            background: #0b0f19;
+            box-shadow: 0 20px 60px rgba(0,0,0,.3);
+            overflow: hidden;
+        }
+
+        .shot-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 9px;
+        }
+
+        /* DOWNLOAD */
+        .download-box {
+            text-align: center;
+            padding: 75px 25px;
+            border: 1px solid rgba(124,92,255,.28);
+            border-radius: 25px;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(124,92,255,.18), transparent 45%),
+                var(--card-solid);
+            box-shadow: var(--shadow);
+        }
+
+        .download-box p {
+            max-width: 620px;
+            margin: 0 auto 27px;
+            color: var(--muted);
+        }
+
+        .small-note {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #707a90;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 30px 0;
+            color: #778096;
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .shot,
+            .shot:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .shot:nth-child(even) .shot-image {
+                order: 0;
+            }
+
+            .hero {
+                padding-top: 65px;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                width: min(100% - 26px, 1160px);
+            }
+
+            .nav-button {
+                display: none;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .browser-screen {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="#" class="brand">
+            <img class="brand-logo"
+                 src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Nexora.ico"
+                 alt="Logo Nexora">
+            <span>Nexora</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#fonctionnalites">Fonctionnalités</a>
+            <a href="#captures">Captures</a>
+            <a href="#apropos">À propos</a>
+        </div>
+
+        <!-- REMPLACER # par le lien de téléchargement -->
+        <a href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest" class="nav-button download-latest">Télécharger</a>
+    </div>
+</nav>
+
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-content">
+
+            <div class="eyebrow">
+                <span class="dot"></span>
+                Le navigateur web de Ququdeveloppement
+            </div>
+
+            <h1>
+                Naviguez avec<br>
+                <span class="gradient-text">Nexora.</span>
+            </h1>
+
+            <p>
+                Découvrez le navigateur web de Ququdeveloppement :
+                une expérience moderne, personnalisable et pensée pour
+                garder les fonctions importantes à portée de main.
+            </p>
+
+            <div class="hero-buttons">
+                <!-- REMPLACER # par le lien de téléchargement -->
+                <a class="button button-primary download-latest" href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest">
+                    ↓ Télécharger le navigateur
+                </a>
+
+                <a class="button button-secondary" href="#fonctionnalites">
+                    Découvrir les fonctionnalités
+                </a>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- FONCTIONNALITÉS -->
+    <section id="fonctionnalites">
+        <div class="container">
+
+            <div class="section-heading">
+                <div class="section-number">01 — FONCTIONNALITÉS</div>
+                <h2>Tout ce qu'il faut pour naviguer.</h2>
+                <p>
+                    Une interface pensée autour de la navigation,
+                    avec des réglages accessibles et des fonctionnalités
+                    adaptées à différents usages.
+                </p>
+            </div>
+
+            <div class="features">
+
+                <article class="feature">
+                    <div class="feature-icon">▣</div>
+                    <h3>Navigation moderne</h3>
+                    <p>
+                        Une interface claire pour naviguer sur le Web
+                        sans multiplier les éléments inutiles.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon">⚙</div>
+                    <h3>Personnalisation</h3>
+                    <p>
+                        Retrouvez les réglages du navigateur dans un espace
+                        dédié et facile à comprendre.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon">◈</div>
+                    <h3>Mode privé</h3>
+                    <p>
+                        Utilisez un mode de navigation privé lorsque vous
+                        souhaitez limiter la conservation de votre activité.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon">⌘</div>
+                    <h3>Contrôle parental</h3>
+                    <p>
+                        Des outils dédiés au contrôle et à la gestion de
+                        l'utilisation du navigateur.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon">+</div>
+                    <h3>Extensions</h3>
+                    <p>
+                        Un espace prévu pour présenter la prise en charge
+                        des extensions du navigateur.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="feature-icon">◌</div>
+                    <h3>Conçu par Ququdeveloppement</h3>
+                    <p>
+                        Un projet indépendant développé avec l'objectif
+                        de proposer une expérience personnalisée.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPTURES -->
+    <section id="captures">
+        <div class="container">
+
+            <div class="section-heading">
+                <div class="section-number">02 — APERÇU</div>
+                <h2>Découvrez le navigateur.</h2>
+                <p>
+                    Quelques captures de l'application pour découvrir
+                    son interface et ses différents espaces.
+                </p>
+            </div>
+
+            <div class="screenshots">
+
+                <article class="shot">
+                    <div>
+                        <div class="shot-label">01 — ACCUEIL</div>
+                        <h3>Une interface claire</h3>
+                        <p>
+                            La page principale du navigateur, conçue pour
+                            retrouver rapidement les éléments essentiels
+                            de navigation.
+                        </p>
+                    </div>
+
+                    <div class="shot-image">
+                        <img src="Pictures/Accueil.png"
+                             alt="Interface principale du navigateur">
+                    </div>
+                </article>
+
+                <article class="shot">
+                    <div>
+                        <div class="shot-label">02 — CONTRÔLE PARENTAL</div>
+                        <h3>Des réglages dédiés</h3>
+                        <p>
+                            Un espace consacré au contrôle parental et
+                            à la gestion des paramètres associés.
+                        </p>
+                    </div>
+
+                    <div class="shot-image">
+                        <img src="Pictures/Controleparental.png"
+                             alt="Interface de contrôle parental">
+                    </div>
+                </article>
+
+                <article class="shot">
+                    <div>
+                        <div class="shot-label">03 — NAVIGATION PRIVÉE</div>
+                        <h3>Un espace privé</h3>
+                        <p>
+                            Présentation du mode privé du navigateur
+                            et de son interface dédiée.
+                        </p>
+                    </div>
+
+                    <div class="shot-image">
+                        <img src="Pictures/Private.png"
+                             alt="Interface du mode privé">
+                    </div>
+                </article>
+
+                <article class="shot">
+                    <div>
+                        <div class="shot-label">04 — PARAMÈTRES</div>
+                        <h3>Des paramètres accessibles</h3>
+                        <p>
+                            Retrouvez les principales options du navigateur
+                            depuis une interface centralisée.
+                        </p>
+                    </div>
+
+                    <div class="shot-image">
+                        <img src="Pictures/Settings.png"
+                             alt="Paramètres du navigateur">
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="apropos">
+        <div class="container">
+
+            <div class="section-heading">
+                <div class="section-number">03 — LE PROJET</div>
+                <h2>Un navigateur signé Ququdeveloppement.</h2>
+                <p>
+                    Ce navigateur fait partie des projets développés par
+                    Ququdeveloppement. Cette page pourra être complétée
+                    avec les informations techniques, la liste complète
+                    des fonctionnalités et les plateformes compatibles.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TÉLÉCHARGEMENT -->
+    <section id="telecharger">
+        <div class="container">
+
+            <div class="download-box">
+                <div class="section-number">04 — TÉLÉCHARGEMENT</div>
+
+                <h2>Prêt à essayer ?</h2>
+
+                <p>
+                    Téléchargez la dernière version du navigateur
+                    développée par Ququdeveloppement.
+                </p>
+
+                <!-- REMPLACER # PAR LE LIEN DE TÉLÉCHARGEMENT -->
+                <a class="button button-primary download-latest" href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest">
+                    ↓ Télécharger la dernière version
+                </a>
+
+                <div id="latest-version" class="small-note">Téléchargement depuis la dernière release GitHub · Gratuit · Ququdeveloppement</div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <span>© 2026 Ququdeveloppement · Navigateur web</span>
+        <span>Projet indépendant</span>
+    </div>
+</footer>
+
+<script>
+(async function () {
+  const api="https://api.github.com/repos/QuQudeveloppement/Nexora-browser/releases/latest";
+  const page="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest";
+  try {
+    const r=await fetch(api,{headers:{Accept:"application/vnd.github+json"}});
+    if(!r.ok) throw new Error();
+    const release=await r.json();
+    const assets=Array.isArray(release.assets)?release.assets:[];
+    const exe=assets.find(a=>/setup.*\.exe$/i.test(a.name)) || assets.find(a=>/\.exe$/i.test(a.name));
+    document.querySelectorAll(".download-latest").forEach(b=>{b.href=exe?.browser_download_url || page; if(exe) b.title="Télécharger "+exe.name;});
+    const v=document.getElementById("latest-version");
+    if(v && release.tag_name) v.textContent="Dernière version : "+release.tag_name+" · Téléchargement depuis GitHub";
+  } catch(e) {
+    document.querySelectorAll(".download-latest").forEach(b=>b.href=page);
+  }
+})();
+</script>
+</body>
+</html>
