@@ -6,8 +6,8 @@
 
     <title>Nexora — Navigateur web</title>
 
-    <!-- Favicon Ququdeveloppement -->
-    <link rel="icon" type="image/png"
+    <!-- Favicon Nexora -->
+    <link rel="icon" type="image/x-icon"
           href="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Nexora.ico">
 
     <style>
@@ -23,6 +23,7 @@
             --primary-2: #4cc9f0;
             --accent: #ff6b9d;
             --success: #63e6be;
+            --warning: #ffd43b;
             --shadow: 0 25px 80px rgba(0,0,0,.35);
         }
 
@@ -37,8 +38,8 @@
         }
 
         body {
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-                         "Segoe UI", sans-serif;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+                         BlinkMacSystemFont, "Segoe UI", sans-serif;
             background:
                 radial-gradient(circle at 15% 10%, rgba(124,92,255,.18), transparent 30%),
                 radial-gradient(circle at 85% 15%, rgba(76,201,240,.13), transparent 28%),
@@ -64,6 +65,7 @@
         }
 
         /* NAVIGATION */
+
         nav {
             position: sticky;
             top: 0;
@@ -99,9 +101,13 @@
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 25px;
             color: var(--muted);
             font-size: 14px;
+        }
+
+        .nav-links a {
+            transition: color .2s;
         }
 
         .nav-links a:hover {
@@ -119,6 +125,7 @@
         }
 
         /* HERO */
+
         .hero {
             min-height: 560px;
             display: grid;
@@ -162,7 +169,12 @@
         }
 
         .gradient-text {
-            background: linear-gradient(100deg, #ffffff 10%, #a99cff 48%, #5bd7f7 90%);
+            background: linear-gradient(
+                100deg,
+                #ffffff 10%,
+                #a99cff 48%,
+                #5bd7f7 90%
+            );
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -192,7 +204,10 @@
             border-radius: 12px;
             font-weight: 800;
             border: 1px solid var(--line);
-            transition: transform .2s, border-color .2s, background .2s;
+            transition:
+                transform .2s,
+                border-color .2s,
+                background .2s;
         }
 
         .button:hover {
@@ -210,6 +225,7 @@
         }
 
         /* BROWSER MOCKUP */
+
         .browser-preview {
             margin: 45px auto 0;
             width: min(980px, 100%);
@@ -261,7 +277,11 @@
             display: grid;
             place-items: center;
             background:
-                radial-gradient(circle at 50% 20%, rgba(124,92,255,.20), transparent 35%),
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(124,92,255,.20),
+                    transparent 35%
+                ),
                 linear-gradient(145deg, #0a0e19, #10182a);
         }
 
@@ -285,6 +305,7 @@
         }
 
         /* SECTIONS */
+
         section {
             padding: 100px 0;
         }
@@ -315,6 +336,7 @@
         }
 
         /* FEATURES */
+
         .features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -328,7 +350,9 @@
             border-radius: 18px;
             background: var(--card);
             backdrop-filter: blur(15px);
-            transition: transform .2s, border-color .2s;
+            transition:
+                transform .2s,
+                border-color .2s;
         }
 
         .feature:hover {
@@ -358,6 +382,7 @@
         }
 
         /* SCREENSHOTS */
+
         .screenshots {
             display: grid;
             gap: 75px;
@@ -412,13 +437,18 @@
         }
 
         /* DOWNLOAD */
+
         .download-box {
             text-align: center;
             padding: 75px 25px;
             border: 1px solid rgba(124,92,255,.28);
             border-radius: 25px;
             background:
-                radial-gradient(circle at 50% 0%, rgba(124,92,255,.18), transparent 45%),
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(124,92,255,.18),
+                    transparent 45%
+                ),
                 var(--card-solid);
             box-shadow: var(--shadow);
         }
@@ -435,7 +465,116 @@
             color: #707a90;
         }
 
+        /* SECURITY WARNING */
+
+        .security-warning {
+            display: flex;
+            gap: 25px;
+            padding: 35px;
+            border: 1px solid rgba(255,193,7,.45);
+            border-radius: 20px;
+            background:
+                radial-gradient(
+                    circle at 0% 0%,
+                    rgba(255,193,7,.13),
+                    transparent 40%
+                ),
+                rgba(50,40,8,.55);
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        .security-icon {
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: rgba(255,193,7,.15);
+            border: 1px solid rgba(255,193,7,.3);
+            color: var(--warning);
+            font-size: 27px;
+            font-weight: 900;
+        }
+
+        .security-content {
+            flex: 1;
+        }
+
+        .security-label {
+            color: var(--warning);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 9px;
+        }
+
+        .security-content h2 {
+            font-size: clamp(28px, 4vw, 43px);
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
+        }
+
+        .security-content > p {
+            color: var(--muted);
+            margin-bottom: 13px;
+        }
+
+        .security-steps {
+            display: grid;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .security-step {
+            display: flex;
+            gap: 16px;
+            padding: 19px;
+            border: 1px solid rgba(255,193,7,.15);
+            border-radius: 14px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .security-step > span {
+            width: 31px;
+            height: 31px;
+            min-width: 31px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: rgba(255,193,7,.12);
+            color: var(--warning);
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .security-step h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .security-step p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .security-note {
+            margin-top: 20px;
+            padding: 16px 18px;
+            border-radius: 12px;
+            background: rgba(255,193,7,.08);
+            border: 1px solid rgba(255,193,7,.18);
+            color: #c9c2a7;
+            font-size: 13px;
+        }
+
+        .security-note strong {
+            color: var(--warning);
+        }
+
         /* FOOTER */
+
         footer {
             border-top: 1px solid var(--line);
             padding: 30px 0;
@@ -451,7 +590,9 @@
         }
 
         /* RESPONSIVE */
+
         @media (max-width: 850px) {
+
             .nav-links {
                 display: none;
             }
@@ -479,7 +620,16 @@
             }
         }
 
+        @media (max-width: 650px) {
+
+            .security-warning {
+                flex-direction: column;
+                padding: 25px;
+            }
+        }
+
         @media (max-width: 550px) {
+
             .container {
                 width: min(100% - 26px, 1160px);
             }
@@ -501,12 +651,17 @@
 
 <body>
 
+<!-- NAVIGATION -->
+
 <nav>
     <div class="container nav-inner">
+
         <a href="#" class="brand">
-            <img class="brand-logo"
-                 src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Nexora.ico"
-                 alt="Logo Nexora">
+            <img
+                class="brand-logo"
+                src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Nexora.ico"
+                alt="Logo Nexora"
+            >
             <span>Nexora</span>
         </a>
 
@@ -514,17 +669,25 @@
             <a href="#fonctionnalites">Fonctionnalités</a>
             <a href="#captures">Captures</a>
             <a href="#apropos">À propos</a>
+            <a href="#securite">Sécurité</a>
         </div>
 
-        <!-- REMPLACER # par le lien de téléchargement -->
-        <a href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest" class="nav-button download-latest">Télécharger</a>
+        <a
+            href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest"
+            class="nav-button download-latest"
+        >
+            Télécharger
+        </a>
+
     </div>
 </nav>
 
 <main>
 
     <!-- HERO -->
+
     <section class="hero">
+
         <div class="container hero-content">
 
             <div class="eyebrow">
@@ -544,247 +707,666 @@
             </p>
 
             <div class="hero-buttons">
-                <!-- REMPLACER # par le lien de téléchargement -->
-                <a class="button button-primary download-latest" href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest">
+
+                <a
+                    class="button button-primary download-latest"
+                    href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest"
+                >
                     ↓ Télécharger le navigateur
                 </a>
 
-                <a class="button button-secondary" href="#fonctionnalites">
+                <a
+                    class="button button-secondary"
+                    href="#fonctionnalites"
+                >
                     Découvrir les fonctionnalités
                 </a>
+
             </div>
 
-
         </div>
+
     </section>
 
+
     <!-- FONCTIONNALITÉS -->
+
     <section id="fonctionnalites">
+
         <div class="container">
 
             <div class="section-heading">
-                <div class="section-number">01 — FONCTIONNALITÉS</div>
-                <h2>Tout ce qu'il faut pour naviguer.</h2>
+
+                <div class="section-number">
+                    01 — FONCTIONNALITÉS
+                </div>
+
+                <h2>
+                    Tout ce qu'il faut pour naviguer.
+                </h2>
+
                 <p>
                     Une interface pensée autour de la navigation,
                     avec des réglages accessibles et des fonctionnalités
                     adaptées à différents usages.
                 </p>
+
             </div>
 
             <div class="features">
 
                 <article class="feature">
+
                     <div class="feature-icon">▣</div>
-                    <h3>Navigation moderne</h3>
+
+                    <h3>
+                        Navigation moderne
+                    </h3>
+
                     <p>
                         Une interface claire pour naviguer sur le Web
                         sans multiplier les éléments inutiles.
                     </p>
+
                 </article>
 
+
                 <article class="feature">
+
                     <div class="feature-icon">⚙</div>
-                    <h3>Personnalisation</h3>
+
+                    <h3>
+                        Personnalisation
+                    </h3>
+
                     <p>
                         Retrouvez les réglages du navigateur dans un espace
                         dédié et facile à comprendre.
                     </p>
+
                 </article>
 
+
                 <article class="feature">
+
                     <div class="feature-icon">◈</div>
-                    <h3>Mode privé</h3>
+
+                    <h3>
+                        Mode privé
+                    </h3>
+
                     <p>
                         Utilisez un mode de navigation privé lorsque vous
                         souhaitez limiter la conservation de votre activité.
                     </p>
+
                 </article>
 
+
                 <article class="feature">
+
                     <div class="feature-icon">⌘</div>
-                    <h3>Contrôle parental</h3>
+
+                    <h3>
+                        Contrôle parental
+                    </h3>
+
                     <p>
                         Des outils dédiés au contrôle et à la gestion de
                         l'utilisation du navigateur.
                     </p>
+
                 </article>
 
+
                 <article class="feature">
+
                     <div class="feature-icon">+</div>
-                    <h3>Extensions</h3>
+
+                    <h3>
+                        Extensions
+                    </h3>
+
                     <p>
                         Un espace prévu pour présenter la prise en charge
                         des extensions du navigateur.
                     </p>
+
                 </article>
 
+
                 <article class="feature">
+
                     <div class="feature-icon">◌</div>
-                    <h3>Conçu par Ququdeveloppement</h3>
+
+                    <h3>
+                        Conçu par Ququdeveloppement
+                    </h3>
+
                     <p>
                         Un projet indépendant développé avec l'objectif
                         de proposer une expérience personnalisée.
                     </p>
+
                 </article>
 
             </div>
+
         </div>
+
     </section>
 
+
     <!-- CAPTURES -->
+
     <section id="captures">
+
         <div class="container">
 
             <div class="section-heading">
-                <div class="section-number">02 — APERÇU</div>
-                <h2>Découvrez le navigateur.</h2>
+
+                <div class="section-number">
+                    02 — APERÇU
+                </div>
+
+                <h2>
+                    Découvrez le navigateur.
+                </h2>
+
                 <p>
                     Quelques captures de l'application pour découvrir
                     son interface et ses différents espaces.
                 </p>
+
             </div>
+
 
             <div class="screenshots">
 
+                <!-- ACCUEIL -->
+
                 <article class="shot">
+
                     <div>
-                        <div class="shot-label">01 — ACCUEIL</div>
-                        <h3>Une interface claire</h3>
+
+                        <div class="shot-label">
+                            01 — ACCUEIL
+                        </div>
+
+                        <h3>
+                            Une interface claire
+                        </h3>
+
                         <p>
                             La page principale du navigateur, conçue pour
                             retrouver rapidement les éléments essentiels
                             de navigation.
                         </p>
+
                     </div>
 
                     <div class="shot-image">
-                        <img src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Accueil.png"
-                             alt="Interface principale du navigateur">
+
+                        <img
+                            src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Accueil.png"
+                            alt="Interface principale du navigateur"
+                        >
+
                     </div>
+
                 </article>
 
+
+                <!-- CONTRÔLE PARENTAL -->
+
                 <article class="shot">
+
                     <div>
-                        <div class="shot-label">02 — CONTRÔLE PARENTAL</div>
-                        <h3>Des réglages dédiés</h3>
+
+                        <div class="shot-label">
+                            02 — CONTRÔLE PARENTAL
+                        </div>
+
+                        <h3>
+                            Des réglages dédiés
+                        </h3>
+
                         <p>
                             Un espace consacré au contrôle parental et
                             à la gestion des paramètres associés.
                         </p>
+
                     </div>
 
                     <div class="shot-image">
-                        <img src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Controleparental.png"
-                             alt="Interface de contrôle parental">
+
+                        <img
+                            src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Controleparental.png"
+                            alt="Interface de contrôle parental"
+                        >
+
                     </div>
+
                 </article>
 
+
+                <!-- NAVIGATION PRIVÉE -->
+
                 <article class="shot">
+
                     <div>
-                        <div class="shot-label">03 — NAVIGATION PRIVÉE</div>
-                        <h3>Un espace privé</h3>
+
+                        <div class="shot-label">
+                            03 — NAVIGATION PRIVÉE
+                        </div>
+
+                        <h3>
+                            Un espace privé
+                        </h3>
+
                         <p>
                             Présentation du mode privé du navigateur
                             et de son interface dédiée.
                         </p>
+
                     </div>
 
                     <div class="shot-image">
-                        <img src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Private.png"
-                             alt="Interface du mode privé">
+
+                        <img
+                            src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Private.png"
+                            alt="Interface du mode privé"
+                        >
+
                     </div>
+
                 </article>
 
+
+                <!-- PARAMÈTRES -->
+
                 <article class="shot">
+
                     <div>
-                        <div class="shot-label">04 — PARAMÈTRES</div>
-                        <h3>Des paramètres accessibles</h3>
+
+                        <div class="shot-label">
+                            04 — PARAMÈTRES
+                        </div>
+
+                        <h3>
+                            Des paramètres accessibles
+                        </h3>
+
                         <p>
                             Retrouvez les principales options du navigateur
                             depuis une interface centralisée.
                         </p>
+
                     </div>
 
                     <div class="shot-image">
-                        <img src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Settings.png"
-                             alt="Paramètres du navigateur">
+
+                        <img
+                            src="https://raw.githubusercontent.com/QuQudeveloppement/Nexora-browser/main/Pictures/Settings.png"
+                            alt="Paramètres du navigateur"
+                        >
+
                     </div>
+
                 </article>
 
             </div>
+
         </div>
+
     </section>
 
+
     <!-- À PROPOS -->
+
     <section id="apropos">
+
         <div class="container">
 
             <div class="section-heading">
-                <div class="section-number">03 — LE PROJET</div>
-                <h2>Un navigateur signé Ququdeveloppement.</h2>
+
+                <div class="section-number">
+                    03 — LE PROJET
+                </div>
+
+                <h2>
+                    Un navigateur signé Ququdeveloppement.
+                </h2>
+
                 <p>
                     Ce navigateur fait partie des projets développés par
                     Ququdeveloppement. Cette page pourra être complétée
                     avec les informations techniques, la liste complète
                     des fonctionnalités et les plateformes compatibles.
                 </p>
+
             </div>
 
         </div>
+
     </section>
 
+
     <!-- TÉLÉCHARGEMENT -->
+
     <section id="telecharger">
+
         <div class="container">
 
             <div class="download-box">
-                <div class="section-number">04 — TÉLÉCHARGEMENT</div>
 
-                <h2>Prêt à essayer ?</h2>
+                <div class="section-number">
+                    04 — TÉLÉCHARGEMENT
+                </div>
+
+                <h2>
+                    Prêt à essayer ?
+                </h2>
 
                 <p>
                     Téléchargez la dernière version du navigateur
                     développée par Ququdeveloppement.
                 </p>
 
-                <!-- REMPLACER # PAR LE LIEN DE TÉLÉCHARGEMENT -->
-                <a class="button button-primary download-latest" href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest">
+                <a
+                    class="button button-primary download-latest"
+                    href="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest"
+                >
                     ↓ Télécharger la dernière version
                 </a>
 
-                <div id="latest-version" class="small-note">Téléchargement depuis la dernière release GitHub · Gratuit · Ququdeveloppement</div>
+                <div
+                    id="latest-version"
+                    class="small-note"
+                >
+                    Téléchargement depuis la dernière release GitHub
+                    · Gratuit · Ququdeveloppement
+                </div>
+
             </div>
 
         </div>
+
+    </section>
+
+
+    <!-- SÉCURITÉ -->
+
+    <section id="securite">
+
+        <div class="container">
+
+            <div class="security-warning">
+
+                <div class="security-icon">
+                    ⚠
+                </div>
+
+                <div class="security-content">
+
+                    <div class="security-label">
+                        AVERTISSEMENT DE SÉCURITÉ
+                    </div>
+
+                    <h2>
+                        Windows ou votre antivirus peut afficher un avertissement
+                    </h2>
+
+                    <p>
+                        Nexora étant un programme récent et encore peu connu,
+                        certains systèmes de sécurité peuvent afficher un avertissement
+                        lors du téléchargement ou de son lancement.
+                    </p>
+
+                    <p>
+                        Cela peut notamment arriver avec
+                        <strong>Microsoft Defender SmartScreen</strong>,
+                        <strong>Avast</strong> ou d'autres logiciels antivirus.
+                        Un avertissement de réputation ne signifie pas automatiquement
+                        que le programme est malveillant : certains systèmes utilisent
+                        également la réputation et le nombre d'utilisateurs du logiciel
+                        pour déterminer s'il est suffisamment connu.
+                    </p>
+
+
+                    <div class="security-steps">
+
+                        <!-- SMARTSCREEN -->
+
+                        <div class="security-step">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <h3>
+                                    Microsoft Defender SmartScreen
+                                </h3>
+
+                                <p>
+                                    Si Windows affiche
+                                    « Windows a protégé votre ordinateur »,
+                                    vérifiez d'abord que le fichier provient bien
+                                    du dépôt officiel de Nexora.
+                                    Si vous avez vérifié son origine et souhaitez
+                                    continuer, cliquez sur
+                                    <strong>Informations complémentaires</strong>,
+                                    puis sur
+                                    <strong>Exécuter quand même</strong>
+                                    si cette option est proposée.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- AVAST -->
+
+                        <div class="security-step">
+
+                            <span>02</span>
+
+                            <div>
+
+                                <h3>
+                                    Avast ou autre antivirus
+                                </h3>
+
+                                <p>
+                                    Un antivirus peut également analyser le fichier
+                                    et afficher une alerte.
+                                    Dans ce cas, vérifiez que vous avez bien téléchargé
+                                    Nexora depuis la source officielle.
+                                    Si l'antivirus détecte réellement une menace,
+                                    <strong>ne forcez pas l'exécution</strong> :
+                                    vous pouvez nous signaler le fichier afin qu'il
+                                    puisse être vérifié.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PROVENANCE -->
+
+                        <div class="security-step">
+
+                            <span>03</span>
+
+                            <div>
+
+                                <h3>
+                                    Vérifiez toujours la provenance
+                                </h3>
+
+                                <p>
+                                    Téléchargez Nexora uniquement depuis la page
+                                    officielle du projet.
+                                    Évitez les versions provenant de sites inconnus
+                                    ou de liens partagés par des tiers.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-note">
+
+                        🔒 <strong>Important :</strong>
+                        ne désactivez pas votre antivirus ou Windows Defender
+                        uniquement pour installer Nexora.
+                        Si un antivirus signale une menace précise,
+                        prenez le temps de vérifier le fichier avant de continuer.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
 </main>
 
+
+<!-- FOOTER -->
+
 <footer>
+
     <div class="container footer-inner">
-        <span>© 2026 Ququdeveloppement · Navigateur web</span>
-        <span>Projet indépendant</span>
+
+        <span>
+            © 2026 Ququdeveloppement · Navigateur web
+        </span>
+
+        <span>
+            Projet indépendant
+        </span>
+
     </div>
+
 </footer>
 
+
+<!-- TÉLÉCHARGEMENT AUTOMATIQUE DE LA DERNIÈRE RELEASE -->
+
 <script>
+
 (async function () {
-  const api="https://api.github.com/repos/QuQudeveloppement/Nexora-browser/releases/latest";
-  const page="https://github.com/QuQudeveloppement/Nexora-browser/releases/latest";
-  try {
-    const r=await fetch(api,{headers:{Accept:"application/vnd.github+json"}});
-    if(!r.ok) throw new Error();
-    const release=await r.json();
-    const assets=Array.isArray(release.assets)?release.assets:[];
-    const exe=assets.find(a=>/setup.*\.exe$/i.test(a.name)) || assets.find(a=>/\.exe$/i.test(a.name));
-    document.querySelectorAll(".download-latest").forEach(b=>{b.href=exe?.browser_download_url || page; if(exe) b.title="Télécharger "+exe.name;});
-    const v=document.getElementById("latest-version");
-    if(v && release.tag_name) v.textContent="Dernière version : "+release.tag_name+" · Téléchargement depuis GitHub";
-  } catch(e) {
-    document.querySelectorAll(".download-latest").forEach(b=>b.href=page);
-  }
+
+    const api =
+        "https://api.github.com/repos/QuQudeveloppement/Nexora-browser/releases/latest";
+
+    const page =
+        "https://github.com/QuQudeveloppement/Nexora-browser/releases/latest";
+
+    try {
+
+        const response = await fetch(
+            api,
+            {
+                headers: {
+                    Accept: "application/vnd.github+json"
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Impossible de récupérer la release.");
+        }
+
+        const release = await response.json();
+
+        const assets =
+            Array.isArray(release.assets)
+                ? release.assets
+                : [];
+
+        /*
+         * Recherche d'abord un installateur
+         * dont le nom contient "setup".
+         */
+        const exe =
+            assets.find(
+                asset => /setup.*\.exe$/i.test(asset.name)
+            )
+            ||
+            assets.find(
+                asset => /\.exe$/i.test(asset.name)
+            );
+
+        /*
+         * Tous les boutons de téléchargement
+         * utilisent automatiquement le dernier .exe.
+         */
+        document
+            .querySelectorAll(".download-latest")
+            .forEach(button => {
+
+                button.href =
+                    exe?.browser_download_url || page;
+
+                if (exe) {
+                    button.title =
+                        "Télécharger " + exe.name;
+                }
+
+            });
+
+
+        /*
+         * Affiche la version actuelle.
+         */
+        const version =
+            document.getElementById("latest-version");
+
+        if (
+            version &&
+            release.tag_name
+        ) {
+
+            version.textContent =
+                "Dernière version : "
+                + release.tag_name
+                + " · Téléchargement depuis GitHub";
+
+        }
+
+    }
+
+    catch (error) {
+
+        /*
+         * En cas de problème avec l'API GitHub,
+         * on redirige simplement vers la page
+         * de la dernière release.
+         */
+
+        document
+            .querySelectorAll(".download-latest")
+            .forEach(button => {
+
+                button.href = page;
+
+            });
+
+    }
+
 })();
+
 </script>
+
 </body>
 </html>
