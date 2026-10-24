@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Neon Duel En ligne</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070f;--zb:#0a0a16;--a1:#00e5ff;--a2:#ff2bd6;--a3:#ffa800;--txt:#f4f6ff;--mut:#8a90b4;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
+:root[data-theme="dark"]{color-scheme:dark}
+html,body{height:100%;margin:0}
+body{position:relative;background:var(--bg);color:var(--txt);font-family:Orbitron,system-ui,sans-serif;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:var(--txt);cursor:pointer}
+#z{position:absolute;inset:0;overflow:hidden;display:none;align-items:center;justify-content:center;transition:filter .2s;
+ background:radial-gradient(120% 90% at 50% 50%,color-mix(in srgb,var(--c) 26%,var(--zb)),var(--zb) 75%);
+ box-shadow:inset 0 0 0 3px color-mix(in srgb,var(--c) 70%,transparent),inset 0 0 60px color-mix(in srgb,var(--c) 35%,transparent)}
+#z.f{filter:brightness(1.9)}
+#z.out{filter:grayscale(.85) brightness(.55)}
+#z.bad{animation:sh .35s}
+#z.win{box-shadow:inset 0 0 0 5px var(--c),inset 0 0 120px var(--c)}
+@keyframes sh{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+#top{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-weight:900;font-size:clamp(18px,6vw,28px);pointer-events:none}
+#top small{font-size:10px;letter-spacing:.2em;color:var(--mut);font-weight:500}
+.in{position:absolute;left:0;right:0;bottom:14%;text-align:center;pointer-events:none}
+.st{font-size:clamp(16px,6vw,26px);font-weight:900;letter-spacing:.14em;min-height:1.4em}
+.rp{position:absolute;width:30px;height:30px;margin:-15px;border-radius:50%;opacity:.7;pointer-events:none;animation:rp .6s ease-out forwards}
+@keyframes rp{to{transform:scale(9);opacity:0}}
+#sig{position:absolute;left:50%;top:44%;width:120px;height:120px;margin:-60px;border-radius:50%;z-index:5;display:none;place-items:center;
+ font-weight:900;font-size:30px;background:var(--bg);border:3px solid #3a4066;color:var(--mut);pointer-events:none;transition:transform .12s,background .12s}
+#sig.wait{animation:pl 1.2s infinite}
+@keyframes pl{50%{box-shadow:0 0 30px #3a4066}}
+#sig.decoy{background:#ff3b3b;border-color:#ff3b3b;color:#fff;box-shadow:0 0 50px #ff3b3b}
+#sig.go{background:#fff;border-color:#fff;color:#000;transform:scale(1.4);box-shadow:0 0 60px 20px #fff9,0 0 140px 50px #fff4}
+#ov{position:absolute;inset:0;z-index:10;display:flex;overflow-y:auto;touch-action:pan-y;background:radial-gradient(90% 60% at 50% 0%,color-mix(in srgb,var(--a2) 28%,var(--bg)),var(--bg) 70%)}
+.mn{margin:auto;display:flex;flex-direction:column;align-items:center;gap:11px;padding:22px 18px;text-align:center;width:100%;max-width:420px;box-sizing:border-box}
+h1{margin:0;font-size:clamp(40px,13vw,68px);font-weight:900;line-height:.95;letter-spacing:.05em;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px color-mix(in srgb,var(--a2) 40%,transparent))}
+h1 small{font-size:.3em;letter-spacing:.4em;-webkit-text-fill-color:var(--a3)}
+.sub{margin:0;font-size:12px;line-height:1.6;color:var(--mut);letter-spacing:.04em}
+.lb{font-size:10px;letter-spacing:.25em;color:var(--mut);margin-top:6px;align-self:flex-start}
+input{width:100%;height:46px;box-sizing:border-box;font:inherit;font-size:16px;font-weight:800;letter-spacing:.08em;color:var(--txt);background:#ffffff0d;border:2px solid #ffffff22;border-radius:12px;padding:0 12px;user-select:text;-webkit-user-select:text}
+.play{width:100%;padding:15px;font-size:16px;font-weight:900;letter-spacing:.18em;border:0;border-radius:40px;color:#07070f;background:linear-gradient(90deg,var(--a1),var(--a2));box-shadow:0 0 30px color-mix(in srgb,var(--a2) 55%,transparent)}
+.ghost{width:100%;background:none;border:2px solid #ffffff33;border-radius:40px;padding:13px;font-size:13px;font-weight:800;letter-spacing:.18em}
+.code{width:100%;word-break:break-all;font-size:15px;font-weight:800;letter-spacing:.06em;padding:14px;border:2px dashed var(--a1);border-radius:14px;color:var(--a1);user-select:text;-webkit-user-select:text}
+#msg{min-height:1.4em}
+</style>
+</head>
+<body>
+<div id="z"><div id="top"><span id="a"></span><small id="pg"></small><span id="b"></span></div><div class="in"><div class="st" id="stt"></div></div></div>
+<div id="sig" class="wait">···</div>
+<div id="ov"></div>
+<script>
+const CO=["#00e5ff","#ff2bd6"],GOAL=5;
+const $=s=>document.querySelector(s),z=$("#z"),sigel=$("#sig");
+const sleep=ms=>new Promise(r=>setTimeout(r,ms)),rnd=(a,b)=>a+Math.random()*(b-a);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>"&#"+c.charCodeAt(0)+";");
+let opened=false,wt=0;
+const TOKEN="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",TK=TOKEN.replace(/[\s"'\u200b\u00a0]/g,""),FIXED=/^(ghp_|github_pat_|gho_)[A-Za-z0-9_]+$/.test(TK);
+let tok=FIXED?TK:"",name="",host=false,pc=null,dc=null,gid="",me=0,names=["J1","J2"],sc=[0,0],st="menu",rid=0,rn=0,tGo=0,lk=[false,false],hm=null,gm=null,locked=false,tapped=false,rtts=[],pingT=0,AC;
+try{name=localStorage.getItem("nd_n")||""}catch(e){}
+
+/* sons / vibrations */
+function tone(f,d=.12,ty="sine",v=.15,dl=0){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const t=AC.currentTime+dl,o=AC.createOscillator(),a=AC.createGain();o.type=ty;o.frequency.setValueAtTime(f,t);a.gain.setValueAtTime(v,t);a.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(a);a.connect(AC.destination);o.start(t);o.stop(t+d)}catch(e){}}
+const vb=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+document.oncontextmenu=e=>e.preventDefault();
+
+/* GitHub (sert uniquement à échanger les codes de connexion) */
+const gh=(p,o={})=>fetch("https://api.github.com"+p,{...o,signal:AbortSignal.timeout?AbortSignal.timeout(15000):undefined,headers:{Accept:"application/vnd.github+json",Authorization:"Bearer "+tok,"Content-Type":"application/json"}}).then(async r=>{if(!r.ok)throw Object.assign(new Error("http"),{code:r.status});return r.status===204?null:r.json()});
+const why=(e,d)=>e&&e.code===401?"La clé du jeu est refusée (expirée ou incorrecte).":e&&(e.code===403||e.code===422)?"La clé du jeu n’a pas les bons droits, ou la limite est atteinte. Réessaie plus tard.":e&&e.code===404?"Partie introuvable. Vérifie le code.":e&&(e.name==="TimeoutError"||e.name==="AbortError")?"Le service ne répond pas. Réessaie dans un instant.":e instanceof TypeError?"Pas d’accès à internet, ou la page est bloquée.":d;
+const waitLimit=()=>{const k=++wt;setTimeout(()=>{if(k===wt&&(st==="hostlink"||st==="guestwait"))menu("Impossible de rejoindre ton adversaire. Essayez sur le même Wi-Fi, ou changez de réseau.")},25000)};
+async function whyA(e,d){if(e instanceof TypeError&&/fetch|network|load failed|headers|invalid/i.test(String(e.message))){const det=" ("+String(e.message).slice(0,70)+")";try{await fetch("https://api.github.com/zen",{signal:AbortSignal.timeout?AbortSignal.timeout(8000):undefined});return "Internet marche, mais l’envoi est refusé : vérifie la clé du jeu (bien recopiée en entier), ou ton site bloque GitHub."+det}catch(x){return "Pas d’accès à internet, ou ton site bloque GitHub."+det}}return why(e,d)}
+const waitIce=p=>new Promise(r=>{if(p.iceGatheringState==="complete")return r();const f=()=>{if(p.iceGatheringState==="complete"){p.removeEventListener("icegatheringstatechange",f);r()}};p.addEventListener("icegatheringstatechange",f);setTimeout(r,4500)});
+
+/* écrans */
+function ov(h){const o=$("#ov");o.style.display="flex";o.innerHTML=`<div class="mn">${h}</div>`}
+const say=t=>{const m=$("#msg");if(m)m.textContent=t};
+function leave(){rid++;wt++;opened=false;clearInterval(pingT);try{pc&&pc.close()}catch(e){}pc=dc=null;rtts=[];z.style.display="none";sigel.style.display="none"}
+function menu(msg=""){
+ st="menu";leave();
+ ov(`<h1>NEON<br>DUEL<br><small>EN LIGNE</small></h1>
+ <p class="sub">Défie un ami à distance, en 1 contre 1 ! Crée une partie et envoie-lui le code, ou entre le code qu’il t’a donné.</p>
+ 
+ <div class="lb">TON NOM</div><input id="nm" maxlength="8" placeholder="JOUEUR">
+ <button class="play" id="cr">CRÉER UNE PARTIE</button>
+ <div class="lb">OU REJOINDRE AVEC UN CODE</div><input id="cd" placeholder="Code reçu" autocomplete="off">
+ <button class="ghost" id="jn">REJOINDRE</button><p class="sub" id="msg"></p>`);
+ $("#nm").value=name;say(msg);
+}
+function form(){name=($("#nm").value.trim()||"JOUEUR").toUpperCase();try{localStorage.setItem("nd_n",name)}catch(e){}}
+$("#ov").onclick=e=>{
+ const b=e.target.closest("button");if(!b)return;
+ if(b.id==="cr")create();else if(b.id==="jn")join();else if(b.id==="quit")menu();
+ else if(b.id==="cp"){const c=$("#cc").textContent;navigator.clipboard?navigator.clipboard.writeText(c).then(()=>say("Code copié.")).catch(()=>say("Copie le code à la main.")):say("Copie le code à la main.")}
+ else if(b.id==="sh"){navigator.share?navigator.share({title:"Neon Duel",text:"Rejoins mon duel ! Code : "+$("#cc").textContent}).catch(()=>{}):say("Partage non disponible, copie le code.")}
+ else if(b.id==="again"){send({t:"again"});begin()}
+};
+
+/* connexion WebRTC */
+function mkpc(){pc=new RTCPeerConnection({iceServers:[{urls:["stun:stun.l.google.com:19302","stun:stun1.l.google.com:19302","stun:stun.cloudflare.com:3478"]}]});pc.onconnectionstatechange=()=>{if(pc&&pc.connectionState==="failed")lost("Impossible de rejoindre ton adversaire. Réessayez, idéalement sur le même Wi-Fi.")}}
+function wire(){dc.onopen=onOpen;if(dc.readyState==="open")onOpen();dc.onmessage=e=>onMsg(JSON.parse(e.data));dc.onclose=()=>lost("Ton adversaire a quitté la partie.")}
+const send=o=>{try{dc&&dc.readyState==="open"&&dc.send(JSON.stringify(o))}catch(e){}};
+function lost(t){if(st!=="menu")menu(t)}
+async function create(){
+ form();if(!tok)return say(TOKEN.includes("COLLE")?"Jeu pas encore prêt : il manque une configuration.":"La clé du jeu n’est pas au bon format : recopie-la en entier (elle commence par ghp_).");
+ host=true;me=0;const id0=rid;say("Création de la partie…");
+ try{
+  mkpc();dc=pc.createDataChannel("g");wire();
+  await pc.setLocalDescription(await pc.createOffer());await waitIce(pc);
+  const g=await gh("/gists",{method:"POST",body:JSON.stringify({description:"neon-duel",public:false,files:{"offer.json":{content:JSON.stringify(pc.localDescription)}}})});
+  gid=g.id;st="hostwait";
+  ov(`<h1 style="font-size:34px">CODE</h1><div class="code" id="cc">${gid}</div>
+  <button class="play" id="sh">PARTAGER LE CODE</button><button class="ghost" id="cp">COPIER</button>
+  <p class="sub">En attente de ton adversaire…</p><p class="sub" id="msg"></p><button class="ghost" id="quit">ANNULER</button>`);
+  const t0=Date.now();
+  while(st==="hostwait"&&Date.now()-t0<240000){
+   await sleep(1500);const cs=await gh("/gists/"+gid+"/comments");
+   const c=cs.find(x=>x.body&&x.body.trim().startsWith("{"));
+   if(c){await pc.setRemoteDescription(JSON.parse(c.body));st="hostlink";waitLimit();break}
+  }
+ }catch(e){if(rid===id0)menu(await whyA(e,"Impossible de créer la partie. Réessaie dans un instant."))}
+}
+async function join(){
+ form();const m=$("#cd").value.match(/[0-9a-f]{20,}/i);
+ if(!tok)return say(TOKEN.includes("COLLE")?"Jeu pas encore prêt : il manque une configuration.":"La clé du jeu n’est pas au bon format : recopie-la en entier (elle commence par ghp_).");if(!m)return say("Code invalide.");
+ host=false;me=1;say("Recherche de la partie…");
+ try{
+  const g=await gh("/gists/"+m[0]),off=JSON.parse(g.files["offer.json"].content);
+  mkpc();pc.ondatachannel=e=>{dc=e.channel;wire()};
+  await pc.setRemoteDescription(off);await pc.setLocalDescription(await pc.createAnswer());await waitIce(pc);
+  st="guestwait";await gh("/gists/"+m[0]+"/comments",{method:"POST",body:JSON.stringify({body:JSON.stringify(pc.localDescription)})});
+  waitLimit();say("Recherche de ton adversaire…");
+ }catch(e){menu(await whyA(e,"Impossible de rejoindre la partie. Vérifie le code et réessaie."))}
+}
+function onOpen(){
+ if(opened)return;opened=true;send({t:"hi",n:name});
+ if(host){
+  if(gid)gh("/gists/"+gid,{method:"DELETE"}).catch(()=>{});
+  for(let k=0;k<4;k++)setTimeout(()=>send({t:"p",s:performance.now()}),k*150);
+  pingT=setInterval(()=>send({t:"p",s:performance.now()}),2000);
+ }
+}
+const conn=v=>"CONNEXION "+(v<60?"EXCELLENTE":v<120?"BONNE":"MOYENNE");
+const med=a=>a.length?[...a].sort((x,y)=>x-y)[a.length>>1]:0,owd=()=>(med(rtts)||60)/2;
+function onMsg(m){
+ switch(m.t){
+  case"hi":if(host){names=[name,m.n];send({t:"start",n:names});begin()}break;
+  case"start":names=m.n;begin();break;
+  case"again":begin();break;
+  case"p":send({t:"q",s:m.s});break;
+  case"q":rtts.push(performance.now()-m.s);if(rtts.length>7)rtts.shift();$("#pg").textContent=conn(Math.round(med(rtts)));send({t:"rtt",v:Math.round(med(rtts))});break;
+  case"rtt":$("#pg").textContent=conn(m.v);break;
+  case"ph":st=m.p;rn=m.r;phUI(m.p,m.new);break;
+  case"early":if(host&&st!=="result"){lk[1]=true;checkBoth()}break;
+  case"tap":if(host&&st==="go"&&m.r===rn){gm=m.ms;decide()}break;
+  case"res":st="result";showRes(m);break;
+  case"over":showOver(m.w);break;
+ }
+}
+
+/* partie */
+const status=t=>{$("#stt").textContent=t};
+function ui(){const a=$("#a"),b=$("#b");a.textContent=esc(names[me])+" "+sc[me];a.style.color=CO[me];b.textContent=sc[1-me]+" "+names[1-me];b.style.color=CO[1-me]}
+function setSig(c,t){sigel.className=c;sigel.textContent=t}
+async function begin(){
+ sc=[0,0];$("#ov").style.display="none";z.style.display="flex";sigel.style.display="grid";z.style.setProperty("--c",CO[me]);z.classList.remove("out","bad","win");ui();
+ const id=++rid;st="count";
+ for(let k=3;k>0;k--){setSig("wait",k);status("PRÊTS ?");tone(440,.1,"triangle");vb(15);await sleep(750);if(id!==rid||st!=="count")return}
+ if(host)hostRound();
+}
+function phUI(p,nw){
+ if(nw){z.classList.remove("out","bad","win");locked=tapped=false}
+ setSig(p==="go"?"go":p==="decoy"?"decoy":"wait",p==="go"?"GO":p==="decoy"?"✕":"···");
+ if(p==="go"){tGo=performance.now();tone(988,.15,"square",.12);tone(1319,.2,"square",.1,.08);vb(30);z.classList.add("f");setTimeout(()=>z.classList.remove("f"),150)}
+ else if(p==="decoy")tone(220,.2,"square",.1);
+ if(!locked)status(p==="go"?"TOUCHE !":"ATTENDS…");
+}
+function ph(p,nw){st=p;send({t:"ph",p,r:rn,new:nw});phUI(p,nw)}
+const later=(f,ms)=>{const id=rid;setTimeout(()=>{if(id===rid)f()},ms)};
+async function hostRound(){
+ const id=++rid;rn++;lk=[false,false];hm=gm=null;
+ ph("wait",true);
+ await sleep(rnd(1300,3100));if(id!==rid)return;
+ for(let k=Math.floor(rnd(0,3));k>0;k--){
+  ph("decoy");await sleep(600);if(id!==rid)return;
+  ph("wait");await sleep(rnd(800,2000));if(id!==rid)return;
+ }
+ ph("go");
+ await sleep(3500);if(id===rid&&st==="go")hostRound();
+}
+function tap(e){
+ if(!dc||dc.readyState!=="open")return;rip(e);vb(8);
+ if(st==="wait"||st==="decoy"){
+  if(locked)return;locked=true;z.classList.add("out","bad");status(st==="decoy"?"PIÉGÉ !":"TROP TÔT !");tone(150,.3,"sawtooth");vb(120);
+  if(host){lk[0]=true;checkBoth()}else send({t:"early"});
+ }else if(st==="go"){
+  if(locked||tapped)return;tapped=true;const ms=Math.round(performance.now()-tGo);status("…");
+  if(host){hm=ms;if(gm==null&&!lk[1])setTimeout(decide,owd()+30);else decide()}else send({t:"tap",r:rn,ms});
+ }
+}
+z.addEventListener("pointerdown",e=>{e.preventDefault();tap(e)});
+function rip(e){const r=z.getBoundingClientRect(),d=document.createElement("i");d.className="rp";d.style.cssText=`left:${e.clientX-r.left}px;top:${e.clientY-r.top}px;background:${CO[me]}`;z.appendChild(d);d.onanimationend=()=>d.remove()}
+function checkBoth(){
+ if(lk[0]&&lk[1]){st="result";rid++;const r={t:"res",w:-1,ms:0,sc:[...sc]};send(r);showRes(r);later(hostRound,1600)}
+}
+/* l'hôte arbitre : temps de réaction de chacun + délai aller estimé du signal GO */
+function decide(){
+ if(st!=="go")return;
+ const o=owd(),c0=lk[0]?null:hm,c1=(lk[1]||gm==null)?null:gm+o;
+ if(c0==null&&c1==null)return;
+ const w=c1==null||(c0!=null&&c0<=c1)?0:1;
+ st="result";rid++;sc[w]++;
+ const r={t:"res",w,ms:Math.round(w?c1:c0),sc:[...sc]};send(r);showRes(r);
+ if(sc[w]>=GOAL)later(()=>{send({t:"over",w});showOver(w)},1400);else later(hostRound,2000);
+}
+function showRes(m){
+ sc=m.sc;ui();z.classList.remove("out","bad","win");
+ if(m.w<0){status("ÉGALITÉ");return}
+ const win=m.w===me,tm=(m.ms/1000).toFixed(2).replace(".",",")+" s";status(win?"POINT ! "+tm:"PERDU · "+tm);
+ z.classList.add(win?"win":"bad");
+ if(win){tone(660,.12);tone(880,.2,"triangle",.15,.1);vb([40,30,40])}else{tone(150,.3,"sawtooth");vb(100)}
+}
+function showOver(w){
+ st="over";const win=w===me;
+ ov(`<h1 style="background:none;color:${CO[w]};filter:drop-shadow(0 0 22px ${CO[w]})">${win?"TU GAGNES !":"PERDU"}</h1>
+ <p class="sub">${esc(names[me])} ${sc[me]} — ${sc[1-me]} ${esc(names[1-me])}</p>
+ ${host?'<button class="play" id="again">REJOUER</button>':'<p class="sub">Le créateur de la partie peut relancer…</p>'}<button class="ghost" id="quit">QUITTER</button>`);
+ [523,659,784,1047].forEach((f,k)=>tone(f,.25,"triangle",.15,k*.12));vb([60,40,60,40,200]);
+}
+menu();
+</script>
+</body>
+</html>
