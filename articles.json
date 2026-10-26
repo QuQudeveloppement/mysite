@@ -701,5 +701,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "debrider-les-geforce-rtx-30-40-comment-le-gpu-unlock-double-les-performances-ia",
+    "title": "Débrider les GeForce RTX 30/40 : comment le GPU Unlock double les performances IA",
+    "date": "2026-10-26",
+    "excerpt": "Un patch open‑source permet de supprimer le bridage IA imposé par NVIDIA sur les cartes GeForce RTX 30 et 40, offrant jusqu’à un doublement de vitesse sur certains calculs. Testé sur une RTX 3070 Ti, le gain varie selon les charges.",
+    "category": "Informatique",
+    "cover": "https://next.ink/wp-content/uploads/2026/10/Nitro-rtx2-1024x495.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte du bridage IA sur les GeForce RTX",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "NVIDIA limite volontairement les performances des cartes grand public de la série RTX 30 et RTX 40 lorsqu’elles exécutent des opérations liées à l’intelligence artificielle. Cette restriction agit surtout sur les calculs en virgule flottante 16 bits (FP16) avec accumulation sur 32 bits, réduisant de moitié la vitesse comparée à une accumulation sur 16 bits. Le choix est décrit comme commercial, car le matériel pourrait théoriquement offrir le double de performances.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Le projet GPU‑Unlock et son principe",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Un dépôt GitHub nommé *gpu‑unlock‑ada* propose une méthode pour désactiver ce bridage. Le cœur de l’optimisation consiste à modifier le paramètre qui impose la division par deux des performances d’accumulation sur 32 bits. En appliquant le patch, les calculs FP16 avec accumulation sur 32 bits retrouvent la même vitesse que ceux avec accumulation sur 16 bits, ce qui peut conduire à un gain de 100 % dans certains scénarios.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Mise en pratique et conditions d’utilisation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le processus nécessite d’éteindre complètement la machine (débranchement de 30 s) afin de vider les condensateurs, puis de redémarrer sous Linux avec le Secure Boot désactivé. Le patch reste actif tant que le système reste allumé ; un redémarrage réinitialise le paramètre, mais le module peut le réappliquer automatiquement. Pour l’instant, la solution ne fonctionne que sous Linux, des travaux étant en cours pour une version Windows. Signer le module serait une alternative plus complexe pour conserver le Secure Boot.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Résultats obtenus sur une RTX 3070 Ti",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les auteurs de Next ont testé le débridage sur une RTX 3070 Ti en local, en évaluant plusieurs charges : calcul brut, génération d’image, conversion speech‑to‑text et interaction avec un grand modèle de langage. Dans les cas où l’accumulation 32 bits était limitante, les performances ont quasiment doublé, alors que d’autres charges n’ont montré aucun changement notable. Le gain dépend donc fortement du type d’opération IA exécutée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le patch GPU‑Unlock démontre que le bridage IA des cartes GeForce RTX 30/40 n’est pas une contrainte technique, mais une décision commerciale. En désactivant cette limitation, il est possible d’obtenir jusqu’à deux fois plus de puissance de calcul sur des tâches IA spécifiques, à condition de respecter les exigences du processus (Linux, Secure Boot désactivé, redémarrage). Cette approche ouvre la porte à des optimisations similaires pour d’autres cartes, tout en rappelant les enjeux de sécurité liés à la modification du firmware.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Credits :\nArticle original : GPU Unlock : on « débride » une GeForce RTX 3070 Ti… et ça marche (Next)\nhttps://next.ink/263829/gpu-unlock-on-debride-une-geforce-rtx-3070-ti-et-ca-marche/"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
