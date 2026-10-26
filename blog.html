@@ -51,6 +51,25 @@
   .cat-chip.active { opacity: 1; font-weight: 700; background: rgba(127, 127, 127, .22); }
   .cat-chip .cat-n { opacity: .65; font-weight: 400; }
   .badge.cat { text-decoration: none; }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    appearance: none;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-family: var(--font-display, "Space Mono", monospace);
+    font-size: .75rem;
+    cursor: pointer;
+    opacity: .85;
+  }
+  .nav-btn:hover, .nav-btn:focus-visible { opacity: 1; background: rgba(127,127,127,.2); }
 </style>
 </head>
 <body>
@@ -61,6 +80,7 @@
     <nav class="site-nav">
       <a href="blog.html">Accueil</a>
       <a href="#archives">Archives</a>
+      <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false">Notifications</button>
       <a href="forbidden.html"></a>
     </nav>
   </div>
@@ -82,18 +102,12 @@
 <script>
 const app = document.getElementById("app");
 let ARTICLES = [];
-let deferredInstallPrompt = null;
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   });
 }
-
-window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  deferredInstallPrompt = event;
-});
 
 async function loadArticles() {
   try {
@@ -156,7 +170,6 @@ function toolbarHtml(active, current) {
     <div class="toolbar">
       <button type="button" class="tool-btn" id="catToggle" aria-expanded="false" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
       <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
-      <button type="button" class="tool-btn" id="notifyToggle" aria-pressed="false">🔔 Notifications</button>
     </div>
     <div class="cat-panel" id="catPanel" hidden>${chips}</div>`;
 }
@@ -211,7 +224,7 @@ function renderList(currentSlug = "") {
   const shown = currentSlug ? active.filter(a => catSlug(a.category) === currentSlug) : active;
   const sorted = [...shown].sort((a, b) => {
     const pa = a.pinned ? 1 : 0, pb = b.pinned ? 1 : 0;
-    if (pa !== pb) return pb - pa; // épinglés en premier
+    if (pa !== pb) return pb - pa;
     return (a.date < b.date ? 1 : -1);
   });
   const bar = toolbarHtml(active, currentSlug);
@@ -331,7 +344,7 @@ function setNotificationBtnState() {
   const btn = document.getElementById("notifyToggle");
   if (!btn) return;
   const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
-  btn.textContent = enabled ? "🔔 Notifications activées" : "🔔 Notifications";
+  btn.textContent = enabled ? "Notifications activées" : "Notifications";
   btn.setAttribute("aria-pressed", String(enabled));
 }
 

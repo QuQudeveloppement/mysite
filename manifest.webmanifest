@@ -10,7 +10,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "BlogIcon.png",
+      "src": "https://ququdeveloppement.github.io/mysite/BlogIcon.png",
       "sizes": "256x256",
       "type": "image/png",
       "purpose": "any maskable"
