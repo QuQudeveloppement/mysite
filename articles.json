@@ -529,5 +529,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "apple-watch-ultra-4-design-inchange-autonomie-renforcee-et-nouvelles-fonctions-sante",
+    "title": "Apple Watch Ultra 4 : design inchangé, autonomie renforcée et nouvelles fonctions santé",
+    "date": "2026-10-26",
+    "excerpt": "L’Apple Watch Ultra 4 conserve le look robuste de ses prédécesseurs tout en intégrant la puce S11, un capteur cardio amélioré et une autonomie record de près de quatre jours, le tout proposé en promotion chez PC Componentes.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/09/apple-watch-ultra-4-10.jpg?resize=1600,900&key=590b7205",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une évolution discrète du design",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’Apple Watch Ultra 4 ne modifie pratiquement rien à l’aspect extérieur de la gamme Ultra. Le boîtier en titane, mesurant 49 × 44 × 12 mm et pesant 63 g, reste identique à celui introduit en 2022. Les bordures dépassent légèrement l’écran OLED, offrant une protection supplémentaire contre les chocs. Certifiée MIL‑STD‑810H et IP6X, elle continue d’être présentée comme une montre d’aventurier capable de résister aux conditions extrêmes, que ce soit en montagne ou au quotidien.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des améliorations internes : puce S11 et capteur cardio avancé",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sous le capot, Apple a introduit la puce S11, qui accompagne un nouveau capteur cardio. Ces ajouts permettent un suivi de la santé plus poussé, incluant des indicateurs de récupération. Les capteurs classiques restent présents, mais le GPS montre des performances correctes tant en course qu’en randonnée. Certaines limites subsistent : aucune cartographie pendant les entraînements, quelques lacunes dans le suivi cardio et l’absence des fonctions Siri AI et Audio Intelligence en France.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une autonomie qui se démarque",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le principal argument de l’Ultra 4 face aux autres modèles Apple réside dans son endurance. En activant l’affichage toujours allumé, le suivi du sommeil, la mesure continue du SpO₂ et de la fréquence cardiaque, ainsi que les notifications d’apnée du sommeil, la montre a atteint 3 jours et 19 heures d’autonomie. Cette performance, rare pour une montre Apple, dépend toutefois de l’usage de chacun.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Prix promotionnel et disponibilité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’Apple Watch Ultra 4 (GPS + Cellular) était initialement proposée à 899 €, mais elle est actuellement disponible chez PC Componentes pour 869 €, soit une remise de 30 €. D’autres revendeurs comme Boulanger, Cdiscount, Fnac ou Darty affichent le prix plein de 899 €. Le tableau d’offres du site se met à jour automatiquement, permettant de repérer d’éventuelles nouvelles promotions.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En résumé, l’Apple Watch Ultra 4 mise sur la continuité du design tout en apportant des améliorations notables au niveau des composants internes et de l’autonomie. Si le prix reste élevé, la promotion actuelle rend le modèle plus accessible aux passionnés d’activités outdoor cherchant une montre robuste et dotée de fonctions santé avancées.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Credits :\nArticle original : Apple Watch Ultra 4 : la nouvelle reine de l’autonomie chez Apple est déjà en promotion (Frandroid)\nhttps://www.frandroid.com/bons-plans/3299573_apple-watch-ultra-4-la-nouvelle-reine-de-lautonomie-chez-apple-est-deja-en-promotion"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
