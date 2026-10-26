@@ -25,9 +25,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="style.css">
-   <link rel="icon" type="image/png" href="BlogIcon.png">
+<link rel="icon" type="image/png" href="BlogIcon.png">
 <style>
-  /* Accueil : boutons Catégories / Aléatoire + panneau de catégories (couleurs héritées du thème) */
   .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px; }
   .tool-btn {
     display: inline-flex; align-items: center; gap: 8px;
@@ -41,34 +40,13 @@
   .cat-panel[hidden] { display: none; }
   .cat-empty { margin: 0; opacity: .75; font-size: .9rem; }
   .article-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 8px; }
-  .cat-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px;
-    color: inherit; text-decoration: none; opacity: .7;
-    font-family: var(--font-display, "Space Mono", monospace); font-size: .8rem;
-  }
+  .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px; color: inherit; text-decoration: none; opacity: .7; font-family: var(--font-display, "Space Mono", monospace); font-size: .8rem; }
   .cat-chip:hover, .cat-chip:focus-visible { opacity: 1; }
   .cat-chip.active { opacity: 1; font-weight: 700; background: rgba(127, 127, 127, .22); }
   .cat-chip .cat-n { opacity: .65; font-weight: 400; }
   .badge.cat { text-decoration: none; }
-  .site-nav {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .nav-btn {
-    appearance: none;
-    border: 1px solid currentColor;
-    background: transparent;
-    color: inherit;
-    border-radius: 999px;
-    padding: 7px 12px;
-    font-family: var(--font-display, "Space Mono", monospace);
-    font-size: .75rem;
-    cursor: pointer;
-    opacity: .85;
-  }
+  .site-nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .nav-btn { appearance: none; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 999px; padding: 7px 12px; font-family: var(--font-display, "Space Mono", monospace); font-size: .75rem; cursor: pointer; opacity: .85; }
   .nav-btn:hover, .nav-btn:focus-visible { opacity: 1; background: rgba(127,127,127,.2); }
 </style>
 </head>
@@ -81,7 +59,7 @@
       <a href="blog.html">Accueil</a>
       <a href="#archives">Archives</a>
       <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false">Notifications</button>
-      <a href="forbidden.html"></a>
+      <a href="forbidden.html" aria-label="Lien vide"></a>
     </nav>
   </div>
 </header>
@@ -94,7 +72,6 @@
   Publié par QuQuDeveloppement, tous droits réservés 
 </footer>
 
-<!-- Génération de ZIP à la volée pour les téléchargements de fichiers -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="matrix.js"></script>
 <script src="render.js"></script>
@@ -104,9 +81,7 @@ const app = document.getElementById("app");
 let ARTICLES = [];
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
-  });
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
 }
 
 async function loadArticles() {
@@ -128,11 +103,6 @@ async function loadArticles() {
   render();
 }
 
-/* ---------------------------------------------------------------------
-   Catégories — champ "category" (texte libre) dans chaque article.
-   Le slug sert dans l'URL (#categorie/domotique), la liste des filtres
-   est construite automatiquement à partir des articles publiés.
-   --------------------------------------------------------------------- */
 function catSlug(c) {
   return String(c || "")
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -308,14 +278,6 @@ function render() {
   window.scrollTo(0, 0);
 }
 
-/* ---------------------------------------------------------------------
-   Likes — compteur PARTAGÉ entre tous les visiteurs, via un service public
-   gratuit sans inscription (Abacus : abacus.jasoncameron.dev). Chaque
-   article a son propre compteur (namespace + id de l'article).
-   Limite assumée : pas de compte visiteur, donc pas de "unlike" possible
-   une fois cliqué — juste un like par visiteur, mémorisé dans son navigateur
-   pour éviter qu'il clique plusieurs fois.
-   --------------------------------------------------------------------- */
 const LIKES_NAMESPACE = "ququdeveloppement-mysite";
 const LIKED_LOCALLY_KEY = "atelier_liked_articles";
 const NOTIFY_KEY = "atelier_notifications_enabled";
@@ -332,7 +294,7 @@ function markLikedLocally(id) {
     const arr = JSON.parse(localStorage.getItem(LIKED_LOCALLY_KEY) || "[]");
     if (!arr.includes(id)) arr.push(id);
     localStorage.setItem(LIKED_LOCALLY_KEY, JSON.stringify(arr));
-  } catch { /* localStorage indisponible : tant pis, pas bloquant */ }
+  } catch {}
 }
 
 function getLatestArticleId() {
@@ -343,9 +305,8 @@ function getLatestArticleId() {
 function setNotificationBtnState() {
   const btn = document.getElementById("notifyToggle");
   if (!btn) return;
-  const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
-  btn.textContent = enabled ? "Notifications activées" : "Notifications";
-  btn.setAttribute("aria-pressed", String(enabled));
+  btn.textContent = "Notifications";
+  btn.setAttribute("aria-pressed", String(localStorage.getItem(NOTIFY_KEY) === "1"));
 }
 
 function notifyIfNewArticle() {
@@ -359,17 +320,13 @@ function notifyIfNewArticle() {
   localStorage.setItem(LAST_COMMON_ARTICLE_KEY, latestId);
   new Notification("Nouvel article sur L'Atelier", {
     body: "Un nouveau billet vient d'être publié.",
-    icon: "BlogIcon.png"
+    icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png"
   });
 }
 
 function startArticlePolling() {
-  if (window.__atelierPoller) {
-    clearInterval(window.__atelierPoller);
-  }
-  window.__atelierPoller = setInterval(() => {
-    notifyIfNewArticle();
-  }, 30000);
+  if (window.__atelierPoller) clearInterval(window.__atelierPoller);
+  window.__atelierPoller = setInterval(() => notifyIfNewArticle(), 30000);
 }
 
 function bindNotificationToggle() {
