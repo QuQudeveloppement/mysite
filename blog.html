@@ -280,9 +280,9 @@ function render() {
    --------------------------------------------------------------------- */
 const SUPABASE_URL = "https://xmwbegsfwqnfftbalqbr.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable__ZNR6Rx16qhcQMBWfxTPtQ_MPFH6glM";
-const supabase = (SUPABASE_URL.includes("YOUR_PROJECT_ID") || !SUPABASE_ANON_KEY || SUPABASE_ANON_KEY.includes("YOUR_"))
-  ? null
-  : window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = (typeof window !== "undefined" && window.supabase && typeof window.supabase.createClient === "function" && !SUPABASE_URL.includes("YOUR_PROJECT_ID") && !SUPABASE_ANON_KEY.includes("YOUR_"))
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
 
 function getVisitorId() {
   let visitorId = localStorage.getItem("atelier_visitor_id");
@@ -372,8 +372,18 @@ function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
 
-  btn.disabled = true;
   const label = btn.querySelector(".like-label");
+  btn.disabled = false;
+  if (label) label.textContent = "♡ J'aime";
+
+  if (!supabase) {
+    btn.addEventListener("click", () => {
+      alert("Le système de likes est désactivé tant que Supabase n'est pas correctement configuré.");
+    });
+    return;
+  }
+
+  btn.disabled = true;
   if (label) label.textContent = "Chargement…";
 
   hasLikedByCurrentVisitor(id).then(alreadyLiked => {
@@ -390,7 +400,6 @@ function wireLikeButton(id) {
   btn.addEventListener("click", async () => {
     if (btn.disabled) return;
     btn.disabled = true;
-    const label = btn.querySelector(".like-label");
     if (label) label.textContent = "Chargement…";
 
     try {
