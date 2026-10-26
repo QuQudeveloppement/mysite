@@ -1,4 +1,4 @@
-const CACHE_NAME = "atelier-pwa-v1";
+const CACHE_NAME = "atelier-pwa-v2";
 const APP_SHELL = [
   "./",
   "./blog.html",
@@ -32,16 +32,51 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request)
+  const isAppShell = APP_SHELL.some((asset) => {
+    const normalized = asset.replace(/^\.\//, "/");
+    return url.pathname === normalized || (normalized === "/" && url.pathname === "/");
+  });
+  const isArticleData = url.pathname.endsWith("/articles.json");
+
+  if (isArticleData) {
+    event.respondWith(
+      fetch(event.request)
         .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          if (response && response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
           return response;
         })
-        .catch(() => caches.match("./blog.html"));
-    })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  if (isAppShell) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(event.request)
+          .then((response) => {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+            return response;
+          });
+      })
+    );
+    return;
+  }
+
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.ok) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
