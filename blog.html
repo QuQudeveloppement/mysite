@@ -74,6 +74,7 @@
 <script src="matrix.js"></script>
 <script src="render.js"></script>
 <script src="download.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const app = document.getElementById("app");
 let ARTICLES = [];
@@ -244,8 +245,8 @@ function renderArticle(id) {
     <div class="article-body">${renderArticleBody(article)}</div>
 
     <div class="like-bar">
-      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}" ${hasLikedLocally(article.id) ? "disabled" : ""}>
-        <span class="like-label">${hasLikedLocally(article.id) ? "♥ Aimé" : "♡ J'aime"}</span>
+      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}">
+        <span class="like-label">♡ J'aime</span>
         <span data-like-display="${escapeHtml(article.id)}">…</span>
       </button>
     </div>
@@ -272,70 +273,93 @@ function render() {
 }
 
 /* ---------------------------------------------------------------------
-   Likes — solution gratuite et sans backend.
-   On stocke les likes dans le navigateur via localStorage.
-   Cela ne partage pas les likes entre tous les visiteurs, mais ça évite de
-   dépendre d'un service tiers payant ou instable.
+   Likes — partagé entre tous les visiteurs via Supabase (gratuit au démarrage).
+   1) Crée un projet Supabase.
+   2) Crée les tables SQL ci-dessous.
+   3) Mets tes clés publiques dans les constantes ci-dessous.
    --------------------------------------------------------------------- */
-const LIKES_NAMESPACE = "ququdeveloppement-mysite";
-const LIKED_LOCALLY_KEY = "atelier_liked_articles";
-const LIKES_COUNT_KEY = "atelier_like_counts";
+const SUPABASE_URL = "https://xmwbegsfwqnfftbalqbr.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable__ZNR6Rx16qhcQMBWfxTPtQ_MPFH6glM";
+const supabase = (SUPABASE_URL.includes("YOUR_PROJECT_ID") || !SUPABASE_ANON_KEY || SUPABASE_ANON_KEY.includes("YOUR_"))
+  ? null
+  : window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-function readLikeMap() {
-  try {
-    const raw = localStorage.getItem(LIKES_COUNT_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return window.__atelierLikeCounts || {};
+function getVisitorId() {
+  let visitorId = localStorage.getItem("atelier_visitor_id");
+  if (!visitorId) {
+    visitorId = (window.crypto && window.crypto.randomUUID)
+      ? crypto.randomUUID()
+      : "visitor-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+    localStorage.setItem("atelier_visitor_id", visitorId);
   }
+  return visitorId;
 }
 
-function writeLikeMap(map) {
-  try {
-    localStorage.setItem(LIKES_COUNT_KEY, JSON.stringify(map));
-  } catch {
-    window.__atelierLikeCounts = map;
+async function hasLikedByCurrentVisitor(id) {
+  if (!supabase) return false;
+  const visitorId = getVisitorId();
+  const { data, error } = await supabase
+    .from("article_likes_by_visitor")
+    .select("article_id")
+    .eq("article_id", id)
+    .eq("visitor_id", visitorId)
+    .limit(1);
+
+  if (error) {
+    console.error("Erreur de lecture du like visiteur :", error);
+    return false;
   }
-}
-
-function getStoredLikeCount(id) {
-  const map = readLikeMap();
-  const value = Number(map[id] || 0);
-  return Number.isFinite(value) ? value : 0;
-}
-
-function setStoredLikeCount(id, value) {
-  const map = readLikeMap();
-  map[id] = Math.max(0, Number(value) || 0);
-  writeLikeMap(map);
-}
-
-function hasLikedLocally(id) {
-  try {
-    const arr = JSON.parse(localStorage.getItem(LIKED_LOCALLY_KEY) || "[]");
-    return arr.includes(id);
-  } catch { return false; }
-}
-
-function markLikedLocally(id) {
-  try {
-    const arr = JSON.parse(localStorage.getItem(LIKED_LOCALLY_KEY) || "[]");
-    if (!arr.includes(id)) arr.push(id);
-    localStorage.setItem(LIKED_LOCALLY_KEY, JSON.stringify(arr));
-  } catch { /* localStorage indisponible : tant pis, pas bloquant */ }
+  return Array.isArray(data) && data.length > 0;
 }
 
 async function fetchLikeCount(id) {
-  return getStoredLikeCount(id);
+  if (!supabase) return 0;
+  const { data, error } = await supabase
+    .from("article_likes")
+    .select("likes")
+    .eq("article_id", id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Erreur de lecture du compteur :", error);
+    return 0;
+  }
+
+  return Number(data?.likes || 0);
 }
 
 async function incrementLikeCount(id) {
-  const current = getStoredLikeCount(id);
-  const next = current + 1;
-  setStoredLikeCount(id, next);
-  return next;
+  if (!supabase) throw new Error("Supabase non configuré");
+
+  const visitorId = getVisitorId();
+  const alreadyLiked = await hasLikedByCurrentVisitor(id);
+  if (alreadyLiked) return await fetchLikeCount(id);
+
+  const { data: currentRow, error: readError } = await supabase
+    .from("article_likes")
+    .select("likes")
+    .eq("article_id", id)
+    .maybeSingle();
+
+  if (readError) throw readError;
+
+  const nextCount = Number(currentRow?.likes || 0) + 1;
+
+  const { error: upsertError } = await supabase
+    .from("article_likes")
+    .upsert({ article_id: id, likes: nextCount }, { onConflict: "article_id" });
+
+  if (upsertError) throw upsertError;
+
+  const { error: insertError } = await supabase
+    .from("article_likes_by_visitor")
+    .insert([{ article_id: id, visitor_id: visitorId }]);
+
+  if (insertError) {
+    console.warn("Like enregistré mais impossible d'écrire la trace visiteur :", insertError);
+  }
+
+  return nextCount;
 }
 
 function updateLikeDisplays(id, count) {
@@ -347,18 +371,37 @@ function updateLikeDisplays(id, count) {
 function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
+
+  btn.disabled = true;
+  const label = btn.querySelector(".like-label");
+  if (label) label.textContent = "Chargement…";
+
+  hasLikedByCurrentVisitor(id).then(alreadyLiked => {
+    btn.disabled = alreadyLiked;
+    if (label) label.textContent = alreadyLiked ? "♥ Aimé" : "♡ J'aime";
+    if (alreadyLiked) {
+      fetchLikeCount(id).then(count => updateLikeDisplays(id, count));
+    }
+  }).catch(() => {
+    btn.disabled = false;
+    if (label) label.textContent = "♡ J'aime";
+  });
+
   btn.addEventListener("click", async () => {
-    if (hasLikedLocally(id)) return;
+    if (btn.disabled) return;
     btn.disabled = true;
+    const label = btn.querySelector(".like-label");
+    if (label) label.textContent = "Chargement…";
+
     try {
       const count = await incrementLikeCount(id);
-      markLikedLocally(id);
-      const label = btn.querySelector(".like-label");
       if (label) label.textContent = "♥ Aimé";
       updateLikeDisplays(id, count);
     } catch (e) {
       btn.disabled = false;
-      alert("Impossible d'enregistrer ton like pour le moment, réessaie plus tard.");
+      if (label) label.textContent = "♡ J'aime";
+      alert("Impossible d'enregistrer ton like pour le moment. Vérifie ta configuration Supabase.");
+      console.error(e);
     }
   });
 }
