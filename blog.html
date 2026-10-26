@@ -272,15 +272,45 @@ function render() {
 }
 
 /* ---------------------------------------------------------------------
-   Likes — compteur PARTAGÉ entre tous les visiteurs, via un service public
-   gratuit sans inscription (Abacus : abacus.jasoncameron.dev). Chaque
-   article a son propre compteur (namespace + id de l'article).
-   Limite assumée : pas de compte visiteur, donc pas de "unlike" possible
-   une fois cliqué — juste un like par visiteur, mémorisé dans son navigateur
-   pour éviter qu'il clique plusieurs fois.
+   Likes — solution gratuite et sans backend.
+   On stocke les likes dans le navigateur via localStorage.
+   Cela ne partage pas les likes entre tous les visiteurs, mais ça évite de
+   dépendre d'un service tiers payant ou instable.
    --------------------------------------------------------------------- */
 const LIKES_NAMESPACE = "ququdeveloppement-mysite";
 const LIKED_LOCALLY_KEY = "atelier_liked_articles";
+const LIKES_COUNT_KEY = "atelier_like_counts";
+
+function readLikeMap() {
+  try {
+    const raw = localStorage.getItem(LIKES_COUNT_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return window.__atelierLikeCounts || {};
+  }
+}
+
+function writeLikeMap(map) {
+  try {
+    localStorage.setItem(LIKES_COUNT_KEY, JSON.stringify(map));
+  } catch {
+    window.__atelierLikeCounts = map;
+  }
+}
+
+function getStoredLikeCount(id) {
+  const map = readLikeMap();
+  const value = Number(map[id] || 0);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function setStoredLikeCount(id, value) {
+  const map = readLikeMap();
+  map[id] = Math.max(0, Number(value) || 0);
+  writeLikeMap(map);
+}
 
 function hasLikedLocally(id) {
   try {
@@ -288,6 +318,7 @@ function hasLikedLocally(id) {
     return arr.includes(id);
   } catch { return false; }
 }
+
 function markLikedLocally(id) {
   try {
     const arr = JSON.parse(localStorage.getItem(LIKED_LOCALLY_KEY) || "[]");
@@ -297,21 +328,14 @@ function markLikedLocally(id) {
 }
 
 async function fetchLikeCount(id) {
-  try {
-    const res = await fetch(`https://abacus.jasoncameron.dev/get/${LIKES_NAMESPACE}/${encodeURIComponent(id)}`);
-    if (!res.ok) return 0;
-    const data = await res.json();
-    return data.value || 0;
-  } catch {
-    return 0;
-  }
+  return getStoredLikeCount(id);
 }
 
 async function incrementLikeCount(id) {
-  const res = await fetch(`https://abacus.jasoncameron.dev/hit/${LIKES_NAMESPACE}/${encodeURIComponent(id)}`);
-  if (!res.ok) throw new Error("Service de likes indisponible pour le moment");
-  const data = await res.json();
-  return data.value || 0;
+  const current = getStoredLikeCount(id);
+  const next = current + 1;
+  setStoredLikeCount(id, next);
+  return next;
 }
 
 function updateLikeDisplays(id, count) {
