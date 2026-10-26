@@ -221,7 +221,7 @@
     "archiveAfterMonths": null,
     "archivedManually": false,
     "keepActive": true,
-    "pinned": true
+    "pinned": false
   },
   {
     "id": "arduino-esp32-uno-r4-projet",
