@@ -23,8 +23,19 @@
 <link rel="stylesheet" href="style.css">
    <link rel="icon" type="image/png" href="BlogIcon.png">
 <style>
-  /* Catégories : barre de filtres + badge (couleurs héritées du thème existant) */
-  .cat-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+  /* Accueil : boutons Catégories / Aléatoire + panneau de catégories (couleurs héritées du thème) */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px; }
+  .tool-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; border: 1px solid currentColor; border-radius: 999px;
+    background: transparent; color: inherit; cursor: pointer;
+    font-family: var(--font-display, "Space Mono", monospace); font-size: .85rem;
+  }
+  .tool-btn:hover, .tool-btn:focus-visible, .tool-btn[aria-expanded="true"] { background: rgba(127, 127, 127, .22); }
+  .cat-panel { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 14px; border: 1px solid rgba(127, 127, 127, .45); border-radius: 12px; }
+  .cat-panel[hidden] { display: none; }
+  .cat-empty { margin: 0; opacity: .75; font-size: .9rem; }
+  .article-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 8px; }
   .cat-chip {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px;
@@ -96,7 +107,7 @@ function catBadgeHtml(a) {
   return `<a class="badge cat" href="#categorie/${encodeURIComponent(catSlug(a.category))}">${escapeHtml(a.category)}</a>`;
 }
 
-function categoryBarHtml(active, current) {
+function collectCategories(active) {
   const cats = new Map();
   active.forEach(a => {
     if (!a.category) return;
@@ -105,14 +116,47 @@ function categoryBarHtml(active, current) {
     entry.n++;
     cats.set(s, entry);
   });
-  if (cats.size === 0) return "";
-  const chips = [...cats.entries()]
-    .sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"))
-    .map(([s, e]) => `<a class="cat-chip ${s === current ? "active" : ""}" href="#categorie/${encodeURIComponent(s)}">${escapeHtml(e.label)} <span class="cat-n">${e.n}</span></a>`)
-    .join("");
-  return `<nav class="cat-bar" aria-label="Catégories">
-    <a class="cat-chip ${current ? "" : "active"}" href="#">Tout <span class="cat-n">${active.length}</span></a>${chips}
-  </nav>`;
+  return cats;
+}
+
+function toolbarHtml(active, current) {
+  const cats = collectCategories(active);
+  const label = current && cats.has(current) ? " : " + cats.get(current).label : "";
+  const chips = cats.size === 0
+    ? `<p class="cat-empty">Aucune catégorie pour l'instant : les articles n'ont pas encore de champ « category ».</p>`
+    : `<a class="cat-chip ${current ? "" : "active"}" href="#">Tout <span class="cat-n">${active.length}</span></a>` +
+      [...cats.entries()]
+        .sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"))
+        .map(([s, e]) => `<a class="cat-chip ${s === current ? "active" : ""}" href="#categorie/${encodeURIComponent(s)}">${escapeHtml(e.label)} <span class="cat-n">${e.n}</span></a>`)
+        .join("");
+  return `
+    <div class="toolbar">
+      <button type="button" class="tool-btn" id="catToggle" aria-expanded="false" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
+      <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
+    </div>
+    <div class="cat-panel" id="catPanel" hidden>${chips}</div>`;
+}
+
+function goRandom(list, excludeId = "") {
+  const pool = list.filter(a => a.id !== excludeId);
+  const choices = pool.length ? pool : list;
+  if (choices.length === 0) return;
+  const pick = choices[Math.floor(Math.random() * choices.length)];
+  location.hash = "#article/" + encodeURIComponent(pick.id);
+}
+
+function wireToolbar(list) {
+  const toggle = document.getElementById("catToggle");
+  const panel = document.getElementById("catPanel");
+  if (toggle && panel) {
+    toggle.addEventListener("click", () => {
+      const opening = panel.hasAttribute("hidden");
+      if (opening) panel.removeAttribute("hidden"); else panel.setAttribute("hidden", "");
+      toggle.setAttribute("aria-expanded", String(opening));
+    });
+  }
+  const rnd = document.getElementById("randomBtn");
+  if (rnd) rnd.addEventListener("click", () => goRandom(list));
 }
 
 function articleCardHtml(a) {
@@ -146,13 +190,15 @@ function renderList(currentSlug = "") {
     if (pa !== pb) return pb - pa; // épinglés en premier
     return (a.date < b.date ? 1 : -1);
   });
-  const bar = categoryBarHtml(active, currentSlug);
+  const bar = toolbarHtml(active, currentSlug);
   if (sorted.length === 0) {
     const msg = currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.";
     app.innerHTML = bar + `<p class="log-empty">${msg}</p>`;
+    wireToolbar(shown);
     return;
   }
   app.innerHTML = bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
+  wireToolbar(shown);
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
@@ -186,7 +232,10 @@ function renderArticle(id) {
     return;
   }
   app.innerHTML = `
-    <a class="article-back" href="#">← Retour à l'accueil</a>
+    <div class="article-nav">
+      <a class="article-back" href="#">← Retour à l'accueil</a>
+      <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
+    </div>
     <header class="article-header">
       <span class="log-date">${formatDate(article.date)} ${catBadgeHtml(article)}</span>
       <h1>${escapeHtml(article.title)}</h1>
@@ -203,6 +252,8 @@ function renderArticle(id) {
   `;
 
   wireLikeButton(article.id);
+  const rb = document.getElementById("randomBtn");
+  if (rb) rb.addEventListener("click", () => goRandom(ARTICLES.filter(a => !isArchived(a)), article.id));
   fetchLikeCount(article.id).then(count => updateLikeDisplays(article.id, count));
 }
 
