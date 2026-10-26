@@ -290,5 +290,84 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "google-comment-la-nouvelle-regle-de-confidentialite-peut-rendre-vos-mails-et-photos-exploi",
+    "title": "Google : comment la nouvelle règle de confidentialité peut rendre vos mails et photos exploitables pour la publicité",
+    "date": "2026-10-26",
+    "excerpt": "Google a ajouté une exception à sa politique de confidentialité, autorisant l’usage des données de Gmail, Drive et Photos pour les annonces personnalisées via l’outil Personal Intelligence. Découvrez les implications et les réglages à vérifier dans votre compte.",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2024/08/google-gemini-pixel-9-scaled.jpg?resize=1600,900&key=504e89cc",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Un récent ajustement de la politique de confidentialité de Google introduit une nuance importante : les contenus stockés sur Gmail, Drive ou Photos peuvent désormais être exploités pour la publicité ciblée, à condition d’activer certains services d’intelligence artificielle. Cette évolution soulève des questions de confidentialité, surtout pour les utilisateurs qui utilisent l’outil « Personal Intelligence ».",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "L’outil Personal Intelligence et le partage de données",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Aux États-Unis, l’activation de Personal Intelligence permet à Google d’analyser les e‑mails, photos et documents afin de fournir des réponses IA personnalisées. Le traitement passe par le modèle Gemini, après quoi les informations sont considérées comme utilisables pour la publicité. Google précise que seules les données réellement partagées avec l’IA sont concernées, et non l’ensemble du contenu stocké.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Impact différencié selon les régions",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En Europe, le Règlement général sur la protection des données (RGPD) empêche actuellement le déploiement de Personal Intelligence, limitant ainsi l’application de cette nouvelle règle. Néanmoins, le libellé générique de la politique laisse entendre que d’autres scénarios pourraient être envisagés à l’avenir, d’où l’importance de vérifier les paramètres de partage.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réglages à contrôler dans votre compte Google",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour limiter le risque que vos informations personnelles soient utilisées à des fins publicitaires, il suffit de se rendre dans la section « Données et confidentialité » du compte Google. Deux actions principales sont recommandées :\n• Désactiver les « annonces personnalisées » afin de bloquer le ciblage publicitaire basé sur vos contenus.\n• Désactiver le partage de données entre services dans la rubrique « Services Google associés ». Cette manipulation peut toutefois réduire certaines fonctionnalités intégrées entre Gmail, Photos, Drive, etc. Il convient donc d’évaluer le compromis entre protection de la vie privée et confort d’utilisation.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google ouvre désormais la porte à l’utilisation de vos e‑mails, photos et documents pour la publicité ciblée via son IA, mais uniquement si vous avez activé les services concernés. Les utilisateurs européens restent protégés par le RGPD, bien que le libellé de la politique reste vague. En ajustant les paramètres de confidentialité de votre compte, vous pouvez contrôler le partage de vos données et éviter que vos contenus personnels ne nourrissent des profils publicitaires.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Credits :\nArticle original : Vos mails et photos ciblés par la pub : le réglage Google à vérifier d’urgence (Frandroid)\nhttps://www.frandroid.com/marques/google/3298661_google-change-ses-regles-de-confidentialite-et-ouvre-la-porte-a-une-utilisation-de-vos-photos-et-de-vos-mails-pour-la-pub\nArticle rédigé avec l'aide d'une IA à partir de cette source."
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
