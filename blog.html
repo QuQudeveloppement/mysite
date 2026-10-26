@@ -22,6 +22,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
    <link rel="icon" type="image/png" href="BlogIcon.png">
+<style>
+  /* Catégories : barre de filtres + badge (couleurs héritées du thème existant) */
+  .cat-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+  .cat-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px;
+    color: inherit; text-decoration: none; opacity: .7;
+    font-family: var(--font-display, "Space Mono", monospace); font-size: .8rem;
+  }
+  .cat-chip:hover, .cat-chip:focus-visible { opacity: 1; }
+  .cat-chip.active { opacity: 1; font-weight: 700; background: rgba(127, 127, 127, .22); }
+  .cat-chip .cat-n { opacity: .65; font-weight: 400; }
+  .badge.cat { text-decoration: none; }
+</style>
 </head>
 <body>
 
@@ -66,6 +80,41 @@ async function loadArticles() {
   render();
 }
 
+/* ---------------------------------------------------------------------
+   Catégories — champ "category" (texte libre) dans chaque article.
+   Le slug sert dans l'URL (#categorie/domotique), la liste des filtres
+   est construite automatiquement à partir des articles publiés.
+   --------------------------------------------------------------------- */
+function catSlug(c) {
+  return String(c || "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+function catBadgeHtml(a) {
+  if (!a.category) return "";
+  return `<a class="badge cat" href="#categorie/${encodeURIComponent(catSlug(a.category))}">${escapeHtml(a.category)}</a>`;
+}
+
+function categoryBarHtml(active, current) {
+  const cats = new Map();
+  active.forEach(a => {
+    if (!a.category) return;
+    const s = catSlug(a.category);
+    const entry = cats.get(s) || { label: a.category, n: 0 };
+    entry.n++;
+    cats.set(s, entry);
+  });
+  if (cats.size === 0) return "";
+  const chips = [...cats.entries()]
+    .sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"))
+    .map(([s, e]) => `<a class="cat-chip ${s === current ? "active" : ""}" href="#categorie/${encodeURIComponent(s)}">${escapeHtml(e.label)} <span class="cat-n">${e.n}</span></a>`)
+    .join("");
+  return `<nav class="cat-bar" aria-label="Catégories">
+    <a class="cat-chip ${current ? "" : "active"}" href="#">Tout <span class="cat-n">${active.length}</span></a>${chips}
+  </nav>`;
+}
+
 function articleCardHtml(a) {
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
@@ -76,6 +125,7 @@ function articleCardHtml(a) {
         <div class="log-date">
           ${a.pinned ? '<span class="badge pinned">📌 Épinglé</span>' : ""}
           ${formatDate(a.date)}
+          ${catBadgeHtml(a)}
           ${isArchived(a) ? '<span class="badge">Archivé</span>' : ""}
         </div>
         <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
@@ -88,18 +138,21 @@ function articleCardHtml(a) {
   `;
 }
 
-function renderList() {
+function renderList(currentSlug = "") {
   const active = ARTICLES.filter(a => !isArchived(a));
-  const sorted = [...active].sort((a, b) => {
+  const shown = currentSlug ? active.filter(a => catSlug(a.category) === currentSlug) : active;
+  const sorted = [...shown].sort((a, b) => {
     const pa = a.pinned ? 1 : 0, pb = b.pinned ? 1 : 0;
     if (pa !== pb) return pb - pa; // épinglés en premier
     return (a.date < b.date ? 1 : -1);
   });
+  const bar = categoryBarHtml(active, currentSlug);
   if (sorted.length === 0) {
-    app.innerHTML = `<p class="log-empty">Aucun article publié pour l'instant.</p>`;
+    const msg = currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.";
+    app.innerHTML = bar + `<p class="log-empty">${msg}</p>`;
     return;
   }
-  app.innerHTML = `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
+  app.innerHTML = bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
@@ -135,7 +188,7 @@ function renderArticle(id) {
   app.innerHTML = `
     <a class="article-back" href="#">← Retour à l'accueil</a>
     <header class="article-header">
-      <span class="log-date">${formatDate(article.date)}</span>
+      <span class="log-date">${formatDate(article.date)} ${catBadgeHtml(article)}</span>
       <h1>${escapeHtml(article.title)}</h1>
     </header>
     ${article.cover ? `<figure class="block-image"><img src="${article.cover}" alt=""></figure>` : ""}
@@ -157,6 +210,8 @@ function render() {
   const hash = location.hash;
   if (hash.startsWith("#article/")) {
     renderArticle(decodeURIComponent(hash.replace("#article/", "")));
+  } else if (hash.startsWith("#categorie/")) {
+    renderList(decodeURIComponent(hash.replace("#categorie/", "")));
   } else if (hash === "#archives") {
     renderArchives();
   } else {
