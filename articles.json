@@ -609,5 +609,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "fitbit-edge-de-google-un-bracelet-a-ecran-entre-confort-et-fonctionnalites-limitees",
+    "title": "Fitbit Edge de Google : un bracelet à écran entre confort et fonctionnalités limitées",
+    "date": "2026-10-26",
+    "excerpt": "Après plusieurs jours d’essai, le Fitbit Edge séduit par son design léger et son écran AMOLED, mais son utilité reste mitigée face à l’absence d’applications tierces et à une autonomie de cinq jours.",
+    "category": "Ordinateurs",
+    "cover": "https://pic.clubic.com/v1/images/2465125/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction courte",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google a enrichi son bracelet Fitbit Air en y ajoutant un écran AMOLED et un GPS autonome, donnant naissance au Fitbit Edge. Testé pendant plusieurs jours, ce dispositif se distingue par son confort et sa simplicité, tout en soulevant des questions sur la pertinence de ses nouveautés.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Design discret et ergonomie appréciée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le boîtier en aluminium du Edge mesure 11,58 mm d’épaisseur et pèse 17,7 g hors bracelet, ce qui le rend très léger. Deux tailles de bracelets sont proposées, dont un modèle Rose Pêche dans une finition Champagne Doré. Le système de fixation mécanique se verrouille d’une simple pression, sans outil. Le porteur ne ressent quasiment aucune gêne, même pendant le sommeil, ce qui favorise un suivi nocturne fiable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Écran AMOLED : lisibilité sans être indispensable",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’écran couleur de 34 mm offre un affichage permanent lisible en plein jour. La navigation repose sur des glissements verticaux et latéraux pour accéder aux widgets et aux cadrans. Malgré cette clarté, les informations affichées restent limitées : notifications, fréquence cardiaque et quelques indicateurs d’activité. Pour des analyses détaillées, l’utilisateur revient régulièrement sur son smartphone.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnalités sportives et GPS intégré",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Edge combine un capteur optique de fréquence cardiaque, plusieurs accéléromètres et un GPS autonome. Lors de deux marches de 1,52 km et 2,08 km, le dispositif a enregistré le parcours et les données cardiaques sans smartphone. Le suivi cardio est réactif et comparable aux mesures d’une Apple Watch, même si la précision exacte n’est pas vérifiable sans référence médicale. Les programmes Health Coach proposent des séances personnalisées, mais le bracelet ne cible pas les athlètes très exigeants.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Autonomie, recharge et limites logicielles",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google estime une autonomie d’environ cinq jours, ce qui paraît court comparé à d’autres bracelets. La recharge complète se fait en 90 minutes et la batterie est remplaçable par l’utilisateur. En revanche, le Edge ne dispose d’aucune boutique d’applications et ne propose pas de paiement sans contact. Certaines fonctions, comme les réponses aux messages, restent limitées aux appareils Android ; sur iPhone, seules les lectures sont possibles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Fitbit Edge réussit à concilier légèreté et écran lisible, offrant un suivi santé et sport correct avec un GPS autonome. Cependant, son utilité réelle reste à débattre : l’écran améliore le confort quotidien, mais ne change pas fondamentalement l’usage du bracelet, et les restrictions logicielles ainsi que l’autonomie modeste limitent son attractivité face à des montres plus complètes.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Credits :\nArticle original : Test Google Fitbit Edge : plus qu'un bracelet de santé, moins qu'une montre connectée (Clubic)\nhttps://www.clubic.com/test-produit-635287-test-google-fitbit-edge.html"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
