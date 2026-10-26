@@ -369,5 +369,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "jackery-explorer-100-plus-la-batterie-externe-de-99-wh-a-moitie-prix",
+    "title": "Jackery Explorer 100 Plus : la batterie externe de 99 Wh à moitié prix",
+    "date": "2026-10-26",
+    "excerpt": "La Jackery Explorer 100 Plus, autorisée en cabine d’avion, propose 99 Wh de capacité, deux ports USB‑C PD de 100 W et un prix réduit de 47 % : 79 €, soit presque la moitié du tarif initial.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/10/jackery-explorer-100-plus.jpg?resize=1600,900&key=90d2ea17",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre alléchante pour les voyageurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Jackery a récemment baissé le prix de son modèle Explorer 100 Plus, le faisant passer de 149,99 € à 79 €. Cette réduction de 47,3 % place le produit dans une fourchette de prix très attractive pour les utilisateurs cherchant une batterie puissante sans dépasser les limites imposées en cabine d’avion.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Caractéristiques techniques et format",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’Explorer 100 Plus embarque une batterie LiFePO4 de 99 Wh, soit environ 31 000 mAh. Son format compact (12,6 × 8,65 × 8,7 cm) et son poids de 965 g le rendent facilement transportable, même si son épaisseur le rapproche davantage d’une petite brique que d’une batterie de poche traditionnelle. Le choix du LiFePO4 apporte une meilleure stabilité thermique, au prix d’une densité énergétique légèrement inférieure au lithium‑ion classique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Connectivité et puissance de sortie",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Côté ports, le dispositif propose deux sorties USB‑C Power Delivery capables de délivrer jusqu’à 100 W chacune, ainsi qu’un port USB‑A, portant la puissance totale disponible à 128 W. Cette configuration permet d’alimenter simultanément plusieurs appareils, y compris un ordinateur portable. En revanche, aucune prise secteur n’est intégrée, ce qui limite l’usage à des appareils rechargeables via USB.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Autonomie, recharge et durabilité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Jackery indique que la batterie peut recharger un iPhone 14 environ 7,8 fois, bien que les conditions de ce test ne soient pas précisées. La recharge rapide atteint 70 % en une heure et une charge complète en 1,8 h via le port USB‑C. En option, un panneau solaire SolarSaga de 100 W, vendu séparément, permet d’atteindre une charge complète en deux heures dans des conditions idéales. La longévité annoncée est de 2 000 cycles avec 80 % de capacité conservée, soit plus de cinq ans d’utilisation quotidienne avant une dégradation notable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La Jackery Explorer 100 Plus combine une capacité de 99 Wh, une puissance de sortie élevée et une compatibilité voyage grâce à son respect de la limite de 100 Wh en cabine. La réduction de prix la rend particulièrement intéressante pour les nomades numériques et les campeurs qui souhaitent une source d’énergie fiable sans recourir à une prise secteur. Toutefois, son poids et l’absence de prise secteur en font davantage un gros power‑bank qu’une vraie station d’énergie domestique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Credits :\nArticle original : L’une des plus grosses batteries externes autorisées en avion est quasi à moitié prix aujourd’hui (Frandroid)\nhttps://www.frandroid.com/bons-plans/3298965_lune-des-plus-grosses-batteries-externes-autorisees-en-avion-est-quasi-a-moitie-prix-aujourdhui"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
