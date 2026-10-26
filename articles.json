@@ -449,5 +449,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "le-projet-darticle-88b-du-rgpd-lia-autorisee-a-exploiter-les-donnees-personnelles-sans-con",
+    "title": "Le projet d’article 88b du RGPD : l’IA autorisée à exploiter les données personnelles sans consentement",
+    "date": "2026-10-26",
+    "excerpt": "Un texte européen en cours de négociation pourrait permettre aux systèmes d’intelligence artificielle de traiter des données personnelles sans l’accord des personnes concernées, en s’appuyant sur un « intérêt légitime ». Cette évolution suscite de vives inquiétudes chez les défenseurs de la vie privée.",
+    "category": "Intelligence artificielle",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/01/europe.jpeg?resize=1600,900&key=7eb42e1d",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte de la proposition",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le 21 octobre, alors que la France était occupée par des incidents techniques, les États membres de l’Union européenne ont entamé la négociation d’un texte susceptible de modifier le cadre du RGPD. Intitulé article 88b, il s’inscrit dans le « Digital Omnibus », un paquet de mesures présenté par la Commission le 19 novembre 2025 pour alléger la législation numérique de l’UE.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Principaux mécanismes introduits",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’article 88b prévoit que les entreprises développant ou exploitant une IA peuvent traiter des données personnelles « dans le cadre du développement et du fonctionnement » du système, à condition de justifier d’un intérêt légitime, que ce soit le leur ou celui d’un tiers. Cette disposition supprime l’obligation de recueillir le consentement explicite des personnes concernées, dès lors que l’intérêt de l’entreprise est jugé prépondérant.\n\nParallèlement, un article 25 bis introduit la notion de pseudonymisation renforcée : remplacer le nom d’une personne par un identifiant. Si l’entité qui traite les données ne peut pas ré‑identifier la personne, elle ne serait plus soumise aux exigences du RGPD. Or, la plupart des systèmes numériques utilisent déjà des identifiants tels que les adresses IP ou les cookies, ce qui pourrait exclure le pistage en ligne du champ d’application de la réglementation.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conséquences pour la vie privée et la publicité ciblée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis l’entrée en vigueur du RGPD le 25 mai 2018, chaque traitement de données doit être justifié par une finalité précise, comme la lutte contre la fraude. L’article 88b renverserait ce principe en autorisant une technologie à être utilisée quel que soit son usage, tant que l’entreprise invoque un intérêt légitime.\n\nL’association Noyb, spécialisée dans la défense des droits numériques, alerte sur le risque d’une « expropriation numérique » des Européens. Elle cite l’exemple de la publicité personnalisée : aujourd’hui interdite sans consentement, elle pourrait redevenir légale si elle est effectuée par une IA. En pratique, les géants du secteur – Google, Meta, Microsoft, OpenAI, Anthropic ou même SpaceX – bénéficieraient d’un accès élargi à d’immenses volumes de données européennes déjà collectées.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "État d’avancement et perspectives législatives",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le texte n’est pas encore adopté. Le Conseil a publié son mandat de négociation le 22 octobre, mais la version finale doit encore être débattue avec le Parlement européen, qui n’a pas encore exprimé de position claire. Si le texte était adopté tel quel, l’association Noyb envisage de porter l’affaire devant la Cour de justice de l’UE, qui a déjà annulé des dispositions jugées contraires au RGPD, notamment en matière de conservation et de transfert de données vers les États‑Unis.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’article 88b du RGPD représente une évolution majeure qui pourrait autoriser les systèmes d’intelligence artificielle à exploiter les données personnelles sans le consentement explicite des citoyens européens. En échange d’un prétendu intérêt légitime, les entreprises pourraient contourner les exigences de transparence et de finalité qui fondent la protection des données depuis 2018. Cette proposition soulève des questions fondamentales sur la souveraineté numérique de l’Europe et la capacité de la législation à protéger les droits des individus face à des acteurs technologiques déjà très puissants. Le débat reste ouvert, et la prochaine étape législative déterminera si cette mesure deviendra une réalité ou sera rejetée au nom de la défense de la vie privée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Credits :\nArticle original : RGPD : l’Europe veut laisser l’IA se servir dans vos données sans consentement (Frandroid)\nhttps://www.frandroid.com/culture-tech/3299079_rgpd-leurope-veut-laisser-lia-se-servir-dans-vos-donnees-sans-consentement"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
