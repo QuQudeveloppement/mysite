@@ -1,0 +1,19 @@
+{
+  "name": "L'Atelier",
+  "short_name": "L'Atelier",
+  "description": "Blog QuQudeveloppement : Arduino, électronique, Raspberry Pi et actualité informatique.",
+  "start_url": "/mysite/blog.html",
+  "scope": "/mysite/",
+  "display": "standalone",
+  "background_color": "#15140f",
+  "theme_color": "#15140f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "BlogIcon.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
