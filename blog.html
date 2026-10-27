@@ -201,10 +201,14 @@ function applyMobileDisplaySettings() {
 
 function renderMobileSettings() {
   if (!isMobileViewport()) return "";
+
+  const existing = document.getElementById("settingsPanel");
+  const isOpen = !!existing && !existing.hidden;
   const settings = getMobileSettings();
   const notifyEnabled = localStorage.getItem(NOTIFY_KEY) === "1";
+
   return `
-    <section class="mobile-settings" id="settingsPanel" hidden>
+    <section class="mobile-settings ${isOpen ? "visible" : ""}" id="settingsPanel" ${isOpen ? "" : "hidden"}>
       <div class="mobile-settings-header">
         <h2>Paramètres</h2>
         <button type="button" class="settings-close" id="closeSettingsBtn">Fermer</button>
@@ -261,8 +265,11 @@ function bindSettingsPanel() {
   if (settingsToggle && !settingsToggle.dataset.bound) {
     settingsToggle.dataset.bound = "1";
     settingsToggle.addEventListener("click", () => {
-      const isOpen = panel && !panel.hidden;
-      if (isOpen) closeMobileSettings(); else openMobileSettings();
+      if (panel && !panel.hidden) {
+        closeMobileSettings();
+      } else {
+        openMobileSettings();
+      }
     });
   }
 
