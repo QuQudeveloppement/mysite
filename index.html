@@ -6,7 +6,6 @@
 
     <title>Ququdeveloppement</title>
 
-    <!-- Logo de l'onglet du navigateur -->
     <link
         rel="icon"
         type="image/png"
@@ -14,418 +13,743 @@
     >
 
     <style>
+        :root {
+            --bg-1: #060816;
+            --bg-2: #0d1324;
+            --panel: rgba(17, 24, 39, 0.72);
+            --panel-strong: rgba(19, 25, 42, 0.92);
+            --panel-soft: rgba(255, 255, 255, 0.04);
+            --stroke: rgba(255, 255, 255, 0.12);
+            --text: #edf2ff;
+            --text-soft: rgba(237, 242, 255, 0.72);
+            --muted: rgba(237, 242, 255, 0.52);
+            --pink: #ff7ad9;
+            --purple: #8b5cf6;
+            --blue: #5ac8fa;
+            --teal: #6ee7d8;
+            --gold: #f6d365;
+            --shadow: rgba(4, 6, 14, 0.6);
+            --glow: rgba(113, 96, 255, 0.55);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             min-height: 100vh;
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
-
-            color: #ffffff;
-
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
             background:
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(70, 100, 220, 0.35),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at 80% 90%,
-                    rgba(150, 70, 220, 0.30),
-                    transparent 35%
-                ),
-                #0b0d14;
+                radial-gradient(circle at 12% 15%, rgba(110, 90, 255, 0.28), transparent 26%),
+                radial-gradient(circle at 85% 20%, rgba(90, 200, 250, 0.20), transparent 22%),
+                radial-gradient(circle at 65% 88%, rgba(255, 122, 217, 0.18), transparent 26%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            overflow-x: hidden;
+        }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: auto;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.22;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-            padding: 40px 20px;
+        body::before {
+            top: 6%;
+            left: -90px;
+            background: rgba(139, 92, 246, 0.9);
+        }
+
+        body::after {
+            right: -110px;
+            bottom: 0;
+            background: rgba(90, 200, 250, 0.85);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .container {
-            width: 100%;
-            max-width: 950px;
-            text-align: center;
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .title {
-            font-size: clamp(42px, 8vw, 76px);
-            line-height: 1.05;
-            font-weight: 800;
-            letter-spacing: -3px;
-            margin-bottom: 35px;
-            color: #ffffff;
-            text-shadow: 0 5px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        .profile-container {
+        .topbar {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding: 28px 0 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #f5f7ff;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
+            display: grid;
+            place-items: center;
+            box-shadow: 0 12px 30px rgba(113, 96, 255, 0.45);
+            font-size: 18px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 42px;
         }
 
-        .profile {
-            display: block;
-            width: 170px;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        .nav a {
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
         }
 
-        .profile:hover {
-            transform: scale(1.04);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.55);
+        .nav a:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: var(--text);
         }
 
-        .story {
-            margin: 0 auto 48px;
-            padding: 28px 24px 20px;
-            border-radius: 26px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-            backdrop-filter: blur(8px);
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            align-items: center;
+            padding: 36px 0 32px;
+        }
+
+        .hero-copy {
+            padding: 18px 0;
         }
 
         .eyebrow {
-            display: inline-block;
-            margin-bottom: 12px;
-            font-size: 12px;
-            letter-spacing: 0.16em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #9cc3ff;
             font-weight: 700;
+            color: #dfe9ff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            margin-bottom: 18px;
         }
 
-        .story h2 {
-            font-size: clamp(28px, 4vw, 42px);
-            margin-bottom: 24px;
-            color: #ffffff;
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--blue));
+            box-shadow: 0 0 18px rgba(110, 231, 216, 0.8);
         }
 
-        .bio-grid {
-            display: grid;
-            grid-template-columns: 1.6fr 0.9fr;
-            gap: 22px;
-            align-items: stretch;
-            text-align: left;
+        h1 {
+            font-size: clamp(2.7rem, 5vw, 5.1rem);
+            line-height: 0.95;
+            letter-spacing: -0.06em;
+            font-weight: 900;
+            margin-bottom: 18px;
+            text-wrap: balance;
         }
 
-        .bio-text {
-            background: rgba(255, 255, 255, 0.035);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 20px 20px 18px;
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff, #b6c9ff 30%, #8de7ff 55%, #da95ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .bio-text p {
-            margin-bottom: 16px;
-            color: rgba(255, 255, 255, 0.8);
+        .hero-text {
+            max-width: 620px;
+            font-size: 1.08rem;
             line-height: 1.8;
-            font-size: 16px;
+            color: var(--text-soft);
+            margin-bottom: 28px;
         }
 
-        .bio-text p:last-child {
-            margin-bottom: 0;
-        }
-
-        .quote-box {
+        .cta-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 180px;
-            padding: 18px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(129, 92, 255, 0.25), rgba(42, 153, 255, 0.18));
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #f0f4ff;
-            font-size: clamp(18px, 2vw, 24px);
-            font-weight: 700;
-            line-height: 1.5;
-            text-align: center;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-            margin-top: 22px;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 18px;
-            height: 220px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .sites-title {
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 22px;
-            color: #eeeeee;
-        }
-
-        .sites {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 18px;
             flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 26px;
         }
 
-        .site-button {
-            width: 260px;
-            min-height: 62px;
+        .primary-btn,
+        .secondary-btn,
+        .mini-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 14px;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .primary-btn {
+            padding: 15px 22px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            box-shadow: 0 18px 40px rgba(143, 96, 255, 0.35);
+            color: white;
+        }
+
+        .secondary-btn {
+            padding: 15px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .mini-btn {
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: transparent;
+            color: var(--text-soft);
+            font-size: 0.86rem;
+        }
+
+        .primary-btn:hover,
+        .secondary-btn:hover,
+        .mini-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .stats {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .stat {
+            min-width: 120px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 16px 22px;
-            border-radius: 15px;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 600;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .site-button:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.14);
-            border-color: rgba(255, 255, 255, 0.30);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+        .cover-card {
+            position: relative;
+            width: min(100%, 500px);
+            padding: 18px;
+            border-radius: 30px;
+            background: rgba(14, 20, 35, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(6, 10, 20, 0.7), 0 0 0 1px rgba(255,255,255,0.04);
+            transform: rotate(1deg);
+            animation: floatCard 6s ease-in-out infinite;
         }
 
-        .site-button:active {
-            transform: translateY(-1px);
-        }
-
-        .site-description {
-            font-size: 13px;
-            font-weight: 400;
-            line-height: 1.4;
-            color: rgba(255, 255, 255, 0.75);
-            margin-top: 0;
-            max-height: 0;
-            opacity: 0;
+        .photo-wrap {
             overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 5;
-            line-clamp: 5;
+            border-radius: 22px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #0d1220;
         }
 
-        .site-button:hover .site-description,
-        .site-button:focus-visible .site-description {
-            max-height: 100px;
-            opacity: 1;
+        .cover-image {
+            display: block;
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            filter: saturate(1.1) contrast(1.05);
+        }
+
+        .floating-tag {
+            position: absolute;
+            right: -18px;
+            bottom: 25px;
+            padding: 12px 16px;
+            border-radius: 16px;
+            background: rgba(12, 16, 25, 0.9);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+            animation: floatTag 4.5s ease-in-out infinite;
+        }
+
+        .floating-tag strong {
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .floating-tag span {
+            color: var(--muted);
+            font-size: 0.76rem;
+        }
+
+        .section {
+            padding: 36px 0 12px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .section-kicker {
+            color: #a9c5ff;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3vw, 3rem);
+            letter-spacing: -0.05em;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
             margin-top: 10px;
         }
 
-        .footer {
-            margin-top: 50px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.40);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--stroke);
+            border-radius: 26px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 18px 50px rgba(0,0,0,0.15);
         }
 
-        @media (max-width: 760px) {
-            .bio-grid {
+        .bio-box {
+            padding: 28px 24px;
+        }
+
+        .bio-box p {
+            color: var(--text-soft);
+            line-height: 1.9;
+            font-size: 1.02rem;
+            margin-bottom: 16px;
+        }
+
+        .bio-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            padding: 24px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .mini-card {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .mini-card strong {
+            display: block;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .mini-card span {
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 26px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.09);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .project-visual {
+            height: 180px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.35), rgba(90, 200, 250, 0.28), rgba(255, 122, 217, 0.28));
+            display: grid;
+            place-items: center;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .project-body {
+            padding: 22px 20px 20px;
+        }
+
+        .project-body h3 {
+            margin-bottom: 10px;
+            font-size: 1.42rem;
+        }
+
+        .project-body p {
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .project-tag {
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c7d9ff;
+            font-weight: 700;
+        }
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            padding: 28px 24px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-copy {
+            color: var(--text-soft);
+            line-height: 1.8;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 18px 0 50px;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: rotate(1deg) translateY(0); }
+            50% { transform: rotate(-1deg) translateY(-10px); }
+        }
+
+        @keyframes floatTag {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .about-grid,
+            .contact-wrap {
                 grid-template-columns: 1fr;
             }
 
-            .gallery {
-                grid-template-columns: 1fr;
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-actions {
+                justify-content: flex-start;
             }
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 30px 16px;
-            }
-
-            .title {
-                font-size: 43px;
-                letter-spacing: -2px;
-            }
-
-            .profile {
-                width: 145px;
-                height: 145px;
-            }
-
-            .sites {
+        @media (max-width: 700px) {
+            .topbar {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
 
-            .site-button {
+            .nav {
+                justify-content: flex-start;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cover-image {
+                height: 420px;
+            }
+
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 540px) {
+            .hero {
+                padding-top: 10px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .primary-btn,
+            .secondary-btn {
                 width: 100%;
-                max-width: 360px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <main class="container">
-
-        <h1 class="title">
-            Ququdeveloppement
-        </h1>
-
-        <div class="profile-container">
-            <img
-                class="profile"
-                src="Fichiers/Images/Img_2026_09_13_15_09_32.jpeg"
-                alt="Photo de profil de Ququdeveloppement"
-            >
-        </div>
-
-        <section class="story" aria-labelledby="story-title">
-            <p class="eyebrow">Autobiographie</p>
-            <h2 id="story-title">Mon histoire</h2>
-
-            <div class="bio-grid">
-                <div class="bio-text">
-                    <p>
-                        Je suis Ququdeveloppement, une personne passionnée par la création,
-                        l'innovation et le partage de belles idées. Depuis toujours, j'aime
-                        transformer des concepts simples en expériences visuellement fortes,
-                        utiles et inspirantes.
-                    </p>
-                    <p>
-                        Mon parcours est fait de curiosité, d'apprentissage et de volonté.
-                        J’aime explorer de nouveaux domaines, développer des projets qui ont
-                        un sens et créer des espaces où les idées peuvent prendre vie.
-                    </p>
-                    <p>
-                        À travers ce site, je souhaite montrer une partie de moi : mes projets,
-                        mes inspirations, mes créations et les rêves que je mets en mouvement
-                        chaque jour.
-                    </p>
-                </div>
-
-                <div class="quote-box">
-                    “Créer, apprendre, inspirer et aller toujours plus loin.”
-                </div>
+    <div class="container">
+        <header class="topbar">
+            <div class="brand" aria-label="Ququdeveloppement">
+                <div class="brand-mark">Q</div>
+                <span>Ququdeveloppement</span>
             </div>
 
-            <div class="gallery" aria-label="Galerie de photos">
-                <div class="gallery-item">
-                    <img
-                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
-                        alt="Travail créatif en équipe"
-                    >
+            <nav class="nav" aria-label="Navigation principale">
+                <a href="#about">À propos</a>
+                <a href="#projects">Projets</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-copy">
+                    <div class="eyebrow">Création • innovation • passion</div>
+                    <h1>
+                        Je construis des idées <span class="gradient-text">futuristes</span> qui inspirent.
+                    </h1>
+                    <p class="hero-text">
+                        Bienvenue sur mon univers digital. Ici, je partage mon parcours, mes projets,
+                        mes inspirations et les créations qui me motivent chaque jour.
+                    </p>
+
+                    <div class="cta-row">
+                        <a class="primary-btn" href="#projects">Voir mes projets</a>
+                        <a class="secondary-btn" href="#about">Découvrir mon histoire</a>
+                    </div>
+
+                    <div class="stats" aria-label="Statistiques">
+                        <div class="stat">
+                            <strong>3</strong>
+                            <span>sites</span>
+                        </div>
+                        <div class="stat">
+                            <strong>∞</strong>
+                            <span>idées</span>
+                        </div>
+                        <div class="stat">
+                            <strong>2026</strong>
+                            <span>année</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img
-                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-                        alt="Ordinateur et code"
-                    >
+
+                <div class="hero-visual">
+                    <div class="cover-card">
+                        <div class="photo-wrap">
+                            <img
+                                class="cover-image"
+                                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+                                alt="Photo de couverture de Ququdeveloppement"
+                            >
+                        </div>
+                        <div class="floating-tag">
+                            <strong>Creative</strong>
+                            <span>digital designer</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img
-                        src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
-                        alt="Ambiance professionnelle"
-                    >
+            </section>
+
+            <section id="about" class="section">
+                <div class="section-head">
+                    <div>
+                        <div class="section-kicker">À propos</div>
+                        <h2 class="section-title">Mon histoire</h2>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <h2 class="sites-title">
-            Mes sites :
-        </h2>
+                <div class="about-grid">
+                    <div class="glass-panel bio-box">
+                        <p>
+                            Je suis Ququdeveloppement, un créateur passionné par l'innovation,
+                            le design et les projets qui ont une vraie âme. J’aime transformer des idées
+                            simples en expériences visuelles fortes, utiles et inspirantes.
+                        </p>
+                        <p>
+                            Mon parcours est avant tout fait de curiosité, de travail, d’apprentissage
+                            et de volonté. Chaque projet est pour moi une manière d’exprimer un point de vue,
+                            une vision, une énergie et une envie d’aller plus loin.
+                        </p>
+                        <p>
+                            À travers ce site, je partage une partie de moi : mes inspirations, mes projets,
+                            mes créations et le chemin qui m’a conduit à vouloir créer des choses qui marquent.
+                        </p>
+                    </div>
 
-        <div class="sites">
+                    <div class="glass-panel highlight-box">
+                        <div class="mini-card">
+                            <strong>01.</strong>
+                            <span>Créer des expériences modernes, simples et impactantes.</span>
+                        </div>
+                        <div class="mini-card">
+                            <strong>02.</strong>
+                            <span>Allier technologie, esthétique et storytelling.</span>
+                        </div>
+                        <div class="mini-card">
+                            <strong>03.</strong>
+                            <span>Partager des idées qui inspirent et donnent envie d’agir.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <a
-                class="site-button"
-                href="https://ququdeveloppement.github.io/mysite/blog.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>📆L'atelier</span>
+            <section id="projects" class="section">
+                <div class="section-head">
+                    <div>
+                        <div class="section-kicker">Projets</div>
+                        <h2 class="section-title">Mes créations</h2>
+                    </div>
+                </div>
 
-                <span class="site-description">
-                   Projets innovants & actualités 💡
-                </span>
-            </a>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-visual">📆</div>
+                        <div class="project-body">
+                            <h3>L'atelier</h3>
+                            <p>Des projets innovants, des actualités inspirantes et une vision créative qui évolue au fil du temps.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">Blog / actualités</span>
+                                <a class="mini-btn" href="https://ququdeveloppement.github.io/mysite/blog.html" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <a
-                class="site-button"
-                href="https://ququdeveloppement.github.io/mysite/Lium/Lium.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>🎵 Lium</span>
+                    <article class="project-card">
+                        <div class="project-visual">🎵</div>
+                        <div class="project-body">
+                            <h3>Lium</h3>
+                            <p>Un lecteur de musique épuré, rapide et agréable à utiliser, pensé pour une écoute fluide.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">Media / audio</span>
+                                <a class="mini-btn" href="https://ququdeveloppement.github.io/mysite/Lium/Lium.html" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                            </div>
+                        </div>
+                    </article>
 
-                <span class="site-description">
-                    Un lecteur de musique 100 % gratuit et sans publicités!
-                </span>
-            </a>
+                    <article class="project-card">
+                        <div class="project-visual">🌐</div>
+                        <div class="project-body">
+                            <h3>Nexora</h3>
+                            <p>Un navigateur web simple, léger, fonctionnel et pensé pour une navigation sans complications.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">Web / utilitaires</span>
+                                <a class="mini-btn" href="https://ququdeveloppement.github.io/mysite/Nexora/nexora.html" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
 
-            <a
-                class="site-button"
-                href="https://ququdeveloppement.github.io/mysite/Nexora/nexora.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>🌐 Nexora</span>
+            <section id="contact" class="section">
+                <div class="glass-panel contact-wrap">
+                    <div>
+                        <div class="section-kicker">Contact</div>
+                        <h2 class="section-title">Créons quelque chose d’exceptionnel.</h2>
+                    </div>
 
-                <span class="site-description">
-                    Un navigateur web simple, rapide et gratuit!
-                </span>
-            </a>
+                    <div class="contact-actions">
+                        <a class="primary-btn" href="mailto:dupontquentin74@gmail.com">Me contacter</a>
+                        <a class="secondary-btn" href="#top">Retour en haut</a>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-        </div>
-
-        <p class="footer">
-            © 2026 Ququdeveloppement
-        </p>
-
-    </main>
-
+        <footer>
+            © 2026 Ququdeveloppement — Tous droits réservés.
+        </footer>
+    </div>
 </body>
 </html>
