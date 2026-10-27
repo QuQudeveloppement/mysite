@@ -62,11 +62,18 @@
     overflow: hidden;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
   }
+  .mobile-home.compact {
+    border-radius: 14px;
+  }
   .mobile-home-inner {
     display: grid;
     grid-template-columns: 1.4fr .9fr;
     gap: 14px;
     padding: 18px 18px 16px;
+  }
+  .mobile-home.compact .mobile-home-inner {
+    gap: 10px;
+    padding: 14px 14px 12px;
   }
   .mobile-home-kicker {
     margin: 0 0 10px;
@@ -82,6 +89,9 @@
     line-height: 1;
     letter-spacing: -.04em;
   }
+  .mobile-home.compact h1 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
   .mobile-home h1 .accent {
     display: inline-block;
     padding: 0 .14em;
@@ -93,6 +103,10 @@
     color: rgba(255,255,255,.82);
     line-height: 1.55;
     font-size: .96rem;
+  }
+  .mobile-home.compact p {
+    margin-bottom: 12px;
+    font-size: .88rem;
   }
   .mobile-home-actions {
     display: flex;
@@ -162,6 +176,59 @@
     line-height: 1.2;
     letter-spacing: -.03em;
   }
+
+  .mobile-settings {
+    display: none;
+    margin: 0 0 18px;
+    padding: 14px 14px 12px;
+    border: 1px solid rgba(127,127,127,.42);
+    border-radius: 16px;
+    background: rgba(127,127,127,.05);
+  }
+  .mobile-settings.visible { display: block; }
+  .mobile-settings-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px;
+  }
+  .mobile-settings-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-family: var(--font-display, "Space Mono", monospace);
+  }
+  .settings-close {
+    border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; padding: 6px 10px; cursor: pointer;
+    font-family: var(--font-display, "Space Mono", monospace); font-size: .72rem;
+  }
+  .settings-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 0; border-top: 1px solid rgba(127,127,127,.2);
+  }
+  .settings-row:first-of-type { border-top: 0; }
+  .settings-row span {
+    font-size: .9rem;
+  }
+  .switch {
+    position: relative; display: inline-block; width: 46px; height: 26px;
+  }
+  .switch input {
+    opacity: 0; width: 0; height: 0;
+  }
+  .slider {
+    position: absolute; inset: 0; border-radius: 999px; background: rgba(255,255,255,.15); transition: .2s ease;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .slider:before {
+    content: ""; position: absolute; width: 18px; height: 18px; left: 4px; top: 3px; border-radius: 50%; background: #fff; transition: .2s ease;
+  }
+  .switch input:checked + .slider {
+    background: rgba(127,127,127,.42);
+  }
+  .switch input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  .settings-install {
+    width: 100%; margin-top: 12px; justify-content: center;
+  }
+
   .install-app-card {
     display: none;
     align-items: center;
@@ -180,7 +247,7 @@
   }
 
   @media (max-width: 768px) {
-    .mobile-home { display: block; }
+    .mobile-home, .mobile-settings { display: block; }
     .mobile-home-inner { grid-template-columns: 1fr; }
     .toolbar { margin-top: 4px; }
     .site-nav { justify-content: flex-end; }
@@ -196,8 +263,7 @@
     <nav class="site-nav">
       <a href="blog.html">Accueil</a>
       <a href="#archives">Archives</a>
-      <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false">Notifications</button>
-      <button type="button" class="nav-btn" id="installAppBtn" aria-label="Installer l'application" hidden>Installer l'app</button>
+      <button type="button" class="nav-btn" id="settingsToggle" aria-expanded="false" aria-controls="settingsPanel">Paramètres</button>
       <a href="forbidden.html" aria-label="Lien vide"></a>
     </nav>
   </div>
@@ -220,6 +286,9 @@ const app = document.getElementById("app");
 let ARTICLES = [];
 let deferredInstallPrompt = null;
 
+const MOBILE_SETTINGS_KEY = "atelier_mobile_settings";
+const MOBILE_SETTINGS_DEFAULT = { compact: false, showCategoryTags: true };
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
 }
@@ -230,6 +299,104 @@ function isMobileViewport() {
 
 function isStandaloneMode() {
   return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+function getMobileSettings() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(MOBILE_SETTINGS_KEY) || "{}") || {};
+    return { ...MOBILE_SETTINGS_DEFAULT, ...stored };
+  } catch {
+    return { ...MOBILE_SETTINGS_DEFAULT };
+  }
+}
+
+function setMobileSettings(next) {
+  try {
+    localStorage.setItem(MOBILE_SETTINGS_KEY, JSON.stringify(next));
+  } catch {}
+}
+
+function renderMobileSettings() {
+  if (!isMobileViewport()) return "";
+  const settings = getMobileSettings();
+  const notifyEnabled = localStorage.getItem(NOTIFY_KEY) === "1";
+  return `
+    <section class="mobile-settings" id="settingsPanel" hidden>
+      <div class="mobile-settings-header">
+        <h2>Paramètres</h2>
+        <button type="button" class="settings-close" id="closeSettingsBtn">Fermer</button>
+      </div>
+      <div class="settings-row">
+        <span>Notifications</span>
+        <label class="switch">
+          <input type="checkbox" id="notifyToggle" ${notifyEnabled ? "checked" : ""}>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="settings-row">
+        <span>Accueil compact</span>
+        <label class="switch">
+          <input type="checkbox" id="compactHomeToggle" ${settings.compact ? "checked" : ""}>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="settings-row">
+        <span>Afficher les catégories</span>
+        <label class="switch">
+          <input type="checkbox" id="showCategoryTagsToggle" ${settings.showCategoryTags ? "checked" : ""}>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <button type="button" class="tool-btn settings-install" id="installAppBtn" hidden>Installer l'app</button>
+    </section>
+  `;
+}
+
+function bindSettingsPanel() {
+  const settingsToggle = document.getElementById("settingsToggle");
+  const panel = document.getElementById("settingsPanel");
+  const closeBtn = document.getElementById("closeSettingsBtn");
+  if (settingsToggle) {
+    settingsToggle.addEventListener("click", () => {
+      if (!panel) return;
+      const isOpen = !panel.hasAttribute("hidden");
+      if (isOpen) {
+        panel.setAttribute("hidden", "hidden");
+        settingsToggle.setAttribute("aria-expanded", "false");
+      } else {
+        panel.removeAttribute("hidden");
+        settingsToggle.setAttribute("aria-expanded", "true");
+      }
+    });
+  }
+  if (closeBtn && panel) {
+    closeBtn.addEventListener("click", () => {
+      panel.setAttribute("hidden", "hidden");
+      if (settingsToggle) settingsToggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  const compactToggle = document.getElementById("compactHomeToggle");
+  if (compactToggle) {
+    compactToggle.addEventListener("change", () => {
+      const settings = getMobileSettings();
+      settings.compact = !!compactToggle.checked;
+      setMobileSettings(settings);
+      render();
+    });
+  }
+
+  const showTagsToggle = document.getElementById("showCategoryTagsToggle");
+  if (showTagsToggle) {
+    showTagsToggle.addEventListener("change", () => {
+      const settings = getMobileSettings();
+      settings.showCategoryTags = !!showTagsToggle.checked;
+      setMobileSettings(settings);
+      render();
+    });
+  }
+
+  setInstallButtonState();
 }
 
 function getCategoryEntries() {
@@ -250,6 +417,8 @@ function getDiscoverTarget() {
 }
 
 function getQuickCategoryLinks() {
+  const settings = getMobileSettings();
+  if (!settings.showCategoryTags) return "";
   const entries = getCategoryEntries().slice(0, 4);
   if (!entries.length) return "";
   return `
@@ -263,8 +432,9 @@ function renderMobileHome() {
   if (!isMobileViewport()) return "";
   const discoverHref = getDiscoverTarget();
   const active = ARTICLES.filter(a => !isArchived(a));
+  const settings = getMobileSettings();
   return `
-    <section class="mobile-home" aria-label="Accueil mobile">
+    <section class="mobile-home ${settings.compact ? "compact" : ""}" aria-label="Accueil mobile">
       <div class="mobile-home-inner">
         <div>
           <p class="mobile-home-kicker">L'atelier</p>
@@ -350,6 +520,7 @@ async function loadArticles() {
   }
   bindNotificationToggle();
   bindInstallPrompt();
+  bindSettingsPanel();
   if (localStorage.getItem(LAST_COMMON_ARTICLE_KEY) === null && getLatestArticleId()) {
     localStorage.setItem(LAST_COMMON_ARTICLE_KEY, getLatestArticleId());
   }
@@ -453,15 +624,18 @@ function renderList(currentSlug = "") {
     return (a.date < b.date ? 1 : -1);
   });
   const bar = toolbarHtml(active, currentSlug);
+  const mobileSettings = isMobileViewport() ? renderMobileSettings() : "";
   const mobileIntro = !currentSlug && isMobileViewport() ? renderMobileHome() : "";
   if (sorted.length === 0) {
     const msg = currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.";
-    app.innerHTML = mobileIntro + bar + `<p class="log-empty">${msg}</p>`;
+    app.innerHTML = mobileSettings + mobileIntro + bar + `<p class="log-empty">${msg}</p>`;
     wireToolbar(shown);
+    bindSettingsPanel();
     return;
   }
-  app.innerHTML = mobileIntro + bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
+  app.innerHTML = mobileSettings + mobileIntro + bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
   wireToolbar(shown);
+  bindSettingsPanel();
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
@@ -562,13 +736,7 @@ function getLatestArticleId() {
 function setNotificationBtnState() {
   const btn = document.getElementById("notifyToggle");
   if (!btn) return;
-
-  const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
-  const granted = "Notification" in window && Notification.permission === "granted";
-
-  btn.hidden = enabled && granted;
-  btn.setAttribute("aria-pressed", String(enabled));
-  btn.textContent = "Notifications";
+  btn.checked = localStorage.getItem(NOTIFY_KEY) === "1";
 }
 
 function notifyIfNewArticle() {
@@ -595,27 +763,28 @@ function bindNotificationToggle() {
   const btn = document.getElementById("notifyToggle");
   if (!btn) return;
 
-  btn.addEventListener("click", async () => {
+  btn.addEventListener("change", async () => {
     if (!("Notification" in window)) {
       alert("Ce navigateur ne supporte pas les notifications Web.");
+      btn.checked = false;
+      localStorage.setItem(NOTIFY_KEY, "0");
       return;
     }
 
-    const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
-    if (!enabled) {
+    if (btn.checked) {
       const result = await Notification.requestPermission();
       if (result !== "granted") {
         alert("L'autorisation de notification a été refusée. Tu peux la réactiver dans les paramètres du navigateur.");
+        btn.checked = false;
+        localStorage.setItem(NOTIFY_KEY, "0");
         return;
       }
       localStorage.setItem(NOTIFY_KEY, "1");
-      setNotificationBtnState();
       notifyIfNewArticle();
       return;
     }
 
     localStorage.setItem(NOTIFY_KEY, "0");
-    setNotificationBtnState();
   });
 
   setNotificationBtnState();
@@ -668,6 +837,7 @@ window.addEventListener("hashchange", render);
 window.addEventListener("resize", () => {
   setInstallButtonState();
   setNotificationBtnState();
+  bindSettingsPanel();
 });
 loadArticles();
 </script>
