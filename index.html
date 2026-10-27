@@ -216,7 +216,8 @@
 
         .primary-btn,
         .secondary-btn,
-        .mini-btn {
+        .mini-btn,
+        .social-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -248,9 +249,30 @@
             font-size: 0.86rem;
         }
 
+        .social-btn {
+            padding: 14px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            min-width: 180px;
+        }
+
+        .social-btn .discord-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #5865F2, #7b8af8);
+            font-size: 0.9rem;
+            font-weight: 900;
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.35);
+        }
+
         .primary-btn:hover,
         .secondary-btn:hover,
-        .mini-btn:hover {
+        .mini-btn:hover,
+        .social-btn:hover {
             transform: translateY(-2px);
         }
 
@@ -484,7 +506,7 @@
             gap: 20px;
             padding: 28px 24px;
             align-items: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .contact-copy {
@@ -497,6 +519,55 @@
             flex-wrap: wrap;
             gap: 12px;
             justify-content: flex-end;
+        }
+
+        .bottom-contact {
+            margin: 10px 0 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .bottom-card {
+            padding: 20px 22px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .bottom-card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #a9c5ff;
+        }
+
+        .bottom-card a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        .mail-icon,
+        .discord-icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .discord-icon-box {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.25), rgba(123, 138, 248, 0.12));
+            color: #dfe4ff;
         }
 
         footer {
@@ -518,7 +589,8 @@
         @media (max-width: 980px) {
             .hero,
             .about-grid,
-            .contact-wrap {
+            .contact-wrap,
+            .bottom-contact {
                 grid-template-columns: 1fr;
             }
 
@@ -570,7 +642,8 @@
             }
 
             .primary-btn,
-            .secondary-btn {
+            .secondary-btn,
+            .social-btn {
                 width: 100%;
             }
         }
@@ -742,6 +815,24 @@
                     <div class="contact-actions">
                         <a class="primary-btn" href="mailto:dupontquentin74@gmail.com">Me contacter</a>
                         <a class="secondary-btn" href="#top">Retour en haut</a>
+                    </div>
+                </div>
+
+                <div class="bottom-contact">
+                    <div class="bottom-card">
+                        <strong>Email</strong>
+                        <a href="mailto:dupontquentin74@gmail.com">
+                            <span class="mail-icon">@</span>
+                            dupontquentin74@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="bottom-card">
+                        <strong>Discord</strong>
+                        <a href="https://discord.com/users/TON_ID" target="_blank" rel="noopener noreferrer">
+                            <span class="discord-icon-box">D</span>
+                            Ajouter sur Discord
+                        </a>
                     </div>
                 </div>
             </section>
