@@ -781,5 +781,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "obs-studio-33-refonte-du-moteur-de-plugins-et-nombreuses-ameliorations-techniques",
+    "title": "OBS Studio 33 : refonte du moteur de plugins et nombreuses améliorations techniques",
+    "date": "2026-10-27",
+    "excerpt": "OBS Studio 33 apporte une mise à jour majeure du framework Chromium, une nouvelle organisation des plugins et plusieurs optimisations internes, tout en abandonnant certains anciens composants et plateformes.",
+    "category": "Informatique",
+    "cover": "https://next.ink/wp-content/uploads/2026/10/image-122-1024x814.png",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La version 33 d’OBS Studio, le logiciel libre d’enregistrement vidéo et de streaming, arrive avec un ensemble de changements profonds. Au‑delà des améliorations visibles, c’est surtout la réorganisation du système de plugins et la mise à jour du composant Chromium qui marquent cette mouture.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Mise à jour du Chromium Embedded Framework",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OBS utilise le Chromium Embedded Framework (CEF) pour les sources navigateur et les panneaux ancrables. La version 33 passe de CEF 127/6533 à CEF 150/7871, intégrant plus de deux ans de modifications. Cette évolution apporte une meilleure stabilité des sources web, un rendu plus fluide et une compatibilité accrue avec les standards récents du web.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Optimisations internes et nouvelles fonctionnalités",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Plusieurs améliorations techniques sont introduites : l’activation par défaut de l’encodeur NVENC sur les processeurs ARM64, l’inclusion des derniers SDK NVIDIA Broadcast pour les effets audio‑vidéo, et une détection plus fiable des jeux en plein écran. Sur macOS, la transparence des captures d’écran est mieux gérée, tandis que le découpage des fichiers MP4/MOV hybrides est affiné. L’audio bénéficie d’une mise à l’échelle du débit selon le nombre de canaux lors d’enregistrements simples.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nouvelle gestion des plugins",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le changement le plus visible concerne la structure des plugins. Les extensions natives sont désormais regroupées dans un dossier « core », tandis que les plugins tiers disposent d’un nouvel emplacement et d’une arborescence dédiée. Les plugins existants continuent de fonctionner depuis leurs anciens répertoires, mais seulement jusqu’à la version 34, qui imposera le nouveau schéma. OBS fournit une page explicative pour aider les développeurs à adapter leurs extensions, sous peine de les voir désactivées.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nettoyage du code et support des plateformes",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OBS 33 supprime plusieurs composants obsolètes. Le support d’Ubuntu 24.04 est abandonné, les utilisateurs doivent migrer vers Ubuntu 26.04 ou recourir à la version Flatpak. De plus, toutes les versions 6.x et 7.x de FFmpeg ainsi que les versions de Qt comprises entre 6.4 et 6.9 sont retirées, allégeant ainsi le poids du logiciel et réduisant les risques de conflits.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OBS Studio 33 représente une étape importante pour le projet : le moteur de plugins est réorganisé pour faciliter le développement futur, le cœur du logiciel bénéficie d’une mise à jour majeure du framework web, et de nombreuses optimisations renforcent la stabilité et les performances. Les développeurs devront toutefois adapter leurs extensions avant la version 34, tandis que les utilisateurs sur des plateformes non supportées devront envisager une migration ou l’usage de Flatpak.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
