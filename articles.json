@@ -958,5 +958,109 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "iphone-duo-le-crackgate-et-la-reponse-dapple-face-aux-fissures-decran",
+    "title": "iPhone Duo : le « crackgate » et la réponse d’Apple face aux fissures d’écran",
+    "date": "2026-10-27",
+    "excerpt": "Des utilisateurs signalent des fissures lumineuses sur l’écran interne de l’iPhone Duo, un problème qualifié de « crackgate ». Apple reconnaît le défaut sur un petit nombre d’appareils et propose un remplacement via AppleCare.",
+    "category": "Smartphones",
+    "cover": "https://www.presse-citron.net/app/uploads/2026/10/Crackgate3-1600x900.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis son lancement le 23 octobre, l’iPhone Duo suscite l’enthousiasme mais aussi des plaintes récurrentes : la dalle intérieure se fissure, affichant des bandes lumineuses sur le côté droit. Ce phénomène, rapidement baptisé « crackgate », a conduit Apple à intervenir officiellement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Origine du problème et premières constats",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les signalements proviennent de plusieurs pays (Australie, Chine, États‑Unis, Japon) et décrivent une première fissure centrale le long de la charnière, suivie d’une seconde sur la partie droite de l’écran. Des experts évoquent une pièce de la charnière qui exercerait une pression sur la dalle, tandis que iFixit a identifié la charnière elle‑même comme point critique, où poussière et frottements peuvent fragiliser le verre. Le problème touche, selon Apple, « un petit nombre » d’unités, mais le nombre exact reste inconnu.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réparabilité et diagnostics de iFixit",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "iFixit a noté que, malgré une note de 5/10 – la meilleure parmi les smartphones pliants – la réparation reste complexe. Le dos et l’écran externe se retirent facilement, mais accéder à la dalle interne requiert une manipulation précise. Le dispositif de test de iFixit utilise de la poudre fluorescente pour reproduire l’accumulation de poussière autour de la charnière, confirmant que la saleté s’infiltre et crée des frictions susceptibles d’entraîner les fissures. Les joints d’imperméabilisation sont jugés efficaces, mais la charnière demeure le maillon faible.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réaction d’Apple et solutions proposées",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Après plusieurs jours de silence, Apple a publié une déclaration via Bloomberg et 9to5mac, reconnaissant le problème et invitant les utilisateurs concernés à contacter AppleCare pour un remplacement gratuit. La société précise que le défaut concerne « un petit nombre d’iPhone Duo ». En France, la garantie légale de conformité de deux ans pourrait couvrir ces cas, mais hors garantie le coût d’un écran de remplacement est annoncé à 1 149 €, voire moins avec AppleCare+.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Perspectives et leçons pour les pliables",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le « crackgate » rappelle les précédents scandales d’Apple (antenna‑gate, bendgate) et montre les défis techniques liés aux smartphones pliants. La charnière, indispensable à la flexibilité, reste un point sensible où la poussière et les contraintes mécaniques peuvent compromettre la durabilité. Les retours d’expérience d’iFixit et les premiers remplacements d’Apple permettront sans doute d’ajuster la production future, notamment en renforçant la protection de la dalle interne.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le iPhone Duo, premier pliable d’Apple, montre déjà les limites de la technologie actuelle. Le « crackgate » affecte un nombre limité d’appareils, mais il suffit à ternir l’image de fiabilité de la marque. Apple a réagi en proposant des remplacements, ce qui apaise les utilisateurs affectés, mais la situation souligne l’importance d’une conception plus robuste de la charnière pour les prochains modèles pliables.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "video",
+        "value": "",
+        "url": "https://www.youtube.com/watch?v=WOVIjFnivJA",
+        "caption": "Apple’s Folding iPhone Might Have a Screen Problem! (iFixit)"
+      },
+      {
+        "type": "video",
+        "value": "",
+        "url": "https://www.youtube.com/watch?v=wtP7Q9Io90I",
+        "caption": "아이폰 듀오 디스플레이 이슈 원인 발견 (궁금하기 CuriousHagi)"
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Presse-citron, BFMTV, Journal du Geek"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
