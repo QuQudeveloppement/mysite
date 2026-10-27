@@ -28,6 +28,25 @@
 <link rel="apple-touch-icon" href="https://ququdeveloppement.github.io/mysite/BlogIcon.png">
 <link rel="stylesheet" href="style.css">
 <style>
+  body.mobile-compact .log-entry {
+    padding: 12px;
+    border-radius: 12px;
+  }
+  body.mobile-compact .log-entry-body {
+    gap: 6px;
+  }
+  body.mobile-compact .log-title {
+    margin: 0;
+  }
+  body.mobile-compact .log-excerpt {
+    margin: 0;
+  }
+  body.hide-category-tags .badge.cat,
+  body.hide-category-tags .cat-chip,
+  body.hide-category-tags .log-date .badge.cat {
+    display: none !important;
+  }
+
   .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px; }
   .tool-btn {
     display: inline-flex; align-items: center; gap: 8px;
@@ -51,131 +70,6 @@
   .nav-btn:hover, .nav-btn:focus-visible { opacity: 1; background: rgba(127,127,127,.2); }
   .nav-btn[hidden] { display: none; }
   .site-header .site-nav .nav-btn[hidden] { display: none !important; }
-
-  .mobile-home {
-    display: none;
-    margin: 0 0 22px;
-    padding: 0;
-    border: 1px solid rgba(127, 127, 127, .42);
-    border-radius: 20px;
-    background: linear-gradient(180deg, rgba(127,127,127,.09), rgba(127,127,127,.03));
-    overflow: hidden;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
-  }
-  .mobile-home.compact {
-    border-radius: 14px;
-  }
-  .mobile-home-inner {
-    display: grid;
-    grid-template-columns: 1.4fr .9fr;
-    gap: 14px;
-    padding: 18px 18px 16px;
-  }
-  .mobile-home.compact .mobile-home-inner {
-    gap: 10px;
-    padding: 14px 14px 12px;
-  }
-  .mobile-home-kicker {
-    margin: 0 0 10px;
-    opacity: .72;
-    font-size: .7rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    font-family: var(--font-display, "Space Mono", monospace);
-  }
-  .mobile-home h1 {
-    margin: 0 0 10px;
-    font-size: clamp(1.9rem, 6vw, 3rem);
-    line-height: 1;
-    letter-spacing: -.04em;
-  }
-  .mobile-home.compact h1 {
-    font-size: clamp(1.5rem, 5vw, 2.2rem);
-  }
-  .mobile-home h1 .accent {
-    display: inline-block;
-    padding: 0 .14em;
-    border-bottom: 1px solid currentColor;
-    opacity: .95;
-  }
-  .mobile-home p {
-    margin: 0 0 16px;
-    color: rgba(255,255,255,.82);
-    line-height: 1.55;
-    font-size: .96rem;
-  }
-  .mobile-home.compact p {
-    margin-bottom: 12px;
-    font-size: .88rem;
-  }
-  .mobile-home-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .mobile-home-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
-    padding: 10px 16px;
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    text-decoration: none;
-    color: inherit;
-    font-family: var(--font-display, "Space Mono", monospace);
-    font-size: .76rem;
-    background: rgba(255,255,255,.02);
-    transition: background .2s ease, transform .2s ease;
-  }
-  .mobile-home-cta:hover, .mobile-home-cta:focus-visible {
-    background: rgba(127,127,127,.18);
-    transform: translateY(-1px);
-  }
-  .mobile-home-cta.secondary { opacity: .8; }
-  .mobile-home-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-  }
-  .mobile-home-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 7px 10px;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-    background: rgba(255,255,255,.02);
-    color: rgba(255,255,255,.8);
-    font-size: .72rem;
-    text-decoration: none;
-    font-family: var(--font-display, "Space Mono", monospace);
-  }
-  .mobile-home-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 14px 15px;
-    border: 1px solid rgba(127,127,127,.35);
-    border-radius: 16px;
-    background: rgba(0,0,0,.16);
-  }
-  .mobile-home-panel .stat {
-    display: block;
-    font-size: .7rem;
-    opacity: .7;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    font-family: var(--font-display, "Space Mono", monospace);
-  }
-  .mobile-home-panel strong {
-    display: block;
-    margin-top: 4px;
-    font-size: 1.2rem;
-    line-height: 1.2;
-    letter-spacing: -.03em;
-  }
 
   .mobile-settings {
     display: none;
@@ -229,27 +123,8 @@
     width: 100%; margin-top: 12px; justify-content: center;
   }
 
-  .install-app-card {
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin: 0 0 18px;
-    padding: 12px 14px;
-    border: 1px solid rgba(127, 127, 127, .45);
-    border-radius: 14px;
-    background: rgba(127, 127, 127, .06);
-  }
-  .install-app-card.visible { display: flex; }
-  .install-app-copy {
-    font-size: .9rem;
-    opacity: .9;
-  }
-
   @media (max-width: 768px) {
-    .mobile-home, .mobile-settings { display: block; }
-    .mobile-home-inner { grid-template-columns: 1fr; }
-    .toolbar { margin-top: 4px; }
+    .mobile-settings { display: block; }
     .site-nav { justify-content: flex-end; }
     .site-nav a, .site-nav .nav-btn { font-size: .7rem; }
   }
@@ -316,6 +191,14 @@ function setMobileSettings(next) {
   } catch {}
 }
 
+function applyMobileDisplaySettings() {
+  const settings = getMobileSettings();
+  const isCompact = isMobileViewport() && settings.compact;
+  const hideTags = isMobileViewport() && !settings.showCategoryTags;
+  document.body.classList.toggle("mobile-compact", !!isCompact);
+  document.body.classList.toggle("hide-category-tags", !!hideTags);
+}
+
 function renderMobileSettings() {
   if (!isMobileViewport()) return "";
   const settings = getMobileSettings();
@@ -352,117 +235,67 @@ function renderMobileSettings() {
   `;
 }
 
+function openMobileSettings() {
+  const panel = document.getElementById("settingsPanel");
+  const settingsToggle = document.getElementById("settingsToggle");
+  if (!panel || !settingsToggle) return;
+  panel.hidden = false;
+  panel.classList.add("visible");
+  settingsToggle.setAttribute("aria-expanded", "true");
+}
+
+function closeMobileSettings() {
+  const panel = document.getElementById("settingsPanel");
+  const settingsToggle = document.getElementById("settingsToggle");
+  if (!panel || !settingsToggle) return;
+  panel.hidden = true;
+  panel.classList.remove("visible");
+  settingsToggle.setAttribute("aria-expanded", "false");
+}
+
 function bindSettingsPanel() {
   const settingsToggle = document.getElementById("settingsToggle");
   const panel = document.getElementById("settingsPanel");
   const closeBtn = document.getElementById("closeSettingsBtn");
-  if (settingsToggle) {
+
+  if (settingsToggle && !settingsToggle.dataset.bound) {
+    settingsToggle.dataset.bound = "1";
     settingsToggle.addEventListener("click", () => {
-      if (!panel) return;
-      const isOpen = !panel.hasAttribute("hidden");
-      if (isOpen) {
-        panel.setAttribute("hidden", "hidden");
-        settingsToggle.setAttribute("aria-expanded", "false");
-      } else {
-        panel.removeAttribute("hidden");
-        settingsToggle.setAttribute("aria-expanded", "true");
-      }
-    });
-  }
-  if (closeBtn && panel) {
-    closeBtn.addEventListener("click", () => {
-      panel.setAttribute("hidden", "hidden");
-      if (settingsToggle) settingsToggle.setAttribute("aria-expanded", "false");
+      const isOpen = panel && !panel.hidden;
+      if (isOpen) closeMobileSettings(); else openMobileSettings();
     });
   }
 
+  if (closeBtn && !closeBtn.dataset.bound) {
+    closeBtn.dataset.bound = "1";
+    closeBtn.addEventListener("click", closeMobileSettings);
+  }
+
   const compactToggle = document.getElementById("compactHomeToggle");
-  if (compactToggle) {
+  if (compactToggle && !compactToggle.dataset.bound) {
+    compactToggle.dataset.bound = "1";
     compactToggle.addEventListener("change", () => {
       const settings = getMobileSettings();
       settings.compact = !!compactToggle.checked;
       setMobileSettings(settings);
+      applyMobileDisplaySettings();
       render();
     });
   }
 
   const showTagsToggle = document.getElementById("showCategoryTagsToggle");
-  if (showTagsToggle) {
+  if (showTagsToggle && !showTagsToggle.dataset.bound) {
+    showTagsToggle.dataset.bound = "1";
     showTagsToggle.addEventListener("change", () => {
       const settings = getMobileSettings();
       settings.showCategoryTags = !!showTagsToggle.checked;
       setMobileSettings(settings);
+      applyMobileDisplaySettings();
       render();
     });
   }
 
   setInstallButtonState();
-}
-
-function getCategoryEntries() {
-  const cats = collectCategories(ARTICLES.filter(a => !isArchived(a)));
-  return [...cats.entries()].sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"));
-}
-
-function getDiscoverTarget() {
-  const categories = getCategoryEntries();
-  if (categories.length > 0) {
-    return `#categorie/${encodeURIComponent(categories[0][0])}`;
-  }
-  const firstArticle = ARTICLES.filter(a => !isArchived(a))[0];
-  if (firstArticle) {
-    return `#article/${encodeURIComponent(firstArticle.id)}`;
-  }
-  return "#archives";
-}
-
-function getQuickCategoryLinks() {
-  const settings = getMobileSettings();
-  if (!settings.showCategoryTags) return "";
-  const entries = getCategoryEntries().slice(0, 4);
-  if (!entries.length) return "";
-  return `
-    <div class="mobile-home-meta">
-      ${entries.map(([slug, info]) => `<a href="#categorie/${encodeURIComponent(slug)}" class="mobile-home-tag">${escapeHtml(info.label)}</a>`).join("")}
-    </div>
-  `;
-}
-
-function renderMobileHome() {
-  if (!isMobileViewport()) return "";
-  const discoverHref = getDiscoverTarget();
-  const active = ARTICLES.filter(a => !isArchived(a));
-  const settings = getMobileSettings();
-  return `
-    <section class="mobile-home ${settings.compact ? "compact" : ""}" aria-label="Accueil mobile">
-      <div class="mobile-home-inner">
-        <div>
-          <p class="mobile-home-kicker">L'atelier</p>
-          <h1>Build <span class="accent">smart</span> projects</h1>
-          <p>Arduino, électronique, Raspberry Pi et actualités techniques pour apprendre, prototyper et aller plus loin.</p>
-          <div class="mobile-home-actions">
-            <a class="mobile-home-cta" href="${discoverHref}">Découvrir</a>
-            <a class="mobile-home-cta secondary" href="#archives">Archives</a>
-          </div>
-          ${getQuickCategoryLinks()}
-        </div>
-        <div class="mobile-home-panel">
-          <div>
-            <span class="stat">Articles</span>
-            <strong>${active.length}</strong>
-          </div>
-          <div>
-            <span class="stat">Catégories</span>
-            <strong>${getCategoryEntries().length}</strong>
-          </div>
-          <div>
-            <span class="stat">Focus</span>
-            <strong>Code + hardware</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-  `;
 }
 
 function setInstallButtonState() {
@@ -537,6 +370,7 @@ function catSlug(c) {
 
 function catBadgeHtml(a) {
   if (!a.category) return "";
+  if (isMobileViewport() && !getMobileSettings().showCategoryTags) return "";
   return `<a class="badge cat" href="#categorie/${encodeURIComponent(catSlug(a.category))}">${escapeHtml(a.category)}</a>`;
 }
 
@@ -625,15 +459,14 @@ function renderList(currentSlug = "") {
   });
   const bar = toolbarHtml(active, currentSlug);
   const mobileSettings = isMobileViewport() ? renderMobileSettings() : "";
-  const mobileIntro = !currentSlug && isMobileViewport() ? renderMobileHome() : "";
   if (sorted.length === 0) {
     const msg = currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.";
-    app.innerHTML = mobileSettings + mobileIntro + bar + `<p class="log-empty">${msg}</p>`;
+    app.innerHTML = mobileSettings + bar + `<p class="log-empty">${msg}</p>`;
     wireToolbar(shown);
     bindSettingsPanel();
     return;
   }
-  app.innerHTML = mobileSettings + mobileIntro + bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
+  app.innerHTML = mobileSettings + bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
   wireToolbar(shown);
   bindSettingsPanel();
 
@@ -696,6 +529,7 @@ function renderArticle(id) {
 
 function render() {
   const hash = location.hash;
+  applyMobileDisplaySettings();
   if (hash.startsWith("#article/")) {
     renderArticle(decodeURIComponent(hash.replace("#article/", "")));
   } else if (hash.startsWith("#categorie/")) {
@@ -835,9 +669,9 @@ function wireLikeButton(id) {
 
 window.addEventListener("hashchange", render);
 window.addEventListener("resize", () => {
+  applyMobileDisplaySettings();
   setInstallButtonState();
   setNotificationBtnState();
-  bindSettingsPanel();
 });
 loadArticles();
 </script>
