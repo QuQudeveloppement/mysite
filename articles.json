@@ -879,8 +879,7 @@
     "title": "Home Assistant : une plateforme domotique open‑source et communautaire",
     "date": "2026-10-27",
     "excerpt": "Home Assistant propose une solution domotique libre, extensible et soutenue par une communauté active, permettant d’intégrer et d’automatiser de nombreux appareils sans verrouiller l’utilisateur dans un écosystème propriétaire.",
-    "category": "Domotique",
-    "cover": "",
+    "cover": "https://community-assets.home-assistant.io/original/4X/5/0/e/50e585faea85010ebb16d3d466f071ef90ec1393.png",
     "blocks": [
       {
         "type": "heading",
