@@ -62,167 +62,194 @@
 
         .container {
             width: 100%;
-            max-width: 850px;
+            max-width: 950px;
             text-align: center;
         }
-
-        /* =========================
-           TITRE
-        ========================= */
 
         .title {
             font-size: clamp(42px, 8vw, 76px);
             line-height: 1.05;
             font-weight: 800;
             letter-spacing: -3px;
-
             margin-bottom: 35px;
-
             color: #ffffff;
-
-            text-shadow:
-                0 5px 30px rgba(0, 0, 0, 0.35);
+            text-shadow: 0 5px 30px rgba(0, 0, 0, 0.35);
         }
-
-        /* =========================
-           PHOTO
-        ========================= */
 
         .profile-container {
             display: flex;
             justify-content: center;
-
             margin-bottom: 42px;
         }
 
         .profile {
             display: block;
-
             width: 170px;
             height: 170px;
-
             object-fit: cover;
-
             border-radius: 50%;
-
             border: 4px solid rgba(255, 255, 255, 0.9);
-
-            box-shadow:
-                0 10px 35px rgba(0, 0, 0, 0.45);
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .profile:hover {
             transform: scale(1.04);
-
-            box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.55);
         }
 
-        /* =========================
-           MES SITES
-        ========================= */
+        .story {
+            margin: 0 auto 48px;
+            padding: 28px 24px 20px;
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(8px);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #9cc3ff;
+            font-weight: 700;
+        }
+
+        .story h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 0.9fr;
+            gap: 22px;
+            align-items: stretch;
+            text-align: left;
+        }
+
+        .bio-text {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 20px 20px 18px;
+        }
+
+        .bio-text p {
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .bio-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .quote-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            padding: 18px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(129, 92, 255, 0.25), rgba(42, 153, 255, 0.18));
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #f0f4ff;
+            font-size: clamp(18px, 2vw, 24px);
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 18px;
+            height: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
 
         .sites-title {
             font-size: 26px;
             font-weight: 600;
-
             margin-bottom: 22px;
-
             color: #eeeeee;
         }
 
         .sites {
             width: 100%;
-
             display: flex;
             justify-content: center;
             align-items: stretch;
-
             gap: 18px;
-
             flex-wrap: wrap;
         }
 
-        /* =========================
-           BOUTONS
-        ========================= */
-
         .site-button {
             width: 260px;
-
             min-height: 62px;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-
             padding: 16px 22px;
-
             border-radius: 15px;
-
             color: #ffffff;
             background: rgba(255, 255, 255, 0.08);
-
             border: 1px solid rgba(255, 255, 255, 0.15);
-
             text-decoration: none;
-
             font-size: 17px;
             font-weight: 600;
-
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.25);
-
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease,
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .site-button:hover {
             transform: translateY(-4px);
-
             background: rgba(255, 255, 255, 0.14);
-
             border-color: rgba(255, 255, 255, 0.30);
-
-            box-shadow:
-                0 14px 35px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
         }
 
         .site-button:active {
             transform: translateY(-1px);
         }
 
-        /* =========================
-           DESCRIPTION AU SURVOL
-        ========================= */
-
         .site-description {
             font-size: 13px;
             font-weight: 400;
             line-height: 1.4;
-
             color: rgba(255, 255, 255, 0.75);
-
             margin-top: 0;
-
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-
-            transition:
-                max-height 0.3s ease,
-                opacity 0.3s ease,
-                margin-top 0.3s ease;
-
-            /* Limite visuelle à 5 lignes */
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 5;
@@ -236,24 +263,23 @@
             margin-top: 10px;
         }
 
-        /* =========================
-           PIED DE PAGE
-        ========================= */
-
         .footer {
             margin-top: 50px;
-
             font-size: 13px;
-
             color: rgba(255, 255, 255, 0.40);
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        @media (max-width: 760px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
 
         @media (max-width: 600px) {
-
             body {
                 padding: 30px 16px;
             }
@@ -296,6 +322,57 @@
                 alt="Photo de profil de Ququdeveloppement"
             >
         </div>
+
+        <section class="story" aria-labelledby="story-title">
+            <p class="eyebrow">Autobiographie</p>
+            <h2 id="story-title">Mon histoire</h2>
+
+            <div class="bio-grid">
+                <div class="bio-text">
+                    <p>
+                        Je suis Ququdeveloppement, une personne passionnée par la création,
+                        l'innovation et le partage de belles idées. Depuis toujours, j'aime
+                        transformer des concepts simples en expériences visuellement fortes,
+                        utiles et inspirantes.
+                    </p>
+                    <p>
+                        Mon parcours est fait de curiosité, d'apprentissage et de volonté.
+                        J’aime explorer de nouveaux domaines, développer des projets qui ont
+                        un sens et créer des espaces où les idées peuvent prendre vie.
+                    </p>
+                    <p>
+                        À travers ce site, je souhaite montrer une partie de moi : mes projets,
+                        mes inspirations, mes créations et les rêves que je mets en mouvement
+                        chaque jour.
+                    </p>
+                </div>
+
+                <div class="quote-box">
+                    “Créer, apprendre, inspirer et aller toujours plus loin.”
+                </div>
+            </div>
+
+            <div class="gallery" aria-label="Galerie de photos">
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
+                        alt="Travail créatif en équipe"
+                    >
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                        alt="Ordinateur et code"
+                    >
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+                        alt="Ambiance professionnelle"
+                    >
+                </div>
+            </div>
+        </section>
 
         <h2 class="sites-title">
             Mes sites :
