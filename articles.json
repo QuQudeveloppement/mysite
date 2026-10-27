@@ -873,5 +873,91 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "home-assistant-une-plateforme-domotique-opensource-et-communautaire",
+    "title": "Home Assistant : une plateforme domotique open‑source et communautaire",
+    "date": "2026-10-27",
+    "excerpt": "Home Assistant propose une solution domotique libre, extensible et soutenue par une communauté active, permettant d’intégrer et d’automatiser de nombreux appareils sans verrouiller l’utilisateur dans un écosystème propriétaire.",
+    "category": "Domotique",
+    "cover": "",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction à Home Assistant",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Home Assistant est un projet open‑source dédié à la domotique. Il se distingue par son approche centrée sur la confidentialité et la flexibilité, offrant aux utilisateurs la possibilité de contrôler et d’automatiser leurs appareils domestiques depuis une interface unifiée, tout en restant maître de leurs données.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une architecture modulaire et extensible",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le cœur de Home Assistant repose sur un moteur d’automatisation capable de gérer des centaines d’intégrations, appelées « components ». Chaque composant correspond à un type d’appareil ou de service (éclairage, thermostat, assistants vocaux, etc.) et peut être ajouté ou retiré selon les besoins. Cette modularité repose sur une communauté de développeurs qui publient régulièrement de nouvelles intégrations, garantissant ainsi une compatibilité large avec les produits du marché sans dépendre d’un fabricant unique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Gestion locale des données et respect de la vie privée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Contrairement à certaines solutions commerciales qui reposent sur le cloud, Home Assistant privilégie le traitement local des informations. Les scénarios d’automatisation, les historiques et les paramètres sont stockés sur le serveur de l’utilisateur, généralement un petit ordinateur dédié. Cette approche limite les risques d’exposition des données personnelles et assure un fonctionnement continu même en l’absence de connexion Internet.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Personnalisation et création d’automatisations",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Home Assistant propose plusieurs niveaux de personnalisation. Les utilisateurs peuvent créer des automatisations via une interface graphique intuitive, en définissant des déclencheurs (temps, état d’un capteur, présence), des conditions et des actions. Pour les plus avancés, il est possible d’écrire des scripts en YAML ou d’utiliser le langage de programmation Python, offrant une granularité fine et la possibilité de concevoir des scénarios complexes répondant à des besoins très spécifiques.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Déploiement simple et évolutif",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le projet propose des images pré‑configurées pour les plateformes populaires comme les micro‑ordinateurs à faible consommation. L’installation se fait en quelques minutes, et l’interface web accessible depuis n’importe quel navigateur permet de gérer le système à distance. Au fil du temps, les utilisateurs peuvent enrichir leur installation en ajoutant de nouveaux modules, en intégrant des services externes ou en développant leurs propres extensions, garantissant ainsi une évolution continue de la solution.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Home Assistant incarne une alternative robuste aux solutions propriétaires, en combinant ouverture, respect de la vie privée et extensibilité. Son modèle communautaire assure une compatibilité large et une évolution constante, tandis que son architecture locale garantit un contrôle total des données. Pour ceux qui souhaitent bâtir une maison connectée sans se cantonner à un écosystème fermé, Home Assistant représente une option fiable et adaptable.",
+        "url": "",
+        "caption": ""
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
