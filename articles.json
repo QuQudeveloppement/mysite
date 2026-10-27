@@ -1062,5 +1062,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "disponibilite-de-l-iphone-duo-chez-les-operateurs-francais-dates-et-stocks",
+    "title": "Disponibilité de l'iPhone Duo chez les opérateurs français : dates et stocks",
+    "date": "2026-10-27",
+    "excerpt": "L'iPhone Duo, premier smartphone pliant d'Apple, est commercialisé depuis le 23 octobre mais son approvisionnement varie fortement selon les opérateurs français.",
+    "category": "Smartphones",
+    "cover": "https://pic.clubic.com/v1/images/2467423/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Apple a lancé son premier smartphone pliant, l'iPhone Duo, le 23 octobre. Si le modèle est disponible en boutique, les délais de livraison diffèrent largement chez les opérateurs français, allant de quelques jours à plusieurs mois, voire à une rupture de stock.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Orange : des livraisons à partir du 14 novembre",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Orange propose l'iPhone Duo, quel que soit le stockage (256 Go, 512 Go, 1 To ou 2 To), avec une date de livraison annoncée au 14 novembre. Le prix, incluant un forfait, varie de 1 619 € pour le 256 Go à 2 999 € pour le 2 To, avec une possibilité de paiement sur 24 mois sans intérêts. L’opérateur précise que ce délai dépend des approvisionnements d’Apple.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Bouygues Telecom : des créneaux échelonnés selon la capacité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Bouygues Telecom indique des dates de disponibilité différenciées. La version 256 Go (1 891,90 € avec forfait) et le 1 To sont prévues dès le 16 novembre, la 512 Go à partir du 20 novembre, tandis que le modèle 2 To, le plus cher (3 211,90 €), est disponible dès le 30 octobre mais avec un stock limité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "SFR : une attente jusqu’à début décembre",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Chez SFR, la version 256 Go est en précommande à 1 941 € avec un forfait de 24 mois, mais son expédition n’est prévue que pour le 7 décembre. Les déclinaisons 512 Go et 1 To sont actuellement indisponibles, seul le 2 To semble en stock.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Free : rupture de stock",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Free ne propose aucune version de l'iPhone Duo en stock, les modèles 256 Go et 512 Go étant en rupture totale. Aucun délai de réapprovisionnement n’a été communiqué.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L'iPhone Duo reste difficile à obtenir en France, chaque opérateur affichant des délais et des stocks très variables. Les clients doivent donc surveiller les offres et être prêts à attendre, surtout pour les configurations les plus abordables.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
