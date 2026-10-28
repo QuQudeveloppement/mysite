@@ -1154,5 +1154,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "protection-des-mineurs-en-ligne-les-premiers-resultats-de-lonline-safety-act-au-royaume-un",
+    "title": "Protection des mineurs en ligne : les premiers résultats de l’Online Safety Act au Royaume-Uni",
+    "date": "2026-10-28",
+    "excerpt": "L’Ofcom révèle que, neuf mois après l’entrée en vigueur de l’Online Safety Act, l’exposition des jeunes aux contenus nocifs n’a pas diminué de façon statistiquement significative, malgré des obligations renforcées pour les plateformes.",
+    "category": "Internet & réseaux",
+    "cover": "https://next.ink/wp-content/uploads/2026/03/Ia-crime-1024x495.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un constat alarmant après les premiers mois d’application",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis l’été 2025, les grandes plateformes doivent mettre en place des mesures de protection contre la pornographie, le racisme, la violence, la misogynie, le suicide et le harcèlement. L’Ofcom, autorité britannique des communications, a publié un premier bilan couvrant les neuf mois suivant le lancement officiel en juillet 2025. Selon l’enquête en ligne menée auprès d’enfants et d’adolescents de 8 à 17 ans, aucune baisse statistiquement significative n’a été observée dans la proportion de jeunes déclarant avoir rencontré ces contenus.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des obligations strictes mais peu d’impact mesurable",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les nouvelles règles imposent aux sites diffusant du contenu pornographique d’instaurer une vérification d’âge, aux réseaux sociaux d’ajuster leurs algorithmes de recommandation et de renforcer la modération des contenus signalés. Malgré ces exigences, les fils personnalisés restent le principal vecteur d’exposition aux contenus pornographiques et aux messages encourageant le suicide ou les troubles alimentaires. Les filles déclarent être davantage affectées par ces deux dernières catégories, tandis que les garçons sont plus exposés à des contenus de motivation qui dérivent parfois vers la misogynie et le racisme.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Contournements et limites de la modération",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le rapport souligne que les pratiques de contournement sont fréquentes : les utilisateurs utilisent des mots‑clés mal orthographiés ou un langage codé pour échapper aux filtres de modération. Cette réalité rend difficile l’évaluation de l’efficacité réelle des mesures imposées et montre que les algorithmes ne parviennent pas toujours à identifier les contenus nocifs, surtout lorsqu’ils sont déguisés.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Perspectives et recommandations de l’Ofcom",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’Ofcom rappelle que le secteur du numérique a longtemps évolué sans cadre réglementaire contraignant. Il note toutefois des avancées, notamment la généralisation des contrôles d’âge et le durcissement des protections contre les prédateurs sexuels. Le régulateur prévoit d’ajouter deux nouvelles catégories de contenus à la liste des éléments à réguler : la stigmatisation de l’apparence physique et la promotion de la dépression ou du désespoir. Par ailleurs, une enquête a été ouverte sur TikTok concernant la vérification de l’âge, et le gouvernement envisage d’interdire l’accès aux réseaux sociaux aux moins de 16 ans dès le printemps prochain.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les premiers chiffres de l’Online Safety Act montrent que les obligations légales ne se traduisent pas immédiatement par une réduction mesurable de l’exposition des jeunes aux contenus dangereux. Le constat de l’Ofcom reste donc « préoccupant », soulignant la nécessité de renforcer les mécanismes de contrôle, d’améliorer la détection algorithmique et d’élargir le champ des contenus régulés. Sans ces ajustements, les plateformes risquent de rester partiellement inefficaces face à la diversité des stratégies de contournement utilisées par les utilisateurs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
