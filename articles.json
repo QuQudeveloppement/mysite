@@ -1590,5 +1590,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "due-diligence-cyber-l-impact-du-passif-numerique-sur-la-vente-dune-pme",
+    "title": "Due diligence cyber : l'impact du passif numérique sur la vente d’une PME",
+    "date": "2026-10-29",
+    "excerpt": "Lors d’une cession, l’acheteur examine les systèmes informatiques de la PME. Les failles ou incidents non déclarés peuvent réduire le prix, retarder la transaction ou entraîner des garanties de passif contraignantes.",
+    "category": "Informatique",
+    "cover": "https://pic.clubic.com/v1/images/2455312/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction à la due diligence cyber",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Vendre une petite ou moyenne entreprise implique plus que la simple vérification des comptes. L’acquéreur fait appel à une équipe technique pour analyser la sécurité des systèmes informatiques, une étape appelée due diligence cyber. Cette évaluation peut influer sur le prix final, les délais de signature et les clauses de garantie.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ce que recherche l’acheteur lors du contrôle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’équipe mandatée identifie d’abord les vulnérabilités non corrigées et s’assure que chaque incident passé a bien été déclaré à la CNIL. Elle estime ensuite le coût potentiel d’une fuite de données clients pour ajuster son offre. Le baromètre 2025 de Cybermalveillance.gouv.fr montre qu’un incident de sécurité touche 16 % des PME de moins de 250 salariés, et qu’une procédure écrite de réponse aux incidents n’est en place que dans 25 % des cas. L’absence de ces éléments est rapidement repérée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conséquences sur le prix et les délais",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Une faille majeure ou un incident non déclaré conduit généralement à une décote du prix, souvent entre 5 % et 10 % du montant, bloquée sur un compte séquestre dans le cadre de la garantie de passif. Si le problème est grave, la signature peut être reportée jusqu’à ce que les correctifs soient appliqués. En revanche, une PME qui démontre une bonne hygiène numérique peut accélérer la transaction et améliorer son pouvoir de négociation.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Bonnes pratiques pour préparer la cession",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "- Documenter la politique de sécurité et les droits d’accès, notamment lors des départs de salariés.\n- Tester régulièrement les sauvegardes hors ligne et conserver une trace écrite des résultats.\n- Mettre en place une authentification forte pour les messageries et les accès cloud.\n- Isoler les sauvegardes du réseau principal et vérifier la restauration.\n- Déployer une supervision continue et un plan de gestion des correctifs.\n- Former le personnel avec des simulations de phishing.\n- Utiliser des ressources comme la MalletteCyber Pro de Cybermalveillance.gouv.fr, qui propose des outils gratuits pour sensibiliser les équipes.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La due diligence cyber est désormais un volet incontournable des opérations de fusion‑acquisition. Un passif numérique mal géré peut réduire la valeur de la PME, retarder la vente ou entraîner des garanties de passif coûteuses. En anticipant les contrôles, en déclarant les incidents et en adoptant les bonnes pratiques de sécurité, les dirigeants de PME maximisent leurs chances de conclure une transaction rapide et à un prix optimal.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
