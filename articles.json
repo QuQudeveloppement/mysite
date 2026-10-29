@@ -1394,5 +1394,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "google-renforce-sa-domination-avec-la-gamme-pixel-11-ia-pliable-et-nouveaux-services",
+    "title": "Google renforce sa domination avec la gamme Pixel 11 : IA, pliable et nouveaux services",
+    "date": "2026-10-29",
+    "excerpt": "Google dévoile la série Pixel 11, intégrant l’IA Gemini, un smartphone pliable Pro Fold et le traceur Pixel Tag. Une stratégie qui vise à concurrencer Samsung et Apple sur le haut de gamme tout en poussant l’écosystème IA.",
+    "category": "Smartphones",
+    "cover": "https://pictures.latribune.fr/cdn-cgi/image/format=auto,fit=cover,width=1200,height=675/media/melody/2026/08/12/google-a-presente-une-nouvelle-serie-de-produits-sous-la-gamme-pixel-1786544555_a01c198a7c7a6741c198a7c7a981c1v_.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une présentation ambitieuse",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le 12 août 2026, Google a présenté la nouvelle génération Pixel 11 lors de son événement « Made by Google ». La série comprend quatre modèles classiques – Pixel 11, Pixel 11 Pro et Pixel 11 Pro XL – ainsi qu’un smartphone pliable, le Pixel 11 Pro Fold. En parallèle, la firme a annoncé le traceur Pixel Tag et la montre Pixel Watch 5, tous deux alimentés par l’intelligence artificielle Gemini.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Gemini au cœur de l’expérience",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Chaque appareil de la gamme intègre Gemini, l’IA propriétaire de Google. Elle assure la prise en charge locale grâce à la puce maison Tensor G6, qui promet 20 % d’efficacité énergétique supplémentaire et 50 % de puissance en plus pour le coprocesseur IA. Gemini permet des fonctions comme la retouche d’image instantanée, la génération de réponses vocales via Gemini Live et la gestion proactive du calendrier, du courrier ou des réservations.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Le pliable Pixel 11 Pro Fold",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Pixel 11 Pro Fold se positionne comme le challenger direct du Galaxy Z Fold. Il se distingue par une réduction de poids de près de 10 %, une résistance aux chutes multipliée par trois et un écran interne Super Actua Flex de 8 pouces, 20 % plus lumineux que la génération précédente. Le prix débute à 1 999 € pour 256 Go, avec des déclinaisons à 2 129 € (512 Go) et 2 389 € (1 To).",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nouveaux services et accessoires",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google complète son écosystème avec le Pixel Tag, un badge de géolocalisation destiné à retrouver les objets perdus, en concurrence directe avec l’AirTag d’Apple. La Pixel Watch 5 mise sur la santé préventive, tandis que les Pixel Buds bénéficient d’une mise à jour logicielle pour les échanges vocaux via Gemini. Le modèle HiLight, présent sur les versions Pro, ajoute un anneau de LED qui s’allume selon les contacts favoris ou les requêtes IA, offrant un retour visuel discret.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Tarifs et positionnement",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Pixel 11 de base est proposé à 999 € avec 256 Go de stockage, soit une hausse d’environ 100 € par rapport à la génération précédente, justifiée par la suppression du modèle 128 Go et la hausse des coûts de mémoire DRAM. Le Pixel 11 Pro démarre à 1 199 € (256 Go) et peut atteindre 1 589 € pour la version 1 To. Le Pixel 11 Pro XL débute à 1 399 € (256 Go) et monte à 1 789 € (1 To). Ces prix placent Google dans la même fourchette que les offres premium de Samsung et Apple.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Avec la gamme Pixel 11, Google affirme son double rôle d’éditeur de logiciels et de fabricant de matériel. En misant sur l’IA Gemini pour différencier l’expérience utilisateur, le géant américain espère séduire les acheteurs exigeants du haut de gamme, tout en consolidant un écosystème intégré qui rivalise avec les offres d’Apple et de Samsung. Le succès dépendra de l’adhésion des consommateurs à une IA proactive et de la capacité de Google à justifier les prix plus élevés par des gains réels en performance et en praticité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : La Tribune, GNT, ZDNet"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
