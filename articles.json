@@ -1314,5 +1314,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "roamance-le-fournisseur-francais-desim-de-voyage-qui-se-demarque",
+    "title": "Roamance, le fournisseur français d’eSIM de voyage qui se démarque",
+    "date": "2026-10-29",
+    "excerpt": "Roamance propose plus de 140 destinations, une activation rapide et la 5G, avec des tarifs attractifs. Son application mobile facilite la gestion des forfaits, même si le catalogue reste plus limité que celui des grands acteurs.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/10/avis-esim-roamance.jpg?resize=1600,900&key=e96e2de6",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre ciblée pour l’Europe et l’Amérique du Nord",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Roamance se positionne comme une alternative française aux services d’eSIM de voyage. Le catalogue couvre plus de 140 pays, avec des forfaits allant de 1 Go pour 7 jours à 50 Go pour 30 jours. Le forfait testé, 3 Go valable 30 jours pour la Suisse, est proposé à 4,99 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Installation et gestion via l’application mobile",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’activation se fait via l’application iOS ou Android. Après inscription et paiement, l’utilisateur doit cliquer sur « Installer l’eSIM » ou scanner un QR‑code. Le QR‑code n’est utilisable qu’une seule fois, et l’eSIM ne peut être réinstallée. En cas de problème, le support intégré à l’application intervient rapidement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Couverture réseau et performances",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Roamance utilise les capacités d’Orange Wholesale et se connecte aux réseaux locaux. En Suisse, l’eSIM a fonctionné sur les trois opérateurs nationaux, restant principalement sur Salt. Les tests montrent une connexion 5G stable et des débits satisfaisants, parfois supérieurs à ceux d’un forfait itinérance d’Orange.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites et points d’amélioration",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le nombre de destinations reste inférieur à celui des leaders comme Airalo ou Ubigi, qui dépassent les 200 pays. Aucun service additionnel (VPN, numéro virtuel) n’est proposé. De plus, le QR‑code unique peut compliquer la réinstallation si l’eSIM disparaît des réglages.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Roamance offre une solution simple, économique et compatible 5G pour les voyageurs en Europe et en Amérique du Nord. Son application intuitive et son support réactif compensent un catalogue plus restreint que celui des grands acteurs du marché.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
