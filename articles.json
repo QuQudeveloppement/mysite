@@ -1670,5 +1670,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "reddit-impose-la-connexion-obligatoire-pour-proteger-ses-donnees-et-optimiser-sa-publicite",
+    "title": "Reddit impose la connexion obligatoire pour protéger ses données et optimiser sa publicité",
+    "date": "2026-10-30",
+    "excerpt": "Reddit va obliger les visiteurs à se connecter avant de lire les contenus, afin de lutter contre les bots collecteurs de données et d’améliorer le ciblage publicitaire, tout en conservant une expérience anonyme pour les utilisateurs.",
+    "category": "Internet & réseaux",
+    "cover": "https://next.ink/wp-content/uploads/2024/01/brett-jordan-0FytazjHhxs-unsplash-1024x768.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une évolution majeure pour l’accès à Reddit",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Après plus de deux décennies d’accès libre, Reddit annonce que la lecture des publications nécessitera désormais une connexion à un compte. Le PDG Steve Huffman justifie ce virage comme une réponse aux pressions exercées par les bots qui extraient massivement les données du site, ainsi qu’une nécessité de rendre la plateforme plus pertinente grâce à la personnalisation.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Motifs principaux du changement",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Deux objectifs structurent cette décision. D’une part, la protection contre les collecteurs automatisés qui utilisent les contenus pour entraîner des modèles d’intelligence artificielle. D’autre part, la capacité à diffuser des publicités ciblées, ce qui, selon Huffman, améliore les performances financières et évite le gaspillage d’espace publicitaire non pertinent. Reddit précise qu’aucune information d’identité ne sera requise ; la connexion se limite à la création d’un compte anonyme.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Mise en œuvre et impact attendu",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les premiers essais seront lancés dans plusieurs pays hors des États-Unis au cours des prochains mois. Reddit étudiera l’effet de cette contrainte sur l’expérience utilisateur et sur le trafic global, tout en maintenant la possibilité de consulter la page d’accueil et les liens externes sans être connecté. Le service espère ainsi réduire la chute de trafic organique observée récemment, notamment les visites non authentifiées qui ont diminué d’un million par semaine.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conséquences pour les utilisateurs et les annonceurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour les membres déjà inscrits, la connexion ne changera pas la collecte d’informations personnelles ; Reddit affirme ne pas chercher à connaître l’identité des utilisateurs. En revanche, les annonceurs bénéficieront d’un ciblage plus précis, ce qui devrait augmenter le taux de conversion et la valeur des espaces publicitaires. Les visiteurs qui préfèrent rester anonymes devront désormais créer un compte, même s’il ne requiert aucun renseignement personnel.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En imposant la connexion, Reddit mise sur une double protection : freiner les abus automatisés et renforcer la monétisation via la publicité ciblée. Cette mesure, tout en conservant une approche anonyme, marque une rupture avec la philosophie d’accès ouvert qui a caractérisé le site depuis sa création. Le succès de cette transition dépendra de la capacité de Reddit à équilibrer la protection des données, la satisfaction des utilisateurs et la performance financière de la plateforme.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
