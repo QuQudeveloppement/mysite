@@ -1910,5 +1910,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "samsung-qn82h-75-pouces-miniled-144-hz-et-promotion-black-friday",
+    "title": "Samsung QN82H 75 pouces : mini‑LED, 144 Hz et promotion Black Friday",
+    "date": "2026-10-31",
+    "excerpt": "Le téléviseur Neo QLED 75\" de Samsung, doté de la technologie Mini LED et d’un taux de rafraîchissement jusqu’à 144 Hz, profite d’une remise de 200 € chez Boulanger pendant le Black Friday.",
+    "category": "Informatique",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/10/samsung-tq75qn82h-black-friday-2026.jpg?resize=1600,900&key=4f3605f5",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre alléchante pour le grand écran",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Au début de l’année, Samsung a élargi sa gamme Neo QLED avec le modèle QN82H. Ce téléviseur 4K de 75 pouces, proposé à moins de 1 300 € chez Boulanger pendant le pré‑Black Friday, était affiché à 1 499 € début octobre, contre 1 799 € auparavant. La promotion du Black Friday le fait désormais coûter 1 299 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Technologies d’affichage et de traitement d’image",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le QN82H repose sur la technologie Neo QLED, qui combine un rétro‑éclairage Mini LED et des Quantum Dots. Cette combinaison vise à offrir une meilleure luminosité, un contraste plus élevé et des noirs plus profonds, même si l’OLED reste supérieur sur ce point. Le téléviseur supporte les formats HDR10+ Advanced et HDR10+ Adaptive, permettant d’optimiser la luminosité scène par scène et d’ajuster l’image à la lumière ambiante. Le processeur NQ4 AI Gen2 assure l’upscaling des contenus non 4K et l’optimisation globale de chaque image.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Performances dédiées aux jeux vidéo",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Côté gaming, le QN82H propose quatre entrées HDMI 2.1 et une dalle rafraîchie nativement à 100 Hz. Grâce à la technologie Motion Xcelerator, le taux de rafraîchissement peut atteindre 144 Hz, réservé aux jeux PC avec une carte graphique suffisante. Sur consoles PS5 et Xbox Series X/S, la TV délivre la 4K jusqu’à 120 Hz pour les titres compatibles. En mode jeu, le téléviseur peut même atteindre 240 Hz en résolution 2K grâce à la Dual Line Gate, tout en supportant AMD FreeSync Premium Pro, le VRR et l’ALLM pour réduire les déchirures et la latence.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Audio, système d’exploitation et mises à jour",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le système audio embarqué comprend deux canaux délivrant 30 W RMS et prend en charge le Dolby Atmos ainsi que la technologie Object Tracking Sound Lite, qui fait suivre le son aux mouvements à l’écran. La fonction Q‑Symphony synchronise les haut‑parleurs du téléviseur avec une barre de son Samsung, tandis qu’Adaptive Sound Pro ajuste automatiquement le rendu sonore selon le contenu. Le TV fonctionne sous Tizen OS, intègre le Vision AI Companion pour interroger l’assistant sur le contenu en cours, et Samsung promet sept ans de mises à jour à partir de 2026.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Samsung QN82H 75\" combine une taille d’affichage impressionnante, la technologie Mini LED Neo QLED et des options de rafraîchissement élevées, le rendant attractif pour les cinéphiles comme pour les joueurs. La promotion du Black Friday, qui le fait passer de 1 499 € à 1 299 €, représente une réduction notable, surtout pour ceux qui recherchent un grand téléviseur performant sans franchir le plafond des modèles haut de gamme.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid, Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
