@@ -1830,5 +1830,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "sam-altman-critique-lusage-de-la-ram-domestique-face-a-la-penurie-mondiale",
+    "title": "Sam Altman critique l’usage de la RAM domestique face à la pénurie mondiale",
+    "date": "2026-10-31",
+    "excerpt": "Sam Altman, PDG d’OpenAI, estime que la mémoire vive des PC est sous‑exploité et devrait être priorisée pour les data centers, soulignant les tensions du marché de la DRAM et les enjeux pour les utilisateurs et les géants du cloud.",
+    "category": "Ordinateurs",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2023/11/sam-altman-frandroid-altman.jpg?resize=1600,900&key=83af79d8",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lors d’un épisode du podcast Cheeky Pint, Sam Altman a déclaré que la DRAM installée dans les ordinateurs personnels ne serait pas mieux employée que dans les data centers. Cette remarque a relancé le débat sur la répartition des ressources mémoire à l’ère du cloud et de l’intelligence artificielle.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une utilisation très faible des barrettes de RAM domestiques",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Selon Altman, les puces de mémoire vive d’un PC ne fonctionnent que 5 % du temps. Cette faible occupation, à l’échelle mondiale, consomme une part non négligeable de l’offre limitée de DRAM, alors que les serveurs de cloud pourraient exploiter ces capacités de façon quasi continue. Il suggère donc de réorienter la priorité d’allocation vers les data centers, où la charge de travail est plus intensive.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Tensions du marché et hausse des prix",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le marché de la DRAM traverse une période de pénurie. Les fabricants restent prudents après plusieurs épisodes de faillite, ce qui limite l’offre. En octobre 2025, OpenAI a signé des accords avec Samsung et SK Hynix pour acquérir jusqu’à 900 000 plaques de DRAM par mois dans le cadre du programme Stargate. Les prix contractuels ont déjà augmenté de 40 % à 80 % au cours des trimestres précédents, et une hausse supplémentaire d’environ 20 % est attendue pour le quatrième trimestre 2026, selon TrendForce. Cette flambée touche également d’autres acteurs majeurs comme Anthropic, Google ou Meta, qui se disputent les stocks disponibles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "La position d’OpenAI et l’argument contre l’inférence locale",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Altman utilise cette situation pour renforcer l’idée que l’inférence d’IA doit rester dans le cloud. En concentrant la RAM dans les data centers, OpenAI peut proposer des services d’abonnement tout en justifiant la consommation massive de mémoire. Cette approche contraste avec la demande croissante des joueurs PC, qui voient leurs barrettes de RAM devenir de plus en plus onéreuses.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sam Altman met en lumière un déséquilibre entre l’utilisation réelle de la RAM domestique et la demande croissante des data centers. Alors que les prix de la DRAM continuent d’escalader, la réflexion sur la meilleure allocation des ressources mémoire devient cruciale, tant pour les fournisseurs de cloud que pour les utilisateurs finaux qui voient leurs coûts matériels augmenter.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
