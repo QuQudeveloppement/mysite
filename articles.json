@@ -1990,5 +1990,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "philips-neopix-560-smart-picoprojecteur-full-hd-a-prix-reduit-avant-le-black-friday",
+    "title": "Philips NeoPix 560 Smart : picoprojecteur Full HD à prix réduit avant le Black Friday",
+    "date": "2026-11-01",
+    "excerpt": "Le NeoPix 560 Smart de Philips, compact et orientable, bénéficie d’une remise de près de 90 €, le faisant passer de 348,29 € à 259,71 € chez Boulanger. Ce projecteur LED Full HD, équipé de Google TV, propose autofocus, correction de trapèze et connectivité moderne.",
+    "category": "Ordinateurs",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/10/philips-neopix-560-smart-black-friday-2026.jpg?resize=1600,900&key=6cb7e0ac",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un prix attractif avant le Black Friday",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le NeoPix 560 Smart, initialement proposé à 348,29 €, est aujourd’hui vendu à 259,71 € grâce à une remise d’environ 89 €. Cette offre, disponible chez Boulanger, précède le week‑end officiel du Black Friday, offrant ainsi une opportunité d’achat anticipée pour les amateurs de home‑cinéma.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Dimensions, poids et ergonomie",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Mesurant 173,5 × 198 × 223,5 mm et pesant 2 kg, le projecteur reste très portable. Il se transporte facilement d’une pièce à l’autre, mais nécessite une prise électrique à proximité, car il ne possède pas de batterie intégrée. Un socle rotatif de 90° permet d’ajuster l’orientation de l’image sans effort.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Performances d’image et de son",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le NeoPix 560 Smart utilise une source lumineuse LED capable d’afficher du Full HD (1920 × 1080 px) sur des écrans jusqu’à 120 pouces. Sa luminosité de 600 lumens ANSI et son contraste de 1500 :1 offrent une qualité d’image correcte même dans une pièce légèrement éclairée. Côté audio, deux haut‑parleurs de 5 W sont intégrés, bien que le projecteur ne prenne pas en charge les formats Dolby Atmos ou DTS:X.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnalités intelligentes et connectivité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le dispositif tourne sous Google TV, donnant accès à un large catalogue d’applications de streaming. L’autofocus ajuste automatiquement la mise au point, tandis que la correction de trapèze verticale rectifie les déformations liées à l’inclinaison de l’appareil. La connectique comprend un port HDMI 1.4, un USB‑A, une prise jack 3,5 mm, le Bluetooth pour des enceintes ou manettes externes, et le Wi‑Fi double bande, dont la bande 5 GHz.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En résumé, le Philips NeoPix 560 Smart combine compacité, facilité d’installation et un ensemble de fonctions modernes à un prix très compétitif. Sa résolution Full HD, son autofocus et son accès à Google TV en font une option intéressante pour ceux qui souhaitent profiter d’un home‑cinéma portable sans investir dans un modèle haut de gamme. La remise actuelle le rend particulièrement attractif pendant la période de promotions pré‑Black Friday.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
