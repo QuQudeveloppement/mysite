@@ -2230,5 +2230,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "hausse-du-carburant-les-francais-modifient-leurs-deplacements-pour-economiser",
+    "title": "Hausse du carburant : les Français modifient leurs déplacements pour économiser",
+    "date": "2026-11-02",
+    "excerpt": "Face à la flambée des prix du carburant, près de la moitié des Français comparent les stations, évitent les trajets inutiles et privilégient la marche pour les courts parcours, selon une enquête d'octobre 2026.",
+    "category": "Internet & réseaux",
+    "cover": "https://pic.clubic.com/v1/images/2388169/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une crise qui change les habitudes de conduite",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’augmentation du coût des hydrocarbures, amplifiée par les tensions géopolitiques, place la France parmi les pays les plus chers d’Europe pour le gazole. Cette situation pousse les automobilistes à revoir leurs pratiques quotidiennes afin de réduire leurs dépenses.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comparer les prix, un réflexe généralisé",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Selon l’enquête DiscoverCars publiée en octobre, 48 % des Français déclarent désormais vérifier les tarifs des stations‑services avant de faire le plein. Cette prise de conscience des prix montre que la recherche d’économies devient un critère majeur dans le choix du point de ravitaillement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réduction des déplacements superflus",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Près de la moitié des personnes interrogées (47 %) cherchent à éliminer les trajets jugés inutiles. En parallèle, 38 % utilisent moins leur véhicule depuis le début de la crise, témoignant d’une volonté de limiter la consommation de carburant.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Préférence pour la marche et les alternatives",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lorsque des solutions alternatives existent, les Français les adoptent rapidement : 25 % privilégient la marche pour les courts déplacements. Cette évolution indique une montée en puissance des modes de transport doux face à la pression financière du carburant.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’étude révèle que la hausse des prix du carburant influence profondément les comportements des conducteurs français, bien plus que la moyenne internationale. En comparant les prix, en limitant les trajets et en optant pour la marche, les usagers cherchent à maîtriser leurs dépenses, soulignant l’impact direct de la crise énergétique sur les habitudes de mobilité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
