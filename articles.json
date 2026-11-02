@@ -2150,5 +2150,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "whatsapp-ajoute-des-actions-rapides-pour-les-numeros-dates-adresses-et-emails",
+    "title": "WhatsApp ajoute des actions rapides pour les numéros, dates, adresses et e‑mails",
+    "date": "2026-11-02",
+    "excerpt": "WhatsApp teste une fonction qui détecte automatiquement les informations comme les numéros de téléphone, les dates, les adresses ou les e‑mails dans les messages et propose des actions immédiates, le tout en conservant le chiffrement de bout en bout.",
+    "category": "Smartphones",
+    "cover": "https://pic.clubic.com/v1/images/2404186/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une fonction en phase de test",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les équipes de WhatsApp ont découvert, en analysant la version bêta la plus récente, que l’application peut identifier automatiquement certains types d’informations dans les messages. Lorsqu’un texte correspond à un numéro de téléphone, une date, une adresse ou une adresse e‑mail, il apparaît souligné d’un pointillé et un appui déclenche un menu d’actions rapides.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Quelles actions sont proposées",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le menu contextuel dépend du type de donnée détectée : pour un numéro de téléphone, il est possible d’appeler, d’envoyer un SMS ou d’ajouter le contact ; pour une date, de créer un événement dans le calendrier ; pour une adresse, d’ouvrir la localisation dans une application de cartographie ; et pour un e‑mail, de composer un nouveau message. Après chaque utilisation, WhatsApp invite l’utilisateur à répondre à un court questionnaire afin d’évaluer le bon fonctionnement de la fonction.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Respect de la vie privée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La détection se fait entièrement sur l’appareil, sans transmission des données vers les serveurs de WhatsApp. Le chiffrement de bout en bout reste donc appliqué, garantissant que les informations restent confidentielles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Déploiement progressif",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La nouveauté est déjà disponible pour un nombre limité d’utilisateurs disposant de la version la plus récente de l’application, tant sur Android que sur iOS. Aucun calendrier officiel n’a été communiqué, et il faut s’attendre à quelques semaines d’attente avant que les pointillés n’apparaissent sur la plupart des écrans.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ces actions rapides visent à simplifier la gestion des informations partagées dans les conversations, tout en conservant la confidentialité assurée par le chiffrement de bout en bout. Le déploiement progressif laisse présager une généralisation prochaine, offrant aux utilisateurs un gain de temps appréciable dans leurs échanges quotidiens.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
