@@ -2310,5 +2310,91 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "spacex-cherche-a-devenir-operateur-mobile-aux-etats-unis-strategies-et-obstacles",
+    "title": "SpaceX cherche à devenir opérateur mobile aux États-Unis : stratégies et obstacles",
+    "date": "2026-11-03",
+    "excerpt": "Face au refus des grands opérateurs, SpaceX explore l’achat de Boost Mobile et investit massivement dans les fréquences 5G pour créer un service mobile compétitif, mais le déploiement terrestre reste un défi colossal.",
+    "category": "Internet & réseaux",
+    "cover": "https://next.ink/wp-content/uploads/2026/06/SpaceX-1024x495.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "SpaceX, le géant spatial d’Elon Musk, veut s’implanter dans le secteur de la téléphonie mobile américaine. Après plusieurs refus de la part d’AT&T, Verizon et T‑Mobile, l’entreprise explore d’autres voies pour accéder aux réseaux existants et lancer son service Starlink Mobile.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Contournement des opérateurs traditionnels",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ne parvenant pas à obtenir d’accords directs avec les trois grands opérateurs, SpaceX aurait engagé des discussions avec Boost Mobile, filiale d’EchoStar. L’objectif serait soit d’acquérir Boost Mobile, soit d’obtenir un accès à son cœur de réseau 5G, qui repose en partie sur les infrastructures d’AT&T et de T‑Mobile. Une rencontre entre Elon Musk et le président d’EchoStar, Charlie Ergen, aurait eu lieu récemment, témoignant de l’intérêt réel des deux parties.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Acquisitions de spectre et besoins d’infrastructure",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour soutenir un service mobile, Starlink Mobile a besoin de fréquences, notamment dans les bandes 2 GHz et 800 MHz. SpaceX a déjà déboursé 17 milliards de dollars pour les fréquences AWS‑4 d’EchoStar, puis 8 milliards supplémentaires pour un portefeuille de spectre basse fréquence. Ces bandes sont essentielles car elles offrent une meilleure pénétration des bâtiments, contrairement aux hautes fréquences satellitaires qui peinent à traverser les murs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cependant, le spectre ne suffit pas. Un réseau mobile fiable exige un maillage d’antennes terrestres, des stations de relais et des liaisons back‑haul. Les opérateurs historiques ont construit ces infrastructures pendant des décennies, ce qui explique le refus initial de partager leurs réseaux.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Estimation des coûts et calendrier",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les analystes du secteur estiment que le déploiement complet d’un réseau mobile national nécessiterait entre quatre et six ans et coûterait plusieurs centaines de milliards de dollars, avec des fourchettes allant de 300 à 500 milliards sur les sept à huit prochaines années. Elon Musk, de son côté, a affirmé que son équipe pourrait créer un réseau opérationnel en deux à trois ans, bien que ce délai reste très ambitieux au regard des investissements requis.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "SpaceX mise sur une combinaison d’acquisition de spectre, d’éventuelle prise de contrôle de Boost Mobile et d’investissements massifs pour pénétrer le marché américain de la téléphonie. Si les obstacles techniques et financiers restent considérables, la stratégie de contournement des opérateurs traditionnels montre la volonté de l’entreprise de créer un service mobile intégré à son offre satellite. Le succès dépendra de la capacité de SpaceX à mobiliser les ressources nécessaires pour bâtir l’infrastructure terrestre indispensable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
