@@ -2396,5 +2396,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "cyclon-devoile-le-premier-smartphone-entierement-pilote-par-l-ia",
+    "title": "Cyclon dévoile le premier smartphone entièrement piloté par l'IA",
+    "date": "2026-11-03",
+    "excerpt": "Cyclon, startup de la promotion F26 de Y Combinator, propose un téléphone où l'intelligence artificielle devient l'interface unique, capable d'utiliser, créer et automatiser les applications existantes. Le dispositif, prévu pour 2027, s'appuie sur LineageOS et microG.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/ai.jpeg?resize=1600,900&key=8ccff0d8",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une vision où l'IA devient l'interface du smartphone",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cyclon se décrit comme un téléphone dont l'intelligence artificielle constitue l'interface principale. L’idée est de réduire à une simple phrase vocale l’enchaînement de plusieurs applications nécessaires à une tâche, comme la recherche d’un contrat dans Drive, son envoi par WhatsApp et l’appel d’un collègue. L’objectif affiché par le cofondateur Adam Zinebi est de proposer une alternative à l’iPhone en s’appuyant sur trois capacités : exploiter les applications déjà installées, générer celles qui manquent et exécuter des actions en arrière‑plan pendant que l'utilisateur poursuit son activité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Le modèle économique et le calendrier de sortie",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les premiers appareils peuvent être réservés dès maintenant contre un acompte remboursable de 199 $, déductible du prix final estimé à 699 $ hors taxes. Le matériel propre à Cyclon devrait être disponible au deuxième trimestre 2027, sous réserve d’une autorisation de la FCC. En attendant, les premiers acheteurs américains recevront, sans frais supplémentaires, un Pixel 8a comme plateforme de test pour le prototype Cyclon OS.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Architecture logicielle et fonctionnement de l’agent IA",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cyclon OS repose sur LineageOS, la ROM Android alternative très prisée des passionnés, couplée à microG, une implémentation libre des services Google Play. L’agent IA interagit avec les applications comme le ferait un utilisateur : il lit l’écran, touche, fait défiler, et lorsqu’une application manque, il écrit le code dans un environnement sandbox hébergé dans le cloud, le teste, le corrige puis l’installe. Les dépôts publics sur GitHub montrent que le code généré porte le préfixe « claude/ » et que la relecture est assurée par un autre modèle d’IA, rendant le téléphone partiellement auto‑développé.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Enjeux de confidentialité et limites techniques",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La FAQ de Cyclon indique que les requêtes sont envoyées aux fournisseurs d’IA, incluant l’écran, les messages ou la position, sans préciser quels services sont utilisés. La mémoire de l’assistant reste sur l’appareil, mais les données utiles sont transmises lorsqu’une demande l’exige, parfois conservées temporairement par les fournisseurs. Cette pratique contraste avec les affirmations du CEO qui assure que tout se passe « dans la poche, pas dans le cloud ». L’utilisation de microG, bien que libre, empêche la certification Google, ce qui peut bloquer certaines applications bancaires ou professionnelles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cyclon propose une approche novatrice en plaçant l’IA au cœur de l’interaction smartphone, en automatisant les flux entre applications et en créant dynamiquement les outils manquants. Le projet, soutenu par Y Combinator et construit sur des bases open‑source, devra toutefois convaincre les utilisateurs sur les questions de confidentialité et de compatibilité avec les services certifiés. Si les délais et les autorisations sont respectés, le téléphone pourrait représenter une première étape vers un véritable « assistant OS » qui redéfinit la manière dont nous utilisons nos appareils mobiles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
