@@ -2476,5 +2476,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "google-messages-teste-une-nouvelle-mise-en-avant-des-contacts-epingles-a-la-facon-dimessag",
+    "title": "Google Messages teste une nouvelle mise en avant des contacts épinglés, à la façon d’iMessage",
+    "date": "2026-11-04",
+    "excerpt": "Google expérimente une refonte de l’écran d’accueil de Messages qui place les contacts épinglés en grandes photos en haut de la liste, tout en déplaçant la barre de recherche vers un bouton flottant. Le changement reste limité aux bêta‑testeurs.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2024/02/google-messages-scaled-1.jpg?resize=1600,900&key=edc064f5",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une évolution visible de l’écran d’accueil",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le 3 novembre, des membres du forum Reddit dédié à Google Messages ont partagé des captures d’écran montrant une version bêta de l’application. Dans cette variante, les conversations épinglées ne sont plus affichées sous forme de simples lignes avec une punaise ; elles apparaissent désormais sous forme de grandes photos placées tout en haut de l’écran, au-dessus des autres discussions.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comparaison avec la version actuelle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Aujourd’hui, une conversation épinglée se comporte comme n’importe quelle autre entrée de la liste, ne conservant que le petit icône de punaise. La nouvelle mise en page supprime l’aperçu du dernier message et l’indication de l’heure, obligeant l’utilisateur à ouvrir la conversation pour lire le contenu. Cette approche rappelle celle d’iMessage, où les contacts favoris sont affichés sous forme de vignettes en haut de l’écran.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites et options d’épinglage",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lors d’une précédente bêta en août 2026, Android Authority avait repéré un écran « Select chats to pin » limitant l’épinglage à six conversations. La version actuelle accepte jusqu’à vingt contacts, même si le nombre exact affichable reste incertain : vingt grandes photos risquent de dépasser l’espace disponible, ce qui expliquerait un éventuel retour en arrière. La priorité d’affichage semble être donnée à la conversation qui vient de recevoir un message, mais il est possible que les utilisateurs puissent réorganiser l’ordre des épingles, comme indiqué par Android Authority.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nouveaux boutons de recherche et d’assistance IA",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En plus du repositionnement des contacts, Google teste le déplacement de la barre de recherche. Celle‑ci quitte le haut de l’écran pour devenir un bouton flottant centré en bas, à côté du bouton de création d’une nouvelle discussion. En faisant défiler la liste, le bouton « Rechercher » s’élargit sous forme de pilule tandis que le bouton « Démarrer une discussion » se réduit. Cette disposition vise à rendre la recherche plus accessible sur les grands smartphones, sans nécessiter l’usage de la main secondaire. Le futur du bouton Gemini, qui ouvre l’assistant IA de Google, n’est pas encore confirmé pour l’écran d’accueil de Messages.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Déploiement et contexte plus large",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour l’instant, ces modifications ne concernent qu’une poignée de bêta‑testeurs et aucune date de lancement officiel n’a été annoncée par Google. En revanche, les nouvelles icônes de Messages, Téléphone et Contacts, annoncées le 2 novembre, sont déjà en cours de déploiement via le Play Store et arriveront dans les prochaines semaines sans impacter le fonctionnement des applications.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google Messages explore une refonte inspirée d’iMessage qui met en avant les contacts favoris sous forme de grandes photos et repositionne la recherche en bouton flottant. Bien que le changement soit encore limité aux tests, il montre la volonté de Google d’améliorer l’ergonomie de son application de messagerie native, tout en continuant à déployer de nouvelles icônes pour l’ensemble de la suite de communication Android.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
