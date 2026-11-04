@@ -2568,5 +2568,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "openai-confronte-a-des-failles-de-securite-internes-depuis-plusieurs-annees",
+    "title": "OpenAI confronté à des failles de sécurité internes depuis plusieurs années",
+    "date": "2026-11-04",
+    "excerpt": "Des salariés d'OpenAI ont alerté la direction depuis avant le lancement de ChatGPT sur des lacunes de sécurité, laissant potentiellement des acteurs extérieurs accéder aux codes et aux projets de l'entreprise. L'entreprise réoriente désormais sa stratégie pour renforcer sa protection.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2463124/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Des alertes internes avant même ChatGPT",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Des témoignages recueillis par Reuters indiquent que des employés d'OpenAI exprimaient déjà, avant le lancement de ChatGPT en novembre 2022, des inquiétudes quant aux pratiques de sécurité de la société. Selon ces salariés, la direction privilégiait la vitesse d'évolution face à la concurrence plutôt que la mise en place de mesures de protection robustes.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un environnement propice à l'espionnage",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le manque de rigueur aurait permis à des acteurs extérieurs, y compris des gouvernements étrangers, d’accéder à des informations sensibles. Un des points soulevés était que tout collaborateur disposant du code du laboratoire IA pouvait consulter les détails techniques de nombreux projets, facilitant ainsi la fuite de données critiques.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Incidents récents et prise de conscience",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’affaire d’un ingénieur saoudien arrêté pour avoir placé un enregistreur audio dans une salle de direction a mis en lumière la vulnérabilité du dispositif interne. Cet épisode, rapporté dans les médias, a confirmé les craintes exprimées par les salariés et a poussé la direction à réévaluer sa posture sécuritaire.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nouvelle orientation vers la sécurisation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis l’été, OpenAI aurait lancé une initiative de sécurisation du laboratoire, confiée à un cadre supérieur. Un quart des ingénieurs de production aurait été réaffecté à l’amélioration de l’infrastructure de sécurité, marquant un virage vers une meilleure protection des actifs technologiques.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les alertes internes ont révélé pendant longtemps un déséquilibre entre ambition technologique et vigilance sécuritaire chez OpenAI. Les récents incidents ont incité l’entreprise à réorienter ses priorités, en investissant davantage dans la protection de ses codes et de ses projets. Cette évolution montre que même les acteurs majeurs de l’IA doivent concilier vitesse d’innovation et exigences de cybersécurité pour préserver leur crédibilité et leurs données.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
