@@ -2648,5 +2648,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "chatgpt-integre-la-creation-de-gif-gratuits-avec-images-2-6",
+    "title": "ChatGPT intègre la création de GIF gratuits avec Images 2.6",
+    "date": "2026-11-05",
+    "excerpt": "OpenAI déploie Images 2.6, une mise à jour qui permet à tous les utilisateurs de ChatGPT de générer des GIF animés à partir d’une consigne texte ou d’une image, avec réglage de la vitesse et édition image par image.",
+    "category": "Intelligence artificielle",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2025/12/chatgpt-image-illustration-gemini.jpeg?resize=1600,900&key=42a7128f",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une nouvelle fonction GIF accessible à tous",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OpenAI a annoncé le 4 novembre le lancement d’Images 2.6, la dernière évolution de son générateur d’images. Cette version accepte une description écrite ou une photo et produit directement un GIF animé, sans besoin d’abonnement et utilisable sur le web, ordinateur ou mobile.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comment le générateur crée‑il les animations",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le modèle reçoit la consigne, par exemple « un chat qui danse », et génère plusieurs images légèrement différentes qu’il enchaîne comme les pages d’un folioscope. L’utilisateur peut ensuite ajuster la vitesse de lecture, modifier chaque cadre séparément et partager le résultat final.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnalités supplémentaires pour les utilisateurs et les développeurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Images 2.6 conserve en mémoire les références visuelles (portrait, animal, personnage) afin de les réutiliser sans les recharger. Côté développeur, deux modèles sont disponibles via l’API : Flare, capable de produire une image en environ six secondes, et Sunburst, qui privilégie la qualité et la cohérence entre les cadres.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Contexte et impact de la mise à jour",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OpenAI indique que les utilisateurs génèrent plus de 4 milliards d’images chaque semaine, en hausse par rapport aux 3 milliards de septembre. Cette croissance reflète l’adoption massive de l’assistant, utilisé chaque semaine par un humain sur sept. La sortie d’Images 2.6 suit de près la mise à jour des agents Dots, capables de basculer entre différents modèles de langage.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Avec Images 2.6, OpenAI démocratise la création de GIF animés, offrant une solution rapide et gratuite intégrée à ChatGPT. La combinaison d’une génération instantanée, d’outils d’édition et d’une API flexible ouvre de nouvelles possibilités tant pour les créateurs de contenu que pour les développeurs souhaitant exploiter les capacités visuelles d’OpenAI.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
