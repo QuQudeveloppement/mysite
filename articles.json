@@ -2728,5 +2728,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "volta-le-malware-windows-qui-exploite-l-ia-pour-evaluer-la-valeur-des-victimes",
+    "title": "VOLTA, le malware Windows qui exploite l'IA pour évaluer la valeur des victimes",
+    "date": "2026-11-05",
+    "excerpt": "VOLTA collecte des données personnelles, les soumet à des modèles d'IA comme Claude pour estimer la valeur monétaire des victimes, puis transmet un rapport détaillé aux cybercriminels.",
+    "category": "Cybersécurité",
+    "cover": "https://pic.clubic.com/v1/images/2471197/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une nouvelle étape dans le vol d’informations",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le programme malveillant nommé VOLTA, détecté par Cisco Talos en octobre 2026, s’installe sur les systèmes Windows et récupère un large éventail d’informations : cookies, mots de passe, jetons d’accès cloud, sessions de messagerie, clés SSH, captures d’écran et même les mots de passe Wi‑Fi enregistrés. Il explore également les boîtes Gmail pour extraire les reçus d’achats en ligne, construisant ainsi un profil complet de la cible.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "L’intelligence artificielle comme analyste de données volées",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Contrairement aux infostealers classiques, VOLTA envoie le fichier « Identity_Report.txt » à un grand modèle de langage via la plateforme OpenRouter. L’instruction donnée à l’IA est d’agir comme analyste forensique, d’évaluer la valeur monétaire de chaque donnée et de classer les éléments selon leur potentiel de monétisation. Le modèle par défaut est Claude Opus 4.6 d’Anthropic, avec une température réglée à 0,2 pour garantir des réponses précises. En cas de refus, le malware bascule vers d’autres modèles comme Kimi K2 ou Gemini 2.5 Flash.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un produit clé en main pour les cybercriminels",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "VOLTA est vendu comme un kit complet. L’acheteur fournit sa propre clé d’API IA et un canal Telegram lors de la compilation. Le code chiffre ces paramètres, puis transmet les données volées et le rapport d’analyse directement à la messagerie du client, sans serveur centralisé. Le malware s’efface ensuite, ne laissant parfois qu’un fichier de journalisation (volta_debug.txt) dans le répertoire AppData.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Impacts pour les particuliers et les entreprises",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour les utilisateurs individuels, le vol de phrases de récupération crypto, de mots de passe et de données de paiement expose à des pertes financières directes. Pour les organisations, le vol de jetons Microsoft, de clés cloud et d’espaces Slack ouvre la porte à des attaques ultérieures, notamment des rançongiciels ou du chantage. Les experts recommandent le principe du zero‑trust, le moindre privilège et la surveillance des lancements invisibles de Chrome, qui sont exploités par VOLTA pour contourner le chiffrement des cookies.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "VOLTA montre comment l’IA peut être détournée pour automatiser le tri et l’évaluation des données volées, réduisant ainsi la charge de travail des cybercriminels. La meilleure défense reste une hygiène numérique stricte : authentification multifacteur, stockage sécurisé des phrases de récupération, surveillance des sessions actives et mise à jour régulière des systèmes.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
