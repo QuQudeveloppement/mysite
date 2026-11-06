@@ -2808,5 +2808,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "reorganisation-du-spectre-900-mhz-et-2100-mhz-chez-orange-et-bouygues-telecom",
+    "title": "Réorganisation du spectre 900 MHz et 2100 MHz chez Orange et Bouygues Telecom",
+    "date": "2026-11-06",
+    "excerpt": "Orange et Bouygues Telecom réaménagent leurs bandes 900 MHz et 2100 MHz, supprimant la 2G et libérant des sites 4G pour accélérer le déploiement de la 5G.",
+    "category": "Internet & réseaux",
+    "cover": "https://next.ink/wp-content/uploads/2025/04/Rip2G3G-1024x496.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte des réallocations de fréquences",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les opérateurs français réorganisent leurs réseaux mobiles afin de libérer du spectre pour les technologies les plus récentes. Orange a mis fin à son réseau 2G le 20 octobre 2026, tandis que Bouygues Telecom désactive plusieurs milliers de sites 2100 MHz initialement dédiés à la 4G.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Suppression de la 2G chez Orange",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Orange a progressivement désactivé la 2G depuis mars, aboutissant à la fermeture totale en octobre 2026. Cette démarche a entraîné la suppression de plus de 13 000 sites sur la bande 900 MHz et de 131 sites sur la bande 1800 MHz. Aujourd’hui, l’opérateur ne conserve que quelques dizaines de sites actifs sur ces fréquences, les réaffectant à la 4G et à la 5G à très haut débit.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réduction massive des sites 2100 MHz chez Bouygues Telecom",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Bouygues Telecom a réduit le nombre de sites autorisés et en service sur la bande 2100 MHz, passant de 22 000 sites autorisés (19 000 en service) au 1er septembre à 13 000 autorisés (10 000 en service) en octobre. Cette baisse reflète le retrait progressif de la 4G au profit d’une utilisation exclusive par la 5G, même si le nombre de sites 5G reste stable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Le rôle du Dynamic Spectrum Sharing (DSS)",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour gérer la transition, Bouygues Telecom utilise la technologie DSS (Dynamic Spectrum Sharing). Le DSS permet aux réseaux LTE et 5G NR de partager dynamiquement la même porteuse, les ressources étant allouées en fonction du trafic. Ainsi, les fréquences 2100 MHz, auparavant partagées entre 4G et 5G, sont progressivement dédiées uniquement à la 5G.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les réaménagements du spectre 900 MHz et 2100 MHz illustrent la volonté des opérateurs français de préparer leurs infrastructures aux exigences de la 5G. En supprimant la 2G et en libérant des sites 4G, Orange et Bouygues Telecom accélèrent le déploiement de services à très haut débit, tout en optimisant l’usage du spectre disponible.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
