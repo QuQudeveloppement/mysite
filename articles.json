@@ -2888,5 +2888,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "vulnerabilite-critique-d-openssh-sur-alpine-linux-comment-un-mot-de-passe-long-permettait",
+    "title": "Vulnérabilité critique d'OpenSSH sur Alpine Linux : comment un mot de passe long permettait l'accès sans authentification",
+    "date": "2026-11-06",
+    "excerpt": "Une faille dans OpenSSH, liée à la gestion des mots de passe longs sur Alpine Linux, permettait à un attaquant d'ouvrir une session SSH dès la première tentative, même sur des comptes sans mot de passe. Le correctif a été publié en urgence.",
+    "category": "Logiciels",
+    "cover": "https://pic.clubic.com/v1/images/2471896/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte de la faille",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Alpine Linux, distribution légère souvent utilisée pour des conteneurs Docker ou des petits serveurs, était exposée à une vulnérabilité d'OpenSSH. Un pirate pouvait se connecter en SSH en saisissant un mot de passe aléatoire de plus de 256 caractères, même si le compte ciblé n'avait aucun mot de passe stocké.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Origine technique du problème",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La cause remonte à deux changements. En 2016, OpenSSH a modifié la vérification des mots de passe sur les serveurs sans PAM, utilisant la fonction crypt() avec un sel. Pour les comptes sans mot de passe, le sel était repris d’un autre compte protégé. En 2012, la bibliothèque musl, employée par Alpine, renvoie un astérisque lorsqu’un mot de passe dépasse 256 octets. Cet astérisque est identique à celui utilisé pour les comptes vides, ce qui fait accepter la connexion.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conditions d'exploitation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour que l’attaque fonctionne, trois critères doivent être réunis sur le serveur Alpine :\n• Le service SSH accepte les connexions par mot de passe (configuration par défaut).\n• Au moins un compte est créé sans mot de passe, généralement destiné à l’accès par clé.\n• Un autre compte possède un mot de passe réel.\nLorsque ces conditions sont présentes, un mot de passe long déclenche le bug et l’accès est accordé immédiatement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réaction et mesures correctives",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OpenSSH a publié un correctif (version 10.6p2) qui refuse les correspondances avec des champs de moins de quatre caractères, contournant ainsi le problème. Alpine a intégré le correctif dans les versions 3.21.10 à 3.24.4 et dans les images tiny‑cloud correspondantes. Les administrateurs doivent mettre à jour le paquet OpenSSH, redémarrer le service sshd et, en attendant, désactiver l’authentification par mot de passe (PasswordAuthentication=no) ou le service SSH complet. Un script fourni par Alpine aide à appliquer ces réglages et à vérifier la configuration.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cette faille illustre comment des interactions entre des composants légers (musl) et des changements de logique d’authentification peuvent créer des vecteurs d’attaque inattendus. La mise à jour rapide d’OpenSSH et d’Alpine, ainsi que la désactivation de l’authentification par mot de passe lorsqu’elle n’est pas indispensable, restent les meilleures pratiques pour sécuriser les serveurs Alpine exposés au réseau.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
