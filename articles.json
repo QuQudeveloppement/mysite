@@ -3048,5 +3048,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "le-filtre-cache-du-clavier-ios-comment-apple-bloque-certaines-expressions-en-saisie-gestue",
+    "title": "Le filtre caché du clavier iOS : comment Apple bloque certaines expressions en saisie gestuelle",
+    "date": "2026-11-07",
+    "excerpt": "Apple intègre dans iOS un dictionnaire secret d’environ 100 000 mots et expressions que le clavier ne suggère jamais, surtout en mode glissement. Découvert par le chercheur Derik Kauffman, ce mécanisme repose sur des empreintes hashées et vise à éviter les propos offensants ou politiques.",
+    "category": "Smartphones",
+    "cover": "https://pic.clubic.com/v1/images/2471947/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le clavier d’iPhone propose une saisie prédictive et gestuelle très fluide, mais il recèle un filtre invisible. Un chercheur indépendant a mis au jour un fichier interne contenant des mots et expressions que le système refuse de proposer, même si l’utilisateur les trace avec le doigt.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une liste secrète de mots et d’expressions",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En explorant les fichiers du clavier iOS, Derik Kauffman a découvert un répertoire caché contenant environ 100 000 entrées. Ces termes ne sont pas stockés en clair : ils sont enregistrés sous forme d’empreintes numériques obtenues par hachage. À chaque frappe, le système compare l’empreinte du texte saisi à celles de la liste et, si une correspondance est trouvée, la suggestion est bloquée. Kauffman a publié son code et a identifié 4 513 phrases bloquées dans iOS 27, réparties sur plusieurs langues.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnement du blocage en saisie gestuelle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lorsque l’on glisse le doigt d’une lettre à l’autre, le clavier génère des suggestions basées sur le mot le plus probable. Si la séquence correspond à une expression de la liste, aucune suggestion n’est affichée ; à la place, le système propose souvent un mot voisin, parfois absurde. Par exemple, « smoking wee » devient « weekend » ou « weekly », tandis que « weed » est totalement absent. En revanche, taper chaque lettre séparément contourne le filtre.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Catégorisation et portée du filtre",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Apple classe les entrées en trois groupes : les mots vulgaires, qui ne sont suggérés qu’après trois saisies manuelles ; les mots offensants et sensibles, jamais proposés et impossibles à tracer ; et les expressions exactes, bloquées uniquement lorsqu’elles apparaissent dans l’ordre précis. Le filtre s’applique à des thèmes comme la vulgarité, la drogue, le sexe, la violence, mais aussi à des formules politiques (« Sleepy Joe », « dictator Trump ») ou à des références géopolitiques (« Tibetan independence », « NSA surveillance »). Les incohérences existent : certaines combinaisons comme « read smut » passent, alors que « read gay smut » est bloquée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réactions et perspectives",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Apple n’a pas commenté directement la découverte, rappelant que le clavier vise à éviter les suggestions inappropriées tout en laissant la liberté de saisir manuellement le texte souhaité. Des voix de la communauté, dont l’Electronic Frontier Foundation, demandent davantage de transparence sur le contenu de la liste. Certains experts suggèrent d’ajouter un réglage désactivable pour ceux qui souhaitent lever ces restrictions. En attendant, le filtre reste actif et influence la manière dont les utilisateurs iOS composent leurs messages.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le clavier d’iPhone recèle donc un mécanisme de censure légère, basé sur un dictionnaire secret d’environ 100 000 entrées hashées. Ce système empêche la suggestion de mots ou d’expressions jugés offensants ou sensibles, surtout en mode glissement. Si la démarche d’Apple vise à protéger les utilisateurs des erreurs embarrassantes, elle soulève des questions de transparence et de contrôle sur le langage numérique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
