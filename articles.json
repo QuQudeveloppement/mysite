@@ -2968,5 +2968,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "arlo-lance-une-camera-de-surveillance-2k-a-energie-solaire-integree",
+    "title": "Arlo lance une caméra de surveillance 2K à énergie solaire intégrée",
+    "date": "2026-11-07",
+    "excerpt": "Arlo propose une nouvelle caméra extérieure 2K dotée d’un panneau solaire de 1,2 W intégré, éliminant le besoin de recharges fréquentes et offrant une batterie de 14 790 mAh pour les jours moins ensoleillés.",
+    "category": "Informatique",
+    "cover": "https://pic.clubic.com/v1/images/2469679/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une solution solaire tout-en-un",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Arlo a introduit la Solar Security Camera 2K, une caméra de surveillance extérieure qui intègre directement un petit panneau photovoltaïque de 1,2 W dans son boîtier. Cette conception supprime la contrainte habituelle des caméras sans fil, à savoir le branchement d’un panneau solaire externe ou le remplacement fréquent de la batterie. Selon le fabricant, moins de 20 jours d’ensoleillement par an suffisent à maintenir la batterie suffisamment chargée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Caractéristiques techniques et performances",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La caméra délivre une résolution 2K (2 560 × 1 440 px) avec un champ de vision de 130°, complété par un zoom numérique 12 x. Elle assure une vision nocturne en couleur, intègre un projecteur automatique et une sirène dissuasive. Le capteur infrarouge détecte les mouvements, tandis que l’intelligence artificielle différencie personnes, animaux et véhicules afin de réduire les fausses alertes. Un système audio bidirectionnel permet la communication à distance via l’application mobile d’Arlo.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Autonomie et résistance aux intempéries",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La batterie de grande capacité, évaluée à 14 790 mAh, stocke l’énergie solaire collectée pour les périodes moins ensoleillées, notamment en hiver. Le dispositif est certifié IP65, résistant aux conditions climatiques extrêmes et fonctionnant entre –20 °C et 45 °C. Son format, toutefois, est plus imposant (10,3 × 14 × 3,9 cm, 470 g) du fait du panneau intégré, ce qui représente un compromis esthétique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Disponibilité et modèle économique",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La caméra sera commercialisée à partir du 18 novembre au prix de 169,99 €, hors abonnement. Certaines fonctions avancées, comme les alertes intelligentes ou le stockage cloud, restent réservées aux abonnés du service Arlo Secure, dont les tarifs ont été révisés début 2026.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Arlo mise sur l’autonomie solaire pour simplifier l’installation de caméras extérieures, en éliminant le besoin de câblage ou de recharges fréquentes. Si les performances réelles dépendront de l’exposition au soleil et des conditions météorologiques, l’offre combine une résolution élevée, des fonctions d’intelligence artificielle et une résistance certifiée aux intempéries, le tout à un prix accessible pour les utilisateurs souhaitant une solution de vidéosurveillance autonome.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
