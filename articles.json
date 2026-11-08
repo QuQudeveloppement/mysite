@@ -3232,5 +3232,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "philips-neopix-264-un-videoprojecteur-full-hd-a-moins-de-100-pour-le-black-friday",
+    "title": "Philips NeoPix 264 : un vidéoprojecteur Full HD à moins de 100 € pour le Black Friday",
+    "date": "2026-11-08",
+    "excerpt": "Le NeoPix 264 de Philips propose une solution d’appoint Full HD à petit prix, avec installation simple et connectivité moderne, idéal pour les soirées cinéma à la maison.",
+    "category": "Informatique",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/philips-neopix-264-black-friday.jpg?resize=1600,900&key=5bd7310d",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre promotionnelle intéressante",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le vidéoprojecteur Philips NeoPix 264, habituellement vendu à 149,99 €, est proposé à 99,99 € chez Darty pendant le Black Friday, soit une remise de 50 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Caractéristiques techniques et performances",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ce modèle utilise la technologie LCD éclairée par LED pour afficher du Full HD (16 : 9) avec un contraste de 500 : 1 et une luminosité de 250 lumens. Il projette jusqu’à 80 pouces, sans prise en charge du HDR.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Installation et usage simplifiés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le NeoPix 264 intègre une mise au point automatique et une correction de trapèze également automatique, ce qui facilite le réglage même pour les novices. La distance de projection recommandée se situe entre 80 cm et 3 m.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Connectivité et options d’extension",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Côté connexion, l’appareil propose le Wi‑Fi double bande, le Bluetooth, deux entrées HDMI, un port USB‑A, un lecteur micro‑SD et une sortie jack 3,5 mm. Un haut‑parleur intégré de 5 W est présent, mais il est recommandé d’utiliser une barre de son ou un casque pour un meilleur son. Aucun système Smart TV n’est intégré, il faut donc recourir à une box externe ou à un dongle HDMI.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites et usage recommandé",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le NeoPix 264 ne se veut pas remplacer une télévision grand écran et ne convient pas aux jeux vidéo récents, dont la fluidité et la résolution seraient limitées. Il reste cependant une option abordable pour agrandir l’écran lors de soirées cinéma ou de visionnage de séries.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En résumé, le Philips NeoPix 264 offre une solution d’appoint Full HD à un prix très attractif, avec une installation intuitive et une connectivité suffisante pour la plupart des usages domestiques. Ses performances restent modestes, mais le rapport qualité‑prix en fait un choix pertinent pour ceux qui souhaitent simplement agrandir leur écran sans investir dans une TV de grande taille.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
