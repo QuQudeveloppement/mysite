@@ -3140,5 +3140,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "sgbc-la-console-francaise-qui-ramene-les-cartouches-game-boy-sur-grand-ecran",
+    "title": "SGBC : la console française qui ramène les cartouches Game Boy sur grand écran",
+    "date": "2026-11-08",
+    "excerpt": "Thomas Sanfourche développe la SGBC, une console FPGA qui lit les cartouches Game Boy, Game Boy Color et Game Boy Advance via HDMI, avec filtres d’affichage, port SNES et sauvegarde micro‑SD, mais reste en phase de validation.",
+    "category": "Jeux vidéo",
+    "cover": "https://pic.clubic.com/v1/images/2471221/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une réponse matérielle au problème du rétro‑gaming",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les passionnés de jeux rétro souhaitent souvent jouer leurs anciennes cartouches sur des écrans modernes sans perdre l’authenticité du support. Thomas Sanfourche, ingénieur français, propose la SGBC, une petite console qui accepte directement les cartouches Game Boy, Game Boy Color et Game Boy Advance et les transmet à un téléviseur ou moniteur via HDMI 1080p.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une architecture FPGA au lieu d’une émulation logicielle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Contrairement aux solutions purement logicielles, la SGBC s’appuie sur une puce FPGA. Cette technologie reproduit le fonctionnement du matériel d’origine, ce qui permet une compatibilité plus fidèle et une meilleure gestion du timing des jeux. Le dispositif assure également une mise à l’échelle qui conserve les pixels nets et les proportions originales.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des options d’affichage personnalisables",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour répondre aux goûts variés des joueurs, la console intègre plusieurs filtres d’affichage : rendu vert rappelant la Game Boy originale, simulation de lignes de balayage CRT, grille de pixels ou encore émulation de moniteurs professionnels PVM. Chaque filtre offre une expérience visuelle différente tout en conservant le rendu original des jeux.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Connectivité et fonctionnalités modernes",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La SGBC propose un port dédié pour manette Super Nintendo, rappelant le Super Game Boy de la SNES, ainsi qu’un port Link permettant de connecter une vraie Game Boy pour les échanges de données. Un slot micro‑SD sert à sauvegarder les ROMs extraites des cartouches et à installer les mises à jour du firmware, assurant ainsi l’évolution du système.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "État du projet et perspectives",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le dispositif n’est pas encore commercialisé ; la compatibilité de certains jeux et le fonctionnement du port Link sont encore en phase de test. Aucun calendrier de sortie n’a été annoncé, mais le prix envisagé tourne autour de 150 €, avec une liste d’attente disponible sur le site officiel.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La SGBC représente une approche hardware innovante pour le rétro‑gaming, combinant authenticité FPGA, multiples filtres visuels et connectivité moderne. Si le projet aboutit, il offrira aux collectionneurs une façon fiable de jouer leurs cartouches Game Boy sur grand écran, tout en conservant la possibilité de créer une bibliothèque numérique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
