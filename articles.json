@@ -3404,5 +3404,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "google-devoile-deux-nouveaux-systemes-tpu-pour-les-agents-ia-sans-concevoir-de-nouvelles-p",
+    "title": "Google dévoile deux nouveaux systèmes TPU pour les agents IA sans concevoir de nouvelles puces",
+    "date": "2026-11-09",
+    "excerpt": "Google enrichit sa gamme de puces IA avec le TPU 8i Max, qui double la mémoire et la puissance de calcul, et le TPU 8tx, dédié à la protection des données sensibles, en réutilisant des siliciums existants.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2472439/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google a annoncé lundi l’ajout de deux nouveaux systèmes TPU à sa huitième génération de puces IA. Le TPU 8i Max et le TPU 8tx sont conçus pour répondre aux besoins spécifiques des agents autonomes, tout en s’appuyant sur des puces déjà existantes plutôt que sur la création de nouvelles conceptions.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "TPU 8i Max : doubler la capacité de mémoire pour les agents IA",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le TPU 8i Max regroupe deux puces TPU 8i dans un même boîtier, ce qui multiplie par deux la puissance de calcul, la capacité SRAM, la mémoire ultra‑rapide et le débit HBM par rapport au modèle de base. Cette architecture permet de gérer des contextes de l’ordre du million de tokens, un volume de données que les agents IA rencontrent lorsqu’ils traitent de longues séquences vidéo ou de multiples tâches. En densifiant le silicium sans augmenter la taille du serveur, les data‑centers gagnent en densité de performance par mètre carré et par watt. Au niveau logiciel, le moteur Agent Compute Engine met en veille les sessions inactives et libère la mémoire en quelques millisecondes, tandis que le composant open source TPU Sync unifie mémoire du puce, serveur, stockage et réseau, réduisant de plus de 90 % le temps d’attente avant la réponse.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "TPU 8tx : sécuriser les données sensibles pendant le calcul",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le TPU 8tx combine le silicium du TPU 8t, destiné à l’entraînement de très grands modèles, avec des processeurs hôtes AMD EPYC de cinquième génération. Son principal atout est l’intégration de la sécurité au niveau matériel : les données chiffrées restent protégées et isolées pendant le traitement, y compris les poids du modèle. Cette solution cible les entreprises et les gouvernements soumis à des exigences réglementaires strictes. Le TPU 8tx utilise le réseau Boardfly du TPU 8i pour réduire la latence, offrant une latence jusqu’à deux fois plus faible que le TPU 8t, sans perte de performance notable. Il permet également d’exécuter, de personnaliser et de condenser un modèle tout en conservant les données privées dans le même environnement de calcul.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Écosystème et disponibilité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "À ce jour, près de cent clients – laboratoires de recherche, sociétés de trading, universités – utilisent déjà les TPU de Google dans leurs propres centres de données. La récente publication open source de TorchTPU permet d’exécuter le code PyTorch sur ces puces sans modification, facilitant l’adoption par les développeurs. Des agents en pré‑version sont également intégrés à des assistants de programmation tels que Claude Code, Cursor ou Google Antigravity. Google n’a pas communiqué de prix ni de date de disponibilité pour le TPU 8i Max et le TPU 8tx.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En réutilisant des siliciums existants, Google montre qu’il peut répondre rapidement aux exigences croissantes des agents IA – que ce soit en termes de capacité mémoire ou de protection des données – sans attendre le long cycle de conception d’une nouvelle puce. Le TPU 8i Max et le TPU 8tx offrent ainsi une combinaison de performance accrue et de sécurité intégrée, positionnant Google comme un acteur clé pour les entreprises qui souhaitent déployer des IA autonomes tout en respectant des contraintes de confidentialité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
