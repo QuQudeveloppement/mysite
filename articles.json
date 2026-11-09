@@ -3324,5 +3324,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "google-localiser-ajoute-lalerte-doubli-pour-les-traqueurs-bluetooth-sur-android",
+    "title": "Google Localiser ajoute l’alerte d’oubli pour les traqueurs Bluetooth sur Android",
+    "date": "2026-11-09",
+    "excerpt": "Google Localiser propose désormais une notification lorsqu’un traqueur Bluetooth s’éloigne du smartphone. L’option, à activer manuellement, fonctionne avec plusieurs marques et exclut le domicile par défaut, comblant partiellement le retard face aux solutions d’Apple et Samsung.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/google-localiser.jpg?resize=1600,900&key=e9498e0f",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’application Localiser de Google, déjà capable de localiser un smartphone ou des écouteurs perdus, vient d’enrichir son offre avec une alerte d’oubli. Cette fonction informe l’utilisateur dès qu’un traqueur Bluetooth s’éloigne du téléphone, rappelant ainsi les alertes déjà présentes chez Apple et Samsung.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Activation de l’alerte « Recevoir une notification en cas d’oubli »",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’option, nommée « Notify when left behind » en anglais, doit être activée pour chaque traqueur dans les paramètres de l’application. Une fois activée, elle déclenche une notification dès que l’objet se sépare du téléphone. Par défaut, le domicile enregistré dans le compte Google ou Google Maps est exclu afin d’éviter des alertes inutiles lors des sorties sans sac.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Compatibilité et limites actuelles",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’alerte fonctionne avec les traqueurs Bluetooth compatibles avec le réseau Localiser, comme les Chipolo ou le Moto Tag de Motorola. Cependant, elle ne s’applique pas aux écouteurs ou autres appareils liés à Localiser, alors qu’Apple l’étend aux AirPods et Samsung aux Galaxy Buds et Galaxy Watch. Le support NFC a également été annoncé, mais il nécessite que le traqueur intègre une puce NFC, ce qui reste rare.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Déploiement progressif",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La fonction apparaît d’abord avec la version 3.1.787‑06 de Localiser, d’après 9to5Google, et se déploie par vagues. Les utilisateurs qui ne voient pas encore l’option doivent mettre à jour l’application via le Play Store. Google avait déjà mentionné ces « Left‑Behind Reminders » dans les notes de mise à jour d’octobre.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google Localiser comble progressivement le retard accumulé face aux alertes d’oubli d’Apple et de Samsung. Bien que limitée aux traqueurs Bluetooth pour l’instant, la nouvelle fonction offre une protection supplémentaire contre les pertes d’objets, surtout lorsqu’elle est correctement configurée et mise à jour.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
