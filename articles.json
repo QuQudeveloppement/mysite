@@ -3484,5 +3484,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "masahiro-sakurai-sur-l-ia-generative-usage-limite-mais-recommandation-de-ne-pas-l-ecarter",
+    "title": "Masahiro Sakurai sur l'IA générative : usage limité mais recommandation de ne pas l'écarter",
+    "date": "2026-11-10",
+    "excerpt": "Le créateur de Super Smash Bros. précise qu'il ne recourt pas à l'IA dans ses projets, mais il incite les studios à ne pas la rejeter complètement, estimant qu'elle pourra accélérer la production de jeux.",
+    "category": "Jeux vidéo",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/masahiro-sakurai.jpg?resize=1600,900&key=214fd444",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lors d'un événement à Akihabara, Masahiro Sakurai, connu pour Kirby et la série Super Smash Bros., a partagé son point de vue sur les outils d'IA générative qui s'imposent dans la création de jeux vidéo. Son propos s'inscrit dans une série d'interviews de grands créateurs japonais, dont Shigeru Miyamoto et Hideo Kojima.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une utilisation personnelle inexistante",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sakurai a clairement indiqué qu'il ne se sert pas de l'IA générative, ni pour la conception de ses titres actuels, ni même pour la recherche d'idées. Il estime qu'une simple requête ne suffit pas à générer une idée exploitable, qui nécessite en outre un planning, une équipe capable de la réaliser et un budget dédié.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Pourquoi ne pas la rejeter complètement",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Malgré son absence d'usage personnel, le créateur conseille aux studios de ne pas éliminer l'IA d'emblée. Selon lui, les équipes qui intègrent ces technologies sans hésitation pourraient produire davantage de jeux, tandis que celles qui la bannissent risquent de prendre du retard à mesure que la technologie progresse.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites perçues et exigences croissantes",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sakurai souligne que la confiance des développeurs envers les outils d'IA reste fragile, notamment pour la génération d'assets graphiques. Il rappelle que la création d'un jeu est aujourd'hui « beaucoup trop exigeante » : le développement de Kirby Air Riders, prévu pour la Switch 2, a demandé dix fois plus d'effort que son prédécesseur sorti sur GameCube en 2003. Cette hausse de la charge de travail alimente son appel à la prudence.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En résumé, Masahiro Sakurai ne recourt pas à l'IA générative dans ses projets, mais il met en garde contre un rejet total de la technologie. Il estime que, même si les outils ne sont pas encore totalement fiables, ils offrent un potentiel d'accélération de la production qui pourrait devenir indispensable pour les studios qui souhaitent rester compétitifs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
