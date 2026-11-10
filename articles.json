@@ -3564,5 +3564,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "affaire-jensen-huang-comment-des-relations-suspectes-ont-permis-a-nvidia-de-vendre-7-5-mil",
+    "title": "Affaire Jensen Huang : comment des relations suspectes ont permis à Nvidia de vendre 7,5 milliards de dollars de puces en Chine",
+    "date": "2026-11-10",
+    "excerpt": "Des enquêtes révèlent qu'Alice Huang, liée à Jensen Huang, aurait facilité l'exportation de puces NVIDIA d'une valeur de 7,5 milliards de dollars vers la Chine, contournant les restrictions américaines et alimentant le débat sur la gouvernance du groupe.",
+    "category": "Informatique",
+    "cover": "https://pic.clubic.com/v1/images/2413774/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte de l'affaire et premières révélations",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Fin novembre, plusieurs médias ont publié des informations sur une relation entre le PDG de NVIDIA, Jensen Huang, et Alice Huang, ancienne dirigeante d'une société cliente basée à Singapour. Les autorités américaines suspectent cette dernière d'être un agent du renseignement chinois. Cette liaison a déclenché l'ouverture d'une enquête indépendante chez NVIDIA pour déterminer d'éventuels risques de fuite d'informations ou d'influence étrangère.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un réseau d'importation de puces estimé à 7,5 milliards de dollars",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Selon le média The Information, Alice Huang aurait mobilisé un réseau s'étendant de la Chine à Singapour, permettant le passage de puces haut de gamme (modèles H100, H200 et A100) d'une valeur totale proche de 7,5 milliards de dollars. Le volume évoqué représente environ 240 000 unités, ce qui aurait largement contourné les restrictions d'exportation imposées par les États‑Unis sur les technologies d'intelligence artificielle.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Mécanismes de contournement des restrictions américaines",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lorsque les commandes de puces NVIDIA étaient bloquées, Alice Huang aurait utilisé ses contacts pour faire passer les composants malgré les embargos. Les rapports indiquent qu'elle évitait les traces écrites et s'appuyait sur la crédibilité conférée par sa proximité avec Jensen Huang, rendant les contrôles plus difficiles pour les autorités.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Répercussions sur le marché et la gouvernance de NVIDIA",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L'annonce de l'enquête a entraîné une chute du cours de l'action NVIDIA d'environ 4 % en séance hors marché. Les analystes s'interrogent sur la stabilité du leadership, certains prévoyant une possible remise en cause du poste de Jensen Huang, tandis que d'autres estiment que la réaction boursière resterait limitée tant que le PDG resterait en place.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L'affaire Jensen Huang met en lumière les risques liés aux relations personnelles au sein d'entreprises technologiques stratégiques. Si les chiffres avancés par les enquêtes restent à confirmer, ils illustrent comment un réseau informel peut faciliter le contournement de sanctions et impacter à la fois la chaîne d'approvisionnement et la confiance des investisseurs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, LeMondeInformatique"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
