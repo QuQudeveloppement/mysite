@@ -3644,5 +3644,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "une-faille-ios-permettant-d-exfiltrer-les-phrases-de-recuperation-des-portefeuilles-crypto",
+    "title": "Une faille iOS permettant d'exfiltrer les phrases de récupération des portefeuilles crypto",
+    "date": "2026-11-11",
+    "excerpt": "Binance a mis en garde les utilisateurs d'iPhone contre une vulnérabilité qui contourne le sandbox et expose les données sensibles des applications, notamment les clés privées des crypto‑portefeuilles. La faille, exploitée via une application tierce, n’est pas encore corrigée par Apple.",
+    "category": "Smartphones",
+    "cover": "https://pic.clubic.com/v1/images/2473207/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Binance a récemment alerté la communauté sur une faille de sécurité affectant plusieurs versions d’iOS. Cette vulnérabilité, découverte par le chercheur connu sous le pseudonyme forcequit, permet à une application installée hors de l’App Store d’accéder aux fichiers d’autres applications, y compris les phrases de récupération des portefeuilles de cryptomonnaies.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comment la faille contourne le sandbox d’iOS",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sur iPhone, chaque application est isolée dans un bac à sable (sandbox) qui empêche l’accès aux données des autres programmes. Le chercheur a publié sur GitHub une méthode, nommée worse_query, qui exploite un mécanisme d’App Group pour sortir de ce confinement sans nécessiter de jailbreak. En créant un groupe de stockage partagé, l’application piégée peut lire, modifier ou supprimer les fichiers locaux d’autres applications, y compris les clés privées et les phrases de récupération.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un gestionnaire de fichiers comme vecteur d’attaque",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le code publié a rapidement donné naissance à WQ Files, un gestionnaire de fichiers capable d’explorer le contenu des applications installées. Distribué via des outils d’installation alternatifs comme AltStore ou SideStore, ce logiciel crée automatiquement un App Group avec l’identifiant Apple de l’utilisateur. Un attaquant pourrait ainsi inciter la victime à installer l’application piégée, ouvrant la porte à l’exfiltration de données sensibles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "État des correctifs et recommandations de Binance",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les tests de BleepingComputer montrent que WQ Files fonctionne sur iOS 26.7.1, 27.0.1 et 27.2, malgré les 163 correctifs apportés par Apple à la version 27.2. Apple n’a pas encore publié de correctif spécifique à cette faille et ne l’a pas mentionnée dans les notes de sécurité des mises à jour iOS 26.7.3 et 27.2.1. Binance conseille donc aux utilisateurs d’appliquer immédiatement toutes les mises à jour d’iOS et des applications, de supprimer les programmes provenant de sources non fiables, et, en cas de suspicion de compromission, de transférer leurs fonds vers un nouveau portefeuille créé sur un appareil sain.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cette vulnérabilité met en lumière les risques liés à l’installation d’applications en dehors de l’App Store sur iPhone. Bien que la faille ne provienne pas de l’application Binance elle‑même, elle expose les utilisateurs de cryptomonnaies à un vol potentiel de leurs actifs. En attendant qu’Apple publie un correctif, la prudence reste la meilleure défense : maintenir le système à jour, limiter les installations tierces et surveiller l’activité des portefeuilles crypto.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
