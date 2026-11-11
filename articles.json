@@ -3724,5 +3724,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "yann-le-cun-rassure-lia-ne-declenchera-pas-de-crise-massive-de-lemploi",
+    "title": "Yann Le Cun rassure : l’IA ne déclenchera pas de crise massive de l’emploi",
+    "date": "2026-11-11",
+    "excerpt": "Yann Le Cun, figure majeure de l’intelligence artificielle, explique pourquoi les craintes d’un chômage de masse lié à l’IA sont infondées et comment la technologie devrait plutôt créer de nouveaux métiers.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2303904/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’essor de l’intelligence artificielle suscite régulièrement des inquiétudes quant à son impact sur le marché du travail. Certains prédisent un « bain de sang » de l’emploi, tandis que d’autres y voient une opportunité. Dans une interview accordée à *Le Point*, le chercheur français Yann Le Cun, pionnier de l’IA, démystifie les scénarios catastrophiques et propose une vision plus nuancée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des craintes exagérées face à une technologie encore embryonnaire",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Cun souligne que les IA capables de surpasser l’intelligence humaine restent très éloignées. Selon lui, seules une petite proportion des tâches actuelles sont réellement automatisables. Cette réalité contraste avec les discours alarmistes qui imaginent une automatisation massive et immédiate de l’ensemble des métiers.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Impact réel sur la productivité, pas de bouleversement radical",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’expert rappelle que les contributions de l’IA à la productivité se traduisent aujourd’hui par un gain incrémental, estimé à environ 6 % par an par les économistes Philippe Aghion et Erik Brynjolfsson. Ce chiffre, bien que significatif, reste loin des hausses spectaculaires de 10 à 20 % souvent annoncées par certains dirigeants de la tech. Ainsi, l’IA agit comme un levier d’efficacité plutôt que comme un facteur de rupture totale.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "De nouveaux métiers plutôt que la disparition des emplois",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Plutôt que d’éliminer des postes, l’IA devrait favoriser l’émergence de fonctions inédites, selon Le Cun. L’histoire montre que chaque révolution technologique crée des besoins nouveaux, et l’IA ne fait pas exception. Les compétences requises évolueront, mais le marché du travail s’adaptera en générant des opportunités que l’on ne peut pas encore anticiper pleinement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Leçon tirée des promesses non tenues de la Silicon Valley",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Cun rappelle que la Silicon Valley a souvent exagéré ses avancées, à l’image des prédictions sur les voitures autonomes il y a dix ans, qui n’ont pas encore abouti. Cette mise en perspective invite à prendre du recul face aux annonces tonitruantes et à évaluer les progrès réels de l’IA avec un regard critique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En définitive, Yann Le Cun propose une vision mesurée de l’intelligence artificielle : loin d’engendrer un effondrement du marché du travail, elle devrait plutôt stimuler la productivité et ouvrir la voie à des métiers nouveaux. Les craintes d’un chômage de masse restent donc largement infondées tant que les avancées technologiques continuent de progresser à un rythme raisonnable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
