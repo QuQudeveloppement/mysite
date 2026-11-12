@@ -3816,5 +3816,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "black-friday-2026-les-meilleures-offres-tech-d-amazon-avant-le-grand-jour",
+    "title": "Black Friday 2026 : les meilleures offres tech d'Amazon avant le grand jour",
+    "date": "2026-11-12",
+    "excerpt": "Amazon lance dès maintenant une série de promotions sur des smartphones, TV Mini LED, projecteurs et autres appareils connectés. Découvrez les dix offres les plus intéressantes et nos conseils pour profiter au mieux du Black Friday.",
+    "category": "Informatique",
+    "cover": "https://pic.clubic.com/v1/images/2472637/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "À deux semaines du Black Friday, Amazon propose déjà des remises importantes sur une sélection de produits high‑tech. Smartphones, téléviseurs, projecteurs ou objets connectés, les prix baissent bien avant le vendredi 27 novembre, offrant aux acheteurs un large éventail d’opportunités.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Smartphones premium à prix réduit",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les offres phares, le Samsung Galaxy S26+ (écran 6,7 inches Dynamic AMOLED 2X, puce Exynos 2600 gravée en 2 nm) bénéficie d’une baisse notable. Le même modèle est présenté par Frandroid comme passant de 1 269 € à 965 €, soit une économie de plus de 300 €. L’iPhone 17 Pro Max, noté 10/10, propose un écran 6,9 inches 120 Hz et la puce A19 Pro, tandis que le Google Pixel 11, noté 8/10, combine un écran OLED 6,3 inches 120 Hz et le processeur Tensor G6. Ces trois appareils offrent des performances de pointe à des tarifs plus accessibles que leurs prix initiaux.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Équipements de la maison et audio",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Amazon met également en avant des objets connectés comme l’Apple Watch Series 11 (autonomie améliorée à 24 h, écran OLED LTPO3 2 000 nits) et la Galaxy Tab S10 Lite (écran LCD 10,9 inches 90 Hz, S Pen inclus). Côté audio, les FreeBuds SE 5 Max promettent jusqu’à 80 heures d’écoute avec une recharge de 10 minutes, tandis que le casque Anker Q20i propose une réduction de bruit active efficace à un prix abordable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Grand écran et projection",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le téléviseur Mini LED 55 inches de Samsung, issu de la gamme 2026, bénéficie d’une remise de plus de 400 €, offrant un rétroéclairage précis et un processeur Mini LED 4K. Le projecteur portable XGIMI MoGo 2 Pro, quant à lui, projette en Full HD 400 lumens, avec mise au point et correction trapézoïdale automatiques, idéal pour les petites pièces.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Astuces pour optimiser ses achats",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les promotions s’étalent sur plusieurs semaines, il est donc recommandé de suivre l’évolution des prix et de vérifier que le vendeur est bien Amazon et non un tiers. Consulter l’historique des tarifs permet de s’assurer que la remise est réelle. Enfin, privilégier les produits bien notés dans les tests (par exemple les smartphones cités) garantit un bon rapport qualité‑prix, même si la remise est modeste.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Amazon anticipe le Black Friday en proposant dès maintenant des réductions significatives sur des produits phares. En surveillant les prix, en s’assurant de la fiabilité du vendeur et en se basant sur les notes de test, les consommateurs peuvent tirer le meilleur parti de ces offres avant même le jour J.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
