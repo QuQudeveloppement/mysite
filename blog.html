@@ -57,6 +57,10 @@
 
     .install-app-btn { display: none; }
 
+    .bookmark-btn { background: none; border: none; cursor: pointer; font-size: 1.25rem; float: right; padding: 6px; transition: transform 0.1s ease; }
+    .bookmark-btn:hover { transform: scale(1.15); }
+    .log-entry { position: relative; }
+
     .mobile-home {
       display: none;
     }
@@ -125,10 +129,9 @@
     <nav class="site-nav">
       <a href="blog.html">Accueil</a>
       <a href="#archives">Archives</a>
-
+      <button type="button" class="nav-btn" id="loginBtn">Connexion</button>
       <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false" hidden>Notifications</button>
       <button type="button" class="nav-btn install-app-btn" id="installAppBtn" hidden>Installer l’app</button>
-
       <a href="forbidden.html" aria-label="Lien vide"></a>
     </nav>
   </div>
@@ -167,6 +170,7 @@ let deferredPrompt = null;
 
 const notifyToggle = document.getElementById("notifyToggle");
 const installAppBtn = document.getElementById("installAppBtn");
+const loginBtn = document.getElementById("loginBtn");
 
 function isMobile() {
   return window.matchMedia("(max-width: 768px)").matches;
@@ -352,6 +356,7 @@ function wireToolbar(list) {
 function articleCardHtml(a) {
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
+      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}">🔖</button>
       ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
         <img src="${a.cover}" alt="" loading="lazy">
       </a>` : ""}
@@ -391,6 +396,7 @@ function renderList(currentSlug = "") {
 
   app.innerHTML = bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
   wireToolbar(shown);
+  updateBookmarkUI();
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
@@ -412,6 +418,7 @@ function renderArchives() {
   }
 
   app.innerHTML = header + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
+  updateBookmarkUI();
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
@@ -532,7 +539,7 @@ function bindNotificationToggle() {
   setNotificationBtnState();
 }
 
-/* ---------- Likes : Firebase Realtime Database ---------- */
+/* ---------- Firebase Realtime Database & Auth ---------- */
 const firebaseConfig = {
   apiKey: "AIzaSyBe0oKHrentjayq2EmUxRnM1Qg7Qn1n8nI",
   authDomain: "l-atelier-1b97b.firebaseapp.com",
@@ -544,13 +551,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const fbDb = firebase.database();
 
-// Les clés Firebase ne peuvent pas contenir . # $ [ ] /
 function likeKey(id) {
   return String(id).replace(/[.#$\[\]\/]/g, "_").slice(0, 100);
 }
 
 let authPromise = null;
 function ensureAuth() {
+  const currentUser = firebase.auth().currentUser;
+  if (currentUser) return Promise.resolve(currentUser);
   if (!authPromise) {
     authPromise = new Promise((resolve, reject) => {
       const auth = firebase.auth();
@@ -562,6 +570,103 @@ function ensureAuth() {
   }
   return authPromise;
 }
+
+/* --- Authentification Google & Gestion des Favoris --- */
+
+if (loginBtn) {
+  loginBtn.addEventListener("click", async () => {
+    const user = firebase.auth().currentUser;
+    if (user && !user.isAnonymous) {
+      try {
+        await firebase.auth().signOut();
+      } catch (e) {
+        console.error("Erreur déconnexion :", e);
+      }
+    } else {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      try {
+        await firebase.auth().signInWithPopup(provider);
+      } catch (e) {
+        console.error("Erreur connexion Google :", e);
+        alert("Impossible de se connecter avec Google.");
+      }
+    }
+  });
+}
+
+firebase.auth().onAuthStateChanged(user => {
+  if (loginBtn) {
+    if (user && !user.isAnonymous) {
+      const firstName = user.displayName ? user.displayName.split(" ")[0] : "Compte";
+      loginBtn.textContent = `Déconnexion (${firstName})`;
+      updateBookmarkUI();
+    } else {
+      loginBtn.textContent = "Connexion";
+      resetBookmarkUI();
+    }
+  } else {
+    if (user && !user.isAnonymous) {
+      updateBookmarkUI();
+    } else {
+      resetBookmarkUI();
+    }
+  }
+});
+
+async function updateBookmarkUI() {
+  const user = firebase.auth().currentUser;
+  if (!user || user.isAnonymous) {
+    resetBookmarkUI();
+    return;
+  }
+  try {
+    const snap = await fbDb.ref(`users/${user.uid}/bookmarks`).once("value");
+    const bookmarks = snap.val() || {};
+    document.querySelectorAll(".bookmark-btn").forEach(btn => {
+      const id = btn.id.replace("bk-", "");
+      if (bookmarks[id] === true) {
+        btn.textContent = "💾";
+      } else {
+        btn.textContent = "🔖";
+      }
+    });
+  } catch (e) {
+    console.error("Erreur chargement bookmarks :", e);
+  }
+}
+
+function resetBookmarkUI() {
+  document.querySelectorAll(".bookmark-btn").forEach(btn => {
+    btn.textContent = "🔖";
+  });
+}
+
+window.toggleBookmark = async function(id) {
+  const user = firebase.auth().currentUser;
+  if (!user || user.isAnonymous) {
+    alert("Veuillez vous connecter avec Google pour enregistrer des favoris.");
+    return;
+  }
+  const uid = user.uid;
+  const ref = fbDb.ref(`users/${uid}/bookmarks/${id}`);
+  const btn = document.getElementById(`bk-${id}`);
+
+  try {
+    const snap = await ref.once("value");
+    if (snap.exists()) {
+      await ref.remove();
+      if (btn) btn.textContent = "🔖";
+    } else {
+      await ref.set(true);
+      if (btn) btn.textContent = "💾";
+    }
+  } catch (e) {
+    console.error("Erreur bookmark :", e);
+    alert("Impossible de modifier le favori pour le moment.");
+  }
+};
+
+/* ---------- Likes : Firebase Realtime Database ---------- */
 
 async function fetchLikeCount(id) {
   try {
@@ -587,7 +692,6 @@ async function incrementLikeCount(id) {
   const key = likeKey(id);
   const countRef = fbDb.ref(`likes/${key}/count`);
 
-  // Nouvelle tentative si deux personnes likent en même temps
   for (let attempt = 0; attempt < 4; attempt++) {
     const current = (await countRef.once("value")).val() || 0;
     const next = current + 1;
@@ -619,7 +723,6 @@ async function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
 
-  // Etat initial lu dans Firebase
   btn.disabled = true;
   setLikedState(btn, await hasLiked(id));
 
