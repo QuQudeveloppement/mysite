@@ -129,7 +129,7 @@
     <nav class="site-nav">
       <a href="blog.html">Accueil</a>
       <a href="#archives">Archives</a>
-      <button type="button" class="nav-btn" id="loginBtn">Connexion</button>
+      <button type="button" class="nav-btn" id="loginBtn" title="Connexion">🚪➔</button>
       <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false" hidden>Notifications</button>
       <button type="button" class="nav-btn install-app-btn" id="installAppBtn" hidden>Installer l’app</button>
       <a href="forbidden.html" aria-label="Lien vide"></a>
@@ -560,10 +560,16 @@ firebase.auth().onAuthStateChanged(async user => {
       await userRef.set(pseudo);
     }
 
-    if (loginBtn) loginBtn.textContent = `Déconnexion (${pseudo})`;
+    if (loginBtn) {
+      loginBtn.textContent = `🚪❌ (${pseudo})`;
+      loginBtn.title = `Déconnexion (${pseudo})`;
+    }
     updateBookmarkUI();
   } else {
-    if (loginBtn) loginBtn.textContent = "Connexion";
+    if (loginBtn) {
+      loginBtn.textContent = "🚪➔";
+      loginBtn.title = "Connexion";
+    }
     resetBookmarkUI();
   }
   const hash = location.hash;
