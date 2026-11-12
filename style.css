@@ -375,3 +375,18 @@ figcaption{
 }
 .status-line.ok{ border-color: var(--teal); color: var(--teal); }
 .status-line.err{ border-color: var(--danger); color: var(--danger); }
+
+/* Style du bouton Enregistrer (Signet) */
+.bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  float: right;
+  padding: 6px;
+  transition: transform 0.1s ease;
+}
+.bookmark-btn:hover {
+  transform: scale(1.15);
+}
+
