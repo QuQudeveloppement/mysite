@@ -185,75 +185,47 @@ function isStandalone() {
 
 function updateNotificationState() {
   if (!notifyToggle) return;
-
   const supported = "Notification" in window;
   const granted = supported && Notification.permission === "granted";
-
   notifyToggle.hidden = granted;
   notifyToggle.setAttribute("aria-pressed", String(granted));
   notifyToggle.textContent = granted ? "Notifications activées" : "Notifications";
-
-  if (!supported) {
-    notifyToggle.hidden = true;
-  }
+  if (!supported) notifyToggle.hidden = true;
 }
 
 function updateInstallState() {
   if (!installAppBtn) return;
-
-  const mobile = isMobile();
-  const installed = isStandalone();
-
-  if (!mobile || installed || !deferredPrompt) {
+  if (!isMobile() || isStandalone() || !deferredPrompt) {
     installAppBtn.hidden = true;
     return;
   }
-
   installAppBtn.hidden = false;
 }
 
 if (notifyToggle) {
   updateNotificationState();
-
   notifyToggle.addEventListener("click", async () => {
-    if (!("Notification" in window)) {
-      alert("Ce navigateur ne supporte pas les notifications Web.");
-      return;
-    }
-
-    if (Notification.permission === "granted") {
-      updateNotificationState();
-      return;
-    }
-
+    if (!("Notification" in window)) return alert("Ce navigateur ne supporte pas les notifications Web.");
+    if (Notification.permission === "granted") return;
     const result = await Notification.requestPermission();
-    if (result === "granted") {
-      updateNotificationState();
-    } else {
-      alert("L'autorisation de notification a été refusée. Tu peux la réactiver dans les paramètres du navigateur.");
-    }
+    if (result === "granted") updateNotificationState();
   });
 }
 
 if (installAppBtn) {
   installAppBtn.addEventListener("click", async () => {
     if (!deferredPrompt) return;
-
     deferredPrompt.prompt();
     const choice = await deferredPrompt.userChoice;
-
-    if (choice.outcome === "accepted") {
-      installAppBtn.hidden = true;
-    }
-
+    if (choice.outcome === "accepted") installAppBtn.hidden = true;
     deferredPrompt = null;
     updateInstallState();
   });
 }
 
-window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  deferredPrompt = event;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
   updateInstallState();
 });
 
@@ -263,7 +235,6 @@ window.addEventListener("appinstalled", () => {
 });
 
 window.addEventListener("resize", updateInstallState);
-
 updateNotificationState();
 updateInstallState();
 
@@ -317,7 +288,7 @@ function toolbarHtml(active, current) {
   const cats = collectCategories(active);
   const label = current && cats.has(current) ? " : " + cats.get(current).label : "";
   const chips = cats.size === 0
-    ? `<p class="cat-empty">Aucune catégorie pour l'instant : les articles n'ont pas encore de champ « category ».</p>`
+    ? `<p class="cat-empty">Aucune catégorie pour l'instant.</p>`
     : `<a class="cat-chip ${current ? "" : "active"}" href="#">Tout <span class="cat-n">${active.length}</span></a>` +
       [...cats.entries()]
         .sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"))
@@ -356,10 +327,8 @@ function wireToolbar(list) {
 function articleCardHtml(a) {
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
-      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}">🔖</button>
-      ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
-        <img src="${a.cover}" alt="" loading="lazy">
-      </a>` : ""}
+      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">🔖</button>
+      ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}"><img src="${a.cover}" alt="" loading="lazy"></a>` : ""}
       <div class="log-entry-body">
         <div class="log-date">
           ${a.pinned ? '<span class="badge pinned">📌 Épinglé</span>' : ""}
@@ -388,8 +357,7 @@ function renderList(currentSlug = "") {
   const bar = toolbarHtml(active, currentSlug);
 
   if (sorted.length === 0) {
-    const msg = currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.";
-    app.innerHTML = bar + `<p class="log-empty">${msg}</p>`;
+    app.innerHTML = bar + `<p class="log-empty">Aucun article.</p>`;
     wireToolbar(shown);
     return;
   }
@@ -407,13 +375,10 @@ function renderList(currentSlug = "") {
 function renderArchives() {
   const archived = ARTICLES.filter(isArchived);
   const sorted = [...archived].sort((a, b) => (a.date < b.date ? 1 : -1));
-  const header = `
-    <a class="article-back" href="blog.html">← Retour à l'accueil</a>
-    <h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>
-  `;
+  const header = `<a class="article-back" href="blog.html">← Retour à l'accueil</a><h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>`;
 
   if (sorted.length === 0) {
-    app.innerHTML = header + `<p class="log-empty">Aucun article archivé pour l'instant.</p>`;
+    app.innerHTML = header + `<p class="log-empty">Aucun article archivé.</p>`;
     return;
   }
 
@@ -426,9 +391,8 @@ function renderArchives() {
   });
 }
 
-function renderArticle(id) {
+async function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
-
   if (!article) {
     app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="blog.html">← Retour à l'accueil</a>`;
     return;
@@ -452,12 +416,21 @@ function renderArticle(id) {
         <span data-like-display="${escapeHtml(article.id)}">…</span>
       </button>
     </div>
+
+    <section class="comments-section" style="margin-top: 40px; border-top: 1px solid rgba(127,127,127,0.3); padding-top: 20px;">
+      <h3>Commentaires</h3>
+      <div id="commentsList" style="margin-bottom: 20px;"><p style="opacity:0.7;">Chargement des commentaires...</p></div>
+      <div id="commentFormContainer"></div>
+    </section>
   `;
 
   wireLikeButton(article.id);
   const rb = document.getElementById("randomBtn");
   if (rb) rb.addEventListener("click", () => goRandom(ARTICLES.filter(a => !isArchived(a)), article.id));
   fetchLikeCount(article.id).then(count => updateLikeDisplays(article.id, count));
+
+  loadComments(id);
+  updateBookmarkUI();
 }
 
 function render() {
@@ -492,16 +465,11 @@ function setNotificationBtnState() {
 function notifyIfNewArticle() {
   if (localStorage.getItem(NOTIFY_KEY) !== "1") return;
   if (!("Notification" in window) || Notification.permission !== "granted") return;
-
   const latestId = getLatestArticleId();
   const lastSeen = localStorage.getItem(LAST_COMMON_ARTICLE_KEY);
   if (!latestId || lastSeen === latestId) return;
-
   localStorage.setItem(LAST_COMMON_ARTICLE_KEY, latestId);
-  new Notification("Nouvel article sur L'Atelier", {
-    body: "Un nouveau billet vient d'être publié.",
-    icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png"
-  });
+  new Notification("Nouvel article sur L'Atelier", { body: "Un nouveau billet vient d'être publié.", icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png" });
 }
 
 function startArticlePolling() {
@@ -512,34 +480,23 @@ function startArticlePolling() {
 function bindNotificationToggle() {
   const btn = document.getElementById("notifyToggle");
   if (!btn) return;
-
   btn.addEventListener("click", async () => {
-    if (!("Notification" in window)) {
-      alert("Ce navigateur ne supporte pas les notifications Web.");
-      return;
-    }
-
+    if (!("Notification" in window)) return alert("Non supporté.");
     const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
     if (!enabled) {
       const result = await Notification.requestPermission();
-      if (result !== "granted") {
-        alert("L'autorisation de notification a été refusée. Tu peux la réactiver dans les paramètres du navigateur.");
-        return;
-      }
+      if (result !== "granted") return alert("Refusé.");
       localStorage.setItem(NOTIFY_KEY, "1");
       setNotificationBtnState();
-      notifyIfNewArticle();
       return;
     }
-
     localStorage.setItem(NOTIFY_KEY, "0");
     setNotificationBtnState();
   });
-
   setNotificationBtnState();
 }
 
-/* ---------- Firebase Realtime Database & Auth ---------- */
+/* ---------- Firebase & Auth & Pseudonyme ---------- */
 const firebaseConfig = {
   apiKey: "AIzaSyBe0oKHrentjayq2EmUxRnM1Qg7Qn1n8nI",
   authDomain: "l-atelier-1b97b.firebaseapp.com",
@@ -571,17 +528,13 @@ function ensureAuth() {
   return authPromise;
 }
 
-/* --- Authentification Google & Gestion des Favoris --- */
-
 if (loginBtn) {
   loginBtn.addEventListener("click", async () => {
     const user = firebase.auth().currentUser;
     if (user && !user.isAnonymous) {
       try {
         await firebase.auth().signOut();
-      } catch (e) {
-        console.error("Erreur déconnexion :", e);
-      }
+      } catch (e) { console.error(e); }
     } else {
       const provider = new firebase.auth.GoogleAuthProvider();
       try {
@@ -594,24 +547,32 @@ if (loginBtn) {
   });
 }
 
-firebase.auth().onAuthStateChanged(user => {
-  if (loginBtn) {
-    if (user && !user.isAnonymous) {
-      const firstName = user.displayName ? user.displayName.split(" ")[0] : "Compte";
-      loginBtn.textContent = `Déconnexion (${firstName})`;
-      updateBookmarkUI();
-    } else {
-      loginBtn.textContent = "Connexion";
-      resetBookmarkUI();
+firebase.auth().onAuthStateChanged(async user => {
+  if (user && !user.isAnonymous) {
+    const userRef = fbDb.ref(`users/${user.uid}/profile/pseudo`);
+    const snap = await userRef.once("value");
+    let pseudo = snap.val();
+
+    if (!pseudo) {
+      const defaultName = user.displayName ? user.displayName.split(" ")[0] : "Membre";
+      pseudo = prompt("Choisis ton pseudonyme pour commenter et enregistrer tes favoris :", defaultName);
+      pseudo = pseudo ? pseudo.trim() : "Anonyme";
+      await userRef.set(pseudo);
     }
+
+    if (loginBtn) loginBtn.textContent = `Déconnexion (${pseudo})`;
+    updateBookmarkUI();
   } else {
-    if (user && !user.isAnonymous) {
-      updateBookmarkUI();
-    } else {
-      resetBookmarkUI();
-    }
+    if (loginBtn) loginBtn.textContent = "Connexion";
+    resetBookmarkUI();
+  }
+  const hash = location.hash;
+  if (hash.startsWith("#article/")) {
+    loadComments(decodeURIComponent(hash.replace("#article/", "")));
   }
 });
+
+/* ---------- Gestion des Favoris (Bookmarks) ---------- */
 
 async function updateBookmarkUI() {
   const user = firebase.auth().currentUser;
@@ -624,11 +585,7 @@ async function updateBookmarkUI() {
     const bookmarks = snap.val() || {};
     document.querySelectorAll(".bookmark-btn").forEach(btn => {
       const id = btn.id.replace("bk-", "");
-      if (bookmarks[id] === true) {
-        btn.textContent = "💾";
-      } else {
-        btn.textContent = "🔖";
-      }
+      btn.textContent = bookmarks[id] === true ? "💾" : "🔖";
     });
   } catch (e) {
     console.error("Erreur chargement bookmarks :", e);
@@ -647,8 +604,7 @@ window.toggleBookmark = async function(id) {
     alert("Veuillez vous connecter avec Google pour enregistrer des favoris.");
     return;
   }
-  const uid = user.uid;
-  const ref = fbDb.ref(`users/${uid}/bookmarks/${id}`);
+  const ref = fbDb.ref(`users/${user.uid}/bookmarks/${id}`);
   const btn = document.getElementById(`bk-${id}`);
 
   try {
@@ -662,19 +618,83 @@ window.toggleBookmark = async function(id) {
     }
   } catch (e) {
     console.error("Erreur bookmark :", e);
-    alert("Impossible de modifier le favori pour le moment.");
+    alert("Impossible de modifier le favori.");
   }
 };
 
-/* ---------- Likes : Firebase Realtime Database ---------- */
+/* ---------- Système de Commentaires ---------- */
+
+async function loadComments(articleId) {
+  const container = document.getElementById("commentsList");
+  const formContainer = document.getElementById("commentFormContainer");
+  if (!container || !formContainer) return;
+
+  const user = firebase.auth().currentUser;
+  const isLogged = user && !user.isAnonymous;
+
+  if (isLogged) {
+    formContainer.innerHTML = `
+      <form id="commentForm" style="display: flex; flex-direction: column; gap: 10px;">
+        <textarea id="commentInput" placeholder="Écrire un commentaire..." required style="padding: 10px; border-radius: 8px; border: 1px solid rgba(127,127,127,0.4); background: transparent; color: inherit; font-family: inherit; resize: vertical; min-height: 80px;"></textarea>
+        <button type="submit" class="tool-btn" style="align-self: flex-start;">Publier le commentaire</button>
+      </form>
+    `;
+    const form = document.getElementById("commentForm");
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const text = document.getElementById("commentInput").value.trim();
+      if (!text) return;
+
+      const pseudoSnap = await fbDb.ref(`users/${user.uid}/profile/pseudo`).once("value");
+      const pseudo = pseudoSnap.val() || "Membre";
+
+      const newCommentRef = fbDb.ref(`comments/${likeKey(articleId)}`).push();
+      await newCommentRef.set({
+        author: pseudo,
+        text: text,
+        date: Date.now()
+      });
+      document.getElementById("commentInput").value = "";
+      loadComments(articleId);
+    };
+  } else {
+    formContainer.innerHTML = `<p style="font-size: 0.9rem; opacity: 0.7;">Connectez-vous avec Google pour poster un commentaire.</p>`;
+  }
+
+  try {
+    const snap = await fbDb.ref(`comments/${likeKey(articleId)}`).once("value");
+    const comments = snap.val();
+    if (!comments) {
+      container.innerHTML = `<p style="opacity: 0.6; font-size: 0.9rem;">Aucun commentaire pour l'instant.</p>`;
+      return;
+    }
+
+    let html = "";
+    Object.values(comments).sort((a, b) => b.date - a.date).forEach(c => {
+      const dateStr = new Date(c.date).toLocaleDateString("fr-FR", { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      html += `
+        <div style="background: rgba(127,127,127,0.08); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.7; margin-bottom: 4px;">
+            <strong>${escapeHtml(c.author)}</strong>
+            <span>${dateStr}</span>
+          </div>
+          <p style="margin: 0; font-size: 0.95rem; word-break: break-word;">${escapeHtml(c.text)}</p>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  } catch (e) {
+    container.innerHTML = `<p style="color: red;">Erreur de chargement des commentaires.</p>`;
+  }
+}
+
+/* ---------- Likes ---------- */
 
 async function fetchLikeCount(id) {
   try {
     const snap = await fbDb.ref(`likes/${likeKey(id)}/count`).once("value");
     return snap.val() || 0;
-  } catch {
-    return 0;
-  }
+  } catch { return 0; }
 }
 
 async function hasLiked(id) {
@@ -682,16 +702,13 @@ async function hasLiked(id) {
     const user = await ensureAuth();
     const snap = await fbDb.ref(`likes/${likeKey(id)}/voters/${user.uid}`).once("value");
     return snap.exists();
-  } catch {
-    return false;
-  }
+  } catch { return false; }
 }
 
 async function incrementLikeCount(id) {
   const user = await ensureAuth();
   const key = likeKey(id);
   const countRef = fbDb.ref(`likes/${key}/count`);
-
   for (let attempt = 0; attempt < 4; attempt++) {
     const current = (await countRef.once("value")).val() || 0;
     const next = current + 1;
@@ -701,9 +718,7 @@ async function incrementLikeCount(id) {
         [`likes/${key}/voters/${user.uid}`]: true
       });
       return next;
-    } catch (e) {
-      if (attempt === 3) throw e;
-    }
+    } catch (e) { if (attempt === 3) throw e; }
   }
 }
 
@@ -722,10 +737,8 @@ function setLikedState(btn, liked) {
 async function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
-
   btn.disabled = true;
   setLikedState(btn, await hasLiked(id));
-
   btn.addEventListener("click", async () => {
     if (btn.disabled) return;
     btn.disabled = true;
@@ -734,9 +747,8 @@ async function wireLikeButton(id) {
       setLikedState(btn, true);
       updateLikeDisplays(id, count);
     } catch (e) {
-      console.error("Erreur like Firebase :", e);
       btn.disabled = false;
-      alert("Impossible d'enregistrer ton like pour le moment, réessaie plus tard.");
+      alert("Impossible d'enregistrer le like.");
     }
   });
 }
