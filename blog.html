@@ -57,8 +57,15 @@
 
     .install-app-btn { display: none; }
 
-    .bookmark-btn { background: none; border: 1px solid currentColor; border-radius: 6px; cursor: pointer; font-size: 0.95rem; float: right; padding: 4px 8px; transition: transform 0.1s ease; opacity: 0.7; }
-    .bookmark-btn:hover { opacity: 1; transform: scale(1.05); }
+    /* Bouton d'enregistrement épuré, en ligne sans saut */
+    .bookmark-btn {
+      background: transparent; border: 1px solid currentColor; border-radius: 6px;
+      cursor: pointer; font-family: var(--font-display, "Space Mono", monospace);
+      font-size: 0.75rem; float: right; padding: 5px 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: background 0.2s ease; opacity: 0.8;
+    }
+    .bookmark-btn:hover { opacity: 1; background: rgba(127, 127, 127, 0.15); }
     .log-entry { position: relative; }
 
     .mobile-home { display: none; }
@@ -269,8 +276,7 @@ function toolbarHtml(active, current) {
   const isSavedActive = current === "enregistres";
 
   let chips = `<a class="cat-chip ${isAllActive ? "active" : ""}" href="#">Tout <span class="cat-n">${active.length}</span></a>`;
-  // Bouton "Articles enregistrés" avec logo de fichier (📁)
-  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">📁 Articles enregistrés <span class="cat-n">${savedCount}</span></a>`;
+  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">[📁] Articles enregistrés <span class="cat-n">${savedCount}</span></a>`;
 
   if (cats.size > 0) {
     chips += [...cats.entries()]
@@ -311,8 +317,8 @@ function wireToolbar(list) {
 
 function articleCardHtml(a) {
   const isBookmarked = USER_BOOKMARKS[a.id] === true;
-  // Logo en bâtons (icône textuelle géométrique / filaire) : [   ] ou [📁] ou texte stylisé au lieu d'un emoji coloré
-  const bookmarkSymbol = isBookmarked ? "[ 📁 Enregistré ]" : "[ 📄 Enregistrer ]";
+  // Utilisation de symboles filaires en bâtons propres alignés sur une seule ligne
+  const bookmarkSymbol = isBookmarked ? "[ / ] Enregistré" : "[ + ] Enregistrer";
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
       <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">${bookmarkSymbol}</button>
@@ -524,7 +530,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const fbDb = firebase.database();
 
-// Persistance de session active pour éviter de se reconnecter à chaque fois
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
 function likeKey(id) {
@@ -586,7 +591,6 @@ firebase.auth().onAuthStateChanged(async user => {
       loginBtn.title = `Déconnexion (${pseudo})`;
     }
 
-    // Écoute des favoris en temps réel
     fbDb.ref(`users/${user.uid}/bookmarks`).on("value", snapshot => {
       USER_BOOKMARKS = snapshot.val() || {};
       updateBookmarkUI();
@@ -618,13 +622,13 @@ firebase.auth().onAuthStateChanged(async user => {
 function updateBookmarkUI() {
   document.querySelectorAll(".bookmark-btn").forEach(btn => {
     const id = btn.id.replace("bk-", "");
-    btn.textContent = USER_BOOKMARKS[id] === true ? "[ 📁 Enregistré ]" : "[ 📄 Enregistrer ]";
+    btn.textContent = USER_BOOKMARKS[id] === true ? "[ / ] Enregistré" : "[ + ] Enregistrer";
   });
 }
 
 function resetBookmarkUI() {
   document.querySelectorAll(".bookmark-btn").forEach(btn => {
-    btn.textContent = "[ 📄 Enregistrer ]";
+    btn.textContent = "[ + ] Enregistrer";
   });
 }
 
@@ -641,10 +645,10 @@ window.toggleBookmark = async function(id) {
     const snap = await ref.once("value");
     if (snap.exists()) {
       await ref.remove();
-      if (btn) btn.textContent = "[ 📄 Enregistrer ]";
+      if (btn) btn.textContent = "[ + ] Enregistrer";
     } else {
       await ref.set(true);
-      if (btn) btn.textContent = "[ 📁 Enregistré ]";
+      if (btn) btn.textContent = "[ / ] Enregistré";
     }
   } catch (e) {
     console.error("Erreur bookmark :", e);
