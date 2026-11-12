@@ -12,7 +12,7 @@
   <meta property="og:description" content="Journal des Nnews technologiques et des nouveautées">
   <meta property="og:url" content="https://ququdeveloppement.github.io/mysite/">
   <meta property="og:site_name" content="QuQudeveloppement">
-  <title>L'Atelier — Accueil & Catégories</title>
+  <title>L'Atelier — Accueil</title>
   <meta name="description" content="Accueil des projets : électronique, code.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -61,7 +61,9 @@
     .bookmark-btn:hover { transform: scale(1.15); }
     .log-entry { position: relative; }
 
-    .mobile-home { display: none; }
+    .mobile-home {
+      display: none;
+    }
 
     @media (max-width: 768px) {
       .mobile-home {
@@ -72,13 +74,50 @@
         border-radius: 18px;
         background: rgba(127,127,127,.05);
       }
-      .mobile-home__content { display: grid; gap: 8px; }
-      .mobile-home__eyebrow { margin: 0; opacity: .7; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
-      .mobile-home h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.1; }
-      .mobile-home p { margin: 0; opacity: .85; }
-      .mobile-home__actions { margin-top: 8px; }
-      .mobile-home__cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; color: inherit; font-weight: 600; }
-      .install-app-btn { display: inline-flex; }
+
+      .mobile-home__content {
+        display: grid;
+        gap: 8px;
+      }
+
+      .mobile-home__eyebrow {
+        margin: 0;
+        opacity: .7;
+        font-size: .72rem;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .mobile-home h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
+        line-height: 1.1;
+      }
+
+      .mobile-home p {
+        margin: 0;
+        opacity: .85;
+      }
+
+      .mobile-home__actions {
+        margin-top: 8px;
+      }
+
+      .mobile-home__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+      }
+
+      .install-app-btn {
+        display: inline-flex;
+      }
     }
   </style>
 </head>
@@ -100,11 +139,11 @@
 
 <section class="mobile-home" id="mobileHome">
   <div class="mobile-home__content">
-    <p class="mobile-home__eyebrow">L'Atelier</p>
-    <h1>Arduino, électronique & Projets</h1>
-    <p>Sélectionnez une catégorie ou parcourez les articles récents.</p>
+    <p class="mobile-home__eyebrow">L'atelier</p>
+    <h1>Arduino, électronique, Raspberry Pi & projets</h1>
+    <p>Des idées, des tutoriels et des réalisations à retrouver dans le blog.</p>
     <div class="mobile-home__actions">
-      <a href="#archives" class="mobile-home__cta">Consulter les archives</a>
+      <a href="#archives" class="mobile-home__cta">Accéder aux archives</a>
     </div>
   </div>
 </section>
@@ -134,7 +173,7 @@ const notifyToggle = document.getElementById("notifyToggle");
 const installAppBtn = document.getElementById("installAppBtn");
 const loginBtn = document.getElementById("loginBtn");
 
-function isMobileDevice() {
+function isMobile() {
   return window.matchMedia("(max-width: 768px)").matches;
 }
 
@@ -147,47 +186,75 @@ function isStandalone() {
 
 function updateNotificationState() {
   if (!notifyToggle) return;
+
   const supported = "Notification" in window;
   const granted = supported && Notification.permission === "granted";
+
   notifyToggle.hidden = granted;
   notifyToggle.setAttribute("aria-pressed", String(granted));
   notifyToggle.textContent = granted ? "Notifications activées" : "Notifications";
-  if (!supported) notifyToggle.hidden = true;
+
+  if (!supported) {
+    notifyToggle.hidden = true;
+  }
 }
 
 function updateInstallState() {
   if (!installAppBtn) return;
-  if (!isMobileDevice() || isStandalone() || !deferredPrompt) {
+
+  const mobile = isMobile();
+  const installed = isStandalone();
+
+  if (!mobile || installed || !deferredPrompt) {
     installAppBtn.hidden = true;
     return;
   }
+
   installAppBtn.hidden = false;
 }
 
 if (notifyToggle) {
   updateNotificationState();
+
   notifyToggle.addEventListener("click", async () => {
-    if (!("Notification" in window)) return alert("Non supporté.");
-    if (Notification.permission === "granted") return;
+    if (!("Notification" in window)) {
+      alert("Ce navigateur ne supporte pas les notifications Web.");
+      return;
+    }
+
+    if (Notification.permission === "granted") {
+      updateNotificationState();
+      return;
+    }
+
     const result = await Notification.requestPermission();
-    if (result === "granted") updateNotificationState();
+    if (result === "granted") {
+      updateNotificationState();
+    } else {
+      alert("L'autorisation de notification a été refusée. Tu peux la réactiver dans les paramètres du navigateur.");
+    }
   });
 }
 
 if (installAppBtn) {
   installAppBtn.addEventListener("click", async () => {
     if (!deferredPrompt) return;
+
     deferredPrompt.prompt();
     const choice = await deferredPrompt.userChoice;
-    if (choice.outcome === "accepted") installAppBtn.hidden = true;
+
+    if (choice.outcome === "accepted") {
+      installAppBtn.hidden = true;
+    }
+
     deferredPrompt = null;
     updateInstallState();
   });
 }
 
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredPrompt = event;
   updateInstallState();
 });
 
@@ -197,6 +264,7 @@ window.addEventListener("appinstalled", () => {
 });
 
 window.addEventListener("resize", updateInstallState);
+
 updateNotificationState();
 updateInstallState();
 
@@ -254,9 +322,8 @@ function toolbarHtml(active, current) {
   const isAllActive = !current;
   const isSavedActive = current === "enregistres";
 
-  // Boutons de catégories clairs et organisés (Récents/Tous + Enregistrés + Autres catégories dynamiques)
-  let chips = `<a class="cat-chip ${isAllActive ? "active" : ""}" href="#">Récents / Tous <span class="cat-n">${active.length}</span></a>`;
-  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">⭐ Enregistrés <span class="cat-n">${savedCount}</span></a>`;
+  let chips = `<a class="cat-chip ${isAllActive ? "active" : ""}" href="#">Tout <span class="cat-n">${active.length}</span></a>`;
+  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">⭐ Articles enregistrés <span class="cat-n">${savedCount}</span></a>`;
 
   if (cats.size > 0) {
     chips += [...cats.entries()]
@@ -267,10 +334,10 @@ function toolbarHtml(active, current) {
 
   return `
     <div class="toolbar">
-      <button type="button" class="tool-btn" id="catToggle" aria-expanded="true" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
+      <button type="button" class="tool-btn" id="catToggle" aria-expanded="false" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
       <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
     </div>
-    <div class="cat-panel" id="catPanel">${chips}</div>`;
+    <div class="cat-panel" id="catPanel" hidden>${chips}</div>`;
 }
 
 function goRandom(list, excludeId = "") {
@@ -288,7 +355,7 @@ function wireToolbar(list) {
     toggle.addEventListener("click", () => {
       const opening = panel.hasAttribute("hidden");
       if (opening) panel.removeAttribute("hidden"); else panel.setAttribute("hidden", "");
-      toggle.setAttribute("aria-expanded", String(!opening));
+      toggle.setAttribute("aria-expanded", String(opening));
     });
   }
   const rnd = document.getElementById("randomBtn");
@@ -300,7 +367,9 @@ function articleCardHtml(a) {
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
       <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">${isBookmarked ? "💾" : "🔖"}</button>
-      ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}"><img src="${a.cover}" alt="" loading="lazy"></a>` : ""}
+      ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
+        <img src="${a.cover}" alt="" loading="lazy">
+      </a>` : ""}
       <div class="log-entry-body">
         <div class="log-date">
           ${a.pinned ? '<span class="badge pinned">📌 Épinglé</span>' : ""}
@@ -338,7 +407,7 @@ function renderList(currentSlug = "") {
   if (sorted.length === 0) {
     const msg = currentSlug === "enregistres" 
       ? "Aucun article enregistré pour l'instant." 
-      : (currentSlug ? "Aucun article dans cette catégorie." : "Aucun article.");
+      : (currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.");
     app.innerHTML = bar + `<p class="log-empty">${msg}</p>`;
     wireToolbar(shown);
     return;
@@ -356,10 +425,13 @@ function renderList(currentSlug = "") {
 function renderArchives() {
   const archived = ARTICLES.filter(isArchived);
   const sorted = [...archived].sort((a, b) => (a.date < b.date ? 1 : -1));
-  const header = `<a class="article-back" href="blog.html">← Retour à l'accueil</a><h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>`;
+  const header = `
+    <a class="article-back" href="blog.html">← Retour à l'accueil</a>
+    <h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>
+  `;
 
   if (sorted.length === 0) {
-    app.innerHTML = header + `<p class="log-empty">Aucun article archivé.</p>`;
+    app.innerHTML = header + `<p class="log-empty">Aucun article archivé pour l'instant.</p>`;
     return;
   }
 
@@ -371,8 +443,9 @@ function renderArchives() {
   });
 }
 
-async function renderArticle(id) {
+function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
+
   if (!article) {
     app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="blog.html">← Retour à l'accueil</a>`;
     return;
@@ -408,7 +481,6 @@ async function renderArticle(id) {
   const rb = document.getElementById("randomBtn");
   if (rb) rb.addEventListener("click", () => goRandom(ARTICLES.filter(a => !isArchived(a)), article.id));
   fetchLikeCount(article.id).then(count => updateLikeDisplays(article.id, count));
-
   loadComments(id);
 }
 
@@ -444,11 +516,16 @@ function setNotificationBtnState() {
 function notifyIfNewArticle() {
   if (localStorage.getItem(NOTIFY_KEY) !== "1") return;
   if (!("Notification" in window) || Notification.permission !== "granted") return;
+
   const latestId = getLatestArticleId();
   const lastSeen = localStorage.getItem(LAST_COMMON_ARTICLE_KEY);
   if (!latestId || lastSeen === latestId) return;
+
   localStorage.setItem(LAST_COMMON_ARTICLE_KEY, latestId);
-  new Notification("Nouvel article sur L'Atelier", { body: "Un nouveau billet vient d'être publié.", icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png" });
+  new Notification("Nouvel article sur L'Atelier", {
+    body: "Un nouveau billet vient d'être publié.",
+    icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png"
+  });
 }
 
 function startArticlePolling() {
@@ -459,23 +536,34 @@ function startArticlePolling() {
 function bindNotificationToggle() {
   const btn = document.getElementById("notifyToggle");
   if (!btn) return;
+
   btn.addEventListener("click", async () => {
-    if (!("Notification" in window)) return alert("Non supporté.");
+    if (!("Notification" in window)) {
+      alert("Ce navigateur ne supporte pas les notifications Web.");
+      return;
+    }
+
     const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
     if (!enabled) {
       const result = await Notification.requestPermission();
-      if (result !== "granted") return alert("Refusé.");
+      if (result !== "granted") {
+        alert("L'autorisation de notification a été refusée.");
+        return;
+      }
       localStorage.setItem(NOTIFY_KEY, "1");
       setNotificationBtnState();
+      notifyIfNewArticle();
       return;
     }
+
     localStorage.setItem(NOTIFY_KEY, "0");
     setNotificationBtnState();
   });
+
   setNotificationBtnState();
 }
 
-/* ---------- Firebase & Auth & Pseudonyme ---------- */
+/* ---------- Firebase Realtime Database & Auth ---------- */
 const firebaseConfig = {
   apiKey: "AIzaSyBe0oKHrentjayq2EmUxRnM1Qg7Qn1n8nI",
   authDomain: "l-atelier-1b97b.firebaseapp.com",
@@ -486,6 +574,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const fbDb = firebase.database();
+
+// Conserver la session active pour éviter de se reconnecter à chaque fois
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
 function likeKey(id) {
   return String(id).replace(/[.#$\[\]\/]/g, "_").slice(0, 100);
@@ -513,11 +604,14 @@ if (loginBtn) {
     if (user && !user.isAnonymous) {
       try {
         await firebase.auth().signOut();
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error("Erreur déconnexion :", e);
+      }
     } else {
       const provider = new firebase.auth.GoogleAuthProvider();
       try {
-        await firebase.auth().signInWithRedirect(provider);
+        // Utilisation de popup stable (avec persistance configurée ci-dessus)
+        await firebase.auth().signInWithPopup(provider);
       } catch (e) {
         console.error("Erreur connexion Google :", e);
         alert("Impossible de se connecter avec Google.");
@@ -543,7 +637,8 @@ firebase.auth().onAuthStateChanged(async user => {
       loginBtn.textContent = `🚪❌ (${pseudo})`;
       loginBtn.title = `Déconnexion (${pseudo})`;
     }
-    
+
+    // Écoute des favoris en temps réel
     fbDb.ref(`users/${user.uid}/bookmarks`).on("value", snapshot => {
       USER_BOOKMARKS = snapshot.val() || {};
       updateBookmarkUI();
@@ -701,6 +796,7 @@ async function incrementLikeCount(id) {
   const user = await ensureAuth();
   const key = likeKey(id);
   const countRef = fbDb.ref(`likes/${key}/count`);
+
   for (let attempt = 0; attempt < 4; attempt++) {
     const current = (await countRef.once("value")).val() || 0;
     const next = current + 1;
@@ -710,7 +806,9 @@ async function incrementLikeCount(id) {
         [`likes/${key}/voters/${user.uid}`]: true
       });
       return next;
-    } catch (e) { if (attempt === 3) throw e; }
+    } catch (e) {
+      if (attempt === 3) throw e;
+    }
   }
 }
 
@@ -729,8 +827,10 @@ function setLikedState(btn, liked) {
 async function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
+
   btn.disabled = true;
   setLikedState(btn, await hasLiked(id));
+
   btn.addEventListener("click", async () => {
     if (btn.disabled) return;
     btn.disabled = true;
@@ -739,8 +839,9 @@ async function wireLikeButton(id) {
       setLikedState(btn, true);
       updateLikeDisplays(id, count);
     } catch (e) {
+      console.error("Erreur like Firebase :", e);
       btn.disabled = false;
-      alert("Impossible d'enregistrer le like.");
+      alert("Impossible d'enregistrer ton like pour le moment, réessaie plus tard.");
     }
   });
 }
