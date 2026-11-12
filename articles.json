@@ -3908,5 +3908,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "outlook-en-panne-degradation-du-service-microsoft-365-le-12-novembre",
+    "title": "Outlook en panne : dégradation du service Microsoft 365 le 12 novembre",
+    "date": "2026-11-12",
+    "excerpt": "Une dégradation du service Outlook a touché de nombreux utilisateurs en France et à l’international le 12 novembre, affectant le web, le client de bureau, les appareils mobiles et les API tierces. Microsoft travaille à rétablir l’accès sans préciser de délai.",
+    "category": "Logiciels",
+    "cover": "https://pic.clubic.com/v1/images/2474434/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte de l’incident",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En fin de journée du jeudi 12 novembre, Microsoft a signalé une dégradation de Microsoft 365 affectant la messagerie Outlook. Un grand nombre d’utilisateurs n’ont plus pu se connecter à leurs boîtes Exchange Online, que ce soit via le site web, le client de bureau ou les applications mobiles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Services impactés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La panne concerne plusieurs points d’accès : la version web d’Outlook, le client MAPI sur PC, le protocole Exchange ActiveSync utilisé par les smartphones, ainsi que l’API REST employée par de nombreuses applications tierces. Les utilisateurs ont constaté des écrans blancs, des messages d’erreur ou une boîte affichée comme déconnectée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Origine technique identifiée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Microsoft a détecté des erreurs de connectivité sur une partie de l’infrastructure d’Exchange Online. Les journaux réseau ont montré une surcharge dans plusieurs régions, possiblement liée à un trafic inattendu provenant d’un service précis, bien que celui‑ci n’ait pas été nommé. L’entreprise a donc redémarré et réparé les composants affectés tout en tentant de rediriger le trafic vers d’autres serveurs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réactions et suivi",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les utilisateurs ont signalé le problème sur des plateformes comme Downdetector, avec plus de 400 signalements en France dès 19 h. Microsoft n’a pas communiqué de délai de résolution ni le nombre exact d’utilisateurs touchés. Le tableau de bord officiel Microsoft 365 Status et le compte X dédié restent les sources d’information pour suivre l’évolution de la situation.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cette interruption montre la dépendance massive aux services cloud de Microsoft. En l’absence de solution immédiate, les utilisateurs sont invités à surveiller les canaux officiels et à privilégier l’accès via le web en attendant le rétablissement complet du service.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
