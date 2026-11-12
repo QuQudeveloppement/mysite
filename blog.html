@@ -12,7 +12,7 @@
   <meta property="og:description" content="Journal des Nnews technologiques et des nouveautées">
   <meta property="og:url" content="https://ququdeveloppement.github.io/mysite/">
   <meta property="og:site_name" content="QuQudeveloppement">
-  <title>L'Atelier — Journal & Projets</title>
+  <title>L'Atelier — Accueil & Catégories</title>
   <meta name="description" content="Accueil des projets : électronique, code.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -61,14 +61,9 @@
     .bookmark-btn:hover { transform: scale(1.15); }
     .log-entry { position: relative; }
 
-    /* Spécificités Journal Mobile */
-    .mobile-journal-view { display: none; }
-    .desktop-journal-view { display: block; }
+    .mobile-home { display: none; }
 
     @media (max-width: 768px) {
-      .desktop-journal-view { display: none; }
-      .mobile-journal-view { display: block; }
-
       .mobile-home {
         display: block;
         margin: 18px 0 20px;
@@ -77,50 +72,13 @@
         border-radius: 18px;
         background: rgba(127,127,127,.05);
       }
-
-      .mobile-home__content {
-        display: grid;
-        gap: 8px;
-      }
-
-      .mobile-home__eyebrow {
-        margin: 0;
-        opacity: .7;
-        font-size: .72rem;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-      }
-
-      .mobile-home h1 {
-        margin: 0;
-        font-size: clamp(1.5rem, 5vw, 2.2rem);
-        line-height: 1.1;
-      }
-
-      .mobile-home p {
-        margin: 0;
-        opacity: .85;
-      }
-
-      .mobile-home__actions {
-        margin-top: 8px;
-      }
-
-      .mobile-home__cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 14px;
-        border: 1px solid currentColor;
-        border-radius: 999px;
-        text-decoration: none;
-        color: inherit;
-        font-weight: 600;
-      }
-
-      .install-app-btn {
-        display: inline-flex;
-      }
+      .mobile-home__content { display: grid; gap: 8px; }
+      .mobile-home__eyebrow { margin: 0; opacity: .7; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+      .mobile-home h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.1; }
+      .mobile-home p { margin: 0; opacity: .85; }
+      .mobile-home__actions { margin-top: 8px; }
+      .mobile-home__cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; color: inherit; font-weight: 600; }
+      .install-app-btn { display: inline-flex; }
     }
   </style>
 </head>
@@ -140,12 +98,11 @@
   </div>
 </header>
 
-<!-- En-tête spécifique mobile -->
 <section class="mobile-home" id="mobileHome">
   <div class="mobile-home__content">
-    <p class="mobile-home__eyebrow">Journal de bord mobile</p>
-    <h1>Électronique, Arduino & Code Live</h1>
-    <p>Suivez les publications de l'atelier au format flux direct.</p>
+    <p class="mobile-home__eyebrow">L'Atelier</p>
+    <h1>Arduino, électronique & Projets</h1>
+    <p>Sélectionnez une catégorie ou parcourez les articles récents.</p>
     <div class="mobile-home__actions">
       <a href="#archives" class="mobile-home__cta">Consulter les archives</a>
     </div>
@@ -210,7 +167,7 @@ function updateInstallState() {
 if (notifyToggle) {
   updateNotificationState();
   notifyToggle.addEventListener("click", async () => {
-    if (!("Notification" in window)) return alert("Ce navigateur ne supporte pas les notifications Web.");
+    if (!("Notification" in window)) return alert("Non supporté.");
     if (Notification.permission === "granted") return;
     const result = await Notification.requestPermission();
     if (result === "granted") updateNotificationState();
@@ -291,11 +248,14 @@ function collectCategories(active) {
 
 function toolbarHtml(active, current) {
   const cats = collectCategories(active);
-  const label = current && cats.has(current) ? " : " + cats.get(current).label : "";
+  const label = current && cats.has(current) ? " : " + cats.get(current).label : (current === "enregistres" ? " : Enregistrés" : "");
   const savedCount = Object.values(USER_BOOKMARKS).filter(Boolean).length;
+  
+  const isAllActive = !current;
   const isSavedActive = current === "enregistres";
 
-  let chips = `<a class="cat-chip ${current ? "" : "active"}" href="#">Tout <span class="cat-n">${active.length}</span></a>`;
+  // Boutons de catégories clairs et organisés (Récents/Tous + Enregistrés + Autres catégories dynamiques)
+  let chips = `<a class="cat-chip ${isAllActive ? "active" : ""}" href="#">Récents / Tous <span class="cat-n">${active.length}</span></a>`;
   chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">⭐ Enregistrés <span class="cat-n">${savedCount}</span></a>`;
 
   if (cats.size > 0) {
@@ -307,10 +267,10 @@ function toolbarHtml(active, current) {
 
   return `
     <div class="toolbar">
-      <button type="button" class="tool-btn" id="catToggle" aria-expanded="false" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
+      <button type="button" class="tool-btn" id="catToggle" aria-expanded="true" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
       <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
     </div>
-    <div class="cat-panel" id="catPanel" hidden>${chips}</div>`;
+    <div class="cat-panel" id="catPanel">${chips}</div>`;
 }
 
 function goRandom(list, excludeId = "") {
@@ -328,15 +288,14 @@ function wireToolbar(list) {
     toggle.addEventListener("click", () => {
       const opening = panel.hasAttribute("hidden");
       if (opening) panel.removeAttribute("hidden"); else panel.setAttribute("hidden", "");
-      toggle.setAttribute("aria-expanded", String(opening));
+      toggle.setAttribute("aria-expanded", String(!opening));
     });
   }
   const rnd = document.getElementById("randomBtn");
   if (rnd) rnd.addEventListener("click", () => goRandom(list));
 }
 
-/* Rendu carte Bureau (Classic Desktop Grid) */
-function desktopArticleCardHtml(a) {
+function articleCardHtml(a) {
   const isBookmarked = USER_BOOKMARKS[a.id] === true;
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
@@ -356,25 +315,6 @@ function desktopArticleCardHtml(a) {
         </div>
       </div>
     </article>
-  `;
-}
-
-/* Rendu carte Mobile (Flux de journal direct épuré) */
-function mobileArticleCardHtml(a) {
-  const isBookmarked = USER_BOOKMARKS[a.id] === true;
-  return `
-    <div style="background: rgba(127,127,127,0.04); border: 1px solid rgba(127,127,127,0.2); border-radius: 12px; padding: 14px; margin-bottom: 14px; position: relative;">
-      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder" style="position:absolute; top:10px; right:10px;">${isBookmarked ? "💾" : "🔖"}</button>
-      <div style="font-size: 0.75rem; opacity: 0.7; margin-bottom: 4px;">
-        📅 ${formatDate(a.date)} ${a.category ? '• <strong>' + escapeHtml(a.category) + '</strong>' : ''}
-      </div>
-      <h3 style="margin: 4px 0 8px; font-size: 1.1rem;"><a href="#article/${encodeURIComponent(a.id)}" style="color: inherit; text-decoration: none;">${escapeHtml(a.title)}</a></h3>
-      <p style="margin: 0 0 10px; font-size: 0.9rem; opacity: 0.9;">${escapeHtml(a.excerpt || "")}</p>
-      <div style="font-size: 0.8rem; opacity: 0.7; display: flex; justify-content: space-between; align-items: center;">
-        <span>♥ <span data-like-display="${escapeHtml(a.id)}">…</span> likes</span>
-        <a href="#article/${encodeURIComponent(a.id)}" style="color: inherit; font-weight: 600; text-decoration: underline;">Lire →</a>
-      </div>
-    </div>
   `;
 }
 
@@ -404,13 +344,7 @@ function renderList(currentSlug = "") {
     return;
   }
 
-  // Distinction structurelle Mobile vs Bureau
-  if (isMobileDevice()) {
-    app.innerHTML = bar + `<div class="mobile-journal-view"><p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.6; margin-bottom:12px;">Édition Journal Mobile (${sorted.length})</p>` + sorted.map(mobileArticleCardHtml).join("") + `</div>`;
-  } else {
-    app.innerHTML = bar + `<div class="desktop-journal-view"><div class="log">${sorted.map(desktopArticleCardHtml).join("")}</div></div>`;
-  }
-
+  app.innerHTML = bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
   wireToolbar(shown);
 
   sorted.forEach(async (a) => {
@@ -429,11 +363,7 @@ function renderArchives() {
     return;
   }
 
-  if (isMobileDevice()) {
-    app.innerHTML = header + `<div class="mobile-journal-view">` + sorted.map(mobileArticleCardHtml).join("") + `</div>`;
-  } else {
-    app.innerHTML = header + `<div class="desktop-journal-view"><div class="log">${sorted.map(desktopArticleCardHtml).join("")}</div></div>`;
-  }
+  app.innerHTML = header + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
 
   sorted.forEach(async (a) => {
     const count = await fetchLikeCount(a.id);
