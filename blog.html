@@ -57,13 +57,11 @@
 
     .install-app-btn { display: none; }
 
-    .bookmark-btn { background: none; border: none; cursor: pointer; font-size: 1.25rem; float: right; padding: 6px; transition: transform 0.1s ease; }
-    .bookmark-btn:hover { transform: scale(1.15); }
+    .bookmark-btn { background: none; border: 1px solid currentColor; border-radius: 6px; cursor: pointer; font-size: 0.95rem; float: right; padding: 4px 8px; transition: transform 0.1s ease; opacity: 0.7; }
+    .bookmark-btn:hover { opacity: 1; transform: scale(1.05); }
     .log-entry { position: relative; }
 
-    .mobile-home {
-      display: none;
-    }
+    .mobile-home { display: none; }
 
     @media (max-width: 768px) {
       .mobile-home {
@@ -74,50 +72,13 @@
         border-radius: 18px;
         background: rgba(127,127,127,.05);
       }
-
-      .mobile-home__content {
-        display: grid;
-        gap: 8px;
-      }
-
-      .mobile-home__eyebrow {
-        margin: 0;
-        opacity: .7;
-        font-size: .72rem;
-        letter-spacing: .12em;
-        text-transform: uppercase;
-      }
-
-      .mobile-home h1 {
-        margin: 0;
-        font-size: clamp(1.6rem, 6vw, 2.5rem);
-        line-height: 1.1;
-      }
-
-      .mobile-home p {
-        margin: 0;
-        opacity: .85;
-      }
-
-      .mobile-home__actions {
-        margin-top: 8px;
-      }
-
-      .mobile-home__cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 14px;
-        border: 1px solid currentColor;
-        border-radius: 999px;
-        text-decoration: none;
-        color: inherit;
-        font-weight: 600;
-      }
-
-      .install-app-btn {
-        display: inline-flex;
-      }
+      .mobile-home__content { display: grid; gap: 8px; }
+      .mobile-home__eyebrow { margin: 0; opacity: .7; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+      .mobile-home h1 { margin: 0; font-size: clamp(1.6rem, 6vw, 2.5rem); line-height: 1.1; }
+      .mobile-home p { margin: 0; opacity: .85; }
+      .mobile-home__actions { margin-top: 8px; }
+      .mobile-home__cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; color: inherit; font-weight: 600; }
+      .install-app-btn { display: inline-flex; }
     }
   </style>
 </head>
@@ -186,52 +147,41 @@ function isStandalone() {
 
 function updateNotificationState() {
   if (!notifyToggle) return;
-
   const supported = "Notification" in window;
   const granted = supported && Notification.permission === "granted";
-
   notifyToggle.hidden = granted;
   notifyToggle.setAttribute("aria-pressed", String(granted));
   notifyToggle.textContent = granted ? "Notifications activées" : "Notifications";
-
-  if (!supported) {
-    notifyToggle.hidden = true;
-  }
+  if (!supported) notifyToggle.hidden = true;
 }
 
 function updateInstallState() {
   if (!installAppBtn) return;
-
   const mobile = isMobile();
   const installed = isStandalone();
-
   if (!mobile || installed || !deferredPrompt) {
     installAppBtn.hidden = true;
     return;
   }
-
   installAppBtn.hidden = false;
 }
 
 if (notifyToggle) {
   updateNotificationState();
-
   notifyToggle.addEventListener("click", async () => {
     if (!("Notification" in window)) {
       alert("Ce navigateur ne supporte pas les notifications Web.");
       return;
     }
-
     if (Notification.permission === "granted") {
       updateNotificationState();
       return;
     }
-
     const result = await Notification.requestPermission();
     if (result === "granted") {
       updateNotificationState();
     } else {
-      alert("L'autorisation de notification a été refusée. Tu peux la réactiver dans les paramètres du navigateur.");
+      alert("L'autorisation de notification a été refusée.");
     }
   });
 }
@@ -239,14 +189,11 @@ if (notifyToggle) {
 if (installAppBtn) {
   installAppBtn.addEventListener("click", async () => {
     if (!deferredPrompt) return;
-
     deferredPrompt.prompt();
     const choice = await deferredPrompt.userChoice;
-
     if (choice.outcome === "accepted") {
       installAppBtn.hidden = true;
     }
-
     deferredPrompt = null;
     updateInstallState();
   });
@@ -264,7 +211,6 @@ window.addEventListener("appinstalled", () => {
 });
 
 window.addEventListener("resize", updateInstallState);
-
 updateNotificationState();
 updateInstallState();
 
@@ -316,14 +262,15 @@ function collectCategories(active) {
 
 function toolbarHtml(active, current) {
   const cats = collectCategories(active);
-  const label = current && cats.has(current) ? " : " + cats.get(current).label : (current === "enregistres" ? " : Enregistrés" : "");
+  const label = current && cats.has(current) ? " : " + cats.get(current).label : (current === "enregistres" ? " : Articles enregistrés" : "");
   const savedCount = Object.values(USER_BOOKMARKS).filter(Boolean).length;
   
   const isAllActive = !current;
   const isSavedActive = current === "enregistres";
 
   let chips = `<a class="cat-chip ${isAllActive ? "active" : ""}" href="#">Tout <span class="cat-n">${active.length}</span></a>`;
-  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">⭐ Articles enregistrés <span class="cat-n">${savedCount}</span></a>`;
+  // Bouton "Articles enregistrés" avec logo de fichier (📁)
+  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">📁 Articles enregistrés <span class="cat-n">${savedCount}</span></a>`;
 
   if (cats.size > 0) {
     chips += [...cats.entries()]
@@ -364,9 +311,11 @@ function wireToolbar(list) {
 
 function articleCardHtml(a) {
   const isBookmarked = USER_BOOKMARKS[a.id] === true;
+  // Logo en bâtons (icône textuelle géométrique / filaire) : [   ] ou [📁] ou texte stylisé au lieu d'un emoji coloré
+  const bookmarkSymbol = isBookmarked ? "[ 📁 Enregistré ]" : "[ 📄 Enregistrer ]";
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
-      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">${isBookmarked ? "💾" : "🔖"}</button>
+      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">${bookmarkSymbol}</button>
       ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
         <img src="${a.cover}" alt="" loading="lazy">
       </a>` : ""}
@@ -575,7 +524,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const fbDb = firebase.database();
 
-// Conserver la session active pour éviter de se reconnecter à chaque fois
+// Persistance de session active pour éviter de se reconnecter à chaque fois
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
 function likeKey(id) {
@@ -610,7 +559,6 @@ if (loginBtn) {
     } else {
       const provider = new firebase.auth.GoogleAuthProvider();
       try {
-        // Utilisation de popup stable (avec persistance configurée ci-dessus)
         await firebase.auth().signInWithPopup(provider);
       } catch (e) {
         console.error("Erreur connexion Google :", e);
@@ -670,13 +618,13 @@ firebase.auth().onAuthStateChanged(async user => {
 function updateBookmarkUI() {
   document.querySelectorAll(".bookmark-btn").forEach(btn => {
     const id = btn.id.replace("bk-", "");
-    btn.textContent = USER_BOOKMARKS[id] === true ? "💾" : "🔖";
+    btn.textContent = USER_BOOKMARKS[id] === true ? "[ 📁 Enregistré ]" : "[ 📄 Enregistrer ]";
   });
 }
 
 function resetBookmarkUI() {
   document.querySelectorAll(".bookmark-btn").forEach(btn => {
-    btn.textContent = "🔖";
+    btn.textContent = "[ 📄 Enregistrer ]";
   });
 }
 
@@ -693,10 +641,10 @@ window.toggleBookmark = async function(id) {
     const snap = await ref.once("value");
     if (snap.exists()) {
       await ref.remove();
-      if (btn) btn.textContent = "🔖";
+      if (btn) btn.textContent = "[ 📄 Enregistrer ]";
     } else {
       await ref.set(true);
-      if (btn) btn.textContent = "💾";
+      if (btn) btn.textContent = "[ 📁 Enregistré ]";
     }
   } catch (e) {
     console.error("Erreur bookmark :", e);
