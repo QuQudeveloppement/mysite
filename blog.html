@@ -46,7 +46,7 @@
     .cat-chip .cat-n { opacity: .65; font-weight: 400; }
     .badge.cat { text-decoration: none; }
 
-    .site-nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .site-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .nav-btn {
       appearance: none; border: 1px solid currentColor; background: transparent; color: inherit;
       border-radius: 999px; padding: 7px 12px; font-family: var(--font-display, "Space Mono", monospace);
@@ -57,16 +57,20 @@
 
     .install-app-btn { display: none; }
 
-    /* Bouton d'enregistrement épuré, en ligne sans saut */
+    /* Correction critique : Empêche le texte de couper et force une ligne unique propre */
     .bookmark-btn {
       background: transparent; border: 1px solid currentColor; border-radius: 6px;
       cursor: pointer; font-family: var(--font-display, "Space Mono", monospace);
-      font-size: 0.75rem; float: right; padding: 5px 10px;
+      font-size: 0.75rem; padding: 6px 12px; margin-bottom: 8px;
       display: inline-flex; align-items: center; gap: 6px;
-      transition: background 0.2s ease; opacity: 0.8;
+      white-space: nowrap; /* Interdit absolument le retour à la ligne */
+      transition: background 0.2s ease; opacity: 0.85;
+      float: right;
     }
     .bookmark-btn:hover { opacity: 1; background: rgba(127, 127, 127, 0.15); }
+    
     .log-entry { position: relative; }
+    .log-entry-body { clear: both; }
 
     .mobile-home { display: none; }
 
@@ -81,7 +85,7 @@
       }
       .mobile-home__content { display: grid; gap: 8px; }
       .mobile-home__eyebrow { margin: 0; opacity: .7; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
-      .mobile-home h1 { margin: 0; font-size: clamp(1.6rem, 6vw, 2.5rem); line-height: 1.1; }
+      .mobile-home h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.1; }
       .mobile-home p { margin: 0; opacity: .85; }
       .mobile-home__actions { margin-top: 8px; }
       .mobile-home__cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; color: inherit; font-weight: 600; }
@@ -97,6 +101,7 @@
     <nav class="site-nav">
       <a href="blog.html">Accueil</a>
       <a href="#archives">Archives</a>
+      <a href="#parametres" class="nav-btn" id="settingsNavBtn" title="Paramètres et Profil">⚙️</a>
       <button type="button" class="nav-btn" id="loginBtn" title="Connexion">🚪➔</button>
       <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false" hidden>Notifications</button>
       <button type="button" class="nav-btn install-app-btn" id="installAppBtn" hidden>Installer l’app</button>
@@ -317,8 +322,8 @@ function wireToolbar(list) {
 
 function articleCardHtml(a) {
   const isBookmarked = USER_BOOKMARKS[a.id] === true;
-  // Utilisation de symboles filaires en bâtons propres alignés sur une seule ligne
-  const bookmarkSymbol = isBookmarked ? "[ / ] Enregistré" : "[ + ] Enregistrer";
+  // Utilisation d'un texte compact en bâtons sur une seule ligne (ex: [ + ] vs [ ✓ ])
+  const bookmarkSymbol = isBookmarked ? "[ ✓ ] Enregistré" : "[ + ] Enregistrer";
   return `
     <article class="log-entry ${a.cover ? "has-cover" : ""}">
       <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">${bookmarkSymbol}</button>
@@ -398,6 +403,59 @@ function renderArchives() {
   });
 }
 
+/* ---------- Vue Paramètres & Profil (⚙️) ---------- */
+async function renderSettings() {
+  const user = firebase.auth().currentUser;
+  const isLogged = user && !user.isAnonymous;
+
+  let currentPseudo = "Non connecté";
+  let userEmail = "Non connecté";
+
+  if (isLogged) {
+    userEmail = user.email || "Compte Google vérifié";
+    const snap = await fbDb.ref(`users/${user.uid}/profile/pseudo`).once("value");
+    currentPseudo = snap.val() || "Membre";
+  }
+
+  app.innerHTML = `
+    <a class="article-back" href="blog.html">← Retour à l'accueil</a>
+    <h1 style="font-family:var(--font-display);font-size:1.4rem;margin:15px 0 20px;">⚙️ Paramètres & Confidentialité</h1>
+    
+    <div style="background: rgba(127,127,127,0.06); border: 1px solid rgba(127,127,127,0.3); border-radius: 12px; padding: 20px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Profil utilisateur</h3>
+      <p style="font-size: 0.9rem; opacity: 0.8;">Statut : <strong>${isLogged ? "Connecté via Google" : "Non connecté (Mode Visiteur)"}</strong></p>
+      <p style="font-size: 0.9rem; opacity: 0.8;">Email : <strong>${escapeHtml(userEmail)}</strong></p>
+      <p style="font-size: 0.9rem; opacity: 0.8;">Pseudonyme actuel : <strong id="displayPseudo">${escapeHtml(currentPseudo)}</strong></p>
+      
+      ${isLogged ? `
+        <button type="button" class="tool-btn" id="changePseudoBtn" style="margin-top: 10px;">Modifier mon pseudo</button>
+      ` : `
+        <p style="font-size: 0.85rem; color: #ffb703;">Connectez-vous via l'icône de porte (🚪➔) dans le menu pour personnaliser votre profil et enregistrer des favoris.</p>
+      `}
+
+      <hr style="border: 0; border-top: 1px solid rgba(127,127,127,0.2); margin: 25px 0;">
+
+      <h3>Confidentialité & Données</h3>
+      <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">
+        Vos données (favoris et commentaires) sont stockées de manière sécurisée et isolée dans votre espace personnel Firebase Realtime Database. Aucune information personnelle n'est partagée à des tiers.
+      </p>
+    </div>
+  `;
+
+  const changeBtn = document.getElementById("changePseudoBtn");
+  if (changeBtn) {
+    changeBtn.onclick = async () => {
+      const newPseudo = prompt("Entrez votre nouveau pseudonyme (max 30 caractères) :", currentPseudo);
+      if (newPseudo && newPseudo.trim().length > 0) {
+        const trimmed = newPseudo.trim().slice(0, 30);
+        await fbDb.ref(`users/${user.uid}/profile/pseudo`).set(trimmed);
+        alert("Pseudonyme mis à jour avec succès !");
+        renderSettings();
+      }
+    };
+  }
+}
+
 function renderArticle(id) {
   const article = ARTICLES.find(a => a.id === id);
 
@@ -447,6 +505,8 @@ function render() {
     renderList(decodeURIComponent(hash.replace("#categorie/", "")));
   } else if (hash === "#archives") {
     renderArchives();
+  } else if (hash === "#parametres") {
+    renderSettings();
   } else {
     renderList();
   }
@@ -622,7 +682,7 @@ firebase.auth().onAuthStateChanged(async user => {
 function updateBookmarkUI() {
   document.querySelectorAll(".bookmark-btn").forEach(btn => {
     const id = btn.id.replace("bk-", "");
-    btn.textContent = USER_BOOKMARKS[id] === true ? "[ / ] Enregistré" : "[ + ] Enregistrer";
+    btn.textContent = USER_BOOKMARKS[id] === true ? "[ ✓ ] Enregistré" : "[ + ] Enregistrer";
   });
 }
 
@@ -648,7 +708,7 @@ window.toggleBookmark = async function(id) {
       if (btn) btn.textContent = "[ + ] Enregistrer";
     } else {
       await ref.set(true);
-      if (btn) btn.textContent = "[ / ] Enregistré";
+      if (btn) btn.textContent = "[ ✓ ] Enregistré";
     }
   } catch (e) {
     console.error("Erreur bookmark :", e);
