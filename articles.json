@@ -3988,5 +3988,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "ibm-avance-sur-deux-architectures-quantiques-avec-nighthawk-et-starling",
+    "title": "IBM avance sur deux architectures quantiques avec Nighthawk et Starling",
+    "date": "2026-11-13",
+    "excerpt": "IBM a publié plusieurs travaux détaillant ses deux approches quantiques : la puce Nighthawk r3, 520 qubits physiques, et la stratégie d’agrégation de qubits pour former des logiques, chacune offrant des avantages distincts en profondeur et parallélisme.",
+    "category": "Informatique",
+    "cover": "https://next.ink/wp-content/uploads/2023/12/Informatique-quantique6-1024x496.jpg",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le 11 novembre, IBM a présenté de nouvelles publications sur ses projets d’ordinateurs quantiques, soulignant deux voies parallèles : une puce à grand nombre de qubits physiques et une méthode d’agrégation pour réduire les erreurs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Deux philosophies de conception quantique",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Dans le domaine quantique, on distingue généralement les qubits physiques isolés des qubits logiques, qui résultent de l’assemblage de plusieurs qubits physiques. La première approche mise sur le parallélisme brut, tandis que la seconde vise à limiter les erreurs en combinant des qubits pour former des unités plus stables.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nighthawk r3 : puissance brute de 520 qubits",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "IBM a dévoilé la troisième génération de sa puce Nighthawk, nommée r3, prévue pour 2027. Cette version comporte 520 qubits physiques non agrégés, permettant d’exécuter simultanément des opérations sur l’ensemble du jeu de qubits. La machine peut réaliser jusqu’à 10 000 opérations quantiques avant que le bruit inhérent ne rende les résultats peu fiables, une contrainte liée au taux d’erreur des qubits.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "L’autre voie : agrégation de qubits pour des logiques plus fiables",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En parallèle, IBM poursuit le développement de systèmes où plusieurs qubits physiques sont combinés pour former des qubits logiques. Cette technique réduit naturellement les erreurs, autorisant des calculs de plus grande profondeur, c’est‑à‑dire des algorithmes plus complexes, au prix d’un nombre réduit de traitements parallèles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "IBM mise ainsi sur une double stratégie : d’une part, augmenter le nombre de qubits physiques pour élargir la capacité de simulation, d’autre part, consolider les qubits en unités logiques afin d’allonger la profondeur des calculs. Cette diversification reflète la recherche d’un équilibre entre parallélisme et fiabilité, deux enjeux majeurs pour l’avenir de l’informatique quantique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
