@@ -1,133 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Blog QuQudeveloppement : Arduino, électronique, Raspberry Pi, actualité et informatique.">
-  <meta name="keywords" content="QuQudeveloppement, arduino, electronique, Raspberry, actualité, informatique, tutoriels, projets">
-  <meta name="author" content="QuQuDeveloppement">
-  <meta name="robots" content="index, follow">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Blog QuQudeveloppement">
-  <meta property="og:description" content="Journal des Nnews technologiques et des nouveautées">
-  <meta property="og:url" content="https://ququdeveloppement.github.io/mysite/">
-  <meta property="og:site_name" content="QuQudeveloppement">
-  <title>L'Atelier — Accueil</title>
-  <meta name="description" content="Accueil des projets : électronique, code.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#15140f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="icon" type="image/png" href="https://ququdeveloppement.github.io/mysite/BlogIcon.png">
-  <link rel="apple-touch-icon" href="https://ququdeveloppement.github.io/mysite/BlogIcon.png">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px; }
-    .tool-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 16px; border: 1px solid currentColor; border-radius: 999px;
-      background: transparent; color: inherit; cursor: pointer;
-      font-family: var(--font-display, "Space Mono", monospace); font-size: .85rem;
-    }
-    .tool-btn:hover, .tool-btn:focus-visible, .tool-btn[aria-expanded="true"] { background: rgba(127, 127, 127, .22); }
-    .tool-btn[hidden] { display: none; }
-
-    .cat-panel { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 14px; border: 1px solid rgba(127, 127, 127, .45); border-radius: 12px; }
-    .cat-panel[hidden] { display: none; }
-    .cat-empty { margin: 0; opacity: .75; font-size: .9rem; }
-
-    .article-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 8px; }
-    .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px; color: inherit; text-decoration: none; opacity: .7; font-family: var(--font-display, "Space Mono", monospace); font-size: .75rem; }
-    .cat-chip:hover, .cat-chip:focus-visible { opacity: 1; }
-    .cat-chip.active { opacity: 1; font-weight: 700; background: rgba(127, 127, 127, .22); }
-    .cat-chip .cat-n { opacity: .65; font-weight: 400; }
-    .badge.cat { text-decoration: none; }
-
-    .site-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .nav-btn {
-      appearance: none; border: 1px solid currentColor; background: transparent; color: inherit;
-      border-radius: 999px; padding: 7px 12px; font-family: var(--font-display, "Space Mono", monospace);
-      font-size: .78rem; cursor: pointer; opacity: .85;
-    }
-    .nav-btn:hover, .nav-btn:focus-visible { opacity: 1; background: rgba(127,127,127,.2); }
-    .nav-btn[hidden] { display: none; }
-
-    .install-app-btn { display: none; }
-
-    /* Correction critique : Empêche le texte de couper et force une ligne unique propre */
-    .bookmark-btn {
-      background: transparent; border: 1px solid currentColor; border-radius: 6px;
-      cursor: pointer; font-family: var(--font-display, "Space Mono", monospace);
-      font-size: 0.75rem; padding: 6px 12px; margin-bottom: 8px;
-      display: inline-flex; align-items: center; gap: 6px;
-      white-space: nowrap; /* Interdit absolument le retour à la ligne */
-      transition: background 0.2s ease; opacity: 0.85;
-      float: right;
-    }
-    .bookmark-btn:hover { opacity: 1; background: rgba(127, 127, 127, 0.15); }
-    
-    .log-entry { position: relative; }
-    .log-entry-body { clear: both; }
-
-    .mobile-home { display: none; }
-
-    @media (max-width: 768px) {
-      .mobile-home {
-        display: block;
-        margin: 18px 0 20px;
-        padding: 18px 16px;
-        border: 1px solid rgba(127,127,127,.45);
-        border-radius: 18px;
-        background: rgba(127,127,127,.05);
-      }
-      .mobile-home__content { display: grid; gap: 8px; }
-      .mobile-home__eyebrow { margin: 0; opacity: .7; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
-      .mobile-home h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.1; }
-      .mobile-home p { margin: 0; opacity: .85; }
-      .mobile-home__actions { margin-top: 8px; }
-      .mobile-home__cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; color: inherit; font-weight: 600; }
-      .install-app-btn { display: inline-flex; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Atelier : actualité informatique, Arduino, électronique, Raspberry Pi</title>
+<meta name="description" content="L'Atelier : le journal de l'actualité informatique, de l'électronique, d'Arduino et du Raspberry Pi.">
+<meta name="keywords" content="QuQudeveloppement, arduino, electronique, Raspberry, actualité, informatique, tutoriels, projets">
+<meta name="author" content="QuQuDeveloppement">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="L'Atelier">
+<meta property="og:description" content="Journal des news technologiques et des nouveautés">
+<meta property="og:url" content="https://ququdeveloppement.github.io/mysite/">
+<meta property="og:site_name" content="QuQudeveloppement">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#15140f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="https://ququdeveloppement.github.io/mysite/BlogIcon.png">
+<link rel="apple-touch-icon" href="https://ququdeveloppement.github.io/mysite/BlogIcon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+<symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h8M16 6h4M4 12h2M10 12h10M4 18h10M18 18h2"/><circle cx="14" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="18" r="2"/></symbol>
+<symbol id="i-login" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M4 12h11M11 8l4 4-4 4"/></symbol>
+<symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H5v16h4M10 12h10M16 8l4 4-4 4"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+<symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M4 7h4l8 10h4M4 17h4l3-4M13 11l3-4h4M18 5l2 2-2 2M18 15l2 2-2 2"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 4h6l-1 6 3 3H7l3-3zM12 13v7"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+</svg>
 
 <header class="site-header">
   <div class="header-inner">
     <div data-led-text="L'ATELIER" data-led-cols="34" aria-label="L'Atelier"></div>
-    <nav class="site-nav">
-      <a href="blog.html">Accueil</a>
-      <a href="#archives">Archives</a>
-      <a href="#parametres" class="nav-btn" id="settingsNavBtn" title="Paramètres et Profil">⚙️</a>
-      <button type="button" class="nav-btn" id="loginBtn" title="Connexion">🚪➔</button>
-      <button type="button" class="nav-btn" id="notifyToggle" aria-pressed="false" hidden>Notifications</button>
-      <button type="button" class="nav-btn install-app-btn" id="installAppBtn" hidden>Installer l’app</button>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="nav-link" id="nvHome" href="#">Accueil</a>
+      <a class="nav-link hide-m" id="nvAll" href="#tout">Tous les articles</a>
+      <a class="nav-link hide-m" id="nvArch" href="#archives">Archives</a>
+      <a class="icon-btn" href="#recherche" title="Rechercher" aria-label="Rechercher"><svg class="ic"><use href="#i-search"/></svg></a>
+      <a class="icon-btn" href="#categorie/enregistres" title="Articles enregistrés" aria-label="Articles enregistrés"><svg class="ic"><use href="#i-bookmark"/></svg></a>
+      <button type="button" class="icon-btn" id="notifyToggle" title="Notifications" aria-label="Notifications" aria-pressed="false" hidden><svg class="ic"><use href="#i-bell"/></svg></button>
+      <button type="button" class="icon-btn" id="installAppBtn" title="Installer l'application" aria-label="Installer l'application" hidden><svg class="ic"><use href="#i-download"/></svg></button>
+      <a class="icon-btn" href="#parametres" title="Paramètres et profil" aria-label="Paramètres"><svg class="ic"><use href="#i-settings"/></svg></a>
+      <button type="button" class="icon-btn" id="loginBtn" title="Connexion"><svg class="ic"><use href="#i-login"/></svg><span id="loginLabel">Connexion</span></button>
       <a href="forbidden.html" aria-label="Lien vide"></a>
     </nav>
   </div>
 </header>
 
-<section class="mobile-home" id="mobileHome">
-  <div class="mobile-home__content">
-    <p class="mobile-home__eyebrow">L'atelier</p>
-    <h1>Arduino, électronique, Raspberry Pi & projets</h1>
-    <p>Des idées, des tutoriels et des réalisations à retrouver dans le blog.</p>
-    <div class="mobile-home__actions">
-      <a href="#archives" class="mobile-home__cta">Accéder aux archives</a>
-    </div>
-  </div>
-</section>
-
-<main id="app">
-  <p class="log-empty">Chargement de l'accueil…</p>
-</main>
-
-<footer class="site-footer">
-  Publié par QuQuDeveloppement, tous droits réservés
-</footer>
+<main id="app"><p class="log-empty">Chargement…</p></main>
+<footer class="site-footer">Publié par QuQuDeveloppement, tous droits réservés</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
@@ -138,723 +70,434 @@
 <script src="download.js"></script>
 <script>
 const app = document.getElementById("app");
-let ARTICLES = [];
-let deferredPrompt = null;
-let USER_BOOKMARKS = {};
+let ARTICLES = [], USER_BOOKMARKS = {}, deferredPrompt = null;
+const ic = (n, c = "") => `<svg class="ic ${c}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const enc = encodeURIComponent;
 
-const notifyToggle = document.getElementById("notifyToggle");
-const installAppBtn = document.getElementById("installAppBtn");
-const loginBtn = document.getElementById("loginBtn");
-
-function isMobile() {
-  return window.matchMedia("(max-width: 768px)").matches;
+/* ---------- Données dérivées ---------- */
+function bodyText(a) {
+  return (a.blocks || []).map(b => (b && (b.text || b.content || b.title)) || "").join(" ");
+}
+function indexOf(a) { return a._t || (a._t = norm([a.title, a.excerpt, a.category, bodyText(a)].join(" "))); }
+function readTime(a) {
+  const w = (bodyText(a) + " " + (a.excerpt || "")).split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(w / 200));
+}
+function catSlug(c) { return norm(c).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
+function sortArticles(list) {
+  return [...list].sort((a, b) => ((b.pinned ? 1 : 0) - (a.pinned ? 1 : 0)) || (a.date < b.date ? 1 : -1));
+}
+function activeArticles() { return ARTICLES.filter(a => !isArchived(a)); }
+function categories(list) {
+  const m = new Map();
+  list.forEach(a => { if (!a.category) return; const s = catSlug(a.category); const e = m.get(s) || { label: a.category, n: 0 }; e.n++; m.set(s, e); });
+  return m;
 }
 
-function isStandalone() {
-  return (
-    window.matchMedia("(display-mode: standalone)").matches ||
-    ("standalone" in window.navigator && window.navigator.standalone === true)
-  );
+/* ---------- Composants ---------- */
+function bkInner(on) { return ic("bookmark", on ? "fill" : ""); }
+function metaHtml(a, withLikes = true) {
+  return `<div class="meta">
+    ${a.pinned ? `<span>${ic("pin")} À la une</span>` : ""}
+    <span>${formatDate(a.date)}</span>
+    <span>${ic("clock")} ${readTime(a)} min</span>
+    ${withLikes ? `<span class="push">${ic("heart")} <span data-like-display="${escapeHtml(a.id)}">…</span></span>` : ""}
+  </div>`;
 }
-
-function updateNotificationState() {
-  if (!notifyToggle) return;
-  const supported = "Notification" in window;
-  const granted = supported && Notification.permission === "granted";
-  notifyToggle.hidden = granted;
-  notifyToggle.setAttribute("aria-pressed", String(granted));
-  notifyToggle.textContent = granted ? "Notifications activées" : "Notifications";
-  if (!supported) notifyToggle.hidden = true;
+function catBadge(a) {
+  return a.category ? `<a class="badge cat" href="#categorie/${enc(catSlug(a.category))}">${escapeHtml(a.category)}</a>` : "";
 }
-
-function updateInstallState() {
-  if (!installAppBtn) return;
-  const mobile = isMobile();
-  const installed = isStandalone();
-  if (!mobile || installed || !deferredPrompt) {
-    installAppBtn.hidden = true;
-    return;
-  }
-  installAppBtn.hidden = false;
+function bookmarkBtn(a) {
+  const on = USER_BOOKMARKS[a.id] === true;
+  return `<button type="button" class="bookmark-btn ${on ? "on" : ""}" id="bk-${escapeHtml(a.id)}" data-bk="${escapeHtml(a.id)}" aria-label="${on ? "Retirer des enregistrés" : "Enregistrer l'article"}" title="Enregistrer">${bkInner(on)}</button>`;
 }
-
-if (notifyToggle) {
-  updateNotificationState();
-  notifyToggle.addEventListener("click", async () => {
-    if (!("Notification" in window)) {
-      alert("Ce navigateur ne supporte pas les notifications Web.");
-      return;
-    }
-    if (Notification.permission === "granted") {
-      updateNotificationState();
-      return;
-    }
-    const result = await Notification.requestPermission();
-    if (result === "granted") {
-      updateNotificationState();
-    } else {
-      alert("L'autorisation de notification a été refusée.");
-    }
-  });
-}
-
-if (installAppBtn) {
-  installAppBtn.addEventListener("click", async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const choice = await deferredPrompt.userChoice;
-    if (choice.outcome === "accepted") {
-      installAppBtn.hidden = true;
-    }
-    deferredPrompt = null;
-    updateInstallState();
-  });
-}
-
-window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  deferredPrompt = event;
-  updateInstallState();
-});
-
-window.addEventListener("appinstalled", () => {
-  deferredPrompt = null;
-  updateInstallState();
-});
-
-window.addEventListener("resize", updateInstallState);
-updateNotificationState();
-updateInstallState();
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
-}
-
-async function loadArticles() {
-  try {
-    const res = await fetch("articles.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("Fichier articles.json introuvable");
-    ARTICLES = await res.json();
-  } catch (e) {
-    ARTICLES = [];
-    app.innerHTML = `<p class="log-empty">Impossible de charger les articles (${escapeHtml(e.message)}).</p>`;
-    return;
-  }
-  bindNotificationToggle();
-  if (localStorage.getItem(LAST_COMMON_ARTICLE_KEY) === null && getLatestArticleId()) {
-    localStorage.setItem(LAST_COMMON_ARTICLE_KEY, getLatestArticleId());
-  }
-  notifyIfNewArticle();
-  startArticlePolling();
-  render();
-}
-
-function catSlug(c) {
-  return String(c || "")
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-}
-
-function catBadgeHtml(a) {
-  if (!a.category) return "";
-  return `<a class="badge cat" href="#categorie/${encodeURIComponent(catSlug(a.category))}">${escapeHtml(a.category)}</a>`;
-}
-
-function collectCategories(active) {
-  const cats = new Map();
-  active.forEach(a => {
-    if (!a.category) return;
-    const s = catSlug(a.category);
-    const entry = cats.get(s) || { label: a.category, n: 0 };
-    entry.n++;
-    cats.set(s, entry);
-  });
-  return cats;
-}
-
-function toolbarHtml(active, current) {
-  const cats = collectCategories(active);
-  const label = current && cats.has(current) ? " : " + cats.get(current).label : (current === "enregistres" ? " : Articles enregistrés" : "");
-  const savedCount = Object.values(USER_BOOKMARKS).filter(Boolean).length;
-  
-  const isAllActive = !current;
-  const isSavedActive = current === "enregistres";
-
-  let chips = `<a class="cat-chip ${isAllActive ? "active" : ""}" href="#">Tout <span class="cat-n">${active.length}</span></a>`;
-  chips += `<a class="cat-chip ${isSavedActive ? "active" : ""}" href="#categorie/enregistres">[📁] Articles enregistrés <span class="cat-n">${savedCount}</span></a>`;
-
-  if (cats.size > 0) {
-    chips += [...cats.entries()]
-      .sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"))
-      .map(([s, e]) => `<a class="cat-chip ${s === current ? "active" : ""}" href="#categorie/${encodeURIComponent(s)}">${escapeHtml(e.label)} <span class="cat-n">${e.n}</span></a>`)
-      .join("");
-  }
-
-  return `
-    <div class="toolbar">
-      <button type="button" class="tool-btn" id="catToggle" aria-expanded="false" aria-controls="catPanel">Catégories${escapeHtml(label)}</button>
-      <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
+function cardHtml(a) {
+  return `<article class="card-a">
+    ${bookmarkBtn(a)}
+    ${a.cover ? `<a class="thumb" href="#article/${enc(a.id)}"><img src="${a.cover}" alt="" loading="lazy"></a>` : ""}
+    <div class="body">
+      <div>${catBadge(a)}</div>
+      <h3><a href="#article/${enc(a.id)}">${escapeHtml(a.title)}</a></h3>
+      <p>${escapeHtml(a.excerpt || "")}</p>
+      ${metaHtml(a)}
     </div>
-    <div class="cat-panel" id="catPanel" hidden>${chips}</div>`;
+  </article>`;
+}
+function fillLikes(list) {
+  list.forEach(async a => updateLikeDisplays(a.id, await fetchLikeCount(a.id)));
+}
+function searchForm(q = "") {
+  return `<form class="searchbar" id="homeSearch" role="search">
+    <input type="search" id="homeQ" value="${escapeHtml(q)}" placeholder="Rechercher un article, une rubrique, un sujet..." aria-label="Rechercher">
+    <button class="btn btn-primary" type="submit">${ic("search")}Rechercher</button>
+  </form>`;
+}
+function wireSearchForm() {
+  const f = document.getElementById("homeSearch");
+  if (f) f.onsubmit = e => { e.preventDefault(); location.hash = "#recherche/" + enc(document.getElementById("homeQ").value.trim()); };
+}
+function chipsHtml(active, current) {
+  const cats = categories(active);
+  const saved = Object.values(USER_BOOKMARKS).filter(Boolean).length;
+  let h = `<a class="cat-chip ${!current ? "active" : ""}" href="#tout">Tout <span class="cat-n">${active.length}</span></a>`;
+  h += `<a class="cat-chip ${current === "enregistres" ? "active" : ""}" href="#categorie/enregistres">${ic("bookmark")} Enregistrés <span class="cat-n">${saved}</span></a>`;
+  [...cats.entries()].sort((x, y) => y[1].n - x[1].n).forEach(([s, e]) => {
+    h += `<a class="cat-chip ${s === current ? "active" : ""}" href="#categorie/${enc(s)}">${escapeHtml(e.label)} <span class="cat-n">${e.n}</span></a>`;
+  });
+  return `<div class="chips">${h}</div>`;
+}
+function goRandom(excludeId = "") {
+  const pool = activeArticles().filter(a => a.id !== excludeId);
+  if (!pool.length) return;
+  location.hash = "#article/" + enc(pool[Math.floor(Math.random() * pool.length)].id);
 }
 
-function goRandom(list, excludeId = "") {
-  const pool = list.filter(a => a.id !== excludeId);
-  const choices = pool.length ? pool : list;
-  if (choices.length === 0) return;
-  const pick = choices[Math.floor(Math.random() * choices.length)];
-  location.hash = "#article/" + encodeURIComponent(pick.id);
-}
+/* ---------- Vues ---------- */
+function renderHome() {
+  const list = sortArticles(activeArticles());
+  const cats = categories(list);
+  const today = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  let h = `<div class="masthead"><span>${today}</span><span>${list.length} articles · ${cats.size} rubriques</span></div>` + searchForm();
+  if (!list.length) { app.innerHTML = h + `<p class="log-empty">Aucun article publié pour l'instant.</p>`; wireSearchForm(); return; }
 
-function wireToolbar(list) {
-  const toggle = document.getElementById("catToggle");
-  const panel = document.getElementById("catPanel");
-  if (toggle && panel) {
-    toggle.addEventListener("click", () => {
-      const opening = panel.hasAttribute("hidden");
-      if (opening) panel.removeAttribute("hidden"); else panel.setAttribute("hidden", "");
-      toggle.setAttribute("aria-expanded", String(opening));
-    });
-  }
-  const rnd = document.getElementById("randomBtn");
-  if (rnd) rnd.addEventListener("click", () => goRandom(list));
-}
-
-function articleCardHtml(a) {
-  const isBookmarked = USER_BOOKMARKS[a.id] === true;
-  // Utilisation d'un texte compact en bâtons sur une seule ligne (ex: [ + ] vs [ ✓ ])
-  const bookmarkSymbol = isBookmarked ? "[ ✓ ] Enregistré" : "[ + ] Enregistrer";
-  return `
-    <article class="log-entry ${a.cover ? "has-cover" : ""}">
-      <button class="bookmark-btn" onclick="toggleBookmark('${a.id}')" id="bk-${a.id}" title="Sauvegarder">${bookmarkSymbol}</button>
-      ${a.cover ? `<a class="log-thumb" href="#article/${encodeURIComponent(a.id)}">
-        <img src="${a.cover}" alt="" loading="lazy">
-      </a>` : ""}
-      <div class="log-entry-body">
-        <div class="log-date">
-          ${a.pinned ? '<span class="badge pinned">📌 Épinglé</span>' : ""}
-          ${formatDate(a.date)}
-          ${catBadgeHtml(a)}
-          ${isArchived(a) ? '<span class="badge">Archivé</span>' : ""}
-        </div>
-        <h2 class="log-title"><a href="#article/${encodeURIComponent(a.id)}">${escapeHtml(a.title)}</a></h2>
-        <p class="log-excerpt">${escapeHtml(a.excerpt || "")}</p>
-        <div class="log-meta">
-          <span class="like-count">♥ <span data-like-display="${escapeHtml(a.id)}">…</span></span>
-        </div>
-      </div>
+  const lead = list[0], side = list.slice(1, 6);
+  h += `<section class="front">
+    <article class="lead">
+      ${bookmarkBtn(lead)}
+      ${lead.cover ? `<a class="lead-img" href="#article/${enc(lead.id)}"><img src="${lead.cover}" alt=""></a>` : ""}
+      <div style="margin-top:14px">${catBadge(lead)}</div>
+      <h2><a href="#article/${enc(lead.id)}">${escapeHtml(lead.title)}</a></h2>
+      <p>${escapeHtml(lead.excerpt || "")}</p>
+      ${metaHtml(lead)}
     </article>
-  `;
+    <aside class="front-side">
+      <h2 class="sec-title" style="margin-top:0">Dernières publications</h2>
+      <ol>${side.map(a => `<li><div><a class="t" href="#article/${enc(a.id)}">${escapeHtml(a.title)}</a>${metaHtml(a, false)}</div></li>`).join("")}</ol>
+    </aside>
+  </section>`;
+
+  const shown = new Set([lead.id, ...side.map(a => a.id)]);
+  [...cats.entries()].sort((x, y) => y[1].n - x[1].n).slice(0, 4).forEach(([s, e]) => {
+    const items = list.filter(a => catSlug(a.category) === s).slice(0, 3);
+    h += `<h2 class="sec-title"><span>${escapeHtml(e.label)}</span><a href="#categorie/${enc(s)}">Toute la rubrique ${ic("right")}</a></h2>
+      <div class="grid">${items.map(cardHtml).join("")}</div>`;
+  });
+  h += `<h2 class="sec-title"><span>Récemment publiés</span><a href="#tout">Tous les articles ${ic("right")}</a></h2>
+    <div class="grid">${list.filter(a => !shown.has(a.id)).slice(0, 6).map(cardHtml).join("") || ""}</div>
+    <p style="margin-top:28px"><button type="button" class="btn" id="randomBtn">${ic("shuffle")}Article aléatoire</button></p>`;
+  app.innerHTML = h;
+  wireSearchForm();
+  document.getElementById("randomBtn").onclick = () => goRandom();
+  fillLikes(list);
 }
 
-function renderList(currentSlug = "") {
-  const active = ARTICLES.filter(a => !isArchived(a));
-  let shown = active;
-
-  if (currentSlug === "enregistres") {
-    shown = active.filter(a => USER_BOOKMARKS[a.id] === true);
-  } else if (currentSlug) {
-    shown = active.filter(a => catSlug(a.category) === currentSlug);
-  }
-
-  const sorted = [...shown].sort((a, b) => {
-    const pa = a.pinned ? 1 : 0, pb = b.pinned ? 1 : 0;
-    if (pa !== pb) return pb - pa;
-    return (a.date < b.date ? 1 : -1);
-  });
-  const bar = toolbarHtml(active, currentSlug);
-
-  if (sorted.length === 0) {
-    const msg = currentSlug === "enregistres" 
-      ? "Aucun article enregistré pour l'instant." 
-      : (currentSlug ? "Aucun article dans cette catégorie pour l'instant." : "Aucun article publié pour l'instant.");
-    app.innerHTML = bar + `<p class="log-empty">${msg}</p>`;
-    wireToolbar(shown);
-    return;
-  }
-
-  app.innerHTML = bar + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
-  wireToolbar(shown);
-
-  sorted.forEach(async (a) => {
-    const count = await fetchLikeCount(a.id);
-    updateLikeDisplays(a.id, count);
-  });
+function renderList(slug = "") {
+  const active = activeArticles();
+  let shown = active, title = "Tous les articles";
+  if (slug === "enregistres") { shown = active.filter(a => USER_BOOKMARKS[a.id] === true); title = "Articles enregistrés"; }
+  else if (slug) { shown = active.filter(a => catSlug(a.category) === slug); title = categories(active).get(slug)?.label || "Rubrique"; }
+  shown = sortArticles(shown);
+  const empty = slug === "enregistres" ? "Aucun article enregistré pour l'instant." : "Aucun article dans cette rubrique pour l'instant.";
+  app.innerHTML = `<a class="back" href="#">${ic("left")} Accueil</a><h1 class="page-title">${escapeHtml(title)}</h1>` +
+    searchForm() + chipsHtml(active, slug) +
+    (shown.length ? `<div class="grid">${shown.map(cardHtml).join("")}</div>` : `<p class="log-empty">${empty}</p>`);
+  wireSearchForm();
+  fillLikes(shown);
 }
 
 function renderArchives() {
-  const archived = ARTICLES.filter(isArchived);
-  const sorted = [...archived].sort((a, b) => (a.date < b.date ? 1 : -1));
-  const header = `
-    <a class="article-back" href="blog.html">← Retour à l'accueil</a>
-    <h1 style="font-family:var(--font-display);font-size:1.3rem;margin:0 0 20px;">Archives</h1>
-  `;
-
-  if (sorted.length === 0) {
-    app.innerHTML = header + `<p class="log-empty">Aucun article archivé pour l'instant.</p>`;
-    return;
-  }
-
-  app.innerHTML = header + `<div class="log">${sorted.map(articleCardHtml).join("")}</div>`;
-
-  sorted.forEach(async (a) => {
-    const count = await fetchLikeCount(a.id);
-    updateLikeDisplays(a.id, count);
-  });
+  const list = [...ARTICLES.filter(isArchived)].sort((a, b) => (a.date < b.date ? 1 : -1));
+  app.innerHTML = `<a class="back" href="#">${ic("left")} Accueil</a><h1 class="page-title">Archives</h1>` +
+    (list.length ? `<div class="grid">${list.map(cardHtml).join("")}</div>` : `<p class="log-empty">Aucun article archivé pour l'instant.</p>`);
+  fillLikes(list);
 }
 
-/* ---------- Vue Paramètres & Profil (⚙️) ---------- */
-async function renderSettings() {
-  const user = firebase.auth().currentUser;
-  const isLogged = user && !user.isAnonymous;
-
-  let currentPseudo = "Non connecté";
-  let userEmail = "Non connecté";
-
-  if (isLogged) {
-    userEmail = user.email || "Compte Google vérifié";
-    const snap = await fbDb.ref(`users/${user.uid}/profile/pseudo`).once("value");
-    currentPseudo = snap.val() || "Membre";
-  }
-
-  app.innerHTML = `
-    <a class="article-back" href="blog.html">← Retour à l'accueil</a>
-    <h1 style="font-family:var(--font-display);font-size:1.4rem;margin:15px 0 20px;">⚙️ Paramètres & Confidentialité</h1>
-    
-    <div style="background: rgba(127,127,127,0.06); border: 1px solid rgba(127,127,127,0.3); border-radius: 12px; padding: 20px; max-width: 600px;">
-      <h3 style="margin-top: 0;">Profil utilisateur</h3>
-      <p style="font-size: 0.9rem; opacity: 0.8;">Statut : <strong>${isLogged ? "Connecté via Google" : "Non connecté (Mode Visiteur)"}</strong></p>
-      <p style="font-size: 0.9rem; opacity: 0.8;">Email : <strong>${escapeHtml(userEmail)}</strong></p>
-      <p style="font-size: 0.9rem; opacity: 0.8;">Pseudonyme actuel : <strong id="displayPseudo">${escapeHtml(currentPseudo)}</strong></p>
-      
-      ${isLogged ? `
-        <button type="button" class="tool-btn" id="changePseudoBtn" style="margin-top: 10px;">Modifier mon pseudo</button>
-      ` : `
-        <p style="font-size: 0.85rem; color: #ffb703;">Connectez-vous via l'icône de porte (🚪➔) dans le menu pour personnaliser votre profil et enregistrer des favoris.</p>
-      `}
-
-      <hr style="border: 0; border-top: 1px solid rgba(127,127,127,0.2); margin: 25px 0;">
-
-      <h3>Confidentialité & Données</h3>
-      <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">
-        Vos données (favoris et commentaires) sont stockées de manière sécurisée et isolée dans votre espace personnel Firebase Realtime Database. Aucune information personnelle n'est partagée à des tiers.
-      </p>
+function renderSearch(q = "") {
+  const cats = [...categories(ARTICLES).entries()].sort((x, y) => x[1].label.localeCompare(y[1].label, "fr"));
+  app.innerHTML = `<a class="back" href="#">${ic("left")} Accueil</a><h1 class="page-title">Recherche</h1>
+    <div class="searchbar">
+      <input type="search" id="sq" value="${escapeHtml(q)}" placeholder="Titre, contenu, rubrique..." aria-label="Rechercher" autocomplete="off">
     </div>
-  `;
+    <div class="sfilters">
+      <select id="sc" aria-label="Rubrique"><option value="">Toutes les rubriques</option>${cats.map(([s, e]) => `<option value="${escapeHtml(s)}">${escapeHtml(e.label)}</option>`).join("")}</select>
+      <select id="ss" aria-label="Tri"><option value="rel">Pertinence</option><option value="new">Plus récents</option><option value="old">Plus anciens</option></select>
+      <label class="meta" style="align-self:center"><input type="checkbox" id="sa"> Inclure les archives</label>
+    </div>
+    <p class="meta" id="sn" aria-live="polite"></p><div id="sr"></div>`;
+  const $ = id => document.getElementById(id);
+  const run = () => {
+    const terms = norm($("sq").value).split(/\s+/).filter(Boolean);
+    const cat = $("sc").value, mode = $("ss").value, arch = $("sa").checked;
+    let res = ARTICLES.filter(a => (arch || !isArchived(a)) && (!cat || catSlug(a.category) === cat) && terms.every(t => indexOf(a).includes(t)));
+    const score = a => terms.reduce((s, t) => s + (norm(a.title).includes(t) ? 3 : 0) + (norm(a.category).includes(t) ? 2 : 0) + (norm(a.excerpt).includes(t) ? 1 : 0), 0);
+    if (mode === "new") res.sort((a, b) => (a.date < b.date ? 1 : -1));
+    else if (mode === "old") res.sort((a, b) => (a.date > b.date ? 1 : -1));
+    else res.sort((a, b) => score(b) - score(a) || (a.date < b.date ? 1 : -1));
+    $("sn").textContent = terms.length || cat ? `${res.length} résultat${res.length > 1 ? "s" : ""}` : `${res.length} articles`;
+    $("sr").innerHTML = res.length ? `<div class="grid">${res.map(cardHtml).join("")}</div>` : `<p class="log-empty">Aucun résultat. Essayez d'autres mots-clés.</p>`;
+    fillLikes(res);
+    history.replaceState(null, "", "#recherche" + (terms.length ? "/" + enc($("sq").value.trim()) : ""));
+  };
+  ["input", "change"].forEach(ev => ["sq", "sc", "ss", "sa"].forEach(id => $(id).addEventListener(ev, run)));
+  run();
+  $("sq").focus();
+}
 
-  const changeBtn = document.getElementById("changePseudoBtn");
-  if (changeBtn) {
-    changeBtn.onclick = async () => {
-      const newPseudo = prompt("Entrez votre nouveau pseudonyme (max 30 caractères) :", currentPseudo);
-      if (newPseudo && newPseudo.trim().length > 0) {
-        const trimmed = newPseudo.trim().slice(0, 30);
-        await fbDb.ref(`users/${user.uid}/profile/pseudo`).set(trimmed);
-        alert("Pseudonyme mis à jour avec succès !");
-        renderSettings();
-      }
-    };
+async function renderSettings() {
+  const user = firebase.auth().currentUser, logged = user && !user.isAnonymous;
+  let pseudo = "Non connecté", mail = "Non connecté";
+  if (logged) {
+    mail = user.email || "Compte Google vérifié";
+    pseudo = (await fbDb.ref(`users/${user.uid}/profile/pseudo`).once("value")).val() || "Membre";
   }
+  app.innerHTML = `<a class="back" href="#">${ic("left")} Accueil</a><h1 class="page-title">Paramètres et confidentialité</h1>
+    <div class="panel"><h3>Profil</h3>
+      <p>Statut : <strong>${logged ? "Connecté via Google" : "Visiteur"}</strong></p>
+      <p>Email : <strong>${escapeHtml(mail)}</strong></p>
+      <p>Pseudonyme : <strong>${escapeHtml(pseudo)}</strong></p>
+      ${logged ? `<button type="button" class="btn" id="changePseudoBtn">Modifier mon pseudo</button>` : `<p>Connectez-vous pour personnaliser votre profil, commenter et enregistrer des articles.</p>`}
+      <h3 style="margin-top:26px">Confidentialité</h3>
+      <p>Vos favoris et commentaires sont stockés dans votre espace Firebase Realtime Database. Rien n'est transmis à des tiers.</p>
+    </div>`;
+  const b = document.getElementById("changePseudoBtn");
+  if (b) b.onclick = async () => {
+    const p = prompt("Nouveau pseudonyme (30 caractères max) :", pseudo);
+    if (p && p.trim()) { await fbDb.ref(`users/${user.uid}/profile/pseudo`).set(p.trim().slice(0, 30)); renderSettings(); }
+  };
 }
 
 function renderArticle(id) {
-  const article = ARTICLES.find(a => a.id === id);
-
-  if (!article) {
-    app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="article-back" href="blog.html">← Retour à l'accueil</a>`;
-    return;
-  }
-
-  app.innerHTML = `
-    <div class="article-nav">
-      <a class="article-back" href="blog.html">← Retour à l'accueil</a>
-      <button type="button" class="tool-btn" id="randomBtn">Aléatoire</button>
-    </div>
-    <header class="article-header">
-      <span class="log-date">${formatDate(article.date)} ${catBadgeHtml(article)}</span>
-      <h1>${escapeHtml(article.title)}</h1>
+  const a = ARTICLES.find(x => x.id === id);
+  if (!a) { app.innerHTML = `<p class="log-empty">Article introuvable.</p><a class="back" href="#">${ic("left")} Accueil</a>`; return; }
+  app.innerHTML = `<div class="article-bar"><a class="back" href="#">${ic("left")} Accueil</a>
+      <button type="button" class="btn" id="randomBtn">${ic("shuffle")}Aléatoire</button></div>
+    <header class="article-header" style="margin-top:20px">
+      <div class="meta" style="margin-bottom:10px">${catBadge(a)}<span>${formatDate(a.date)}</span><span>${ic("clock")} ${readTime(a)} min de lecture</span></div>
+      <h1>${escapeHtml(a.title)}</h1>
     </header>
-    ${article.cover ? `<figure class="block-image"><img src="${article.cover}" alt=""></figure>` : ""}
-    <div class="article-body">${renderArticleBody(article)}</div>
-
-    <div class="like-bar">
-      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(article.id)}" disabled>
-        <span class="like-label">♡ J'aime</span>
-        <span data-like-display="${escapeHtml(article.id)}">…</span>
-      </button>
+    ${a.cover ? `<figure class="block-image"><img src="${a.cover}" alt=""></figure>` : ""}
+    <div class="article-body">${renderArticleBody(a)}</div>
+    <div class="like-bar" style="display:flex;gap:10px;flex-wrap:wrap">
+      <button type="button" class="btn like-btn" data-like-btn="${escapeHtml(a.id)}" disabled>${ic("heart")}<span class="like-label">J'aime</span> <span data-like-display="${escapeHtml(a.id)}">…</span></button>
+      <button type="button" class="btn" data-bk="${escapeHtml(a.id)}" id="bk-${escapeHtml(a.id)}">${bkInner(USER_BOOKMARKS[a.id] === true)} Enregistrer</button>
     </div>
-
-    <section class="comments-section" style="margin-top: 40px; border-top: 1px solid rgba(127,127,127,0.3); padding-top: 20px;">
-      <h3>Commentaires</h3>
-      <div id="commentsList" style="margin-bottom: 20px;"><p style="opacity:0.7;">Chargement des commentaires...</p></div>
-      <div id="commentFormContainer"></div>
-    </section>
-  `;
-
-  wireLikeButton(article.id);
-  const rb = document.getElementById("randomBtn");
-  if (rb) rb.addEventListener("click", () => goRandom(ARTICLES.filter(a => !isArchived(a)), article.id));
-  fetchLikeCount(article.id).then(count => updateLikeDisplays(article.id, count));
+    <section class="comments"><h3>Commentaires</h3><div id="commentsList"></div><div id="commentFormContainer"></div></section>`;
+  wireLikeButton(a.id);
+  document.getElementById("randomBtn").onclick = () => goRandom(a.id);
+  fetchLikeCount(a.id).then(c => updateLikeDisplays(a.id, c));
   loadComments(id);
 }
 
 function render() {
-  const hash = location.hash;
-  if (hash.startsWith("#article/")) {
-    renderArticle(decodeURIComponent(hash.replace("#article/", "")));
-  } else if (hash.startsWith("#categorie/")) {
-    renderList(decodeURIComponent(hash.replace("#categorie/", "")));
-  } else if (hash === "#archives") {
-    renderArchives();
-  } else if (hash === "#parametres") {
-    renderSettings();
-  } else {
-    renderList();
-  }
+  const h = location.hash;
+  document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("on"));
+  const on = id => document.getElementById(id).classList.add("on");
+  if (h.startsWith("#article/")) renderArticle(decodeURIComponent(h.slice(9)));
+  else if (h.startsWith("#categorie/")) renderList(decodeURIComponent(h.slice(11)));
+  else if (h.startsWith("#recherche")) renderSearch(decodeURIComponent(h.slice(11)));
+  else if (h === "#tout") { on("nvAll"); renderList(); }
+  else if (h === "#archives") { on("nvArch"); renderArchives(); }
+  else if (h === "#parametres") renderSettings();
+  else { on("nvHome"); renderHome(); }
   window.scrollTo(0, 0);
 }
 
-const NOTIFY_KEY = "atelier_notifications_enabled";
-const LAST_COMMON_ARTICLE_KEY = "atelier_last_notified_article";
-
-function getLatestArticleId() {
-  if (!ARTICLES || !ARTICLES.length) return null;
-  return [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1))[0]?.id || null;
+async function loadArticles() {
+  try {
+    const r = await fetch("articles.json", { cache: "no-store" });
+    if (!r.ok) throw new Error("articles.json introuvable");
+    ARTICLES = await r.json();
+  } catch (e) {
+    app.innerHTML = `<p class="log-empty">Impossible de charger les articles (${escapeHtml(e.message)}).</p>`;
+    return;
+  }
+  if (localStorage.getItem(LAST_KEY) === null && latestId()) localStorage.setItem(LAST_KEY, latestId());
+  notifyIfNew();
+  setInterval(notifyIfNew, 30000);
+  render();
 }
 
-function setNotificationBtnState() {
-  const btn = document.getElementById("notifyToggle");
-  if (!btn) return;
-  btn.textContent = "Notifications";
-  btn.setAttribute("aria-pressed", String(localStorage.getItem(NOTIFY_KEY) === "1"));
+/* ---------- Notifications, installation, raccourci recherche ---------- */
+const NOTIFY_KEY = "atelier_notifications_enabled", LAST_KEY = "atelier_last_notified_article";
+const notifyBtn = document.getElementById("notifyToggle"), installBtn = document.getElementById("installAppBtn");
+const latestId = () => [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1))[0]?.id || null;
+function notifyState() {
+  const ok = "Notification" in window;
+  notifyBtn.hidden = !ok;
+  const on = ok && Notification.permission === "granted" && localStorage.getItem(NOTIFY_KEY) === "1";
+  notifyBtn.setAttribute("aria-pressed", String(on));
+  notifyBtn.title = on ? "Notifications activées (cliquer pour désactiver)" : "Activer les notifications";
+  notifyBtn.style.color = on ? "var(--amber)" : "";
 }
-
-function notifyIfNewArticle() {
-  if (localStorage.getItem(NOTIFY_KEY) !== "1") return;
-  if (!("Notification" in window) || Notification.permission !== "granted") return;
-
-  const latestId = getLatestArticleId();
-  const lastSeen = localStorage.getItem(LAST_COMMON_ARTICLE_KEY);
-  if (!latestId || lastSeen === latestId) return;
-
-  localStorage.setItem(LAST_COMMON_ARTICLE_KEY, latestId);
-  new Notification("Nouvel article sur L'Atelier", {
-    body: "Un nouveau billet vient d'être publié.",
-    icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png"
-  });
+function notifyIfNew() {
+  if (localStorage.getItem(NOTIFY_KEY) !== "1" || !("Notification" in window) || Notification.permission !== "granted") return;
+  const id = latestId();
+  if (!id || localStorage.getItem(LAST_KEY) === id) return;
+  localStorage.setItem(LAST_KEY, id);
+  new Notification("Nouvel article sur L'Atelier", { body: "Un nouveau billet vient d'être publié.", icon: "https://ququdeveloppement.github.io/mysite/BlogIcon.png" });
 }
+notifyBtn.addEventListener("click", async () => {
+  if (localStorage.getItem(NOTIFY_KEY) === "1") { localStorage.setItem(NOTIFY_KEY, "0"); notifyState(); return; }
+  if (await Notification.requestPermission() !== "granted") { alert("L'autorisation de notification a été refusée."); return; }
+  localStorage.setItem(NOTIFY_KEY, "1"); notifyState(); notifyIfNew();
+});
+notifyState();
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt(); await deferredPrompt.userChoice;
+  deferredPrompt = null; installBtn.hidden = true;
+});
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredPrompt = e; installBtn.hidden = false; });
+window.addEventListener("appinstalled", () => { deferredPrompt = null; installBtn.hidden = true; });
+if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); location.hash = "#recherche"; }
+});
 
-function startArticlePolling() {
-  if (window.__atelierPoller) clearInterval(window.__atelierPoller);
-  window.__atelierPoller = setInterval(() => notifyIfNewArticle(), 30000);
-}
-
-function bindNotificationToggle() {
-  const btn = document.getElementById("notifyToggle");
-  if (!btn) return;
-
-  btn.addEventListener("click", async () => {
-    if (!("Notification" in window)) {
-      alert("Ce navigateur ne supporte pas les notifications Web.");
-      return;
-    }
-
-    const enabled = localStorage.getItem(NOTIFY_KEY) === "1";
-    if (!enabled) {
-      const result = await Notification.requestPermission();
-      if (result !== "granted") {
-        alert("L'autorisation de notification a été refusée.");
-        return;
-      }
-      localStorage.setItem(NOTIFY_KEY, "1");
-      setNotificationBtnState();
-      notifyIfNewArticle();
-      return;
-    }
-
-    localStorage.setItem(NOTIFY_KEY, "0");
-    setNotificationBtnState();
-  });
-
-  setNotificationBtnState();
-}
-
-/* ---------- Firebase Realtime Database & Auth ---------- */
-const firebaseConfig = {
+/* ---------- Firebase ---------- */
+firebase.initializeApp({
   apiKey: "AIzaSyBe0oKHrentjayq2EmUxRnM1Qg7Qn1n8nI",
   authDomain: "l-atelier-1b97b.firebaseapp.com",
   databaseURL: "https://l-atelier-1b97b-default-rtdb.firebaseio.com",
   projectId: "l-atelier-1b97b",
   appId: "1:1036889135971:web:9efc8a6e6a1e62c59d5156"
-};
-
-firebase.initializeApp(firebaseConfig);
+});
 const fbDb = firebase.database();
-
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
-function likeKey(id) {
-  return String(id).replace(/[.#$\[\]\/]/g, "_").slice(0, 100);
-}
+const likeKey = id => String(id).replace(/[.#$\[\]\/]/g, "_").slice(0, 100);
 
 let authPromise = null;
 function ensureAuth() {
-  const currentUser = firebase.auth().currentUser;
-  if (currentUser) return Promise.resolve(currentUser);
+  const u = firebase.auth().currentUser;
+  if (u) return Promise.resolve(u);
   if (!authPromise) {
     authPromise = new Promise((resolve, reject) => {
-      const auth = firebase.auth();
-      const unsub = auth.onAuthStateChanged(user => {
-        if (user) { unsub(); resolve(user); }
-      });
-      auth.signInAnonymously().catch(reject);
+      const unsub = firebase.auth().onAuthStateChanged(user => { if (user) { unsub(); resolve(user); } });
+      firebase.auth().signInAnonymously().catch(reject);
     }).catch(err => { authPromise = null; throw err; });
   }
   return authPromise;
 }
 
-if (loginBtn) {
-  loginBtn.addEventListener("click", async () => {
-    const user = firebase.auth().currentUser;
-    if (user && !user.isAnonymous) {
-      try {
-        await firebase.auth().signOut();
-      } catch (e) {
-        console.error("Erreur déconnexion :", e);
-      }
-    } else {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      try {
-        await firebase.auth().signInWithPopup(provider);
-      } catch (e) {
-        console.error("Erreur connexion Google :", e);
-        alert("Impossible de se connecter avec Google.");
-      }
-    }
-  });
+const loginBtn = document.getElementById("loginBtn");
+function setLoginUi(pseudo) {
+  loginBtn.innerHTML = pseudo ? `${ic("logout")}<span>${escapeHtml(pseudo)}</span>` : `${ic("login")}<span>Connexion</span>`;
+  loginBtn.title = pseudo ? `Déconnexion (${pseudo})` : "Connexion";
 }
-
-firebase.auth().onAuthStateChanged(async user => {
-  if (user && !user.isAnonymous) {
-    const userRef = fbDb.ref(`users/${user.uid}/profile/pseudo`);
-    const snap = await userRef.once("value");
-    let pseudo = snap.val();
-
-    if (!pseudo) {
-      const defaultName = user.displayName ? user.displayName.split(" ")[0] : "Membre";
-      pseudo = prompt("Choisis ton pseudonyme pour commenter et enregistrer tes favoris :", defaultName);
-      pseudo = pseudo ? pseudo.trim() : "Anonyme";
-      await userRef.set(pseudo);
-    }
-
-    if (loginBtn) {
-      loginBtn.textContent = `🚪❌ (${pseudo})`;
-      loginBtn.title = `Déconnexion (${pseudo})`;
-    }
-
-    fbDb.ref(`users/${user.uid}/bookmarks`).on("value", snapshot => {
-      USER_BOOKMARKS = snapshot.val() || {};
-      updateBookmarkUI();
-      if (location.hash.startsWith("#categorie/enregistres")) {
-        renderList("enregistres");
-      }
-    });
-
-  } else {
-    if (loginBtn) {
-      loginBtn.textContent = "🚪➔";
-      loginBtn.title = "Connexion";
-    }
-    USER_BOOKMARKS = {};
-    resetBookmarkUI();
-    if (location.hash.startsWith("#categorie/enregistres")) {
-      renderList("enregistres");
-    }
-  }
-
-  const hash = location.hash;
-  if (hash.startsWith("#article/")) {
-    loadComments(decodeURIComponent(hash.replace("#article/", "")));
-  }
+loginBtn.addEventListener("click", async () => {
+  const u = firebase.auth().currentUser;
+  try {
+    if (u && !u.isAnonymous) await firebase.auth().signOut();
+    else await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  } catch (e) { console.error(e); alert("Opération impossible pour le moment."); }
 });
 
-/* ---------- Gestion des Favoris (Bookmarks) ---------- */
-
-function updateBookmarkUI() {
-  document.querySelectorAll(".bookmark-btn").forEach(btn => {
-    const id = btn.id.replace("bk-", "");
-    btn.textContent = USER_BOOKMARKS[id] === true ? "[ ✓ ] Enregistré" : "[ + ] Enregistrer";
-  });
-}
-
-function resetBookmarkUI() {
-  document.querySelectorAll(".bookmark-btn").forEach(btn => {
-    btn.textContent = "[ + ] Enregistrer";
-  });
-}
-
-window.toggleBookmark = async function(id) {
-  const user = firebase.auth().currentUser;
-  if (!user || user.isAnonymous) {
-    alert("Veuillez vous connecter avec Google pour enregistrer des favoris.");
-    return;
-  }
-  const ref = fbDb.ref(`users/${user.uid}/bookmarks/${id}`);
-  const btn = document.getElementById(`bk-${id}`);
-
-  try {
-    const snap = await ref.once("value");
-    if (snap.exists()) {
-      await ref.remove();
-      if (btn) btn.textContent = "[ + ] Enregistrer";
-    } else {
-      await ref.set(true);
-      if (btn) btn.textContent = "[ ✓ ] Enregistré";
+let bkRef = null;
+firebase.auth().onAuthStateChanged(async user => {
+  if (bkRef) { bkRef.off(); bkRef = null; }
+  if (user && !user.isAnonymous) {
+    const pref = fbDb.ref(`users/${user.uid}/profile/pseudo`);
+    let pseudo = (await pref.once("value")).val();
+    if (!pseudo) {
+      const def = user.displayName ? user.displayName.split(" ")[0] : "Membre";
+      pseudo = (prompt("Choisis ton pseudonyme pour commenter et enregistrer tes favoris :", def) || "Anonyme").trim();
+      await pref.set(pseudo);
     }
-  } catch (e) {
-    console.error("Erreur bookmark :", e);
-    alert("Impossible de modifier le favori.");
+    setLoginUi(pseudo);
+    bkRef = fbDb.ref(`users/${user.uid}/bookmarks`);
+    bkRef.on("value", s => {
+      USER_BOOKMARKS = s.val() || {};
+      updateBookmarkUI();
+      if (location.hash === "#categorie/enregistres") renderList("enregistres");
+    });
+  } else {
+    setLoginUi("");
+    USER_BOOKMARKS = {};
+    updateBookmarkUI();
+    if (location.hash === "#categorie/enregistres") renderList("enregistres");
   }
-};
+  if (location.hash.startsWith("#article/")) loadComments(decodeURIComponent(location.hash.slice(9)));
+});
 
-/* ---------- Système de Commentaires ---------- */
-
-async function loadComments(articleId) {
-  const container = document.getElementById("commentsList");
-  const formContainer = document.getElementById("commentFormContainer");
-  if (!container || !formContainer) return;
-
+/* ---------- Favoris ---------- */
+function updateBookmarkUI() {
+  document.querySelectorAll("[data-bk]").forEach(b => {
+    const on = USER_BOOKMARKS[b.dataset.bk] === true;
+    const text = b.classList.contains("bookmark-btn") ? "" : " Enregistrer";
+    b.innerHTML = bkInner(on) + text;
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-label", on ? "Retirer des enregistrés" : "Enregistrer l'article");
+  });
+}
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-bk]");
+  if (!b) return;
   const user = firebase.auth().currentUser;
-  const isLogged = user && !user.isAnonymous;
+  if (!user || user.isAnonymous) { alert("Connectez-vous avec Google pour enregistrer des articles."); return; }
+  const ref = fbDb.ref(`users/${user.uid}/bookmarks/${b.dataset.bk}`);
+  try { (await ref.once("value")).exists() ? await ref.remove() : await ref.set(true); }
+  catch (err) { console.error(err); alert("Impossible de modifier les favoris."); }
+});
 
-  if (isLogged) {
-    formContainer.innerHTML = `
-      <form id="commentForm" style="display: flex; flex-direction: column; gap: 10px;">
-        <textarea id="commentInput" placeholder="Écrire un commentaire..." required style="padding: 10px; border-radius: 8px; border: 1px solid rgba(127,127,127,0.4); background: transparent; color: inherit; font-family: inherit; resize: vertical; min-height: 80px;"></textarea>
-        <button type="submit" class="tool-btn" style="align-self: flex-start;">Publier le commentaire</button>
-      </form>
-    `;
-    const form = document.getElementById("commentForm");
-    form.onsubmit = async (e) => {
+/* ---------- Commentaires ---------- */
+async function loadComments(articleId) {
+  const list = document.getElementById("commentsList"), form = document.getElementById("commentFormContainer");
+  if (!list || !form) return;
+  const user = firebase.auth().currentUser;
+  if (user && !user.isAnonymous) {
+    form.innerHTML = `<form id="commentForm"><textarea id="commentInput" placeholder="Écrire un commentaire..." required></textarea><button type="submit" class="btn">Publier le commentaire</button></form>`;
+    document.getElementById("commentForm").onsubmit = async e => {
       e.preventDefault();
       const text = document.getElementById("commentInput").value.trim();
       if (!text) return;
-
       try {
-        const pseudoSnap = await fbDb.ref(`users/${user.uid}/profile/pseudo`).once("value");
-        const pseudo = pseudoSnap.val() || "Membre";
-
-        const newCommentRef = fbDb.ref(`comments/${likeKey(articleId)}`).push();
-        await newCommentRef.set({
-          author: pseudo,
-          text: text,
-          date: Date.now()
-        });
-        document.getElementById("commentInput").value = "";
+        const pseudo = (await fbDb.ref(`users/${user.uid}/profile/pseudo`).once("value")).val() || "Membre";
+        await fbDb.ref(`comments/${likeKey(articleId)}`).push().set({ author: pseudo, text, date: Date.now() });
         loadComments(articleId);
-      } catch (err) {
-        console.error("Erreur d'envoi du commentaire :", err);
-        alert("Impossible d'envoyer le commentaire.");
-      }
+      } catch (err) { console.error(err); alert("Impossible d'envoyer le commentaire."); }
     };
-  } else {
-    formContainer.innerHTML = `<p style="font-size: 0.9rem; opacity: 0.7;">Connectez-vous avec Google pour poster un commentaire.</p>`;
-  }
-
+  } else form.innerHTML = `<p class="field-hint">Connectez-vous avec Google pour poster un commentaire.</p>`;
   try {
-    const snap = await fbDb.ref(`comments/${likeKey(articleId)}`).once("value");
-    const comments = snap.val();
-    if (!comments) {
-      container.innerHTML = `<p style="opacity: 0.6; font-size: 0.9rem;">Aucun commentaire pour l'instant.</p>`;
-      return;
-    }
-
-    let html = "";
-    Object.values(comments).sort((a, b) => b.date - a.date).forEach(c => {
-      const dateStr = new Date(c.date).toLocaleDateString("fr-FR", { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-      html += `
-        <div style="background: rgba(127,127,127,0.08); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.7; margin-bottom: 4px;">
-            <strong>${escapeHtml(c.author)}</strong>
-            <span>${dateStr}</span>
-          </div>
-          <p style="margin: 0; font-size: 0.95rem; word-break: break-word;">${escapeHtml(c.text)}</p>
-        </div>
-      `;
-    });
-    container.innerHTML = html;
-  } catch (e) {
-    container.innerHTML = `<p style="color: #ff6b6b; font-size: 0.9rem;">Erreur de chargement des commentaires.</p>`;
-  }
+    const c = (await fbDb.ref(`comments/${likeKey(articleId)}`).once("value")).val();
+    list.innerHTML = c ? Object.values(c).sort((a, b) => b.date - a.date).map(x => `<div class="comment">
+      <div class="meta"><strong>${escapeHtml(x.author)}</strong><span>${new Date(x.date).toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}</span></div>
+      <p>${escapeHtml(x.text)}</p></div>`).join("") : `<p class="field-hint">Aucun commentaire pour l'instant.</p>`;
+  } catch { list.innerHTML = `<p class="field-hint">Erreur de chargement des commentaires.</p>`; }
 }
 
 /* ---------- Likes ---------- */
-
 async function fetchLikeCount(id) {
-  try {
-    const snap = await fbDb.ref(`likes/${likeKey(id)}/count`).once("value");
-    return snap.val() || 0;
-  } catch { return 0; }
+  try { return (await fbDb.ref(`likes/${likeKey(id)}/count`).once("value")).val() || 0; } catch { return 0; }
 }
-
 async function hasLiked(id) {
-  try {
-    const user = await ensureAuth();
-    const snap = await fbDb.ref(`likes/${likeKey(id)}/voters/${user.uid}`).once("value");
-    return snap.exists();
-  } catch { return false; }
+  try { const u = await ensureAuth(); return (await fbDb.ref(`likes/${likeKey(id)}/voters/${u.uid}`).once("value")).exists(); } catch { return false; }
 }
-
 async function incrementLikeCount(id) {
-  const user = await ensureAuth();
-  const key = likeKey(id);
-  const countRef = fbDb.ref(`likes/${key}/count`);
-
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const current = (await countRef.once("value")).val() || 0;
-    const next = current + 1;
-    try {
-      await fbDb.ref().update({
-        [`likes/${key}/count`]: next,
-        [`likes/${key}/voters/${user.uid}`]: true
-      });
-      return next;
-    } catch (e) {
-      if (attempt === 3) throw e;
-    }
+  const u = await ensureAuth(), k = likeKey(id), ref = fbDb.ref(`likes/${k}/count`);
+  for (let i = 0; i < 4; i++) {
+    const next = ((await ref.once("value")).val() || 0) + 1;
+    try { await fbDb.ref().update({ [`likes/${k}/count`]: next, [`likes/${k}/voters/${u.uid}`]: true }); return next; }
+    catch (e) { if (i === 3) throw e; }
   }
 }
-
-function updateLikeDisplays(id, count) {
-  document.querySelectorAll(`[data-like-display="${CSS.escape(id)}"]`).forEach(el => {
-    el.textContent = String(count);
-  });
+function updateLikeDisplays(id, n) {
+  document.querySelectorAll(`[data-like-display="${CSS.escape(id)}"]`).forEach(el => el.textContent = String(n));
 }
-
 function setLikedState(btn, liked) {
-  const label = btn.querySelector(".like-label");
-  if (label) label.textContent = liked ? "♥ Aimé" : "♡ J'aime";
+  btn.querySelector(".like-label").textContent = liked ? "Aimé" : "J'aime";
+  btn.classList.toggle("liked", liked);
   btn.disabled = liked;
 }
-
 async function wireLikeButton(id) {
   const btn = document.querySelector(`[data-like-btn="${CSS.escape(id)}"]`);
   if (!btn) return;
-
-  btn.disabled = true;
   setLikedState(btn, await hasLiked(id));
-
   btn.addEventListener("click", async () => {
     if (btn.disabled) return;
     btn.disabled = true;
-    try {
-      const count = await incrementLikeCount(id);
-      setLikedState(btn, true);
-      updateLikeDisplays(id, count);
-    } catch (e) {
-      console.error("Erreur like Firebase :", e);
-      btn.disabled = false;
-      alert("Impossible d'enregistrer ton like pour le moment, réessaie plus tard.");
-    }
+    try { const n = await incrementLikeCount(id); setLikedState(btn, true); updateLikeDisplays(id, n); }
+    catch (e) { console.error(e); btn.disabled = false; alert("Impossible d'enregistrer ton like, réessaie plus tard."); }
   });
 }
 
