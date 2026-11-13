@@ -4068,5 +4068,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "chatgpt-wallet-comment-openai-permet-a-lia-de-payer-vos-achats-en-toute-securite",
+    "title": "ChatGPT Wallet : comment OpenAI permet à l’IA de payer vos achats en toute sécurité",
+    "date": "2026-11-13",
+    "excerpt": "OpenAI lance ChatGPT Wallet, un service qui utilise la tokenisation des cartes et la biométrie pour autoriser les agents IA à régler des achats. Disponible aux États‑Unis pour les abonnés Pro, il s’appuie sur les réseaux Visa, Mastercard et Amex tout en protégeant les données bancaires.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2475172/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une nouvelle façon de déléguer le paiement",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le 13 novembre, OpenAI a présenté ChatGPT Wallet, un portefeuille numérique qui permet aux agents dits « dots » de finaliser des achats pour le compte de l’utilisateur. Le principe s’inspire du paiement mobile : les informations réelles de la carte sont remplacées par un jeton, ce qui évite de les exposer aux commerçants ou à l’IA.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnement technique et sécurisation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lorsqu’une carte est enregistrée dans le formulaire sécurisé de Wallet, le réseau de paiement (Visa, Mastercard ou American Express) génère un jeton contenant un numéro de substitution, un code de sécurité et une date d’expiration. Le débit est effectué sur la vraie carte, mais ni l’agent IA ni le marchand n’ont accès aux données sensibles. L’autorisation de chaque transaction repose sur une authentification biométrique (Face ID ou empreinte digitale) qui est consignée pour garder une trace de l’accord de l’utilisateur.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites actuelles et exigences",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le service est réservé aux abonnés ChatGPT Pro majeurs résidant aux États‑Unis et possédant une carte éligible émise localement. Aucun déploiement n’est prévu pour la France à ce stade. De plus, les sites marchands doivent accepter les agents IA ; certaines plateformes comme Amazon bloquent encore cet accès. Même lorsqu’un commerçant accepte le jeton, les systèmes antifraude (Forter, Riskified, Sardine, Signifyd) peuvent refuser la transaction s’ils la jugent suspecte.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Perspectives d’autonomie et contrôles futurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "OpenAI envisage d’élargir les possibilités en permettant à l’utilisateur de définir des plafonds de dépense, des catégories de produits ou des périodes d’autorisation. La validation biométrique et la traçabilité des consentements restent les piliers de la sécurité. Le projet s’appuie sur les partenaires de paiement comme Stripe, Adyen ou Checkout, ainsi que sur les spécialistes de la lutte contre la fraude pour garantir que les achats automatisés respectent les standards de l’industrie.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "ChatGPT Wallet montre comment l’IA peut s’intégrer aux processus de paiement tout en conservant les protections classiques de la tokenisation et de l’authentification biométrique. Le service reste limité géographiquement et dépend de l’acceptation des marchands, mais il ouvre la voie à une délégation plus poussée des achats, à condition que les contrôles de sécurité continuent d’évoluer en parallèle.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
