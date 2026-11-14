@@ -4228,5 +4228,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "samsung-odyssey-g3-g30h-un-ecran-200-hz-a-moins-de-90-pendant-le-black-friday",
+    "title": "Samsung Odyssey G3 G30H : un écran 200 Hz à moins de 90 € pendant le Black Friday",
+    "date": "2026-11-14",
+    "excerpt": "Le Samsung Odyssey G3 G30H, écran gaming 24 pouces IPS 200 Hz, profite d’une remise de 25 % pour s’abaisser sous les 90 € chez Darty et la Fnac. Un compromis intéressant entre performances et prix pour les joueurs aux budgets serrés.",
+    "category": "Ordinateurs",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/samsung-odyssey-g3-g30h-black-friday.jpg?resize=1600,900&key=8c866703",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre exceptionnelle pour le Black Friday",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pendant le Black Friday, le Samsung Odyssey G3 G30H, première entrée de la gamme gaming de Samsung, voit son prix habituel de 119,99 € chuter à 89,99 €, soit une remise de 30 € (25 %). Cette promotion est proposée chez Darty et également disponible à la Fnac, ce qui en fait l’une des meilleures affaires du moment pour un écran 200 Hz.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Caractéristiques techniques et qualités d’image",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le G30H arbore une dalle IPS de 24 pouces en Full HD (1920 × 1080 px) avec un taux de rafraîchissement de 200 Hz et un temps de réponse de 1 ms (MPRT). La couverture sRGB atteint 95 % et les angles de vision de 178° garantissent une fidélité des couleurs même en regard latéral. En revanche, la luminosité maximale de 250 cd/m² et le contraste de 1 000 :1 limitent les performances HDR, rendant le HDR10 peu exploitable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ergonomie et connectique simplifiées",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le support du G30H ne propose que l’inclinaison (-2° à 20°) sans réglage en hauteur ni mode portrait, contrairement à son prédécesseur G30D. Pour ajuster la hauteur, il faut recourir à un bras articulé grâce à la compatibilité VESA 75 × 75 mm. En termes de connectique, l’écran offre un HDMI 2.0 et un DisplayPort 1.4, tous deux fournis avec le produit. Aucun haut-parleur intégré n’est présent, mais une prise casque 3,5 mm permet de brancher un casque ou des enceintes externes. Samsung garantit le modèle trois ans.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ciblage des joueurs compétitifs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Avec 200 Hz et le FreeSync Premium, le G30H vise les joueurs de FPS et les compétitions où chaque image compte. Pour exploiter pleinement ces 200 Hz, il faut un PC capable de délivrer des fréquences élevées ; les consoles comme la PS5 ou la Xbox Series, limitées à 120 Hz, ne pourront pas tirer parti de toute la bande passante de l’écran.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Samsung Odyssey G3 G30H combine un taux de rafraîchissement élevé, une dalle IPS de bonne qualité et un prix très attractif grâce à la promotion Black Friday. Malgré quelques concessions sur l’ergonomie et le HDR, il représente une option solide pour les joueurs recherchant un écran réactif sans se ruiner. La disponibilité chez les grands distributeurs français facilite son acquisition, faisant de ce modèle une référence à considérer pour les configurations gaming à petit budget.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
