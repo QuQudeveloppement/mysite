@@ -4148,5 +4148,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "adobe-privilegie-firefly-plutot-que-photoshop-pour-les-debutants-les-raisons-dun-changemen",
+    "title": "Adobe privilégie Firefly plutôt que Photoshop pour les débutants : les raisons d’un changement de cap",
+    "date": "2026-11-14",
+    "excerpt": "À l’Adobe Max 2026, la responsable produit Zorana Gee explique pourquoi l’éditeur ne conseille plus Photoshop aux novices, en misant sur Firefly et les IA génératives comme porte‑entrée plus adaptée.",
+    "category": "Logiciels",
+    "cover": "https://pic.clubic.com/v1/images/2474986/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lors de l’Adobe Max 2026, Zorana Gee, Group Product Manager chez Adobe, a détaillé la nouvelle orientation de la société : orienter les créateurs débutants vers Firefly, l’outil IA de génération d’images, plutôt que vers le traditionnel Photoshop. Cette décision s’appuie sur l’évolution des pratiques créatives et sur les besoins d’une génération habituée aux prompts.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Firefly, une porte d’entrée adaptée aux novices",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Firefly a été conçu pour les utilisateurs qui décrivent leurs attentes à une IA. L’outil permet de transformer un texte en image ou en montage vidéo sans maîtriser les fonctions avancées de Photoshop. Selon Zorana Gee, la priorité pour un débutant est de savoir formuler clairement son besoin ; Firefly facilite cette étape et réduit la courbe d’apprentissage. L’assistant IA intégré aide également à vérifier que le résultat correspond à l’intention, par exemple en analysant si une scène représente bien « un chien dans un parc ».",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Photoshop reste indispensable, mais pour des usages plus avancés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Adobe ne supprime pas Photoshop : il demeure un logiciel complet, riche de décennies de fonctionnalités. Toutefois, pour les tâches simples ou les projets qui peuvent être menés de bout en bout dans Firefly, l’outil IA est recommandé. Lorsque le projet requiert une précision, une profondeur de contrôle ou des effets spécifiques que seule la suite de bureau peut offrir, l’utilisateur est invité à basculer vers Photoshop ou Premiere. L’assistant IA de Photoshop, quant à lui, vise à déléguer les opérations fastidieuses, comme le renommage de calques, afin que le créateur se concentre sur l’aspect créatif.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Vers une intégration plus fluide des disciplines créatives",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’ambition d’Adobe est d’abattre les silos entre les différentes applications de la Creative Cloud. Firefly offre la possibilité de travailler sur l’image, la vidéo et l’animation depuis une même interface, ce qui pourrait réduire la dépendance aux logiciels de bureau traditionnels. Zorana Gee souligne que, même si les applications classiques restent indispensables pour des besoins très pointus, l’avenir pourrait voir une plus grande part de projets réalisés entièrement dans Firefly, surtout pour le contenu destiné aux réseaux sociaux ou aux storyboards.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Adobe oriente désormais les novices vers Firefly, un outil IA qui simplifie la création en misant sur la rédaction de prompts plutôt que sur la maîtrise technique de Photoshop. Le logiciel phare conserve sa place pour les projets complexes, mais l’assistant IA et les nouvelles fonctionnalités visent à alléger le flux de travail. Cette stratégie reflète la volonté d’Adobe d’accompagner la nouvelle génération de créateurs tout en préservant la richesse fonctionnelle de ses applications historiques.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
