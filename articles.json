@@ -4368,7 +4368,7 @@
       {
         "type": "heading",
         "value": "Limites pratiques et coût d’accès",
-"url": "",
+        "url": "",
         "caption": ""
       },
       {
@@ -4414,6 +4414,74 @@
         "value": "Ne manquez aucune publication et suivez l'actualité du spotting au quotidien en accédant directement à la chaîne officielle :\nhttps://whatsapp.com/channel/0029Vb8WJtlFi8xVHnFelb0h",
         "url": "https://whatsapp.com/channel/0029Vb8WJtlFi8xVHnFelb0h",
         "caption": ""
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
+  },
+  {
+    "id": "explosion-des-vulnerabilites-en-2026-le-role-croissant-de-lia-et-la-pression-sur-les-equip",
+    "title": "Explosion des vulnérabilités en 2026 : le rôle croissant de l’IA et la pression sur les équipes de sécurité",
+    "date": "2026-11-15",
+    "excerpt": "En 2026, plus de 100 000 nouvelles failles ont été recensées, soit le double de 2025, principalement grâce à l’intelligence artificielle. Les pirates exploitent seulement 1,4 % de ces vulnérabilités, mais le délai d’exploitation se raccourcit rapidement.",
+    "category": "Cybersécurité",
+    "cover": "https://pic.clubic.com/v1/images/2475283/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une hausse sans précédent du nombre de failles",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis le début de l’année, les organismes qui attribuent les identifiants CVE ont enregistré plus de 100 000 nouvelles vulnérabilités, selon l’entreprise américaine VulnCheck. Ce chiffre représente une multiplication par deux par rapport à l’ensemble de l’année 2025. La majorité de ces découvertes provient de recherches assistées par l’intelligence artificielle, ce qui, d’après le responsable de la divulgation coordonnée chez VulnCheck, Josh Bressers, explique la forte progression observée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Exploitation limitée mais accélérée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Malgré l’augmentation du nombre de failles, les cybercriminels ne tirent parti que d’une petite fraction, environ 1,4 % des vulnérabilités recensées, un taux qui reste stable. Cependant, le temps moyen entre la publication d’une faille et sa première exploitation s’est considérablement réduit. En 2025, la médiane était de 120 jours, alors qu’au premier semestre 2026 elle était tombée à 80 jours, avec des délais encore plus courts observés depuis l’été. Cette accélération montre que les acteurs malveillants réagissent rapidement dès qu’une information devient disponible.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Cas concrets : les boîtiers XWEB EVO et les supermarchés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "VulnCheck a mis en lumière 14 vulnérabilités dans le contrôleur XWEB EVO de Dixell, utilisé pour piloter la réfrigération de nombreux supermarchés. Deux de ces failles permettent à un attaquant de prendre le contrôle total de l’appareil sans mot de passe, en une seule requête. Grâce à des honeypots, l’entreprise a détecté une première tentative d’exploitation seulement 1 h 40 après la mise en ligne de la faille dans la base NVD. Le CERT‑FR a identifié ces contrôleurs parmi les équipements compromis lors du sabotage de près de 700 magasins français, bien que VulnCheck précise que les attaques observées proviennent d’acteurs opportunistes, sans lien avec cette campagne. Les fabricants n’ont plus publié de correctifs depuis mars, incitant les exploitants à isoler ces appareils derrière un VPN ou à les remplacer.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réactions des acteurs de la cybersécurité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Face à ce flot de vulnérabilités, les grandes entreprises adaptent leurs stratégies. En juillet, Microsoft a réalisé le plus important Patch Tuesday de son histoire avec 622 correctifs, suivi en novembre d’une mise à jour de plus d’un millier de failles. Aux États‑Unis, le CISA a abandonné les délais fixes de correction, demandant aux organisations de prioriser les failles réellement exploitées ou exposées à Internet. Dans le monde du logiciel libre, le mainteneur de curl a suspendu son programme de primes aux bugs, submergé par les rapports générés par l’IA, et impose désormais la publication publique des failles de gravité faible ou moyenne sur GitHub.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
       }
     ],
     "archiveAfterMonths": 6,
