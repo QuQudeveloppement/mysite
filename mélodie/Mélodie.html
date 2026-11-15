@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mélodie — Téléchargeur YouTube Moderne</title>
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/ququdeveloppement/mysite/main/m%C3%A9lodie/m%C3%A9lodie.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #10121b;
+      --surface: #1a1d24;
+      --card: #22262f;
+      --border: #2e3340;
+      --accent: #4f8ef7;
+      --accent-purple: #7c5cfc;
+      --accent-hover: #8e70ff;
+      --success: #34d399;
+      --text: #e8eaf0;
+      --subtext: #8890a4;
+      --warning-bg: rgba(245, 158, 11, 0.08);
+      --warning-border: rgba(245, 158, 11, 0.25);
+      --warning-text: #fbbf24;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16, 18, 27, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(124, 92, 252, 0.35);
+      border: 1px solid var(--border);
+    }
+
+    .brand-text span {
+      display: block;
+      font-weight: 800;
+      font-size: 1.15rem;
+      line-height: 1.1;
+    }
+
+    .brand-text small {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--subtext);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--subtext);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-purple);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(124, 92, 252, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #2b303c;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 3.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.18) 0%, rgba(79, 142, 247, 0.05) 50%, transparent 75%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(124, 92, 252, 0.12);
+      border: 1px solid rgba(124, 92, 252, 0.3);
+      color: #b9a7ff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 2.25rem;
+      color: var(--subtext);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-header p {
+      color: var(--subtext);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Feature Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-purple);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(124, 92, 252, 0.14);
+      color: #b9a7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--subtext);
+      font-size: 0.92rem;
+    }
+
+    /* Showcase / Captures d'écran */
+    .showcase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .showcase-item {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 2rem;
+    }
+
+    .showcase-item.reverse {
+      grid-template-columns: 1fr 1.25fr;
+    }
+
+    .showcase-item.reverse .showcase-media {
+      order: 2;
+    }
+
+    .showcase-media {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .showcase-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .showcase-content .step-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .showcase-content h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .showcase-content p {
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+
+    /* Architecture Technique */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .tech-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+
+    .tech-pill strong {
+      display: block;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tech-pill span {
+      color: var(--subtext);
+      font-size: 0.85rem;
+    }
+
+    /* Section Avertissement de sécurité (SmartScreen) */
+    .security-notice {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 3rem auto 0;
+      max-width: 1180px;
+    }
+
+    .security-notice h3 {
+      color: var(--warning-text);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .security-notice p, .security-notice li {
+      color: var(--subtext);
+      font-size: 0.92rem;
+    }
+
+    .security-notice ul {
+      margin: 0.75rem 0 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .security-notice strong {
+      color: var(--text);
+    }
+
+    .security-notice a {
+      color: var(--warning-text);
+      text-decoration: underline;
+    }
+
+    .security-notice a:hover {
+      color: #fff;
+    }
+
+    .security-notice .signature-sign {
+      margin-top: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--subtext);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: #b9a7ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 860px) {
+      .showcase-item,
+      .showcase-item.reverse {
+        grid-template-columns: 1fr;
+      }
+      .showcase-item.reverse .showcase-media {
+        order: 0;
+      }
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- En-tête -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img
+          src="https://github.com/QuQudeveloppement/mysite/blob/main/m%C3%A9lodie/melodie.jpg?raw=true"
+          alt="Icône Mélodie"
+          class="brand-icon"
+        />
+        <div class="brand-text">
+          <span>Mélodie</span>
+          <small>Téléchargements Média</small>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="#apercu">Interface & Aperçu</a></li>
+          <li><a href="#technique">Architecture</a></li>
+        </ul>
+      </nav>
+      <a href="https://github.com/QuQudeveloppement/m-lodie/releases/download/V3.4/MELODIE.FILES.zip" target="_blank" class="btn btn-primary">Télécharger v3.4</a>
+    </div>
+  </header>
+
+  <!-- Section Hero -->
+  <main>
+    <section class="hero">
+      <div class="badge">Python • CustomTkinter • yt-dlp • FFmpeg</div>
+      <h1>Télécharge ta musique et tes vidéos YouTube <span>en toute simplicité</span></h1>
+      <p>
+        Mélodie est une application de bureau moderne au thème sombre conçue pour rechercher,
+        convertir et télécharger tes titres audio (MP3 avec pochette intégrée) ou vidéos (MP4)
+        en parallèle, sans publicité ni configuration complexe.
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/QuQudeveloppement/m-lodie/releases/tag/V3.4" target="_blank" class="btn btn-primary">
+          ↓ Télécharger maintenant (v3.4)
+        </a>
+        <a href="https://ququdeveloppement.github.io/mysite/" class="btn btn-secondary">← Retour au portfolio</a>
+      </div>
+    </section>
+
+    <!-- Points forts -->
+    <section id="fonctionnalites">
+      <div class="section-header">
+        <h2>Pensé pour la rapidité et le confort</h2>
+        <p>Toutes les fonctions essentielles réunies dans une interface claire et réactive.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">♫</div>
+          <h3>MP3 avec pochette & MP4 HD</h3>
+          <p>
+            Extraction audio en <strong>MP3 192 kbps</strong> avec incrustation automatique de la miniature
+            comme pochette d'album, ou fusion vidéo/audio haute qualité en <strong>MP4</strong>.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⌕</div>
+          <h3>Recherche YouTube intégrée</h3>
+          <p>
+            Recherche directement par artiste, titre ou album sans ouvrir ton navigateur, avec choix du
+            nombre de résultats (5, 10, 20 ou 50) et prévisualisation des vignettes.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Jusqu'à 10 téléchargements simultanés</h3>
+          <p>
+            Une file d'attente intelligente gère jusqu'à <strong>10 téléchargements en parallèle</strong>
+            avec barre de progression, vitesse en temps réel et temps restant (ETA) par fichier.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙</div>
+          <h3>Zéro dépendance manuelle</h3>
+          <p>
+            Installation automatique des bibliothèques requises et récupération de <strong>FFmpeg portable</strong>
+            si absent du système, accompagnée de notifications natives Windows.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Détail des vues -->
+    <section id="apercu">
+      <div class="section-header">
+        <h2>L'interface de Mélodie en détail</h2>
+        <p>Tour d'horizon des écrans et commandes disponibles dans l'application.</p>
+      </div>
+
+      <div class="showcase-list">
+        <!-- Vue 1 : Onglet Télécharger -->
+        <div class="showcase-item">
+          <div class="showcase-media">
+            <img
+              src="https://raw.githubusercontent.com/QuQudeveloppement/mysite/refs/heads/main/m%C3%A9lodie/Accueil.png"
+              alt="Interface principale de Mélodie - Onglet Télécharger"
+            />
+          </div>
+          <div class="showcase-content">
+            <span class="step-tag">Écran 1 • Accueil</span>
+            <h3>Accueil 1</h3>
+            <!-- À COMPLETER ICI : Remplace le texte ci-dessous par ce que tu veux -->
+            <p>Accueil simple, basique et épuré</p>
+          </div>
+        </div>
+
+        <!-- Vue 2 : Onglet Rechercher -->
+        <div class="showcase-item reverse">
+          <div class="showcase-media">
+            <img
+              src="https://raw.githubusercontent.com/QuQudeveloppement/mysite/refs/heads/main/m%C3%A9lodie/Search_Results.png"
+              alt="Onglet Rechercher de Mélodie"
+            />
+          </div>
+          <div class="showcase-content">
+            <span class="step-tag">Écran 2 • Onglet Rechercher</span>
+            <h3>Rechercher </h3>
+            <!-- À COMPLETER ICI : Remplace le texte ci-dessous par ce que tu veux -->
+            <p>Recherche simple avec mots clés, titre, artiste...</p>
+          </div>
+        </div>
+
+        <!-- Vue 3 : Fenêtre des résultats de recherche -->
+        <div class="showcase-item">
+          <div class="showcase-media">
+            <img
+              src="https://raw.githubusercontent.com/QuQudeveloppement/mysite/refs/heads/main/m%C3%A9lodie/Youtube_URL.png"
+              alt="Fenêtre des résultats de recherche Mélodie"
+            />
+          </div>
+          <div class="showcase-content">
+            <span class="step-tag">Écran 3 • Fenêtre Résultats</span>
+            <h3>Liens YoUTube</h3>
+            <!-- À COMPLETER ICI : Remplace le texte ci-dessous par ce que tu veux -->
+            <p>Téléchargez de vidéos ou musiques directement depuis des liens</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sous le capot -->
+    <section id="technique">
+      <div class="section-header">
+        <h2>Architecture & Technologies</h2>
+        <p>Une conception multi-threadée pour garder une interface fluide même pendant les conversions lourdes.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-pill">
+          <strong>CustomTkinter & Pillow</strong>
+          <span>Interface graphique moderne aux coins arrondis, thème sombre natif et chargement asynchrone des miniatures.</span>
+        </div>
+        <div class="tech-pill">
+          <strong>yt-dlp</strong>
+          <span>Extraction rapide des flux audio/vidéo et recherche YouTube sans clé API externe.</span>
+        </div>
+        <div class="tech-pill">
+          <strong>FFmpeg & Mutagen</strong>
+          <span>Conversion audio MP3 192 kbps, fusion MP4 et intégration des pochettes d'album dans les métadonnées.</span>
+        </div>
+        <div class="tech-pill">
+          <strong>Threading & Queue</strong>
+          <span>Workers dédiés (<code>DownloadWorker</code>, <code>SearchWorker</code>, <code>ThumbnailWorker</code>) évitant tout gel de la fenêtre.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avertissement de sécurité -->
+    <div class="security-notice">
+      <h3>⚠️ Note importante concernant la sécurité Windows</h3>
+      <p>
+        En raison du coût élevé des licences de signature de code Microsoft pour un développeur indépendant, Windows peut afficher un avertissement de sécurité (SmartScreen) lors du premier lancement du fichier <code>.exe</code>.
+      </p>
+      <br>
+      <p><strong>Comment lancer l'application :</strong></p>
+      <ul>
+        <li>Faites un clic droit sur le fichier exécutable, puis choisissez <strong>« Exécuter en tant d'administrateur »</strong> (ou cliquez sur <strong>« Informations complémentaires »</strong> puis <strong>« Exécuter quand même »</strong> si vous y êtes invité).</li>
+      </ul>
+      <p><strong>Vérification de sécurité :</strong></p>
+      <ul>
+        <li>Si vous souhaitez vous assurer de la fiabilité du programme, vous pouvez analyser le fichier en toute transparence sur <a href="https://www.virustotal.com/" target="_blank">VirusTotal</a>.</li>
+      </ul>
+      <p style="margin-top: 1rem;">Profitez bien de vos musiques et des vidéos YouTube !</p>
+      <div class="signature-sign">— Ququdeveloppement</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      <strong>Mélodie</strong> — Développé par <a href="https://ququdeveloppement.github.io/mysite/">ququdeveloppement</a>
+    </p>
+  </footer>
+
+</body>
+</html>
