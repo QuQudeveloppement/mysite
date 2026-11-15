@@ -4368,25 +4368,7 @@
       {
         "type": "heading",
         "value": "Limites pratiques et coût d’accès",
-        "url": "",
-        "caption": ""
-      },
-      {
-        "type": "text",
-        "value": "Si la qualité des reproductions suscite l’admiration, le prix reste un frein : 160 € pour la PlayStation et près de 120 € pour la Game Boy. De plus, les modèles occupent de l’espace et nécessitent un endroit dédié pour être exposés sans accumuler la poussière. La décision d’acquérir ces sets implique donc de peser le plaisir de construction contre l’encombrement et le budget.",
-        "url": "",
-        "caption": ""
-      },
-      {
-        "type": "heading",
-        "value": "Conclusion",
-        "url": "",
-        "caption": ""
-      },
-      {
-        "type": "text",
-        "value": "Les ensembles Lego PlayStation et Game Boy illustrent parfaitement comment le jouet de construction peut devenir un vecteur de nostalgie et de transmission culturelle. En recréant avec minutie les consoles qui ont façonné une génération, Lego offre aux adultes un moyen tangible de revivre leurs souvenirs tout en partageant ces références avec les plus jeunes, même si le coût et l’encombrement restent des considérations à prendre en compte.",
-        "url": "",
+"url": "",
         "caption": ""
       },
       {
@@ -4394,6 +4376,44 @@
         "url": "",
         "caption": "",
         "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
+  },
+  {
+    "id": "car-spotting-quotidien",
+    "title": "Car Spotting Quotidien",
+    "date": "2026-11-15",
+    "excerpt": "Rejoignez la chaîne WhatsApp Car Spotting Quotidien pour découvrir chaque jour des photos et vidéos exclusives de voitures d'exception.",
+    "category": "Publicité",
+    "cover": "blob:https://web.whatsapp.com/812ba1ef-774c-4874-863e-73c2948e302f",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Découvrez Car Spotting Quotidien sur WhatsApp",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Passionné d'automobile, de supercars ou de modèles rares croisés au hasard des rues ? La chaîne Car Spotting Quotidien partage chaque jour les meilleures trouvailles automobiles directement sur WhatsApp.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Rejoindre la chaîne",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ne manquez aucune publication et suivez l'actualité du spotting au quotidien en accédant directement à la chaîne officielle :\nhttps://whatsapp.com/channel/0029Vb8WJtlFi8xVHnFelb0h",
+        "url": "https://whatsapp.com/channel/0029Vb8WJtlFi8xVHnFelb0h",
+        "caption": ""
       }
     ],
     "archiveAfterMonths": 6,
