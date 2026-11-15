@@ -108,6 +108,7 @@
         .project-card { position: relative; overflow: hidden; border-radius: 26px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 20px 45px rgba(0,0,0,0.15); transition: transform 0.25s ease, border-color 0.25s ease; }
         .project-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.2); }
         .project-visual { height: 180px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.35), rgba(90, 200, 250, 0.28), rgba(255, 122, 217, 0.28)); display: grid; place-items: center; font-size: 3rem; color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .project-visual-img { width: 54px; height: 54px; border-radius: 12px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 20px rgba(0,0,0,0.3); display: block; }
         .project-body { padding: 22px 20px 20px; }
         .project-body h3 { margin-bottom: 10px; font-size: 1.42rem; }
         .project-body p { color: var(--text-soft); line-height: 1.7; margin-bottom: 18px; }
@@ -174,7 +175,7 @@
                         <a class="secondary-btn" href="#about">Découvrir mon histoire</a>
                     </div>
                     <div class="stats" aria-label="Statistiques">
-                        <div class="stat"><strong>3</strong><span>sites</span></div>
+                        <div class="stat"><strong>4</strong><span>projets</span></div>
                         <div class="stat"><strong>∞</strong><span>idées</span></div>
                         <div class="stat"><strong>2026</strong><span>année</span></div>
                     </div>
@@ -193,13 +194,13 @@
                 <div class="section-head"><div><div class="section-kicker">À propos</div><h2 class="section-title">Mon histoire</h2></div></div>
                 <div class="about-grid">
                     <div class="glass-panel bio-box">
-                        <p>Je suis Ququdeveloppement, mon vrai prénom est Quentin, depuis petit je m'intéresse à l'informatique et tout l'univers du software. Je participe au développement du projer Linux Mint depuis 2025.</p>
-                        <p>Mon parcours est avant tout fait de curiosité, d’apprentissage et de volonté. J'ai commencé par apprendre Arduino, puis Python, puis ai commencé a créer des projets concrets. Je suis maintenant fier de mon parcours, avex toujours plus d'idées de projets à réaliser.</p>
+                        <p>Je suis Ququdeveloppement, mon vrai prénom est Quentin, depuis petit je m'intéresse à l'informatique et tout l'univers du software. Je participe au développement du projet Linux Mint depuis 2025.</p>
+                        <p>Mon parcours est avant tout fait de curiosité, d’apprentissage et de volonté. J'ai commencé par apprendre Arduino, puis Python, puis ai commencé a créer des projets concrets. Je suis maintenant fier de mon parcours, avec toujours plus d'idées de projets à réaliser.</p>
                         <p>À travers ce site, je partage une partie de moi : mes inspirations, mes projets, mes créations et le chemin qui m’a conduit à vouloir créer des choses qui marquent.</p>
                     </div>
                     <div class="glass-panel highlight-box">
                         <div class="mini-card"><strong>01.</strong><span>Créer des expériences modernes, simples et impactantes.</span></div>
-                        <div class="mini-card"><strong>02.</strong><span>Allier technologie, esthétique et le prix.</span></div>
+                        <div class="mini-card"><strong>02.</strong><span>Allier technologie, esthétique et performance.</span></div>
                         <div class="mini-card"><strong>03.</strong><span>Partager des idées qui inspirent et donnent envie d’agir.</span></div>
                     </div>
                 </div>
@@ -208,6 +209,16 @@
             <section id="projects" class="section">
                 <div class="section-head"><div><div class="section-kicker">Projets</div><h2 class="section-title">Mes créations</h2></div></div>
                 <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-visual">
+                            <img class="project-visual-img" src="https://github.com/QuQudeveloppement/mysite/blob/main/m%C3%A9lodie/melodie.jpg?raw=true" alt="Mélodie">
+                        </div>
+                        <div class="project-body">
+                            <h3>Mélodie</h3>
+                            <p>Un téléchargeur YouTube moderne et rapide pour convertir et télécharger vos musiques et vidéos en toute simplicité.</p>
+                            <div class="project-meta"><span class="project-tag">Application / Media</span><a class="mini-btn" href="mélodie/" target="_blank" rel="noopener noreferrer">Ouvrir</a></div>
+                        </div>
+                    </article>
                     <article class="project-card">
                         <div class="project-visual">📆</div>
                         <div class="project-body">
