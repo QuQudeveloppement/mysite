@@ -4308,5 +4308,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "lego-revisite-les-consoles-cultes-playstation-game-boy-et-au-dela",
+    "title": "Lego revisite les consoles cultes : PlayStation, Game Boy et au-delà",
+    "date": "2026-11-15",
+    "excerpt": "Lego transforme les icônes du jeu vidéo en ensembles de construction, offrant aux adultes nostalgiques un moyen de revivre leurs souvenirs tout en partageant ces références avec la génération suivante.",
+    "category": "Jeux vidéo",
+    "cover": "https://pic.clubic.com/v1/images/2473435/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un retour aux sources grâce aux briques",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis quelques années, le fabricant danois multiplie les licences tirées de la culture geek. Les ensembles Lego dédiés aux consoles de jeu – notamment la PlayStation originale et la Game Boy de Nintendo – permettent aux « grands enfants » de recréer, pièce par pièce, les objets qui ont marqué leur adolescence. Le plaisir réside autant dans le montage que dans la reconnexion avec des souvenirs d’enfance.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Le set Lego PlayStation : un hommage détaillé",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Composé de 1 911 pièces et proposé à 160 €, le kit PlayStation se décline en 14 sachets. Chaque composant reproduit fidèlement la console grise des années 1990, avec des boutons fonctionnels, un capot ouvrable et une manette de première génération. Deux dioramas – Ape Escape et Gran Turismo – viennent agrémenter le modèle, rappelant les titres phares célébrant le 30ᵉ anniversaire de la console. Au-delà de la simple maquette, le set agit comme une capsule temporelle, rappelant l’avènement de la 3D, du CD‑ROM et des cartes mémoire.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "La Game Boy en version Lego : petite mais complète",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le set Game Boy, plus modeste avec 421 pièces, reproduit la console portable à l’échelle 1 : 1. Il inclut deux cartouches interchangeables – Super Mario Land et Zelda : Link’s Awakening – ainsi que trois fonds d’écran différents. Une petite référence à la pile de sauvegarde de l’original est intégrée, soulignant l’attention portée aux détails. Le modèle, livré avec son propre socle, trouve facilement sa place sur un bureau ou une étagère, offrant un rappel visuel discret mais évocateur.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Nostalgie partagée et transmission intergénérationnelle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ces constructions ne sont pas uniquement destinées à la collection personnelle. Elles offrent un support concret pour raconter l’histoire des consoles à des enfants qui n’ont connu que les écrans tactiles. En exposant la PlayStation ou la Game Boy Lego, les parents peuvent expliquer le fonctionnement d’un bouton Eject ou d’une cartouche, créant ainsi un pont entre deux générations de joueurs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites pratiques et coût d’accès",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Si la qualité des reproductions suscite l’admiration, le prix reste un frein : 160 € pour la PlayStation et près de 120 € pour la Game Boy. De plus, les modèles occupent de l’espace et nécessitent un endroit dédié pour être exposés sans accumuler la poussière. La décision d’acquérir ces sets implique donc de peser le plaisir de construction contre l’encombrement et le budget.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les ensembles Lego PlayStation et Game Boy illustrent parfaitement comment le jouet de construction peut devenir un vecteur de nostalgie et de transmission culturelle. En recréant avec minutie les consoles qui ont façonné une génération, Lego offre aux adultes un moyen tangible de revivre leurs souvenirs tout en partageant ces références avec les plus jeunes, même si le coût et l’encombrement restent des considérations à prendre en compte.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
