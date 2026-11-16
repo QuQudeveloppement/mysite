@@ -4580,5 +4580,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "bouygues-telecom-propose-six-mois-gratuits-de-google-ai-plus-pour-ses-clients-mobiles-et-b",
+    "title": "Bouygues Telecom propose six mois gratuits de Google AI Plus pour ses clients mobiles et box",
+    "date": "2026-11-16",
+    "excerpt": "Bouygues Telecom offre à tous ses abonnés particuliers un accès gratuit de six mois à Google AI Plus, incluant Gemini, 400 Go de stockage et le partage familial, avant de passer à 4,99 €/mois.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2475676/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre inédite de six mois gratuits",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "À compter du 16 novembre, Bouygues Telecom met à disposition de l’ensemble de ses clients particuliers, qu’ils soient abonnés mobile ou box, un abonnement gratuit de six mois à Google AI Plus. L’activation se fait via l’espace client de l’opérateur, qui relie le compte à un identifiant Google – nouveau ou existant – à condition que ce compte ne soit pas déjà associé à un abonnement payant de Google AI.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ce que comprend Google AI Plus",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Google AI Plus, l’offre la moins chère de la gamme IA de Google, donne accès à Gemini, l’assistant conversationnel concurrent de ChatGPT, mais uniquement aux modèles « Flash ». L’abonnement inclut également Gemini Omni, capable de générer du texte, des images et des vidéos, ainsi que 400 Go de stockage partagé entre Gmail, Drive et Photos. Le forfait peut être partagé avec jusqu’à cinq membres du foyer, chacun conservant son espace personnel.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conditions et tarif après la période promotionnelle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Au terme des six mois gratuits, l’abonnement se renouvelle automatiquement à 4,99 €/mois, tarif public depuis la réduction appliquée par Google en juin. L’offre est sans engagement, mais aucune remise n’est prévue après la période d’essai. Bouygues Telecom s’engage à envoyer un rappel dix jours avant la reconduction, incitant les utilisateurs à résilier s’ils ne souhaitent pas poursuivre.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Contexte de la concurrence entre opérateurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cette promotion intervient six jours après le lancement d’Orange IAs, qui propose un accès multi‑IA (Claude, Gemini, GPT, Mistral) via ses applications. Depuis février 2025, les opérateurs français se livrent une vraie bataille d’offres IA : Free a d’abord offert un an d’accès à Chat Pro de Mistral AI, Bouygues avait proposé un an de Perplexity Pro, puis Orange a introduit ChatGPT Plus pour ses forfaits 5G+. Bouygues se démarque aujourd’hui en misant sur son partenariat de longue date avec Google, intégrant Gemini dans ses services (télécommande b.tv, agents de service client) et en étant le seul à offrir Google AI Plus à l’ensemble de sa clientèle pendant trois mois.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En offrant six mois de Google AI Plus, Bouygues Telecom renforce sa position dans la course à l’intelligence artificielle grand public, tout en proposant une offre concrète et économique à ses abonnés. La promotion, valable jusqu’au 31 décembre 2027, constitue une première incitation notable à tester les services IA de Google avant de s’engager sur le tarif mensuel standard.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
