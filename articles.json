@@ -4488,5 +4488,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "cdiscount-black-month-focus-sur-les-9-offres-tech-selectionnees",
+    "title": "Cdiscount Black Month : focus sur les 9 offres tech sélectionnées",
+    "date": "2026-11-16",
+    "excerpt": "Cdiscount a lancé son Black Month avec neuf promotions couvrant console, ordinateur portable, audio, montre connectée et petit électroménager, toutes vendues directement par le site et comparées au prix le plus bas des 30 derniers jours.",
+    "category": "Informatique",
+    "cover": "https://pic.clubic.com/v1/images/2475145/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Avant le Black Friday du 27 novembre, Cdiscount a mis en place un mois de promotions baptisé Black Month. La sélection présentée par Clubic regroupe neuf produits vendus par le site, chacun comparé au prix le plus bas observé sur les trente derniers jours. Les remises varient de 7 % à 23 % et les codes promo sont à saisir dans le panier pour profiter de la réduction.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Console Nintendo Switch 2",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le pack phare comprend la Nintendo Switch 2, testée avec une note de 8 /10. Elle dispose d’un écran LCD de 7,9 inches en 1080 p, d’un taux de rafraîchissement de 120 Hz, de 256 Go de stockage et de 12 Go de RAM. Le pack inclut également le remake de *The Legend of Zelda : Ocarina of Time*, sorti le 5 novembre, et la console possède une batterie remplaçable, un atout rare pour ce type d’appareil.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ordinateur portable gaming",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cdiscount propose un PC portable dédié aux jeux, équipé d’un processeur Ryzen 9 8940HX, d’une carte graphique GeForce RTX 5070, de 24 Go de mémoire et d’un SSD de 1 To. L’écran IPS de 16 inches, en résolution WQXGA et 240 Hz, assure une fluidité adaptée aux titres les plus exigeants. Le prix affiché de 1 849,99 € inclut le code promo 50D449, qui offre 50 € de remise dès 449 € d’achat.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Audio et montre connectée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les accessoires, les AirPods 5 obtiennent également 8 /10. Ils offrent la réduction active du bruit, 5 h 30 d’autonomie en lecture et jusqu’à 22 h avec le boîtier, et sont certifiés IP57. La Huawei Watch Fit 5 Pro, notée 8 /10, propose un écran AMOLED de 1,92 inch avec une luminosité de 3 000 nits et une autonomie d’environ sept jours sans affichage permanent, le tout pour un poids de 30 g.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Petit électroménager et accessoires",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le catalogue comprend aussi une machine à expresso Philips LatteGo, vendue 344,99 € avec le code PHILIPS15D89 (15 € de remise dès 89 € d’achat). Elle prépare quatre recettes et intègre un système de lait LatteGo. Un aspirateur balai sans fil, affiché à 50 € sous le prix le plus bas des 30 jours, propose 315 airwatts, une filtration HEPA et une brosse auto‑démêlante. Enfin, un SSD M.2 NVMe PCIe Gen3 x4, avec des vitesses de 2 100 Mo/s en lecture et 1 700 Mo/s en écriture, est proposé sans test mais compatible avec tout PC disposant d’un emplacement M.2.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Month de Cdiscount met en avant une gamme diversifiée d’appareils technologiques, du gaming à l’audio en passant par le petit électroménager. Toutes les offres sont vendues directement par le site, ce qui simplifie les conditions de livraison et de retour. En comparant chaque promotion au prix le plus bas des trente derniers jours et en appliquant les codes promo au moment du paiement, les consommateurs peuvent maximiser leurs économies avant le Black Friday officiel.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
