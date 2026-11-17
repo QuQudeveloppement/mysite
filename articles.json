@@ -4752,5 +4752,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "quels-metiers-subissent-le-plus-limpact-de-lintelligence-artificielle-selon-la-derniere-et",
+    "title": "Quels métiers subissent le plus l’impact de l’intelligence artificielle selon la dernière étude Coface",
+    "date": "2026-11-17",
+    "excerpt": "Une étude Coface publiée le 17 novembre révèle que les ressources humaines, la comptabilité, le télémarketing et la R&D sont les secteurs les plus touchés par la baisse d’offres d’emploi liée à l’IA, avec des diminutions significatives quel que soit le niveau d’expérience.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2464006/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’intelligence artificielle modifie rapidement le paysage de l’emploi. Une étude commandée par la société de crédit Coface, diffusée le 17 novembre, dresse le premier tableau quantifiable des professions les plus affectées par la réduction d’annonces d’embauche liée à l’automatisation.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Les secteurs les plus impactés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Au premier rang, les ressources humaines enregistrent la plus forte chute, avec une baisse de 42,8 % des offres d’emploi par rapport à la moyenne des secteurs où ces postes sont présents. Juste derrière, la comptabilité, le télémarketing ainsi que les activités de conception et de recherche‑développement (industrie, bâtiment, etc.) subissent également des diminutions marquées.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Baisse globale du nombre d’annonces",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’étude indique qu’en France, l’IA est à l’origine d’une réduction d’environ 25 000 annonces d’emploi au troisième trimestre 2026, selon les données de France Travail. Pour les postes dont les tâches sont estimées à 10 % automatisables, le nombre d’annonces a reculé de 12,4 % sur la même période.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Impact selon l’expérience professionnelle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Contrairement à l’idée que seules les fonctions junior seraient menacées, les chiffres montrent une baisse d’offres pour toutes les tranches d’expérience. Les postes demandant moins d’un an d’expérience ont vu leurs annonces diminuer de 14 %, tandis que ceux nécessitant un à deux ans d’expérience ont enregistré une chute de 19,4 %. Les offres pour les profils de deux à quatre ans d’expérience ont baissé de 14,1 % et celles requérant plus de quatre ans d’expérience de 16 %.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "L’analyse Coface confirme que l’intelligence artificielle ne se contente pas de transformer les tâches répétitives ; elle entraîne déjà une contraction visible du marché de l’emploi dans plusieurs domaines, y compris pour les salariés expérimentés. Les professions les plus exposées – ressources humaines, comptabilité, télémarketing et R&D – devront repenser leurs processus et développer de nouvelles compétences pour rester pertinentes dans un environnement de plus en plus automatisé.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
