@@ -4660,5 +4660,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "alibaba-devoile-qwen4max-2-400-milliards-de-parametres-et-une-table-ngram-de-328-milliards",
+    "title": "Alibaba dévoile Qwen4‑Max : 2 400 milliards de paramètres et une table n‑gram de 328 milliards",
+    "date": "2026-11-17",
+    "excerpt": "Alibaba lance Qwen4‑Max, un grand modèle de langage de 2 400 milliards de paramètres, basé sur une architecture à mixture d’experts et une table n‑gram massive, promettant une meilleure efficacité et un coût de token réduit.",
+    "category": "Intelligence artificielle",
+    "cover": "https://next.ink/wp-content/uploads/2026/05/Baccalaureat1-1024x495.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Alibaba a présenté Qwen4‑Max, le dernier né de sa série de grands modèles de langage. Avec 2 400 milliards de paramètres, il conserve la même taille que son prédécesseur Qwen3.8‑Max tout en introduisant une architecture à mixture d’experts et une table n‑gram de 328 milliards de paramètres, visant à réduire les coûts de calcul et à améliorer la pertinence des réponses.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une architecture à mixture d’experts pour optimiser les calculs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Qwen4‑Max n’active qu’une fraction de ses poids à chaque token grâce à un mécanisme de mixture d’experts. Sur chaque requête, seulement 71 milliards de paramètres sont réellement sollicités, soit 25 % de moins que la version précédente. Cette approche permet d’économiser des opérations de calcul tout en conservant l’ensemble des poids en mémoire, limitant ainsi le besoin de ressources matérielles pour chaque génération de texte.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Coût et efficacité des tokens",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le modèle propose un tarif de 1,5 $ par million de tokens en entrée et 4,5 $ en sortie. Alibaba indique que, grâce à la nouvelle architecture, la consommation de tokens diminue de 24 % à 35 % selon les scénarios de charge, avec des réductions allant jusqu’à 48 % sur certains benchmarks. Le prix moyen par tâche s’établit à 3,27 $, nettement inférieur aux 7,77 $ de Grok et 6,95 $ de Muse, en partie grâce à une baisse de 70 % du coût de lecture en cache (de 0,25 $ à 0,075 $).",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Une table n‑gram massive pour enrichir les réponses",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Qwen4‑Max intègre une table n‑gram de 328 milliards de paramètres, une évolution majeure par rapport aux 51 milliards de la version Flash‑Next. Cette table, qui stocke des séquences de mots fréquentes, aide le modèle à générer des réponses plus cohérentes et contextuellement pertinentes, surtout lorsqu’il s’agit de longues conversations ou de contenus multimédias.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Capacités multimodales et fenêtre de contexte étendue",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le modèle supporte nativement les entrées images et vidéos, et propose une fenêtre de contexte d’un million de tokens, permettant de traiter de très longs documents ou dialogues sans perdre le fil. Cette capacité renforce son utilité dans des applications nécessitant une compréhension approfondie de textes volumineux.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Qwen4‑Max représente une étape importante pour Alibaba dans la course aux grands modèles de langage. En combinant une architecture à mixture d’experts, une table n‑gram de très grande taille et des coûts de token réduits, il offre une alternative compétitive aux solutions de Google, Anthropic ou OpenAI. Son efficacité accrue et ses capacités multimodales en font un candidat sérieux pour les entreprises cherchant à déployer des IA génératives à grande échelle tout en maîtrisant les dépenses.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
