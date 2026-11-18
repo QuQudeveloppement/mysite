@@ -4912,5 +4912,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "lenovo-prepare-la-legion-go-beam-une-version-allegee-de-la-console-portable-haut-de-gamme",
+    "title": "Lenovo prépare la Legion Go Beam, une version allégée de la console portable haut de gamme",
+    "date": "2026-11-18",
+    "excerpt": "Face à la flambée des prix des consoles portables comme la Legion Go 2, Lenovo aurait fuité une version plus économique, la Legion Go Beam, qui conserve l’essentiel tout en réduisant les coûts.",
+    "category": "Ordinateurs",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/image-139.png?resize=1600,900&key=e7d9e87b",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une alternative moins chère à la Legion Go 2",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le prix de la Legion Go 2, affiché à plus de 3 000 € pour la version 2 To, a suscité de vives inquiétudes parmi les joueurs. En réponse, des fuites montrent que Lenovo travaillerait sur une version « Beam » qui viserait à proposer un appareil plus abordable tout en conservant la plupart des fonctionnalités de base.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Design et ergonomie de la Beam",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les images divulguées montrent une coque blanche aux bordures vert citron, rappelant l’esthétique Xbox. Les sticks sont entourés d’anneaux verts et chaque poignée intègre des haut-parleurs orientés vers l’avant. Au dos, on retrouve les gâchettes classiques, deux boutons supplémentaires (Y1 et Y2) et une large grille d’aération. Le design rappelle la Legion Go S prévue pour 2025, mais sans le pavé tactile sous le stick droit.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Compromis techniques pour réduire les coûts",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les économies notées, la Beam ne disposerait que d’un seul port USB‑C, contre deux sur la Go S, ce qui pourrait compliquer la recharge lorsqu’un accessoire est branché. Les manettes semblent fixes, éliminant le mode « souris » apprécié sur les modèles plus chers. L’écran, entouré de bordures épaisses pour loger le logo Legion, indique que Lenovo cherche à réduire les dépenses de production.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ce qui reste inconnu",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les fuites ne précisent ni le processeur, ni la capacité de mémoire vive, ni le type d’écran (OLED ou LCD). Le système d’exploitation n’est pas non plus confirmé : il pourrait s’agir de Windows 11 ou de SteamOS, chacun ayant ses avantages et limites sur un petit format. Cette absence de données rend difficile d’évaluer la performance réelle de la Beam.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Si la Legion Go Beam voit le jour, elle offrirait une option plus accessible aux joueurs souhaitant emporter leur bibliothèque Steam sans supporter le prix exorbitant de la Go 2. Cependant, le manque d’informations sur les composants clés laisse planer le doute sur la capacité de cet appareil à rivaliser avec les consoles portables déjà établies. Le prochain CES 2027, où Lenovo présentera ses nouveautés, sera le moment décisif pour confirmer l’existence et les spécifications de la Beam.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
