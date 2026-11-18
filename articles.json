@@ -4832,5 +4832,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "lumo-desktop-de-proton-un-assistant-ia-integre-a-vos-fichiers-applications-et-taches-plani",
+    "title": "Lumo Desktop de Proton : un assistant IA intégré à vos fichiers, applications et tâches planifiées",
+    "date": "2026-11-18",
+    "excerpt": "Proton déploie Lumo Desktop, une IA qui s’intègre aux systèmes Windows, macOS et Linux, accède aux fichiers, aux services comme Proton Mail ou Google Drive et exécute des tâches programmées tout en préservant la confidentialité des données.",
+    "category": "Intelligence artificielle",
+    "cover": "https://pic.clubic.com/v1/images/2475907/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une IA de bureau qui dépasse la simple conversation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lumo Desktop, la nouvelle version de l’assistant IA de Proton, ne se limite plus à répondre dans une fenêtre de chat. Disponible sur les principaux systèmes d’exploitation, il peut interagir directement avec le système de fichiers, lancer des commandes terminal et ouvrir des pages web, tout en respectant les autorisations définies par l’utilisateur.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des connecteurs pour relier Lumo à vos outils quotidiens",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le menu « Customize » propose des Connectors qui établissent des ponts entre Lumo et des services externes. Parmi les intégrations prises en charge figurent Proton Mail via le Bridge, Google Drive, Jira, Confluence et des serveurs MCP (Model Context Protocol). Chaque connexion offre trois niveaux de contrôle : exécution automatique, demande d’accord préalable ou blocage complet, garantissant ainsi une utilisation sécurisée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Gestion des tâches et des compétences personnalisées",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Grâce à la fonctionnalité Schedules, Lumo peut planifier des actions à des heures précises ou de façon récurrente, comme la génération d’un résumé hebdomadaire de la boîte de réception ou le calcul d’un bilan mensuel des dépenses. Les tâches sont soumises à des permissions spécifiques. Les Skills, quant à eux, permettent d’enregistrer des modèles, des instructions ou des fichiers de référence réutilisables d’une conversation à l’autre, facilitant la rédaction d’e‑mails dans le style de l’utilisateur. Les anciens Custom Lumos sont migrés automatiquement vers ce nouveau format.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Confidentialité et infrastructure sécurisée",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Proton assure que les échanges avec Lumo ne sont ni exploités pour entraîner des modèles ni utilisés à des fins publicitaires. Le chiffrement « zero access » garantit que seul l’utilisateur peut accéder à son historique, tandis que Lumo ne conserve aucun journal côté serveur. Hébergé en Europe et protégé par le droit suisse, le service échappe aux exigences du CLOUD Act américain. Un premier cluster NVIDIA B300 a été mis en service en Suisse, suivi d’un déplacement des serveurs vers l’Allemagne pour renforcer la souveraineté des données.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lumo Desktop représente une avancée notable dans le domaine des assistants IA de bureau, combinant interactivité système, intégrations tierces et planification de tâches tout en plaçant la confidentialité au cœur de son architecture. Pour les utilisateurs soucieux de garder le contrôle sur leurs données tout en profitant d’une assistance automatisée, Proton propose une solution robuste et transparente.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
