@@ -5072,5 +5072,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "black-friday-2026-les-meilleures-offres-tech-a-ne-pas-manquer",
+    "title": "Black Friday 2026 : les meilleures offres tech à ne pas manquer",
+    "date": "2026-11-19",
+    "excerpt": "Le Black Friday 2026 s’intensifie avec des promotions majeures sur processeurs, écrans, SSD et objets connectés. Découvrez les bons plans vérifiés pour smartphones, TV, PC et accessoires, ainsi que les réductions les plus intéressantes.",
+    "category": "Informatique",
+    "cover": "https://pic.clubic.com/v1/images/2477068/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction au Black Friday 2026",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "À huit jours du 27 novembre, les grands e‑commerçants français et Amazon déploient leurs meilleures promotions. La rédaction de Clubic suit en direct les offres qui offrent le meilleur rapport qualité‑prix, en indiquant le prix réel du produit et son avis. Les prix évoluent au fil des ventes flash, incitant à vérifier régulièrement les bonnes affaires.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Processeurs et composants PC",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le processeur AMD Ryzen 7 7800X3D est proposé à 283,99 € sur Amazon, bien en dessous de son prix conseillé de 496,99 €. Ce composant, réputé pour son 3D V‑Cache, reste une référence pour les jeux vidéo, même s’il ne comprend pas de ventirad. Côté stockage, le SSD Samsung 990 1 To, au format M.2, passe à 153,99 € contre 179,90 € auparavant, offrant des débits proches de 7 Go/s, idéal pour les PC de jeu ou les stations de travail.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Écrans, téléviseurs et projecteurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les écrans, le téléviseur Samsung 85M70H Mini LED 4K de 85 pouces est à 949 € sur Amazon, contre 1 299 €, franchissant la barre des 1 000 € pour un véritable home‑cinéma. Le modèle OLED 55S85H (2026) descend à 899 € au lieu de 1 495,20 €, rendant l’OLED accessible en 55 pouces. En projection, le XGIMI Elfin Flip 4K se vend à 749 € au lieu de 999 €, tandis que le XGIMI MoGo 4 Laser, pack Outdoor Collection, est à 599 € contre 949 €, incluant batterie, toile et filtres pour le cinéma en plein air.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Smartphones, wearables et audio",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Xiaomi Redmi Note 17 5G (6 + 128 Go) est à 223,97 € sur Amazon, contre 353 €, offrant une grande batterie et un écran généreux. Côté montres, la Samsung Galaxy Watch9 40 mm se trouve à 388,32 € au lieu de 409,99 €. En audio, le casque à conduction osseuse Shokz OpenRun Pro 2 passe à 149 € (prix conseillé 199 €) et les AirPods 5 d’Apple sont à 129 € chez Cdiscount, contre 149 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Objets connectés et électroménager",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les assistants vocaux profitent de fortes baisses : l’Amazon Echo Dot (2022) à 39,99 € au lieu de 89,99 €, et l’Echo Show 8 à 129,99 € contre 219,99 €. Le robot aspirateur Ecovacs Deebot T50 Pro Omni Gen3 est à 299 € contre 599 €, rendant la technologie tout‑en‑un abordable. La friteuse sans huile Ninja Foodi FlexDrawer 10,4 L se vend à 159,99 € au lieu de 269,99 €, avec son tiroir double compartiment.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Friday 2026 offre des réductions significatives sur une large gamme de produits tech, du processeur de jeu aux téléviseurs 4K, en passant par les smartphones et les objets connectés. En suivant les mises à jour en temps réel, les consommateurs peuvent profiter de prix cassés tout en s’assurant de la disponibilité et de la fiabilité des offres.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
