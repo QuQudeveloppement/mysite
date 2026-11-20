@@ -5256,5 +5256,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "haier-h65m92fux-tv-mini-led-65-pouces-a-144-hz-son-kef-et-google-tv",
+    "title": "Haier H65M92FUX : TV Mini LED 65 pouces à 144 Hz, son KEF et Google TV",
+    "date": "2026-11-20",
+    "excerpt": "Le Haier H65M92FUX propose une dalle Mini LED 4K à 144 Hz, un traitement d’image Dolby Vision IQ et un système audio signé KEF, le tout à un prix compétitif. Retour sur ses performances, son design et ses usages gaming et cinéma.",
+    "category": "Informatique",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/haier-h65m92fux-test-intro.jpg?resize=1600,900&key=12ab4604",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un positionnement entre QLED et OLED",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le modèle 65 pouces de la série M92 de Haier se veut une alternative aux téléviseurs QLED classiques et aux OLED haut de gamme. Il combine une dalle 4K Mini LED, une fréquence native de 144 Hz, la compatibilité Dolby Vision et un système audio développé avec le fabricant britannique KEF. Le prix, nettement inférieur à celui des OLED, cible les amateurs de cinéma et de jeu qui recherchent une bonne fidélité des couleurs sans exploser leur budget.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Design et ergonomie",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le téléviseur se démarque par ses deux pieds latéraux en métal, espacés de 128 cm, offrant une assise très stable et un rendu visuel presque architectural. Cette configuration nécessite un meuble suffisamment large, mais elle permet aussi de régler la hauteur en deux positions, laissant un jeu de 6,5 cm sous l’écran pour installer une barre de son. Le kit de fixation murale est fourni, et le montage se réalise aisément à deux, sans outillage particulier.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Connectique orientée jeu et home‑cinéma",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le H65M92FUX dispose de quatre entrées HDMI 2.1 ; les ports 3 et 4 supportent le 4K à 144 Hz, tandis que les ports 1 et 2 sont limités à 60 Hz. Cette répartition oblige les joueurs à planifier la connexion de leur console, PC ou console de salon. En plus des deux tuners TV, on trouve un port Ethernet, deux USB‑A (dont un latéral), une sortie casque et une entrée composite. Le Wi‑Fi 6 et le Bluetooth 5.2 assurent une diffusion fluide des contenus 4K via la plateforme Google TV intégrée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Qualité d’image et traitement HDR",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La dalle QLED à points quantiques, éclairée par un rétro‑éclairage Mini LED à 448 zones, délivre des noirs profonds et des couleurs plus pures que sur un LCD classique. Haier propose le traitement Ultra Crystal‑Black pour réduire les reflets et un processeur d’image à IA, ainsi que le Dolby Vision IQ qui ajuste le HDR en fonction de la luminosité ambiante. Cinq modes d’image sont disponibles : Standard, Film, Utilisateur, Sport et Jeu. Le mode Film offre le rendu le plus naturel pour le cinéma, tandis que le mode Jeu privilégie la réactivité sans sacrifier la justesse des couleurs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Expérience utilisateur et télécommande",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La télécommande classique, rechargeable via USB‑C et équipée d’une petite cellule solaire, intègre les commandes essentielles de Google TV et un micro pour l’assistant vocal. La navigation est fluide, sans latence notable, et les touches sont bien espacées. Le seul bémol reste l’absence de rétro‑éclairage des touches, moins pratique dans une pièce sombre.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Haier H65M92FUX se présente comme une offre solide dans le segment des téléviseurs Mini LED 65 pouces. Son taux de rafraîchissement de 144 Hz, le support Dolby Vision IQ et le son signé KEF en font un choix intéressant pour les cinéphiles et les joueurs. Le design à pieds latéraux, la connectique adaptée au gaming et le prix attractif renforcent son positionnement entre QLED et OLED, même si la densité de zones de rétro‑éclairage reste modeste face à certains concurrents. En somme, il propose une expérience visuelle et sonore de qualité, à un coût raisonnable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
