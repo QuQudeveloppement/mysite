@@ -5164,5 +5164,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "mullvad-recommande-de-revoir-les-reglages-dns-avant-la-fin-de-quad9-en-france",
+    "title": "Mullvad recommande de revoir les réglages DNS avant la fin de Quad9 en France",
+    "date": "2026-11-20",
+    "excerpt": "Mullvad informe ses utilisateurs que le service DNS Quad9 cessera d'opérer en France le 24 novembre. L’article explique pourquoi ce changement intervient et comment ajuster les paramètres DNS dans le navigateur et le VPN pour éviter les coupures.",
+    "category": "Internet & réseaux",
+    "cover": "https://pic.clubic.com/v1/images/2451175/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Pourquoi Quad9 ne sera plus disponible en France",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis le 24 novembre, le résolveur DNS gratuit Quad9, géré par une fondation suisse, ne pourra plus répondre aux requêtes provenant de la France. La décision fait suite à des pressions liées à des demandes de blocage de sites de streaming piratés et à plusieurs procédures judiciaires visant le service. En conséquence, les noms de domaine résolus par Quad9 deviendront inaccessibles, même pour les contenus légaux.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Impact sur les utilisateurs de Mullvad Browser",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Mullvad Browser, depuis la version 16.0, envoie toutes les requêtes DNS via Quad9 en utilisant le protocole DNS over HTTPS (DoH). Si aucun réglage n’est modifié, les utilisateurs verront certains sites disparaître dès le 24 novembre, car le navigateur ne pourra plus traduire les noms de domaine en adresses IP. Le problème concerne uniquement le navigateur ; les résolveurs configurés au niveau du système ou du routeur restent indépendants.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Trois solutions proposées par Mullvad",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Mullvad indique trois options pour contourner la coupure :\n• Choisir un autre fournisseur DoH, comme Cloudflare, afin de conserver le chiffrement des requêtes DNS.\n• Désactiver le DoH dans le navigateur. Cette option est viable uniquement si le VPN Mullvad est actif ; sans VPN, le navigateur utilisera alors le résolveur DNS du système, exposant les requêtes à l’opérateur d’accès.\n• Utiliser le DNS interne du VPN Mullvad. Le résolveur du VPN n’est pas affecté par la fermeture de Quad9 et continue de fonctionner dans le tunnel chiffré, même si DoH est désactivé.\nCes réglages s’appliquent uniquement au navigateur ; il faut répéter la modification sur chaque appareil ou service qui utilise Quad9 (box internet, autres navigateurs, etc.).",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conséquences potentielles pour les services publics",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Cloudflare, qui propose également un service DoH, a souligné que la perte de Quad9 pourrait toucher des institutions comme les hôpitaux, les écoles ou les administrations qui s’appuient sur ce résolveur. En raison de la politique de confidentialité stricte de Quad9, les utilisateurs ne reçoivent aucun avertissement lorsqu’une requête échoue, ce qui peut entraîner l’indisponibilité soudaine de sites sans explication visible.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comment ajuster les paramètres dans Mullvad Browser",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour modifier le réglage, ouvrez le menu : Settings > Privacy and security > DNS over HTTPS. Sélectionnez l’une des trois options décrites précédemment. Si vous avez configuré Quad9 ailleurs (système d’exploitation, routeur), pensez à le remplacer par le résolveur de votre choix afin d’assurer une continuité de service.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La fermeture de Quad9 en France impose aux utilisateurs de Mullvad de vérifier leurs paramètres DNS avant le 24 novembre. En optant pour un autre résolveur DoH, en désactivant le DoH avec le VPN actif, ou en utilisant le DNS interne du VPN, il est possible de maintenir un accès ininterrompu aux sites web. Une vérification rapide des réglages évite ainsi les désagréments liés à la censure DNS.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
