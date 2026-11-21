@@ -5348,5 +5348,109 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "gta-6-sortie-plateformes-problemes-techniques-et-premieres-reactions",
+    "title": "GTA 6 : sortie, plateformes, problèmes techniques et premières réactions",
+    "date": "2026-11-21",
+    "excerpt": "Le 18‑19 novembre, Grand Theft Auto VI arrive en France sur PS5, Xbox Series X|S et Xbox One. Retour sur les prix, les premiers bugs, les critiques et les enjeux liés aux versions PC et aux contenus en ligne.",
+    "category": "Jeux vidéo",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/gta-6-en-direct.jpg?resize=1600,900&key=286ef2b9",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Sortie officielle et plateformes disponibles",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Grand Theft Auto VI a été lancé dans la nuit du 18 au 19 novembre en France. Le titre est commercialisé sur les consoles de nouvelle génération, à savoir la PlayStation 5 et la Xbox Series X|S, ainsi que sur la Xbox One dès le premier jour. Aucun support n’est prévu pour la PlayStation 4.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Prix et offres commerciales",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le jeu est proposé à 79,99 € chez les principaux revendeurs français (Amazon, Cdiscount, Fnac, JoyBuy). Les différentes boutiques affichent le même tarif, sans remise notable à la sortie.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Premiers problèmes techniques rencontrés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Dès le lancement, certains joueurs PS5 signalent un arrêt brutal du jeu avec le code d’erreur CE‑108255‑1. Les causes restent floues et les consoles concernées ne reçoivent pas d’explication technique de la part de Sony ou de Rockstar. Des plantages similaires sont également rapportés sur Xbox Series X, bien que l’équipe de Frandroid n’ait pas constaté de dysfonctionnement sur ses propres consoles.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réactions des joueurs et critiques",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sur Metacritic, GTA 6 obtient un Metascore de 99 / 100, égalant le record de Zelda : Ocarina of Time. Les notes des utilisateurs sont plus mitigées, autour de 5,5 / 10, avec une forte polarisation : près de la moitié des avis sont positifs, l’autre moitié négative. Les critiques négatives pointent notamment l’absence de version PC à la sortie, le plafonnement à 30 fps, des plantages et le prix élevé. Un bug de caméra découvert moins de 24 heures après la sortie permet de jouer en vue subjective, une fonctionnalité non annoncée qui pourrait être officialisée via une mise à jour.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Enjeux autour du piratage et de la version PC",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le même jour que la sortie, le pirate « Cyberleek » a publié un torrent de 209 Go présenté comme la version Xbox du jeu. Bien que les spécialistes considèrent les fichiers comme authentiques, l’exécutable manque encore. Rockstar pourrait tenter de faire retirer ces fichiers, mais la taille du torrent rend leur suppression difficile. Le studio prépare toutefois une version PC officielle, attendue début 2027, ce qui pourrait limiter l’impact du piratage.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "GTA 6 arrive avec un fort engouement commercial et des critiques très contrastées. Si le lancement sur consoles de nouvelle génération se déroule sans heurts majeurs, les premiers bugs et l’absence de version PC suscitent des inquiétudes. Les mises à jour futures, notamment l’ajout officiel du mode vue subjective et la sortie PC prévue pour 2027, seront décisives pour consolider le succès du titre.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "video",
+        "value": "",
+        "url": "https://www.youtube.com/watch?v=2tpr3hzxVas",
+        "caption": "GTA 6 sur PS5 vs PS5 Pro : La différence vaut-elle vraiment le prix ? (Frandroid)"
+      },
+      {
+        "type": "video",
+        "value": "",
+        "url": "https://www.youtube.com/watch?v=xNPsYXLL08k",
+        "caption": "Le premier truc à faire dans GTA6 ? #shorts (Frandroid)"
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
