@@ -5452,5 +5452,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "xgimi-titan-un-videoprojecteur-laser-4k-haut-de-gamme-a-prix-reduit-pour-le-black-friday",
+    "title": "Xgimi Titan : un vidéoprojecteur laser 4K haut de gamme à prix réduit pour le Black Friday",
+    "date": "2026-11-21",
+    "excerpt": "Le Xgimi Titan propose 5000 lumens, une résolution 4K simulée jusqu’à 250 pouces et des fonctions avancées pour le home cinéma. Le Black Friday le rend accessible à 2 499 €, une remise de 1 500 € sur le prix d’origine.",
+    "category": "Informatique",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/xgimi-titan-black-friday-2026.jpg?resize=1600,900&key=de52ad0c",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre exceptionnelle pour un appareil ambitieux",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Xgimi Titan, présenté comme la réponse de la marque chinoise aux exigences du home cinéma premium, bénéficie d’une réduction de 1 500 € lors du Black Friday sur Amazon. Son prix chute à 2 499 € contre 3 999 € en configuration standard, ce qui le rend plus abordable malgré un investissement toujours conséquent.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des performances d’image impressionnantes",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le projecteur utilise une puce DLP de 0,78 pouce, bien plus grande que les modèles classiques, et la technologie XPR pour offrir une résolution 4K simulée. Il délivre 5 000 lumens ISO, permettant une image claire même dans des pièces légèrement éclairées, et supporte des diagonales allant jusqu’à 250 inches (6,35 m). Les formats HDR10+, Dolby Vision et IMAX Enhanced sont pris en charge, bien que le contraste natif reste inférieur à celui de certaines références Sony ou JVC, nécessitant un calibrage pour optimiser les noirs.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Installation flexible et usage multimédia",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Titan intègre un zoom optique 1,5× (rapport de projection 1,2‑1,8 : 1) et un lens‑shift motorisé (±100 % vertical, ±40 % horizontal) réglables depuis la télécommande, facilitant le positionnement sur un meuble ou au plafond. Un mode ALLM s’active automatiquement avec les consoles compatibles, réduisant le lag à 32,8 ms en 4K 60 Hz, tandis que le projecteur accepte le Full HD jusqu’à 240 Hz avec un retard de 15 ms, intéressant pour les joueurs PC.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites et accessoires recommandés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Xgimi Titan ne possède pas d’interface Smart TV native ; il faut le coupler à un boîtier multimédia, une console ou un autre appareil pour accéder aux services de streaming. Le système audio intégré suffit pour les dialogues mais manque de basses, d’où la recommandation d’une barre de son. De plus, aucun écran de projection n’est fourni ; un mur blanc ou un écran dédié reste indispensable pour profiter pleinement de la qualité d’image.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Xgimi Titan se positionne comme un vidéoprojecteur laser 4K robuste, capable de projeter de très grandes images avec une luminosité élevée et des fonctions orientées home cinéma et jeux vidéo. La remise du Black Friday le rend plus accessible, mais son prix reste élevé et il nécessite des accessoires complémentaires (audio, écran). Pour les amateurs prêts à investir dans un système dédié, le Titan représente une option sérieuse dans le segment premium.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid, Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
