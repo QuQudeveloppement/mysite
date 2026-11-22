@@ -5612,5 +5612,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "amazon-propose-le-google-pixel-11-a-599-pour-le-black-friday-soit-400-de-remise",
+    "title": "Amazon propose le Google Pixel 11 à 599 € pour le Black Friday, soit 400 € de remise",
+    "date": "2026-11-22",
+    "excerpt": "Amazon baisse le prix du Google Pixel 11 à 599 € au lieu de 999 €, offrant ainsi une économie de 400 € pour le Black Friday. Le smartphone garde ses atouts photo, autonomie et suivi logiciel de sept ans, mais reste limité pour les jeux.",
+    "category": "Smartphones",
+    "cover": "https://pic.clubic.com/v1/images/2473522/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une remise exceptionnelle pour le Pixel 11",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Dans le cadre du Black Friday, Amazon propose le Google Pixel 11 version 256 Go à 599 €, contre un prix conseillé de 999 €. Cette offre représente une économie de 400 €, soit 100 € de moins que le même modèle vendu sur le Google Store (699 €). Le produit est expédié par Amazon avec la livraison gratuite pour les membres Prime.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Caractéristiques principales du Pixel 11",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Pixel 11 repose sur la puce Tensor G6, identique à celle des modèles Pro, et bénéficie de la suite Gemini Intelligence ainsi d’un engagement de sept ans de mises à jour logicielles. Son écran OLED 1080p offre un bon calibrage des couleurs, tandis que le design a été affiné, la barre photo devenant presque invisible sous la coque. Côté photographie, le téléphone propose un capteur grand‑angle performant et des fonctions d’IA telles que la dictée « Rambler » intégrée au clavier Gboard et la retouche photo vocale.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Points forts et limites",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les atouts, on note une batterie proche de 5 000 mAh qui atteint 17 h 43 sur le benchmark PCMark, légèrement supérieure à la version Pro XL. La recharge sans fil a progressé grâce à la norme Qi 2 et au système magnétique Pixelsnap, offrant jusqu’à 25 W. En revanche, le GPU du Tensor G6 montre ses limites dans les jeux 3D récents, avec une chute de performances d’environ 50 % après quelques minutes d’effort. L’écran n’est pas LTPO, le Wi‑Fi 7 reste réservé aux modèles Pro, et certaines fonctions d’IA annoncées ne sont pas encore disponibles en France. Le dos brillant attire également les traces de doigts.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Pourquoi cette offre est intéressante",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "À 599 €, le Pixel 11 devient compétitif face aux flagships comme le Galaxy S26 ou l’iPhone 17, qui restent plus chers. Le smartphone combine une bonne autonomie, des capacités photo solides et un suivi logiciel long terme, le tout pour un prix largement réduit. Pour les utilisateurs qui ne cherchent pas à jouer intensivement sur mobile, il s’agit d’une des meilleures affaires du moment sur un appareil récent.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Amazon propose donc une remise importante sur le Google Pixel 11, le rendant accessible à un public plus large tout en conservant les points forts qui caractérisent la gamme Pixel : photo de qualité, IA intégrée et mises à jour prolongées. Les limites liées au GPU et à certaines technologies avancées restent à prendre en compte, mais pour un usage quotidien centré sur la messagerie, les réseaux sociaux et la photographie, l’offre de 599 € représente une opportunité à ne pas manquer pendant le Black Friday.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
