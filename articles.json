@@ -5532,5 +5532,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "nothing-ear-3-a-moins-de-100-pendant-le-black-friday-design-son-et-autonomie",
+    "title": "Nothing ear (3) à moins de 100 € pendant le Black Friday : design, son et autonomie",
+    "date": "2026-11-22",
+    "excerpt": "Les Nothing ear (3) profitent du Black Friday avec une remise de 50 €, les faisant passer à 99,99 € sur Cdiscount. Décortiquons leur design transparent, leurs réglages sonores et leur autonomie avec réduction de bruit active.",
+    "category": "Ordinateurs",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/copie-de-blackfriday-frandroid-solo-5.png?resize=1600,900&key=d67a363e",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les Nothing ear (3) ont fait leur apparition en septembre avec un boîtier entièrement transparent, un design qui leur est propre. À l’occasion du Black Friday, le site Cdiscount les propose à 99,99 €, soit une réduction de 50 € par rapport à leur prix de lancement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un design transparent et une ergonomie adaptée au sport",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le boîtier et les oreillettes sont en plastique translucide, laissant apparaître la structure interne. Cette transparence constitue la signature visuelle de la marque. Les écouteurs restent bien en place dans les oreilles, ce qui les rend confortables pour les activités physiques. Ils bénéficient d’une certification IP54, garantissant une résistance à la poussière, à la transpiration et aux éclaboussures d’eau.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Contrôles et égaliseur personnalisables",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les commandes rapides sont configurables via l’application dédiée : double‑tap pour la piste suivante, simple tap pour la pause, etc. Le volume ne peut pas être ajusté en glissant le doigt sur la tige ; il faut attribuer une commande dans l’app. L’égaliseur propose trois modes : des préréglages, un mode avancé à huit bandes et une section « Explorer » où les utilisateurs partagent leurs profils. Ainsi, même sans expertise musicale, il est possible d’obtenir un rendu sonore satisfaisant.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Son, réduction de bruit et autonomie",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les Nothing ear (3) offrent jusqu’à 45 dB d’atténuation active du bruit, selon les mesures du fabricant. Le rendu sonore peut sembler trop bassé au départ, mais il est ajustable via l’égaliseur. L’autonomie annoncée est de 5,5 h d’écoute avec l’ANC activé et 10 h sans. Le boîtier de charge porte le total à 22 h avec l’ANC et 38 h sans.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Friday permet d’acquérir les Nothing ear (3) à un prix très attractif, tout en conservant leurs atouts : un design distinctif, une personnalisation sonore poussée et une autonomie correcte malgré la réduction de bruit. Ces écouteurs restent une option intéressante pour ceux qui recherchent un produit transparent et fonctionnel à moins de 100 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
