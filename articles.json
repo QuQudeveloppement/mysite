@@ -5692,5 +5692,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "samsung-pourrait-suspendre-le-lancement-annuel-des-galaxy-watch-jusqu-en-2028",
+    "title": "Samsung pourrait suspendre le lancement annuel des Galaxy Watch jusqu'en 2028",
+    "date": "2026-11-23",
+    "excerpt": "Selon des sources industrielles, Samsung envisagerait d'espacer ses sorties de montres connectées de deux ans, arrêtant ainsi le cycle annuel après la Galaxy Watch 9 et l'Ultra 2 dévoilées en 2026. Cette décision serait motivée par des pertes financières et la hausse des coûts de production.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/07/samsung-galaxy-watch-9-21.jpg?resize=1600,900&key=7d2bd76c",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un rythme annuel qui s'arrête",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Depuis 2018, Samsung présentait chaque été une nouvelle Galaxy Watch. Les dernières versions, la Galaxy Watch 9 et l'Ultra 2, ont été annoncées en juillet 2026. Des sources citées par le quotidien coréen ETNews indiquent que la marque ne prévoit plus de modèle en 2027, optant pour un intervalle de deux ans entre chaque lancement.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Des raisons financières et techniques",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "La division MX, responsable des smartphones, tablettes et montres, aurait enregistré des pertes consécutives au deuxième et troisième trimestre 2026, respectivement 700 milliards de wons puis 600 milliards. Cette situation, combinée à la hausse des prix des processeurs et de la mémoire – parfois appelée « chipflation » – pousserait Samsung à réduire les dépenses liées à la R&D et au marketing d’une montre chaque année.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Un marché qui mûrit",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les analystes soulignent que la Galaxy Watch 9 a vu son prix augmenter à cause des coûts de production, alors que la croissance du marché des montres connectées ralentit. Le matériel atteint une maturité où les consommateurs ne ressentent plus le besoin de changer de modèle chaque année, rendant le cycle annuel moins rentable.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Quelles alternatives pour 2027 ?",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Samsung ne laisserait pas ses utilisateurs sans nouveautés. La société prévoit d'enrichir les montres déjà commercialisées via des mises à jour logicielles, notamment avec de nouvelles fonctions santé. Un nouveau Galaxy Fit, plus léger et moins cher, devrait également être lancé. Par ailleurs, la production de smartphones Galaxy A aurait été réduite de 20 % au quatrième trimestre 2026, tandis que les modèles haut de gamme S27 Pro et Ultra, plus rentables, devraient représenter jusqu'à 70 % de la production prévue pour 2027.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Si les rumeurs sont confirmées, Samsung mettrait fin à son cycle annuel de lancement de montres connectées, reportant la prochaine génération à l'été 2028. Cette stratégie reflète à la fois des contraintes économiques et une évolution du marché, où la différenciation se fera davantage par des améliorations logicielles et des produits d'entrée de gamme que par des renouvellements matériels chaque année.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
