@@ -5920,5 +5920,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "cybertek-black-cyber-pc-gamer-a-1-099-99-avec-ryzen-7-5700x-et-rtx-5060",
+    "title": "Cybertek Black Cyber : PC gamer à 1 099,99 € avec Ryzen 7 5700X et RTX 5060",
+    "date": "2026-11-24",
+    "excerpt": "Le Black Cyber de Cybertek, à 1 099,99 €, combine un Ryzen 7 5700X, 16 Go de RAM et une RTX 5060 8 Go, offrant une expérience Full HD solide pour le jeu et le multimédia, tout en proposant une réduction de 100 € pour le Black Friday.",
+    "category": "Ordinateurs",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/copie-de-blackfriday-frandroid-solo-14-1.png?resize=1600,900&key=3daef742",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une offre alléchante pour le Black Friday",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Cyber, proposé par Cybertek, profite d’une remise de 100 € pendant le Black Friday, faisant passer son prix de 1 199,99 € à 1 099,99 €. Cette promotion cible les joueurs qui souhaitent renouveler leur configuration sans exploser leur budget.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Configuration matérielle et performances de jeu",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le cœur du système repose sur un processeur AMD Ryzen 7 5700X, couplé à 16 Go de RAM DDR4 installés sur une seule barrette. La carte graphique Nvidia GeForce RTX 5060 8 Go, compatible DLSS 5, permet de jouer confortablement en Full HD et, dans certains titres, en QHD grâce à l’upscaling. Le watercooling M.RED Serenity 240 mm assure que le processeur reste frais lors de longues sessions, tandis que le SSD de 512 Go offre des temps de chargement rapides, même si son espace peut rapidement se remplir avec plusieurs jeux récents.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Points forts et limites de la machine",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les atouts, on retrouve une bonne capacité de jeu en 1080p, un système de refroidissement efficace et une esthétique soignée avec une vitre latérale et des zones lumineuses personnalisables. En revanche, la mémoire vive n’est pas en double canal, ce qui réduit légèrement les performances du processeur. Le stockage de 512 Go peut également devenir un goulot d’étranglement pour les utilisateurs installant de gros jeux ou travaillant sur des projets vidéo ou 3D modestes.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Connectique, audio et extensibilité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Cyber propose huit ports USB répartis à l’avant et à l’arrière, facilitant la connexion d’un disque dur externe ou d’autres périphériques. Les sorties vidéo proviennent exclusivement de la RTX 5060 ; les ports HDMI et DisplayPort de la carte mère restent inutilisés, le processeur ne disposant pas de GPU intégré. Côté audio, on trouve une prise casque et une prise micro à l’avant, ainsi que trois jacks à l’arrière. La carte mère MSI A520M Vector intègre le Wi‑Fi, et Windows 11 Home est fourni en version d’essai de 90 jours.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Cybertek Black Cyber représente une option intéressante pour les joueurs cherchant une machine prête à l’emploi à un prix réduit. Son processeur Ryzen 7 5700X, sa RTX 5060 et son refroidissement performant offrent une expérience de jeu fluide en Full HD, tandis que les quelques compromis – RAM en simple canal et capacité de stockage limitée – restent gérables grâce à la connectique généreuse. Pour ceux qui souhaitent profiter d’une configuration équilibrée sans se ruiner, l’offre Black Friday de 1 099,99 € constitue un bon compromis.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid, Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
