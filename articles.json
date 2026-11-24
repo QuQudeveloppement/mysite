@@ -5852,5 +5852,73 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "blackberry-lance-access-secure-browser-un-navigateur-dentreprise-base-sur-chromium",
+    "title": "BlackBerry lance Access Secure Browser, un navigateur d’entreprise basé sur Chromium",
+    "date": "2026-11-24",
+    "excerpt": "BlackBerry propose Access Secure Browser, un navigateur Windows qui isole les activités professionnelles dans un conteneur chiffré, sans agent de gestion, et permet de respecter les exigences de confidentialité et de conformité des organisations BYOD.",
+    "category": "Internet & réseaux",
+    "cover": "https://pic.clubic.com/v1/images/2478997/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Une solution dédiée aux environnements BYOD",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le nouveau navigateur d’entreprise de BlackBerry, Access Secure Browser, s’adresse aux salariés qui utilisent leur propre ordinateur pour le travail. Contrairement aux solutions traditionnelles qui installent un agent de gestion sur le PC, ce navigateur s’exécute dans un conteneur chiffré séparé du reste du système d’exploitation. Aucun accès aux photos, aux fichiers personnels ou aux fonctions de suppression à distance n’est accordé, ce qui répond aux réticences des utilisateurs et aux craintes des organisations quant à la responsabilité et à la vie privée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Intégration des outils de productivité via PWA",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour faciliter le quotidien des utilisateurs, les services courants comme Outlook, Teams et OneDrive sont disponibles sous forme d’applications web progressives (PWA) dans le navigateur. Chaque PWA s’ouvre dans sa propre fenêtre et, pour Teams, les notifications Windows sont conservées. Les fichiers téléchargés sont stockés dans un espace protégé du navigateur, évitant toute confusion avec les dossiers personnels de l’utilisateur.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnalités hors ligne et connexion aux réseaux internes",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Access Secure Browser intègre un module LibreOffice permettant d’éditer des documents sans connexion, utile lors de déplacements ou dans des environnements Wi‑Fi instables. Pour accéder aux applications internes de l’entreprise, le navigateur utilise l’infrastructure BlackBerry, éliminant le besoin d’un client VPN dédié. Un VPN peut toutefois être activé en parallèle, notamment comme solution de secours en cas de saturation ou de panne du réseau d’entreprise.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Contrôle et conformité des politiques de navigation",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les organisations peuvent gérer les règles de navigation via BlackBerry UEM installé sur site, garantissant que les politiques, les identités et les données restent sous le contrôle de l’entreprise. Cette approche répond aux exigences du RGPD, notamment la notion de transfert de données lorsqu’un service cloud hors UE est utilisé. Ainsi, même si le navigateur repose sur Chromium, la console de gestion peut fonctionner sur un réseau isolé d’Internet, offrant une conformité renforcée pour les administrations, les régulateurs et les opérateurs d’infrastructures critiques.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
