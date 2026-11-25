@@ -6080,5 +6080,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "black-friday-les-meilleures-montres-connectees-en-promo-chez-amazon",
+    "title": "Black Friday : les meilleures montres connectées en promo chez Amazon",
+    "date": "2026-11-25",
+    "excerpt": "Amazon propose jusqu’à -43 % sur huit montres sport et connectées, dont la Suunto Run et la Galaxy Watch Ultra, à l’approche du Black Friday et du Cyber Monday.",
+    "category": "Ordinateurs",
+    "cover": "https://pic.clubic.com/v1/images/2474515/raw",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "À deux jours du Black Friday, Amazon met à prix cassé huit montres connectées destinées aux sportifs et aux amateurs de suivi santé. Les remises varient de 19 % à 43 %, avec des économies pouvant atteindre 248 € sur la Samsung Galaxy Watch Ultra.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Montres testées et leurs atouts",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi la sélection, la Suunto Run a été testée par Clubic. Elle séduit par son écran AMOLED de 1,32 pouce lisible en plein soleil, sa simplicité d’usage et une autonomie d’une semaine en usage classique. Elle bénéficie d’une réduction de 100 € par rapport à son prix conseillé.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Fonctionnalités avancées des modèles non testés",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "• Suunto Race S : écran AMOLED 1,32 pouce, GPS double bande, altimètre barométrique et cartes du monde téléchargeables, idéale pour le trail ou le triathlon.\n• Suunto Vertical : boîtier en acier inoxydable, verre saphir, étanchéité à 100 m, cartes hors ligne, jusqu’à 90 heures d’autonomie en mode performance et option de charge solaire.\n• Amazfit T‑Rex 3 et 3 Pro : boîtier en acier inoxydable 316 L ou titane, verre saphir, autonomie de 27 à 30 jours, écran AMOLED très lumineux (3 000 nits) pour les activités en extérieur.\n• Garmin Instinct E : conforme à la norme militaire américaine 810, étanchéité 10 ATM, plusieurs systèmes GNSS, compas 3 axes, 16 jours d’autonomie en mode montre connectée.\n• Samsung Galaxy Watch Ultra : boîtier titane, étanchéité 10 ATM, GPS double fréquence, Galaxy AI pour le suivi quotidien, remise de 248,44 € (‑43 %).\n• Google Pixel Watch 5 : écran bombé, suivi du sommeil, plus de 50 activités, assistance Gemini, 80 € de réduction.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Critères de choix avant l’achat",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Lorsque l’on compare ces modèles, il convient d’abord de vérifier l’autonomie GPS, qui passe de 24 heures (Garmin Instinct E) à 90 heures (Suunto Vertical). Ensuite, la disponibilité de cartes hors ligne est un critère déterminant : elle est annoncée pour les Suunto Race S, Vertical et les Amazfit T‑Rex 3/3 Pro, mais pas pour la Suunto Run. Enfin, il faut garder à l’esprit que les remises sont calculées sur le prix conseillé ou un ancien prix, et ne reflètent pas nécessairement le prix de vente du mois précédent.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Friday constitue une occasion rare d’acquérir une montre connectée haut de gamme à prix réduit. Que l’on recherche une montre ultra‑robuste pour le trail, un suivi santé complet ou une intégration poussée à l’écosystème Android, Amazon propose des offres attractives sur des modèles de Suunto, Garmin, Amazfit, Samsung et Google. Il reste toutefois essentiel de comparer les spécifications techniques – autonomie GPS, cartes hors ligne, résistance à l’eau – et de vérifier les prix réels avant de finaliser l’achat.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Clubic, Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
