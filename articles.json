@@ -6000,5 +6000,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "huawei-reconnu-coupable-de-multiples-delits-lies-a-la-fraude-et-au-vol-de-technologies-aux",
+    "title": "Huawei reconnu coupable de multiples délits liés à la fraude et au vol de technologies aux États-Unis",
+    "date": "2026-11-25",
+    "excerpt": "Après un procès à New York, le fabricant de smartphones Huawei a été déclaré coupable de dix chefs d’accusation, dont le détournement de code source et le blanchiment d’argent, marquant une étape majeure dans la confrontation juridique entre les États‑Unis et la Chine.",
+    "category": "Informatique",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/31577675717-2e938c5cb6-o-grand.jpg?resize=1600,900&key=fd1a5571",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte du jugement à New York",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le tribunal de New York a rendu son verdict après plusieurs mois d’instruction. Huawei a été reconnu coupable de dix des douze chefs d’accusation qui lui étaient reprochés, parmi lesquels le vol de secrets industriels, le blanchiment d’argent et la fraude bancaire. L’entreprise a annoncé son intention de faire appel, estimant que les accusations principales sont infondées.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Vol de code source et détournement de technologies",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les faits reprochés à Huawei concernent le détournement de code source et de technologies appartenant à des acteurs majeurs du secteur mobile, tels que T‑Mobile, Cisco et Motorola. Selon le procureur adjoint Tysen A. Duva, ces pratiques auraient alimenté un « empire » construit sur le pillage de propriétés intellectuelles, menaçant la sécurité intérieure américaine.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Violations des sanctions américaines et fraude bancaire",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le tribunal a également constaté que Huawei aurait enfreint les sanctions américaines en commerçant avec l’Iran, notamment en fournissant des équipements destinés à l’espionnage. Par ailleurs, la société aurait menti à plusieurs banques sur la nature de ses activités, entraînant des opérations de blanchiment d’argent répétées.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réactions de Huawei et perspectives d’appel",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Huawei a contesté le verdict, affirmant que aucun tribunal n’a jamais reconnu une responsabilité pour détournement délibéré de propriété intellectuelle et qu’aucune indemnité n’a été imposée. La société souligne que les accusations restantes, notamment d’entrave à la justice et d’association de malfaiteurs, n’ont pas été retenues. Un appel est prévu afin de contester les dix condamnations retenues.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Ce verdict représente une étape importante dans la lutte des États‑Unis contre les pratiques jugées illégales de Huawei. Au-delà des sanctions financières potentielles, le jugement pourrait influencer les relations commerciales sino‑américaines et renforcer la vigilance des autorités américaines à l’égard des transferts technologiques. L’appel de Huawei annoncera les prochains développements de cette affaire, qui continue de façonner le paysage de la cybersécurité et de la protection de la propriété intellectuelle à l’échelle mondiale.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
