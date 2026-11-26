@@ -6160,5 +6160,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "l-australie-adopte-un-devoir-de-vigilance-numerique-pour-encadrer-les-grandes-plateformes",
+    "title": "L'Australie adopte un devoir de vigilance numérique pour encadrer les grandes plateformes",
+    "date": "2026-11-26",
+    "excerpt": "Le parlement australien a adopté le Digital Duty of Care Act, une loi visant à responsabiliser les réseaux sociaux, jeux en ligne et IA afin de protéger les usagers, notamment les mineurs, contre les contenus dangereux et les préjudices en ligne.",
+    "category": "Internet & réseaux",
+    "cover": "https://next.ink/wp-content/uploads/2026/03/Ia-crime-1024x495.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Contexte législatif et objectifs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le législateur australien a récemment voté le Digital Duty of Care Act, souvent présenté comme l’équivalent local du règlement européen sur les services numériques (DSA). Le texte a pour ambition de placer les grandes plateformes numériques sous une obligation de prévention des risques, en les obligeant à anticiper les préjudices potentiels avant qu’ils ne se manifestent. Le Premier ministre, Anthony Albanese, a souligné que cette mesure constitue un « instrument puissant » pour protéger les enfants et la société des dangers en ligne, en transférant aux acteurs du numérique la responsabilité d’un environnement plus sûr.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Principales mesures prévues",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les dispositions qui seront appliquées dans les douze mois suivant l’entrée en vigueur, on retrouve :\n• Une protection accrue des mineurs contre les contenus incitant aux troubles alimentaires, glorifiant la criminalité ou encourageant des comportements dangereux.\n• La possibilité pour les utilisateurs de choisir entre un fil d’actualité basé sur les recommandations algorithmiques et un fil limité aux comptes et pages auxquels ils sont abonnés.\n• Un droit d’action collective ou individuelle devant la justice pour les personnes estimant que le manquement au devoir de vigilance leur a causé un préjudice.\n• Un pouvoir élargi du régulateur pour faire retirer les applications ou sites diffusant des deepfakes à caractère sexuel.\n• Des sanctions pouvant atteindre 5 % du chiffre d’affaires mondial de l’entreprise concernée.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Réactions politiques et internationales",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le texte a suscité une vive opposition au sein du parti Libéral, qui le qualifie d’autoritaire et menace de l’abroger s’il revient au pouvoir en 2028. Le chef du parti, Angus Taylor, estime que la loi ouvre la porte à une censure politique et porte atteinte à la liberté d’expression, pilier de la démocratie. Du côté des États‑Unis, l’ambassadeur américain, David Brat, a exprimé des réserves, arguant que la législation pourrait pousser les plateformes à censurer des propos légaux et imposerait aux entreprises américaines des obligations disproportionnées par rapport à leurs concurrents étrangers.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Implications pour les plateformes et les utilisateurs",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Pour les géants du numérique, le Digital Duty of Care Act représente un changement de paradigme : ils devront mettre en place des mécanismes de modération plus rigoureux, adapter leurs algorithmes de recommandation et garantir la traçabilité des contenus jugés dangereux. Les sanctions financières prévues, proportionnelles au chiffre d’affaires mondial, constituent un levier économique fort pour inciter à la conformité. Du côté des usagers, la loi offre davantage de contrôle sur le flux d’informations et un recours juridique en cas de préjudice, renforçant ainsi la confiance dans les services en ligne.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "En adoptant le Digital Duty of Care Act, l’Australie s’inscrit dans la dynamique mondiale de régulation du numérique, cherchant à concilier liberté d’expression et protection des publics vulnérables. Si le texte rencontre une opposition politique et des critiques internationales, il pose les bases d’un cadre plus responsable pour les plateformes, avec des obligations concrètes et des sanctions dissuasives. Le suivi de son application et les éventuelles adaptations futures seront déterminants pour mesurer son efficacité et son impact sur l’écosystème numérique australien.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
