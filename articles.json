@@ -6240,5 +6240,85 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "absence-de-strategie-nationale-pour-les-entrepots-de-donnees-de-sante-hospitaliers",
+    "title": "Absence de stratégie nationale pour les entrepôts de données de santé hospitaliers",
+    "date": "2026-11-26",
+    "excerpt": "La Cour des comptes pointe le manque de cohérence territoriale et l'absence de plan d'action pour les entrepôts de données de santé, appelant le ministère à définir une stratégie d'ici 2027.",
+    "category": "Informatique",
+    "cover": "https://next.ink/wp-content/uploads/2025/01/Anatia-1024x496.webp",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Introduction",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Un rapport de la Cour des comptes, publié le 26 novembre, met en lumière le désordre qui règne autour des entrepôts de données de santé hospitaliers (EDSH) en France. Le contrôle de ces structures et la mise en place d’une vision nationale sont jugés essentiels pour garantir la pertinence et la sécurité des informations médicales.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Multiplication des entrepôts sans coordination territoriale",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le document souligne que de nombreux EDSH ont été créés de façon indépendante, sans réelle articulation entre les régions. Cette dispersion complique l’interopérabilité des données et rend difficile l’exploitation d’une vision globale du système de santé.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Appel à une stratégie d’État claire d’ici 2027",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Face à ce constat, la Cour des comptes incite le ministère de la Santé, ainsi que la Direction générale de l’Innovation et du Numérique en santé, à définir une stratégie nationale avant 2027. Cette feuille de route devrait préciser les objectifs, les responsabilités et les critères de performance pour chaque entrepôt.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Renforcement du rôle de la CNIL",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le rapport recommande également que la Commission nationale de l’informatique et des libertés (CNIL) intensifie ses contrôles sur les EDSH. L’objectif est de garantir le respect des exigences de protection des données personnelles et d’assurer une gouvernance conforme aux exigences légales.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Sans une vision unifiée, les entrepôts de données de santé restent fragmentés, limitant leur utilité pour la recherche, la prise en charge des patients et la gestion du système de santé. Une stratégie nationale, soutenue par un contrôle renforcé de la CNIL, apparaît comme la condition sine qua non pour transformer ces dépôts en véritables leviers d’efficacité et de sécurité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Next"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
