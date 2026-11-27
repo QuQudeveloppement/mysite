@@ -5,14 +5,14 @@
 #  bordures cyan/violet), icônes, barre des tâches, menu, widgets, terminal,
 #  écran de connexion. Réversible.
 #
-#  Usage :  bash quentin-os-mint.sh [install|uninstall] [--no-plymouth]
+#  Usage :  bash quentin-os-mint.sh [install|uninstall] [--no-plymouth] [--no-media]
 #  (écran de démarrage + menu GRUB QUENTIN OS inclus par défaut)
 #  À lancer en utilisateur normal (sudo sera demandé), dans une session Cinnamon.
 # ============================================================================
 set -euo pipefail
 
-ACTION="install"; PLY=1
-for a in "$@"; do case "$a" in install|uninstall) ACTION="$a";; --plymouth) PLY=1;; --no-plymouth) PLY=0;; esac; done
+ACTION="install"; PLY=1; MEDIA=1
+for a in "$@"; do case "$a" in install|uninstall) ACTION="$a";; --plymouth) PLY=1;; --no-plymouth) PLY=0;; --no-media) MEDIA=0;; esac; done
 
 DATA="$HOME/.local/share/quentin-os"
 BACKUP="$HOME/.quentin-os-backup"
@@ -78,6 +78,17 @@ log "2/8 Installation des dépendances (sudo requis)"
 sudo apt-get update -qq
 sudo apt-get install -y librsvg2-bin conky-all papirus-icon-theme fonts-inter python3 dconf-cli
 
+if [ "$MEDIA" -eq 1 ]; then
+  log "2b/8 Applications multimédia (lecteurs, codecs, audio, vidéo, image) - gros téléchargement"
+  WANT="mint-meta-codecs ffmpeg vlc celluloid rhythmbox audacity pavucontrol easyeffects obs-studio kdenlive handbrake gimp inkscape shotwell mediainfo-gui yt-dlp"
+  AVAIL=()
+  for pk in $WANT; do
+    c=$(apt-cache policy "$pk" 2>/dev/null | awk '/Candidate:/{print $2}')
+    if [ -n "${c:-}" ] && [ "$c" != "(none)" ]; then AVAIL+=("$pk"); else log "   (paquet absent des dépôts, ignoré : $pk)"; fi
+  done
+  sudo apt-get install -y "${AVAIL[@]}" || log "   (une partie des applications n'a pas pu être installée)"
+fi
+
 # ----------------------------------------------------------------------------
 log "3/8 Création des ressources graphiques (fond, logo)"
 python3 - "$DATA" <<'PYEOF'
@@ -128,6 +139,18 @@ full = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="8
 </svg>'''
 barbg = '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="8"><rect width="400" height="8" rx="4" fill="#ffffff" fill-opacity="0.15"/></svg>'
 barfill = '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="8"><defs><linearGradient id="g"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs><rect width="400" height="8" rx="4" fill="url(#g)"/></svg>'
+GRAD = '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>'
+GRAD2 = '<defs><linearGradient id="g" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>'
+extra = {
+ "ring-outer": '<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360">' + GRAD + '<circle cx="180" cy="180" r="170" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-dasharray="260 120 90 200 140 258"/></svg>',
+ "ring-inner": '<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">' + GRAD2 + '<circle cx="140" cy="140" r="130" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-dasharray="120 60 200 80 150 207"/></svg>',
+ "halo": '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640"><defs><radialGradient id="h"><stop offset="0" stop-color="#38bdf8" stop-opacity="0.45"/><stop offset="0.5" stop-color="#7c3aed" stop-opacity="0.18"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient></defs><circle cx="320" cy="320" r="320" fill="url(#h)"/></svg>',
+ "star": '<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><circle cx="3" cy="3" r="2.4" fill="#ffffff"/></svg>',
+ "dot": '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"><circle cx="7" cy="7" r="5" fill="#22d3ee"/></svg>',
+ "logo-text": '<svg xmlns="http://www.w3.org/2000/svg" width="560" height="110" viewBox="0 0 560 110"><text x="280" y="75" text-anchor="middle" font-family="Inter, DejaVu Sans, sans-serif" font-size="60" font-weight="700" letter-spacing="10" fill="#ffffff">QUENTIN <tspan fill="#22d3ee" font-weight="300">OS</tspan></text></svg>',
+}
+for name, svg in extra.items():
+    open(f"{out}/{name}.svg", "w").write(svg)
 open(f"{out}/logo-full.svg", "w").write(full)
 open(f"{out}/bar-bg.svg", "w").write(barbg)
 open(f"{out}/bar-fill.svg", "w").write(barfill)
@@ -142,6 +165,8 @@ rsvg-convert -w 256 -h 256 "$DATA/logo-icon.svg" -o "$DATA/logo-icon.png"
 rsvg-convert -w 560 "$DATA/logo-full.svg" -o "$DATA/logo-full.png"
 rsvg-convert "$DATA/bar-bg.svg" -o "$DATA/bar-bg.png"
 rsvg-convert "$DATA/bar-fill.svg" -o "$DATA/bar-fill.png"
+for n in ring-outer ring-inner halo star dot logo-text; do rsvg-convert "$DATA/$n.svg" -o "$DATA/$n.png"; done
+rsvg-convert -w 190 -h 190 "$DATA/logo-icon.svg" -o "$DATA/ply-icon.png"
 sudo mkdir -p "$SYS_BG"
 sudo cp "$DATA"/wallpaper-*.png "$DATA/logo-icon.png" "$DATA/logo-icon.svg" "$DATA/logo-full.png" "$SYS_BG/"
 sudo chmod -R a+rX "$SYS_BG"
@@ -228,10 +253,10 @@ gs org.cinnamon panels-autohide "['1:false']"
 gs org.cinnamon panel-zone-icon-sizes '[{"panelId": 1, "left": 28, "center": 28, "right": 22}]'
 gs org.cinnamon panel-zone-symbolic-icon-sizes '[{"panelId": 1, "left": 24, "center": 24, "right": 20}]'
 gs org.cinnamon enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:grouped-window-list@cinnamon.org:1', 'panel1:right:0:systray@cinnamon.org:2', 'panel1:right:1:notifications@cinnamon.org:3', 'panel1:right:2:keyboard@cinnamon.org:4', 'panel1:right:3:network@cinnamon.org:5', 'panel1:right:4:sound@cinnamon.org:6', 'panel1:right:5:power@cinnamon.org:7', 'panel1:right:6:calendar@cinnamon.org:8']"
-gs org.cinnamon favorite-apps "['firefox.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'mintinstall.desktop', 'cinnamon-settings.desktop', 'org.gnome.Calculator.desktop', 'xed.desktop']"
+gs org.cinnamon favorite-apps "['firefox.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'mintinstall.desktop', 'cinnamon-settings.desktop', 'org.gnome.Calculator.desktop', 'vlc.desktop', 'org.gnome.Rhythmbox3.desktop', 'xed.desktop']"
 gs org.nemo.desktop show-desktop-icons true
 
-# Terminal : fond verre bleu nuit, texte cyan clair
+# Terminal : SEULEMENT les couleurs (pas de transparence, police et réglages inchangés)
 if command -v gnome-terminal >/dev/null; then
   PID=$(gsettings get org.gnome.Terminal.ProfilesList default 2>/dev/null | tr -d "'" || true)
   if [ -n "$PID" ]; then
@@ -239,9 +264,7 @@ if command -v gnome-terminal >/dev/null; then
     gsettings set "$P" use-theme-colors false || true
     gsettings set "$P" background-color '#0B1030' || true
     gsettings set "$P" foreground-color '#E0F2FE' || true
-    gsettings set "$P" use-theme-transparency false || true
-    gsettings set "$P" use-transparent-background true || true
-    gsettings set "$P" background-transparency-percent 18 || true
+    gsettings set "$P" use-transparent-background false || true
     gsettings set "$P" palette "['#0B1030','#F43F5E','#34D399','#FBBF24','#38BDF8','#A855F7','#22D3EE','#E0F2FE','#475569','#FB7185','#6EE7B7','#FCD34D','#7DD3FC','#C084FC','#67E8F9','#FFFFFF']" || true
     gsettings set "$P" cursor-background-color '#22D3EE' || true
     gsettings set "$P" cursor-colors-set true || true
@@ -311,8 +334,8 @@ if [ "$PLY" -eq 1 ]; then
   command -v plymouth-set-default-theme >/dev/null || sudo apt-get install -y plymouth plymouth-themes
   PT=/usr/share/plymouth/themes/quentin
   sudo mkdir -p "$PT"
-  sudo cp "$DATA/logo-full.png" "$PT/logo.png"
-  sudo cp "$DATA/bar-bg.png" "$DATA/bar-fill.png" "$PT/"
+  sudo cp "$DATA/ply-icon.png" "$PT/logo.png"
+  sudo cp "$DATA"/bar-bg.png "$DATA"/bar-fill.png "$DATA"/ring-outer.png "$DATA"/ring-inner.png "$DATA"/halo.png "$DATA"/star.png "$DATA"/dot.png "$DATA"/logo-text.png "$PT/"
   sudo tee "$PT/quentin.plymouth" >/dev/null <<'EOF'
 [Plymouth Theme]
 Name=QUENTIN OS
@@ -323,38 +346,125 @@ ImageDir=/usr/share/plymouth/themes/quentin
 ScriptFile=/usr/share/plymouth/themes/quentin/quentin.script
 EOF
   sudo tee "$PT/quentin.script" >/dev/null <<'EOF'
+# QUENTIN OS : écran de démarrage animé
 Window.SetBackgroundTopColor(0.02, 0.03, 0.09);
 Window.SetBackgroundBottomColor(0.16, 0.06, 0.37);
+W = Window.GetWidth();
+H = Window.GetHeight();
+cx = W / 2;
+cy = H / 2 - 60;
 
-logo.image = Image("logo.png");
-logo.sprite = Sprite(logo.image);
-lx = Window.GetWidth() / 2 - logo.image.GetWidth() / 2;
-ly = Window.GetHeight() / 2 - logo.image.GetHeight() / 2 - 30;
-logo.sprite.SetPosition(lx, ly, 10);
+# Champ d'étoiles qui scintillent et dérivent lentement
+starimg = Image("star.png");
+for (i = 0; i < 80; i++) {
+  stars[i].sprite = Sprite(starimg);
+  stars[i].x = Math.Random() * W;
+  stars[i].y = Math.Random() * H;
+  stars[i].phase = Math.Random() * 6.28;
+  stars[i].speed = 0.03 + Math.Random() * 0.06;
+  stars[i].drift = 0.05 + Math.Random() * 0.15;
+  stars[i].sprite.SetPosition(stars[i].x, stars[i].y, 1);
+}
 
-bar.bg.image = Image("bar-bg.png");
-bar.bg.sprite = Sprite(bar.bg.image);
-bx = Window.GetWidth() / 2 - bar.bg.image.GetWidth() / 2;
-by = ly + logo.image.GetHeight() + 60;
-bar.bg.sprite.SetPosition(bx, by, 10);
+# Halo lumineux derrière le logo
+haloimg = Image("halo.png");
+halo = Sprite(haloimg);
+halo.SetPosition(cx - haloimg.GetWidth() / 2, cy - haloimg.GetHeight() / 2, 2);
+halo.SetOpacity(0);
 
-bar.fill.image = Image("bar-fill.png");
-bar.fill.sprite = Sprite();
-bar.fill.sprite.SetPosition(bx, by, 11);
+# Anneaux qui tournent en sens inverse
+ring1img = Image("ring-outer.png");
+ring1 = Sprite(ring1img);
+ring1.SetPosition(cx - ring1img.GetWidth() / 2, cy - ring1img.GetHeight() / 2, 5);
+ring2img = Image("ring-inner.png");
+ring2 = Sprite(ring2img);
+ring2.SetPosition(cx - ring2img.GetWidth() / 2, cy - ring2img.GetHeight() / 2, 5);
+ring1.SetOpacity(0);
+ring2.SetOpacity(0);
 
-global.i = 0;
+# Logo Q au centre et nom en dessous
+logoimg = Image("logo.png");
+logo = Sprite(logoimg);
+logo.SetPosition(cx - logoimg.GetWidth() / 2, cy - logoimg.GetHeight() / 2, 10);
+logo.SetOpacity(0);
+textimg = Image("logo-text.png");
+logotext = Sprite(textimg);
+ty = cy + 195;
+logotext.SetPosition(cx - textimg.GetWidth() / 2, ty, 10);
+logotext.SetOpacity(0);
+
+# Barre de progression
+bgimg = Image("bar-bg.png");
+barbg = Sprite(bgimg);
+bx = cx - bgimg.GetWidth() / 2;
+by = ty + 125;
+barbg.SetPosition(bx, by, 10);
+barbg.SetOpacity(0);
+fillimg = Image("bar-fill.png");
+barfill = Sprite();
+barfill.SetPosition(bx, by, 11);
+
+frame = 0;
+progressvalue = 0;
+shown = 0;
+
 fun refresh() {
-  logo.sprite.SetOpacity(0.75 + 0.25 * Math.Sin(global.i / 14));
-  global.i++;
+  frame++;
+  # apparition en fondu (environ 1,2 s)
+  fade = frame / 60;
+  if (fade > 1) fade = 1;
+  pulse = 0.5 + 0.5 * Math.Sin(frame / 18);
+  halo.SetOpacity(fade * (0.55 + 0.45 * pulse));
+  logo.SetOpacity(fade);
+  logotext.SetOpacity(fade);
+  barbg.SetOpacity(fade);
+  ring1.SetOpacity(fade);
+  ring2.SetOpacity(fade);
+  ring1.SetImage(ring1img.Rotate(frame * 0.035));
+  ring2.SetImage(ring2img.Rotate(-frame * 0.055));
+  for (i = 0; i < 80; i++) {
+    stars[i].sprite.SetOpacity(0.25 + 0.75 * (0.5 + 0.5 * Math.Sin(frame * stars[i].speed + stars[i].phase)));
+    stars[i].x = stars[i].x - stars[i].drift;
+    if (stars[i].x < -6) stars[i].x = W;
+    stars[i].sprite.SetPosition(stars[i].x, stars[i].y, 1);
+  }
+  # la barre avance toujours un peu même si le système ne donne pas de progression
+  shown = shown + (progressvalue - shown) * 0.08;
+  w = Math.Int(fillimg.GetWidth() * shown);
+  if (w < 4) w = 4;
+  barfill.SetImage(fillimg.Scale(w, fillimg.GetHeight()));
 }
 Plymouth.SetRefreshFunction(refresh);
 
 fun progress(time, p) {
-  w = Math.Int(bar.fill.image.GetWidth() * p);
-  if (w < 1) w = 1;
-  bar.fill.sprite.SetImage(bar.fill.image.Scale(w, bar.fill.image.GetHeight()));
+  progressvalue = p;
 }
 Plymouth.SetBootProgressFunction(progress);
+
+# Mot de passe (disque chiffré) : étiquette + points
+pwlabelimg = Image.Text("Mot de passe", 0.88, 0.95, 1.0);
+pwlabel = Sprite(pwlabelimg);
+pwlabel.SetPosition(cx - pwlabelimg.GetWidth() / 2, by + 40, 20);
+pwlabel.SetOpacity(0);
+dotimg = Image("dot.png");
+for (i = 0; i < 32; i++) {
+  pwdots[i] = Sprite(dotimg);
+  pwdots[i].SetPosition(cx - 16 * 11 + i * 22, by + 75, 20);
+  pwdots[i].SetOpacity(0);
+}
+fun password_cb(prompt, bullets) {
+  pwlabel.SetOpacity(1);
+  for (i = 0; i < 32; i++) {
+    if (i < bullets) pwdots[i].SetOpacity(1);
+    else pwdots[i].SetOpacity(0);
+  }
+}
+Plymouth.SetDisplayPasswordFunction(password_cb);
+fun normal_cb() {
+  pwlabel.SetOpacity(0);
+  for (i = 0; i < 32; i++) pwdots[i].SetOpacity(0);
+}
+Plymouth.SetDisplayNormalFunction(normal_cb);
 EOF
   sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth "$PT/quentin.plymouth" 200 || true
   sudo update-alternatives --set default.plymouth "$PT/quentin.plymouth" || true
