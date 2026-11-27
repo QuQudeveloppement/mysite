@@ -6320,5 +6320,91 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "recompose-loutil-de-samsung-qui-modifie-langle-dune-photo-apres-la-prise",
+    "title": "Recompose : l’outil de Samsung qui modifie l’angle d’une photo après la prise",
+    "date": "2026-11-27",
+    "excerpt": "Samsung aurait intégré dans One UI 9.5 un nouveau module nommé Recompose, capable de changer l’angle de vue d’une image déjà capturée. Disponible d’abord sur le Galaxy S26 Ultra, il arrivera officiellement avec le Galaxy S27 début 2027.",
+    "category": "Smartphones",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/Samsung-Galaxy-S24-AI-Edit-Crop-and-Move-840w-472h.jpg.webp?resize=1600,900&key=2027b299",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un aperçu de Recompose",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Des ingénieurs de Android Authority ont découvert, en analysant le code de la bêta One UI 9.5, un composant appelé Recompose. Ce module se place dans le menu « Ajuster » de Photo Assist et permet de réorienter la perspective d’une photo après sa prise, sans recadrage classique.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comment fonctionne le changement d’angle",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le processus repose d’abord sur la création locale d’un modèle 3D de la scène grâce à Spatial Core, un composant déjà utilisé pour les effets de relief des fonds d’écran. La majeure partie du calcul, notamment la génération de la nouvelle vue, est effectuée sur les serveurs de Samsung, ce qui nécessite une connexion internet. L’utilisateur glisse simplement l’image ou ajuste un curseur vertical, puis valide avec « Générer ».",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Limites et premiers retours",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les tests menés sur le Galaxy S26 Ultra montrent que la fonction reste cachée, nécessitant une version plus récente de Galaxy AI que le téléphone ne possède pas officiellement. SamMobile a toutefois pu l’activer, révélant une grille d’aide au cadrage. Les premiers essais sur des photos de voitures ont mis en évidence des déformations autour des roues lorsqu’on change de point de vue, soulignant les difficultés de l’IA à conserver les proportions en perspective.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Comparaison avec les solutions existantes",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Recompose n’est pas la première implémentation de ce type de technologie. Apple propose depuis iOS 27 une fonction « Réorienté » aux performances similaires, avec les mêmes imperfections. Samsung avait auparavant testé un concept nommé Camera Shift via l’application Galaxy Enhance‑X, qui simulait un déplacement de hauteur et d’angle, mais il a été retiré avant l’arrivée de One UI 9.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Recompose représente une avancée notable dans la retouche mobile, en offrant la possibilité de corriger l’angle de prise après coup. Malgré des limites liées à la précision de la reconstruction 3D et à la dépendance au cloud, la fonction devrait être intégrée officiellement aux prochains Galaxy S27, prévus pour début 2027. Elle confirme l’intérêt croissant des fabricants pour l’IA générative au service de la photographie smartphone.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "video",
+        "value": "",
+        "url": "https://www.youtube.com/watch?v=NjGBZBby-rU",
+        "caption": "Galaxy AI Photo Assist Recompose (SamMobile)"
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
