@@ -41,6 +41,7 @@ uninstall() {
     dconf reset -f /org/cinnamon/ || true
   fi
   pkill conky 2>/dev/null || true
+  rm -rf "$HOME"/.local/share/cinnamon/desklets/quentin-*
   rm -f "$HOME/.config/autostart/quentin-conky.desktop" "$HOME/.config/conky/quentin.conf"
   sudo rm -rf "/usr/share/themes/$THEME" "$SYS_BG"
   if [ -f "$BACKUP/slick-greeter.conf.orig" ]; then sudo cp "$BACKUP/slick-greeter.conf.orig" /etc/lightdm/slick-greeter.conf
@@ -75,8 +76,14 @@ if [ ! -f "$BACKUP/cinnamon.dconf" ]; then   # ne jamais écraser la 1re sauvega
 fi
 
 log "2/8 Installation des dépendances (sudo requis)"
-sudo apt-get update -qq
-sudo apt-get install -y librsvg2-bin conky-all papirus-icon-theme fonts-inter python3 dconf-cli
+if ! sudo apt-get update -qq; then
+  log "apt-get update a échoué (souvent : horloge de la machine en retard ou en avance, fréquent en machine virtuelle)."
+  log "Synchronisation de l'heure puis nouvel essai dans 15 s..."
+  sudo timedatectl set-ntp true 2>/dev/null || true
+  sleep 15
+  sudo apt-get update -qq || die "apt-get update échoue encore. Vérifiez la date/l'heure (commande : date) et la connexion Internet, puis relancez."
+fi
+sudo apt-get install -y librsvg2-bin papirus-icon-theme fonts-inter python3 dconf-cli
 
 if [ "$MEDIA" -eq 1 ]; then
   log "2b/8 Applications multimédia (lecteurs, codecs, audio, vidéo, image) - gros téléchargement"
@@ -224,7 +231,29 @@ CINCSS='
 .notification { background-color: rgba(10,12,40,0.92); border: 1px solid rgba(34,211,238,0.6); border-radius: 14px; }
 .expo-workspaces-name-entry, .workspace-thumbnail-indicator { border-color: #22d3ee; }
 '
-[ -f "$TMP/$THEME/cinnamon/cinnamon.css" ] && printf '%s\n' "$CINCSS" >> "$TMP/$THEME/cinnamon/cinnamon.css"
+CINCSS2='
+/* ===== QUENTIN OS : barre des tâches refaite ===== */
+#panel { background-color: rgba(8,10,38,0.78); border-top: 2px solid rgba(34,211,238,0.70); box-shadow: 0 -6px 30px rgba(124,58,237,0.45); }
+.applet-box { padding: 0 6px; border-radius: 14px; margin: 6px 2px; transition-duration: 150; }
+.applet-box:hover { background-color: rgba(34,211,238,0.20); box-shadow: 0 0 12px rgba(34,211,238,0.5); }
+.applet-label { color: #e0f2fe; font-weight: bold; padding: 0 6px; }
+.panel-launchers .launcher { border-radius: 14px; }
+.grouped-window-list-item-box { border-radius: 16px; margin: 6px 4px; padding: 0 10px; background-color: rgba(255,255,255,0.05); border-bottom: 3px solid transparent; transition-duration: 150; }
+.grouped-window-list-item-box:hover { background-color: rgba(34,211,238,0.22); box-shadow: 0 0 16px rgba(34,211,238,0.6); }
+.grouped-window-list-item-box:focus, .grouped-window-list-item-box:active { background-color: rgba(168,85,247,0.34); border-bottom: 3px solid #22d3ee; box-shadow: 0 0 16px rgba(168,85,247,0.7); }
+.grouped-window-list-item-box:running { border-bottom: 3px solid rgba(168,85,247,0.9); }
+.grouped-window-list-thumbnail-menu, .grouped-window-list-thumbnail-alert { background-color: rgba(10,12,40,0.94); border: 1px solid rgba(168,85,247,0.6); border-radius: 16px; padding: 8px; }
+.window-list-preview, .grouped-window-list-badge { border-radius: 10px; }
+.calendar-today { background-color: rgba(34,211,238,0.35); border-radius: 12px; }
+/* ===== QUENTIN OS : écran de verrouillage (meilleur effort, selon version) ===== */
+.unlock-dialog, .unlockdialog, #unlock-dialog { background-color: rgba(10,12,40,0.78); border: 1px solid rgba(168,85,247,0.65); border-radius: 22px; box-shadow: 0 10px 40px rgba(124,58,237,0.55); padding: 20px; }
+.csstage, .csstage .lockscreen { color: #e0f2fe; }
+.clock-box, .clock { color: #e0f2fe; text-shadow: 0 0 18px rgba(34,211,238,0.8); }
+'
+[ -f "$TMP/$THEME/cinnamon/cinnamon.css" ] && printf '%s\n%s\n' "$CINCSS" "$CINCSS2" >> "$TMP/$THEME/cinnamon/cinnamon.css"
+for f in gtk-3.0/gtk.css gtk-3.0/gtk-dark.css; do
+  [ -f "$TMP/$THEME/$f" ] && printf '%s\n' "$CINCSS2" | sed -n '/verrouillage/,$p' >> "$TMP/$THEME/$f"
+done
 sudo rm -rf "/usr/share/themes/$THEME"
 sudo cp -a "$TMP/$THEME" /usr/share/themes/
 sudo chmod -R a+rX "/usr/share/themes/$THEME"
@@ -248,11 +277,21 @@ gs org.cinnamon.desktop.interface gtk-theme "$THEME"
 
 # Barre des tâches unique en bas, plus haute, style Windows 11/QUENTIN OS
 gs org.cinnamon panels-enabled "['1:0:bottom']"
-gs org.cinnamon panels-height "['1:48']"
+gs org.cinnamon panels-height "['1:56']"
 gs org.cinnamon panels-autohide "['1:false']"
-gs org.cinnamon panel-zone-icon-sizes '[{"panelId": 1, "left": 28, "center": 28, "right": 22}]'
-gs org.cinnamon panel-zone-symbolic-icon-sizes '[{"panelId": 1, "left": 24, "center": 24, "right": 20}]'
-gs org.cinnamon enabled-applets "['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:grouped-window-list@cinnamon.org:1', 'panel1:right:0:systray@cinnamon.org:2', 'panel1:right:1:notifications@cinnamon.org:3', 'panel1:right:2:keyboard@cinnamon.org:4', 'panel1:right:3:network@cinnamon.org:5', 'panel1:right:4:sound@cinnamon.org:6', 'panel1:right:5:power@cinnamon.org:7', 'panel1:right:6:calendar@cinnamon.org:8']"
+gs org.cinnamon panel-zone-icon-sizes '[{"panelId": 1, "left": 26, "center": 34, "right": 22}]'
+gs org.cinnamon panel-zone-symbolic-icon-sizes '[{"panelId": 1, "left": 22, "center": 24, "right": 20}]'
+gs org.cinnamon enabled-applets "['panel1:left:0:expo@cinnamon.org:0', 'panel1:left:1:show-desktop@cinnamon.org:1', 'panel1:center:0:menu@cinnamon.org:2', 'panel1:center:1:grouped-window-list@cinnamon.org:3', 'panel1:right:0:systray@cinnamon.org:4', 'panel1:right:1:notifications@cinnamon.org:5', 'panel1:right:2:keyboard@cinnamon.org:6', 'panel1:right:3:network@cinnamon.org:7', 'panel1:right:4:sound@cinnamon.org:8', 'panel1:right:5:power@cinnamon.org:9', 'panel1:right:6:calendar@cinnamon.org:10']"
+# Écran de verrouillage : grande horloge, police Inter, message QUENTIN OS
+gs org.cinnamon.desktop.screensaver use-custom-format true
+gs org.cinnamon.desktop.screensaver time-format '%H:%M'
+gs org.cinnamon.desktop.screensaver date-format '%A %d %B %Y'
+gs org.cinnamon.desktop.screensaver font-time 'Inter Bold 110'
+gs org.cinnamon.desktop.screensaver font-date 'Inter 26'
+gs org.cinnamon.desktop.screensaver font-message 'Inter 16'
+gs org.cinnamon.desktop.screensaver default-message 'QUENTIN OS'
+gs org.cinnamon.desktop.screensaver show-clock true
+gs org.cinnamon.desktop.screensaver show-album-art false
 gs org.cinnamon favorite-apps "['firefox.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'mintinstall.desktop', 'cinnamon-settings.desktop', 'org.gnome.Calculator.desktop', 'vlc.desktop', 'org.gnome.Rhythmbox3.desktop', 'xed.desktop']"
 gs org.nemo.desktop show-desktop-icons true
 
@@ -272,47 +311,170 @@ if command -v gnome-terminal >/dev/null; then
 fi
 
 # ----------------------------------------------------------------------------
-log "6/8 Widgets système sur le bureau (Conky : heure, CPU, RAM, disque, réseau)"
-mkdir -p "$HOME/.config/conky" "$HOME/.config/autostart"
-cat > "$HOME/.config/conky/quentin.conf" <<'EOF'
-conky.config = {
-  alignment='top_right', gap_x=36, gap_y=56, minimum_width=270, maximum_width=270,
-  own_window=true, own_window_type='desktop', own_window_transparent=false,
-  own_window_argb_visual=true, own_window_argb_value=120, own_window_colour='0b1030',
-  own_window_hints='undecorated,below,sticky,skip_taskbar,skip_pager',
-  double_buffer=true, update_interval=2, use_xft=true, font='Inter:size=10',
-  default_color='e0f2fe', color1='22d3ee', color2='c084fc', draw_borders=true,
-  border_inner_margin=18, border_width=1, default_outline_color='22d3ee',
-};
-conky.text = [[
-${color1}${font Inter:bold:size=24}${time %H:%M}${font}
-${color}${time %A %d %B %Y}
-
-${color2}SYSTÈME${color}
-CPU   ${cpu}%  ${color1}${cpubar 6}${color}
-RAM   ${memperc}%  ${color1}${membar 6}${color}
-${mem} / ${memmax}
-Disque /   ${fs_used_perc /}%  ${color1}${fs_bar 6 /}${color}
-${fs_used /} / ${fs_size /}
-
-${color2}RÉSEAU${color}
-↓ ${downspeed}   ↑ ${upspeed}
-
-${color2}PROCESSUS${color}
-${top name 1}  ${top cpu 1}%
-${top name 2}  ${top cpu 2}%
-${top name 3}  ${top cpu 3}%
-]];
-EOF
-cat > "$HOME/.config/autostart/quentin-conky.desktop" <<'EOF'
-[Desktop Entry]
-Type=Application
-Name=Widgets QUENTIN OS
-Exec=sh -c "sleep 4 && conky -c $HOME/.config/conky/quentin.conf"
-X-GNOME-Autostart-enabled=true
-EOF
+log "6/8 Widgets du bureau (desklets : déplaçables à la souris, supprimables par clic droit)"
 pkill conky 2>/dev/null || true
-( nohup conky -c "$HOME/.config/conky/quentin.conf" >/dev/null 2>&1 & ) || true
+rm -f "$HOME/.config/autostart/quentin-conky.desktop" "$HOME/.config/conky/quentin.conf"
+DK="$HOME/.local/share/cinnamon/desklets"
+mkdir -p "$DK/quentin-clock@quentin-os" "$DK/quentin-system@quentin-os"
+
+cat > "$DK/quentin-clock@quentin-os/metadata.json" <<'JSONEOF'
+{"uuid": "quentin-clock@quentin-os", "name": "QUENTIN OS - Horloge", "description": "Heure et date, style QUENTIN OS", "max-instances": "1", "version": "1.0"}
+JSONEOF
+cat > "$DK/quentin-clock@quentin-os/desklet.js" <<'JSEOF'
+const Desklet = imports.ui.desklet;
+const St = imports.gi.St;
+const Mainloop = imports.mainloop;
+
+const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+function QuentinClock(metadata, desklet_id) { this._init(metadata, desklet_id); }
+QuentinClock.prototype = {
+    __proto__: Desklet.Desklet.prototype,
+    _init: function (metadata, desklet_id) {
+        Desklet.Desklet.prototype._init.call(this, metadata, desklet_id);
+        this.box = new St.BoxLayout({ vertical: true, style: "background-color: rgba(11,16,48,0.80); border: 1px solid rgba(168,85,247,0.65); border-radius: 20px; padding: 16px 26px; width: 250px;" });
+        this.time = new St.Label({ style: "font-size: 56px; font-weight: bold; color: #22d3ee;" });
+        this.date = new St.Label({ style: "font-size: 15px; color: #e0f2fe;" });
+        this.box.add_child(this.time);
+        this.box.add_child(this.date);
+        this.setContent(this.box);
+        this._tick();
+    },
+    _tick: function () {
+        let d = new Date();
+        this.time.set_text(pad(d.getHours()) + ":" + pad(d.getMinutes()));
+        this.date.set_text(JOURS[d.getDay()] + " " + d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear());
+        this._timeout = Mainloop.timeout_add_seconds(5, () => { this._tick(); return false; });
+    },
+    on_desklet_removed: function () {
+        if (this._timeout) Mainloop.source_remove(this._timeout);
+    }
+};
+function main(metadata, desklet_id) { return new QuentinClock(metadata, desklet_id); }
+JSEOF
+
+cat > "$DK/quentin-system@quentin-os/metadata.json" <<'JSONEOF'
+{"uuid": "quentin-system@quentin-os", "name": "QUENTIN OS - Système", "description": "CPU, RAM, disque et réseau en direct", "max-instances": "1", "version": "1.0"}
+JSONEOF
+cat > "$DK/quentin-system@quentin-os/desklet.js" <<'JSEOF'
+const Desklet = imports.ui.desklet;
+const St = imports.gi.St;
+const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
+const Mainloop = imports.mainloop;
+
+const BAR_W = 200;
+const LABEL = "font-size: 12px; color: #c084fc; font-weight: bold;";
+const VALUE = "font-size: 12px; color: #e0f2fe;";
+
+function readText(path) {
+    try {
+        let r = GLib.file_get_contents(path);
+        return imports.byteArray.toString(r[1]);
+    } catch (e) { return ""; }
+}
+function fmtBytes(n) {
+    if (n >= 1073741824) return (n / 1073741824).toFixed(1) + " Go";
+    if (n >= 1048576) return (n / 1048576).toFixed(0) + " Mo";
+    return (n / 1024).toFixed(0) + " Ko";
+}
+function fmtSpeed(n) {
+    if (n >= 1048576) return (n / 1048576).toFixed(1) + " Mo/s";
+    return (n / 1024).toFixed(0) + " Ko/s";
+}
+
+function QuentinSystem(metadata, desklet_id) { this._init(metadata, desklet_id); }
+QuentinSystem.prototype = {
+    __proto__: Desklet.Desklet.prototype,
+    _init: function (metadata, desklet_id) {
+        Desklet.Desklet.prototype._init.call(this, metadata, desklet_id);
+        this.box = new St.BoxLayout({ vertical: true, style: "background-color: rgba(11,16,48,0.80); border: 1px solid rgba(34,211,238,0.60); border-radius: 20px; padding: 16px 22px; width: 250px;" });
+        this.title = new St.Label({ text: "SYSTÈME", style: "font-size: 13px; font-weight: bold; color: #22d3ee; padding-bottom: 6px;" });
+        this.box.add_child(this.title);
+        this.rows = {};
+        let self = this;
+        ["CPU", "RAM", "Disque"].forEach(function (name) { self.rows[name] = self._makeRow(name); });
+        this.net = new St.Label({ text: "Réseau", style: VALUE + " padding-top: 8px;" });
+        this.box.add_child(this.net);
+        this.setContent(this.box);
+        this.lastCpu = null;
+        this.lastNet = null;
+        this._update();
+    },
+    _makeRow: function (name) {
+        let head = new St.BoxLayout({ style: "padding-top: 6px;" });
+        let l = new St.Label({ text: name, style: LABEL, x_expand: true });
+        let v = new St.Label({ text: "", style: VALUE });
+        head.add_child(l);
+        head.add_child(v);
+        let track = new St.BoxLayout({ style: "background-color: rgba(255,255,255,0.14); border-radius: 4px; height: 6px; width: " + BAR_W + "px;" });
+        let fill = new St.Widget({ style: "background-gradient-direction: horizontal; background-gradient-start: #22d3ee; background-gradient-end: #a855f7; border-radius: 4px; height: 6px;" });
+        fill.set_width(2);
+        track.add_child(fill);
+        this.box.add_child(head);
+        this.box.add_child(track);
+        return { value: v, fill: fill };
+    },
+    _setRow: function (name, pct, text) {
+        let r = this.rows[name];
+        pct = Math.max(0, Math.min(100, pct));
+        r.value.set_text(text);
+        r.fill.set_width(Math.max(2, Math.round(BAR_W * pct / 100)));
+    },
+    _update: function () {
+        try {
+            // CPU
+            let f = readText("/proc/stat").split("\n")[0].trim().split(/\s+/).slice(1).map(Number);
+            let idle = f[3] + (f[4] || 0);
+            let total = f.reduce(function (a, b) { return a + b; }, 0);
+            if (this.lastCpu) {
+                let dt = total - this.lastCpu.total, di = idle - this.lastCpu.idle;
+                let pct = dt > 0 ? 100 * (dt - di) / dt : 0;
+                this._setRow("CPU", pct, Math.round(pct) + " %");
+            }
+            this.lastCpu = { idle: idle, total: total };
+            // RAM
+            let mem = readText("/proc/meminfo");
+            let mt = parseInt((mem.match(/MemTotal:\s+(\d+)/) || [0, 0])[1]) * 1024;
+            let ma = parseInt((mem.match(/MemAvailable:\s+(\d+)/) || [0, 0])[1]) * 1024;
+            if (mt > 0) this._setRow("RAM", 100 * (mt - ma) / mt, fmtBytes(mt - ma) + " / " + fmtBytes(mt));
+            // Disque
+            let info = Gio.File.new_for_path("/").query_filesystem_info("filesystem::size,filesystem::free", null);
+            let size = info.get_attribute_uint64("filesystem::size");
+            let free = info.get_attribute_uint64("filesystem::free");
+            if (size > 0) this._setRow("Disque", 100 * (size - free) / size, fmtBytes(size - free) + " / " + fmtBytes(size));
+            // Réseau
+            let rx = 0, tx = 0;
+            readText("/proc/net/dev").split("\n").slice(2).forEach(function (line) {
+                let p = line.split(":");
+                if (p.length < 2) return;
+                if (p[0].trim() === "lo") return;
+                let c = p[1].trim().split(/\s+/);
+                rx += Number(c[0]) || 0;
+                tx += Number(c[8]) || 0;
+            });
+            if (this.lastNet) {
+                this.net.set_text("↓ " + fmtSpeed((rx - this.lastNet.rx) / 2) + "    ↑ " + fmtSpeed((tx - this.lastNet.tx) / 2));
+            }
+            this.lastNet = { rx: rx, tx: tx };
+        } catch (e) {
+            global.logError("quentin-system: " + e);
+        }
+        this._timeout = Mainloop.timeout_add_seconds(2, () => { this._update(); return false; });
+    },
+    on_desklet_removed: function () {
+        if (this._timeout) Mainloop.source_remove(this._timeout);
+    }
+};
+function main(metadata, desklet_id) { return new QuentinSystem(metadata, desklet_id); }
+JSEOF
+
+# Placement en haut à droite (modifiable ensuite à la souris)
+DX=$(( ${W:-1920} - 300 )); [ "$DX" -lt 0 ] && DX=20
+gs org.cinnamon enabled-desklets "['quentin-clock@quentin-os:0:$DX:70', 'quentin-system@quentin-os:1:$DX:230']"
+gs org.cinnamon desklet-decorations 0
 
 # ----------------------------------------------------------------------------
 log "7/8 Écran de connexion (LightDM / slick-greeter)"
@@ -486,27 +648,40 @@ EOF
 sudo update-grub || log "  (update-grub a échoué : le menu GRUB reste inchangé)"
 
 # ----------------------------------------------------------------------------
-log "8/8 Redémarrage de Cinnamon et logo du menu"
+log "8/8 Redémarrage de Cinnamon et finition de la barre des tâches (Q seul, sans texte)"
 nohup cinnamon --replace >/dev/null 2>&1 &
 disown || true
-sleep 6
-# Logo QUENTIN OS sur le bouton du menu (le fichier de réglages n'existe qu'après le 1er chargement)
+for _ in $(seq 1 45); do
+  ls "$HOME"/.config/cinnamon/spices/menu@cinnamon.org/*.json >/dev/null 2>&1 && break
+  sleep 1
+done
+sleep 3
 python3 - "$SYS_BG/logo-icon.svg" <<'PYEOF'
 import glob, json, os, sys
 icon = sys.argv[1]
-for f in glob.glob(os.path.expanduser("~/.config/cinnamon/spices/menu@cinnamon.org/*.json")):
-    try:
-        d = json.load(open(f))
-        for k, v in (("menu-icon-custom", True), ("menu-icon", icon), ("menu-label", "QUENTIN OS")):
-            if k in d: d[k]["value"] = v
-        json.dump(d, open(f, "w"), indent=4)
-        print("Menu mis à jour :", f)
-    except Exception as e:
-        print("Menu non modifié :", e)
+def patch(applet, changes):
+    files = glob.glob(os.path.expanduser("~/.config/cinnamon/spices/%s/*.json" % applet))
+    if not files:
+        print("Réglages introuvables pour", applet)
+    for f in files:
+        try:
+            d = json.load(open(f))
+            for k, v in changes.items():
+                if k in d:
+                    d[k]["value"] = v
+                else:
+                    print("Clé absente (version de Cinnamon différente) :", applet, k)
+            json.dump(d, open(f, "w"), indent=4)
+            print("OK :", f)
+        except Exception as e:
+            print("Non modifié :", f, e)
+patch("menu@cinnamon.org", {"menu-icon-custom": True, "menu-icon": icon, "menu-label": ""})
+patch("grouped-window-list@cinnamon.org", {"pinned-apps": ["firefox.desktop", "nemo.desktop", "org.gnome.Terminal.desktop", "vlc.desktop", "org.gnome.Rhythmbox3.desktop"]})
 PYEOF
 nohup cinnamon --replace >/dev/null 2>&1 &
 disown || true
 
 log "Terminé. QUENTIN OS est appliqué."
 log "Déconnectez-vous puis reconnectez-vous pour tout voir (écran de connexion inclus)."
+log "Widgets : glissez-les à la souris ; clic droit > Retirer pour les supprimer (clic droit sur le bureau > Ajouter des desklets pour les remettre)."
 log "Pour revenir en arrière : bash $(basename "$0") uninstall"
