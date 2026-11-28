@@ -6486,5 +6486,97 @@
     "archivedManually": false,
     "keepActive": false,
     "pinned": false
+  },
+  {
+    "id": "les-meilleures-offres-tech-du-black-friday-2026-avant-le-cyber-monday",
+    "title": "Les meilleures offres tech du Black Friday 2026 avant le Cyber Monday",
+    "date": "2026-11-28",
+    "excerpt": "Le week‑end du Black Friday 2026 recèle de promotions sur smartphones, tablettes, PC, accessoires audio et objets connectés. Retour sur les bons plans phares à ne pas manquer avant le Cyber Monday.",
+    "category": "Informatique",
+    "cover": "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/11/direct-black-friday-jour-j.jpg?resize=1600,900&key=7d3413c5",
+    "blocks": [
+      {
+        "type": "heading",
+        "value": "Un week‑end prolongé pour les achats high‑tech",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le vendredi 27 novembre 2026 a marqué le coup d’envoi du Black Friday en France. Les remises se poursuivent jusqu’au dimanche soir, puis le Cyber Monday prend le relais. Cette période offre encore plusieurs jours pour profiter de prix cassés sur une large gamme de produits : smartphones, tablettes, ordinateurs portables, casques, écouteurs, objets connectés et même solutions de cybersécurité.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Smartphones et tablettes phares à prix réduit",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Parmi les appareils les plus recherchés, le Samsung Galaxy S26 Ultra bénéficie d’une remise notable, tout comme le Galaxy S26 FE et le Galaxy Z Fold 8. Apple propose également le iPhone 18 Pro à 1 279 €, soit 200 € d’économie, ainsi que le Galaxy A37 associé à un casque JBL Grip. Côté tablettes, le Lenovo Idea Tab Plus et le Lenovo Yoga Tab Gen 2 sont mis en avant, tout comme le Samsung Galaxy Tab A57. Les offres sont souvent conditionnées à un panier minimum, par exemple 23 € de remise dès 149 € d’achat.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Ordinateurs portables et accessoires gaming",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Friday met en avant plusieurs modèles de laptops, notamment le Asus TUF Gaming A18 (2025) à 1 499,99 € au lieu de 1 999,99 €, équipé d’une RTX 5070 et d’un écran 240 Hz. Le MacBook Air 13 M5 (2026) d’Apple bénéficie d’une réduction de 17 % pour atteindre 1 149 €. Du côté des accessoires, la souris gaming Logitech G502 X PLUS passe à 74,99 € au lieu de 149,99 €, et le casque Sony WH‑1000XM4C est proposé à 119,99 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Audio, vidéo et objets connectés en promotion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Les écouteurs true‑wireless ne sont pas en reste : les Apple AirPods 5 affichent 119 € (code 10DES129) et les JBL Live Pro 2 sont à 79,99 €, soit une remise de 46 %. Les enceintes et barres de son comme le Sonos Ace ou le JBL PartyBox 330 profitent également de baisses de prix. En matière de vidéo, les téléviseurs OLED de LG (OLED77B6, OLED55B6) sont fortement discountés, tout comme le moniteur gaming Lenovo Legion 25‑10, à 109,99 €.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Sécurité numérique et solutions de cybersécurité",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le Black Friday inclut aussi des offres sur les logiciels de protection. Norton propose jusqu’à 74 % de réduction sur ses suites de cybersécurité pour la première année, couvrant antivirus, anti‑phishing, VPN SecureVPN et assistance en ligne. Ces solutions sont valables jusqu’au 1er décembre 2026 et s’adaptent aux environnements Windows et macOS, avec des options familiales couvrant jusqu’à 10 appareils.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "heading",
+        "value": "Conclusion",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "value": "Le week‑end du Black Friday 2026 reste une opportunité incontournable pour renouveler son matériel high‑tech à moindre coût. Que vous cherchiez un nouveau smartphone, un ordinateur portable performant, des accessoires audio ou une protection en ligne, les promotions s’étendent sur plusieurs catégories et plateformes. Il suffit de surveiller les offres, de vérifier les seuils de remise et de profiter avant le Cyber Monday pour finaliser vos achats au meilleur prix.",
+        "url": "",
+        "caption": ""
+      },
+      {
+        "type": "text",
+        "url": "",
+        "caption": "",
+        "value": "Sources : Frandroid, Clubic"
+      }
+    ],
+    "archiveAfterMonths": 6,
+    "archivedManually": false,
+    "keepActive": false,
+    "pinned": false
   }
 ]
