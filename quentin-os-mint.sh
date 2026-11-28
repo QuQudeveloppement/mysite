@@ -5,22 +5,40 @@
 #  bordures cyan/violet), icônes, barre des tâches, menu, widgets, terminal,
 #  écran de connexion. Réversible.
 #
-#  Usage :  bash quentin-os-mint.sh [install|uninstall] [--no-plymouth] [--no-media]
-#  (écran de démarrage + menu GRUB QUENTIN OS inclus par défaut)
+#  Usage :  bash quentin-os-mint.sh [install|uninstall|repair-boot] [--plymouth (expérimental)] [--no-media]
+#  repair-boot : annule SEULEMENT le menu GRUB et l'écran de démarrage (utilisable en root depuis une console)
 #  À lancer en utilisateur normal (sudo sera demandé), dans une session Cinnamon.
 # ============================================================================
 set -euo pipefail
 
-ACTION="install"; PLY=1; MEDIA=1
-for a in "$@"; do case "$a" in install|uninstall) ACTION="$a";; --plymouth) PLY=1;; --no-plymouth) PLY=0;; --no-media) MEDIA=0;; esac; done
+ACTION="install"; PLY=0; MEDIA=1
+for a in "$@"; do case "$a" in install|uninstall|repair-boot) ACTION="$a";; --plymouth) PLY=1;; --no-plymouth) PLY=0;; --no-media) MEDIA=0;; esac; done
 
 DATA="$HOME/.local/share/quentin-os"
 BACKUP="$HOME/.quentin-os-backup"
 THEME="Quentin-Glass"
+RENAME_FILES="/etc/os-release /etc/lsb-release /etc/linuxmint/info /usr/share/xsessions/cinnamon.desktop /usr/share/xsessions/cinnamon2d.desktop"
 SYS_BG="/usr/share/backgrounds/quentin-os"
 
 log() { printf '\033[1;36m[QUENTIN OS]\033[0m %s\n' "$*"; }
 die() { printf '\033[1;31m[ERREUR]\033[0m %s\n' "$*" >&2; exit 1; }
+
+if [ "$ACTION" = "repair-boot" ]; then
+  SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO="sudo"
+  log "Réparation du démarrage : retrait du fond GRUB et du thème Plymouth QUENTIN OS"
+  $SUDO rm -f /etc/default/grub.d/99-quentin.cfg
+  if [ -d /usr/share/plymouth/themes/quentin ]; then
+    $SUDO update-alternatives --remove default.plymouth /usr/share/plymouth/themes/quentin/quentin.plymouth 2>/dev/null || true
+    ORIG="$(cat "$HOME/.quentin-os-backup/plymouth.orig" 2>/dev/null || true)"
+    [ -n "$ORIG" ] || ORIG="$(plymouth-set-default-theme -l 2>/dev/null | grep -m1 -E 'mint-logo|ubuntu-logo|bgrt|spinner' || true)"
+    [ -n "$ORIG" ] && $SUDO plymouth-set-default-theme "$ORIG" || true
+    $SUDO rm -rf /usr/share/plymouth/themes/quentin
+  fi
+  $SUDO update-initramfs -u -k all
+  $SUDO update-grub
+  log "Terminé. Redémarrez : le démarrage est revenu à l'état d'origine."
+  exit 0
+fi
 
 [ "$(id -u)" -ne 0 ] || die "Ne lancez pas ce script avec sudo : lancez-le en utilisateur normal."
 case "${XDG_CURRENT_DESKTOP:-}" in *Cinnamon*) ;; *) die "Session Cinnamon requise (actuel : ${XDG_CURRENT_DESKTOP:-inconnu}).";; esac
@@ -42,6 +60,15 @@ uninstall() {
   fi
   pkill conky 2>/dev/null || true
   rm -rf "$HOME"/.local/share/cinnamon/desklets/quentin-*
+  rm -f "$HOME"/.local/share/applications/quentin-*.desktop
+  grep -l "QUENTIN-OS-OVERRIDE" "$HOME"/.local/share/applications/*.desktop 2>/dev/null | xargs -r rm -f
+  rm -rf "$HOME/.local/share/icons/Quentin-Icons"
+  for f in $RENAME_FILES; do
+    d="$BACKUP/rename/$(echo "$f" | tr / _)"
+    [ -f "$d" ] && sudo cp "$d" "$f" || true
+  done
+  sudo rm -f /etc/default/grub.d/98-quentin-name.cfg
+  sudo update-grub >/dev/null 2>&1 || true
   rm -f "$HOME/.config/autostart/quentin-conky.desktop" "$HOME/.config/conky/quentin.conf"
   sudo rm -rf "/usr/share/themes/$THEME" "$SYS_BG"
   if [ -f "$BACKUP/slick-greeter.conf.orig" ]; then sudo cp "$BACKUP/slick-greeter.conf.orig" /etc/lightdm/slick-greeter.conf
@@ -185,6 +212,894 @@ WALL="$SYS_BG/wallpaper-$WP.png"
 # (fond 4k conservé pour l'écran de connexion)
 
 # ----------------------------------------------------------------------------
+log "3b/8 Icônes QUENTIN OS et applications QUENTIN OS (Paramètres, Fichiers, Moniteur, Notes, Calculatrice)"
+mkdir -p "$DATA/apps" "$HOME/.local/share/applications"
+cat > "$DATA/apps/quentin_apps.py" <<'QAPPSEOF'
+#!/usr/bin/env python3
+"""Applications QUENTIN OS : Paramètres, Fichiers, Moniteur système, Notes, Calculatrice."""
+import ast, operator, os, platform, shutil, signal, subprocess, sys, time
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gio, GLib, Gdk
+
+HOME = os.path.expanduser("~")
+SYS_BG = "/usr/share/backgrounds/quentin-os"
+LOGO = SYS_BG + "/logo-full.png"
+
+
+def gset(schema):
+    src = Gio.SettingsSchemaSource.get_default()
+    if src and src.lookup(schema, True):
+        return Gio.Settings.new(schema)
+    return None
+
+
+def info_box(parent, text, kind=Gtk.MessageType.INFO):
+    d = Gtk.MessageDialog(transient_for=parent, modal=True, message_type=kind, buttons=Gtk.ButtonsType.OK, text=text)
+    d.run()
+    d.destroy()
+
+
+def ask(parent, text):
+    d = Gtk.MessageDialog(transient_for=parent, modal=True, message_type=Gtk.MessageType.QUESTION, buttons=Gtk.ButtonsType.YES_NO, text=text)
+    r = d.run()
+    d.destroy()
+    return r == Gtk.ResponseType.YES
+
+
+def prompt(parent, title, default=""):
+    d = Gtk.Dialog(title=title, transient_for=parent, modal=True)
+    d.add_buttons("Annuler", Gtk.ResponseType.CANCEL, "OK", Gtk.ResponseType.OK)
+    e = Gtk.Entry(text=default, activates_default=True)
+    d.set_default_response(Gtk.ResponseType.OK)
+    d.get_content_area().pack_start(e, True, True, 12)
+    d.get_content_area().set_border_width(12)
+    d.show_all()
+    r = d.run()
+    txt = e.get_text().strip()
+    d.destroy()
+    return txt if r == Gtk.ResponseType.OK and txt else None
+
+
+def run_detached(cmd):
+    try:
+        subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        return True
+    except Exception:
+        return False
+
+
+def page(title):
+    box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=14, margin=24)
+    lbl = Gtk.Label(xalign=0)
+    lbl.set_markup("<span size='x-large' weight='bold'>%s</span>" % title)
+    box.pack_start(lbl, False, False, 4)
+    sc = Gtk.ScrolledWindow()
+    sc.add(box)
+    return sc, box
+
+
+def row(label, widget):
+    r = Gtk.Box(spacing=12)
+    l = Gtk.Label(label=label, xalign=0)
+    l.set_size_request(240, -1)
+    r.pack_start(l, False, False, 0)
+    r.pack_start(widget, False, False, 0)
+    return r
+
+
+# ----------------------------------------------------------------------------
+class SettingsApp(Gtk.Window):
+    def __init__(self):
+        super().__init__(title="Paramètres QUENTIN OS")
+        self.set_default_size(900, 600)
+        self.interface = gset("org.cinnamon.desktop.interface")
+        self.bg = gset("org.cinnamon.desktop.background")
+        self.cin = gset("org.cinnamon")
+        self.saver = gset("org.cinnamon.desktop.screensaver")
+        self.theme = gset("org.cinnamon.theme")
+        self.wm = gset("org.cinnamon.desktop.wm.preferences")
+        box = Gtk.Box()
+        self.add(box)
+        self.stack = Gtk.Stack(transition_type=Gtk.StackTransitionType.CROSSFADE)
+        side = Gtk.StackSidebar()
+        side.set_stack(self.stack)
+        side.set_size_request(210, -1)
+        box.pack_start(side, False, False, 0)
+        box.pack_start(self.stack, True, True, 0)
+        for name, title, fn in (("app", "Apparence", self.p_appearance), ("bar", "Barre des tâches", self.p_taskbar),
+                                ("lock", "Écran de verrouillage", self.p_lock), ("sys", "Système", self.p_system),
+                                ("about", "À propos", self.p_about)):
+            self.stack.add_titled(fn(), name, title)
+
+    # -- helpers
+    def _list_themes(self, dirs, need):
+        names = set()
+        for d in dirs:
+            if os.path.isdir(d):
+                for n in os.listdir(d):
+                    if os.path.exists(os.path.join(d, n, need)):
+                        names.add(n)
+        return sorted(names)
+
+    def _combo(self, items, current, cb):
+        c = Gtk.ComboBoxText()
+        for i in items:
+            c.append_text(i)
+        if current in items:
+            c.set_active(items.index(current))
+        c.connect("changed", lambda w: cb(w.get_active_text()) if w.get_active_text() else None)
+        return c
+
+    # -- pages
+    def p_appearance(self):
+        sc, box = page("Apparence")
+        fc = Gtk.FileChooserButton(title="Choisir un fond d'écran", action=Gtk.FileChooserAction.OPEN)
+        flt = Gtk.FileFilter()
+        flt.set_name("Images")
+        flt.add_mime_type("image/*")
+        fc.add_filter(flt)
+        if self.bg:
+            fc.connect("file-set", lambda w: self.bg.set_string("picture-uri", w.get_uri()))
+        box.pack_start(row("Fond d'écran", fc), False, False, 0)
+        b = Gtk.Button(label="Remettre le fond QUENTIN OS")
+        def default_bg(_):
+            w = Gdk.Screen.get_default().get_width()
+            n = "4k" if w >= 3200 else "2k" if w >= 2200 else "fhd" if w >= 1700 else "hd"
+            if self.bg:
+                self.bg.set_string("picture-uri", "file://%s/wallpaper-%s.png" % (SYS_BG, n))
+        b.connect("clicked", default_bg)
+        box.pack_start(row("", b), False, False, 0)
+        if self.interface:
+            themes = self._list_themes(["/usr/share/themes", os.path.join(HOME, ".themes")], "gtk-3.0")
+            def set_theme(n):
+                self.interface.set_string("gtk-theme", n)
+                if self.wm: self.wm.set_string("theme", n)
+                if self.theme and os.path.isdir("/usr/share/themes/%s/cinnamon" % n):
+                    self.theme.set_string("name", n)
+            box.pack_start(row("Thème des fenêtres", self._combo(themes, self.interface.get_string("gtk-theme"), set_theme)), False, False, 0)
+            icons = self._list_themes(["/usr/share/icons", os.path.join(HOME, ".local/share/icons")], "index.theme")
+            box.pack_start(row("Thème d'icônes", self._combo(icons, self.interface.get_string("icon-theme"), lambda n: self.interface.set_string("icon-theme", n))), False, False, 0)
+            fb = Gtk.FontButton()
+            fb.set_font(self.interface.get_string("font-name"))
+            fb.connect("font-set", lambda w: self.interface.set_string("font-name", w.get_font()))
+            box.pack_start(row("Police de l'interface", fb), False, False, 0)
+        if self.cin:
+            sw = Gtk.Switch()
+            self.cin.bind("desktop-effects", sw, "active", Gio.SettingsBindFlags.DEFAULT)
+            box.pack_start(row("Animations et effets", sw), False, False, 0)
+        return sc
+
+    def _desklets(self):
+        return list(self.cin.get_strv("enabled-desklets")) if self.cin else []
+
+    def _toggle_desklet(self, uuid, on, y):
+        cur = [d for d in self._desklets() if not d.startswith(uuid + ":")]
+        if on:
+            x = max(20, Gdk.Screen.get_default().get_width() - 300)
+            ids = [int(d.split(":")[1]) for d in self._desklets() if d.split(":")[1].isdigit()]
+            cur.append("%s:%d:%d:%d" % (uuid, (max(ids) + 1) if ids else 0, x, y))
+        self.cin.set_strv("enabled-desklets", cur)
+
+    def p_taskbar(self):
+        sc, box = page("Barre des tâches et widgets")
+        if not self.cin:
+            box.pack_start(Gtk.Label(label="Réglages Cinnamon indisponibles."), False, False, 0)
+            return sc
+        h = 56
+        for p in self.cin.get_strv("panels-height"):
+            if p.startswith("1:"): h = int(p.split(":")[1])
+        spin = Gtk.SpinButton.new_with_range(32, 96, 2)
+        spin.set_value(h)
+        spin.connect("value-changed", lambda w: self.cin.set_strv("panels-height", ["1:%d" % int(w.get_value())]))
+        box.pack_start(row("Hauteur de la barre (px)", spin), False, False, 0)
+        pos = "bottom"
+        for p in self.cin.get_strv("panels-enabled"):
+            if p.startswith("1:"): pos = p.split(":")[2]
+        box.pack_start(row("Position", self._combo(["bottom", "top"], pos, lambda v: self.cin.set_strv("panels-enabled", ["1:0:" + v]))), False, False, 0)
+        ah = Gtk.Switch()
+        ah.set_active(any(p == "1:true" for p in self.cin.get_strv("panels-autohide")))
+        ah.connect("notify::active", lambda w, _: self.cin.set_strv("panels-autohide", ["1:true" if w.get_active() else "1:false"]))
+        box.pack_start(row("Masquer automatiquement", ah), False, False, 0)
+        for uuid, label, y in (("quentin-clock@quentin-os", "Widget horloge", 70), ("quentin-system@quentin-os", "Widget système", 230)):
+            sw = Gtk.Switch()
+            sw.set_active(any(d.startswith(uuid + ":") for d in self._desklets()))
+            sw.connect("notify::active", lambda w, _, u=uuid, yy=y: self._toggle_desklet(u, w.get_active(), yy))
+            box.pack_start(row(label, sw), False, False, 0)
+        t = Gtk.Label(xalign=0, wrap=True, label="Les widgets se déplacent à la souris sur le bureau.")
+        box.pack_start(t, False, False, 0)
+        rb = Gtk.Button(label="Recharger l'interface (barre, menu)")
+        rb.connect("clicked", lambda _: run_detached(["cinnamon", "--replace"]))
+        box.pack_start(row("", rb), False, False, 0)
+        return sc
+
+    def p_lock(self):
+        sc, box = page("Écran de verrouillage")
+        if not self.saver:
+            box.pack_start(Gtk.Label(label="Réglages indisponibles."), False, False, 0)
+            return sc
+        for key, label in (("default-message", "Message affiché"), ("time-format", "Format de l'heure"), ("date-format", "Format de la date")):
+            e = Gtk.Entry(width_chars=28)
+            try:
+                self.saver.bind(key, e, "text", Gio.SettingsBindFlags.DEFAULT)
+            except Exception:
+                continue
+            box.pack_start(row(label, e), False, False, 0)
+        for key, label in (("use-custom-format", "Formats personnalisés"), ("show-clock", "Afficher l'horloge")):
+            sw = Gtk.Switch()
+            try:
+                self.saver.bind(key, sw, "active", Gio.SettingsBindFlags.DEFAULT)
+            except Exception:
+                continue
+            box.pack_start(row(label, sw), False, False, 0)
+        b = Gtk.Button(label="Verrouiller maintenant")
+        b.connect("clicked", lambda _: run_detached(["cinnamon-screensaver-command", "-l"]))
+        box.pack_start(row("", b), False, False, 0)
+        return sc
+
+    def p_system(self):
+        sc, box = page("Système")
+        try:
+            osn = [l.split("=", 1)[1].strip().strip('"') for l in open("/etc/os-release") if l.startswith("PRETTY_NAME=")][0]
+        except Exception:
+            osn = "QUENTIN OS"
+        mem = ""
+        try:
+            kb = int([l for l in open("/proc/meminfo") if l.startswith("MemTotal")][0].split()[1])
+            mem = "%.1f Go" % (kb / 1048576)
+        except Exception:
+            pass
+        cpu = ""
+        try:
+            cpu = [l.split(":", 1)[1].strip() for l in open("/proc/cpuinfo") if l.startswith("model name")][0]
+        except Exception:
+            pass
+        for k, v in (("Système", osn), ("Noyau", platform.release()), ("Processeur", cpu), ("Mémoire", mem), ("Nom de la machine", platform.node())):
+            box.pack_start(row(k, Gtk.Label(label=v, xalign=0, selectable=True)), False, False, 0)
+        box.pack_start(Gtk.Separator(), False, False, 6)
+        box.pack_start(Gtk.Label(xalign=0, wrap=True, label="Réglages matériels : ces boutons ouvrent les modules système (réseau, son, écrans, imprimantes, mises à jour)."), False, False, 0)
+        grid = Gtk.FlowBox(selection_mode=Gtk.SelectionMode.NONE, max_children_per_line=3, column_spacing=10, row_spacing=10)
+        mods = (("Réseau et Wi-Fi", ["nm-connection-editor"]), ("Son", ["pavucontrol"]), ("Écrans", ["cinnamon-settings", "display"]),
+                ("Clavier", ["cinnamon-settings", "keyboard"]), ("Souris", ["cinnamon-settings", "mouse"]), ("Alimentation", ["cinnamon-settings", "power"]),
+                ("Date et heure", ["cinnamon-settings", "calendar"]), ("Utilisateurs", ["cinnamon-settings", "user"]), ("Bluetooth", ["blueman-manager"]),
+                ("Imprimantes", ["system-config-printer"]), ("Mises à jour", ["mintupdate"]), ("Applications au démarrage", ["cinnamon-session-properties"]))
+        for label, cmd in mods:
+            b = Gtk.Button(label=label)
+            b.set_sensitive(shutil.which(cmd[0]) is not None)
+            b.connect("clicked", lambda _, c=cmd: run_detached(c))
+            grid.add(b)
+        box.pack_start(grid, False, False, 0)
+        return sc
+
+    def p_about(self):
+        sc, box = page("À propos")
+        if os.path.exists(LOGO):
+            box.pack_start(Gtk.Image.new_from_file(LOGO), False, False, 10)
+        box.pack_start(Gtk.Label(xalign=0, wrap=True, label="QUENTIN OS 0.2\nBureau personnalisé basé sur Linux Mint.\nApplications QUENTIN OS : Paramètres, Fichiers, Moniteur système, Notes, Calculatrice."), False, False, 0)
+        return sc
+
+
+# ----------------------------------------------------------------------------
+class FilesApp(Gtk.Window):
+    def __init__(self, start=None):
+        super().__init__(title="Fichiers QUENTIN OS")
+        self.set_default_size(980, 620)
+        self.cwd = HOME
+        self.hist = []
+        self.show_hidden = False
+        v = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.add(v)
+        bar = Gtk.Box(spacing=6, margin=8)
+        def btn(label, cb, tip):
+            b = Gtk.Button(label=label, tooltip_text=tip)
+            b.connect("clicked", cb)
+            bar.pack_start(b, False, False, 0)
+            return b
+        btn("←", lambda _: self.back(), "Précédent")
+        btn("↑", lambda _: self.load(os.path.dirname(self.cwd)), "Dossier parent")
+        btn("Accueil", lambda _: self.load(HOME), "Dossier personnel")
+        self.entry = Gtk.Entry()
+        self.entry.connect("activate", lambda e: self.load(os.path.expanduser(e.get_text())))
+        bar.pack_start(self.entry, True, True, 0)
+        btn("Nouveau dossier", lambda _: self.new_folder(), "Créer un dossier")
+        btn("Renommer", lambda _: self.rename(), "Renommer la sélection")
+        btn("Corbeille", lambda _: self.trash(), "Mettre la sélection à la corbeille")
+        tg = Gtk.ToggleButton(label="Fichiers cachés")
+        tg.connect("toggled", lambda w: self._hidden(w.get_active()))
+        bar.pack_start(tg, False, False, 0)
+        v.pack_start(bar, False, False, 0)
+        paned = Gtk.Paned()
+        v.pack_start(paned, True, True, 0)
+        places = Gtk.ListBox()
+        places.set_size_request(180, -1)
+        for name, sub in (("Accueil", ""), ("Bureau", "Desktop"), ("Documents", "Documents"), ("Téléchargements", "Téléchargements"),
+                          ("Images", "Images"), ("Musique", "Musique"), ("Vidéos", "Vidéos")):
+            path = os.path.join(HOME, sub) if sub else HOME
+            if not os.path.isdir(path):
+                alt = os.path.join(HOME, {"Téléchargements": "Downloads", "Images": "Pictures", "Musique": "Music", "Vidéos": "Videos"}.get(sub, sub))
+                if os.path.isdir(alt):
+                    path = alt
+                else:
+                    continue
+            r = Gtk.ListBoxRow()
+            r.path = path
+            r.add(Gtk.Label(label=name, xalign=0, margin=8))
+            places.add(r)
+        places.connect("row-activated", lambda lb, r: self.load(r.path))
+        paned.pack1(places, False, False)
+        self.store = Gtk.ListStore(Gio.Icon, str, str, str, str, bool)
+        self.tree = Gtk.TreeView(model=self.store)
+        c = Gtk.TreeViewColumn("Nom")
+        pix = Gtk.CellRendererPixbuf()
+        c.pack_start(pix, False)
+        c.add_attribute(pix, "gicon", 0)
+        txt = Gtk.CellRendererText()
+        c.pack_start(txt, True)
+        c.add_attribute(txt, "text", 1)
+        c.set_expand(True)
+        self.tree.append_column(c)
+        for i, t in ((2, "Taille"), (3, "Modifié")):
+            self.tree.append_column(Gtk.TreeViewColumn(t, Gtk.CellRendererText(), text=i))
+        self.tree.connect("row-activated", lambda t, p, c: self.open_row(p))
+        self.tree.connect("button-press-event", self.on_click)
+        self.tree.get_selection().set_mode(Gtk.SelectionMode.MULTIPLE)
+        sc = Gtk.ScrolledWindow()
+        sc.add(self.tree)
+        paned.pack2(sc, True, False)
+        self.status = Gtk.Label(xalign=0, margin=6)
+        v.pack_start(self.status, False, False, 0)
+        self.load(start if start and os.path.isdir(start) else HOME, push=False)
+
+    def _hidden(self, on):
+        self.show_hidden = on
+        self.load(self.cwd, push=False)
+
+    def load(self, path, push=True):
+        path = os.path.abspath(path)
+        if not os.path.isdir(path):
+            return
+        try:
+            entries = list(os.scandir(path))
+        except PermissionError:
+            info_box(self, "Accès refusé à ce dossier.", Gtk.MessageType.WARNING)
+            return
+        if push and path != self.cwd:
+            self.hist.append(self.cwd)
+        self.cwd = path
+        self.entry.set_text(path)
+        self.store.clear()
+        n = 0
+        for e in sorted(entries, key=lambda e: (not e.is_dir(), e.name.lower())):
+            if e.name.startswith(".") and not self.show_hidden:
+                continue
+            try:
+                f = Gio.File.new_for_path(e.path)
+                icon = f.query_info("standard::icon", 0, None).get_icon()
+                st = e.stat()
+                isdir = e.is_dir()
+                self.store.append([icon, e.name, "" if isdir else GLib.format_size(st.st_size), time.strftime("%d/%m/%Y %H:%M", time.localtime(st.st_mtime)), e.path, isdir])
+                n += 1
+            except Exception:
+                continue
+        self.status.set_text("%d élément(s)" % n)
+        self.set_title("Fichiers QUENTIN OS - " + (os.path.basename(path) or "/"))
+
+    def back(self):
+        if self.hist:
+            self.load(self.hist.pop(), push=False)
+
+    def open_row(self, treepath):
+        it = self.store.get_iter(treepath)
+        path, isdir = self.store[it][4], self.store[it][5]
+        if isdir:
+            self.load(path)
+        else:
+            try:
+                Gio.AppInfo.launch_default_for_uri(Gio.File.new_for_path(path).get_uri(), None)
+            except Exception as e:
+                info_box(self, "Impossible d'ouvrir : %s" % e, Gtk.MessageType.ERROR)
+
+    def selected(self):
+        model, paths = self.tree.get_selection().get_selected_rows()
+        return [model[p][4] for p in paths]
+
+    def new_folder(self):
+        n = prompt(self, "Nom du nouveau dossier", "Nouveau dossier")
+        if n:
+            try:
+                os.mkdir(os.path.join(self.cwd, n))
+            except Exception as e:
+                info_box(self, str(e), Gtk.MessageType.ERROR)
+            self.load(self.cwd, push=False)
+
+    def rename(self):
+        sel = self.selected()
+        if len(sel) != 1:
+            return
+        n = prompt(self, "Nouveau nom", os.path.basename(sel[0]))
+        if n:
+            try:
+                os.rename(sel[0], os.path.join(os.path.dirname(sel[0]), n))
+            except Exception as e:
+                info_box(self, str(e), Gtk.MessageType.ERROR)
+            self.load(self.cwd, push=False)
+
+    def trash(self):
+        sel = self.selected()
+        if sel and ask(self, "Mettre %d élément(s) à la corbeille ?" % len(sel)):
+            for p in sel:
+                try:
+                    Gio.File.new_for_path(p).trash(None)
+                except Exception as e:
+                    info_box(self, str(e), Gtk.MessageType.ERROR)
+            self.load(self.cwd, push=False)
+
+    def on_click(self, tree, ev):
+        if ev.button != 3:
+            return False
+        res = tree.get_path_at_pos(int(ev.x), int(ev.y))
+        if res and not tree.get_selection().path_is_selected(res[0]):
+            tree.get_selection().unselect_all()
+            tree.get_selection().select_path(res[0])
+        m = Gtk.Menu()
+        def item(label, cb):
+            i = Gtk.MenuItem(label=label)
+            i.connect("activate", lambda _: cb())
+            m.append(i)
+        if res:
+            item("Ouvrir", lambda: self.open_row(res[0]))
+            item("Renommer", self.rename)
+            item("Mettre à la corbeille", self.trash)
+            item("Copier le chemin", lambda: Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD).set_text(self.selected()[0], -1))
+        item("Nouveau dossier", self.new_folder)
+        item("Ouvrir un terminal ici", lambda: run_detached(["gnome-terminal", "--working-directory=" + self.cwd]))
+        m.show_all()
+        m.popup_at_pointer(ev)
+        return True
+
+
+# ----------------------------------------------------------------------------
+class MonitorApp(Gtk.Window):
+    def __init__(self):
+        super().__init__(title="Moniteur système QUENTIN OS")
+        self.set_default_size(820, 600)
+        self.last_cpu = None
+        v = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8, margin=14)
+        self.add(v)
+        self.bars = {}
+        for name in ("Processeur", "Mémoire", "Disque"):
+            r = Gtk.Box(spacing=10)
+            l = Gtk.Label(label=name, xalign=0)
+            l.set_size_request(110, -1)
+            bar = Gtk.LevelBar(min_value=0, max_value=100, hexpand=True)
+            val = Gtk.Label(xalign=1)
+            val.set_size_request(190, -1)
+            r.pack_start(l, False, False, 0)
+            r.pack_start(bar, True, True, 0)
+            r.pack_start(val, False, False, 0)
+            v.pack_start(r, False, False, 0)
+            self.bars[name] = (bar, val)
+        self.store = Gtk.ListStore(int, str, str, str, str)
+        self.tree = Gtk.TreeView(model=self.store)
+        for i, t in enumerate(("PID", "Utilisateur", "CPU %", "Mémoire %", "Processus")):
+            col = Gtk.TreeViewColumn(t, Gtk.CellRendererText(), text=i)
+            col.set_sort_column_id(i)
+            col.set_resizable(True)
+            self.tree.append_column(col)
+        sc = Gtk.ScrolledWindow()
+        sc.add(self.tree)
+        v.pack_start(sc, True, True, 0)
+        bb = Gtk.Box(spacing=8)
+        for label, sig in (("Terminer le processus", signal.SIGTERM), ("Forcer l'arrêt", signal.SIGKILL)):
+            b = Gtk.Button(label=label)
+            b.connect("clicked", lambda _, s=sig: self.kill(s))
+            bb.pack_start(b, False, False, 0)
+        v.pack_start(bb, False, False, 0)
+        self.tick()
+        GLib.timeout_add_seconds(2, self.tick)
+
+    def kill(self, sig):
+        model, it = self.tree.get_selection().get_selected()
+        if not it:
+            return
+        pid = model[it][0]
+        if ask(self, "Envoyer le signal à %s (PID %d) ?" % (model[it][4], pid)):
+            try:
+                os.kill(pid, sig)
+            except Exception as e:
+                info_box(self, "Impossible : %s" % e, Gtk.MessageType.ERROR)
+
+    def tick(self):
+        try:
+            f = open("/proc/stat").readline().split()[1:]
+            f = [int(x) for x in f]
+            idle, total = f[3] + f[4], sum(f)
+            if self.last_cpu:
+                dt, di = total - self.last_cpu[1], idle - self.last_cpu[0]
+                pct = 100.0 * (dt - di) / dt if dt else 0
+                self.bars["Processeur"][0].set_value(pct)
+                self.bars["Processeur"][1].set_text("%d %%" % pct)
+            self.last_cpu = (idle, total)
+            mi = {l.split(":")[0]: int(l.split()[1]) for l in open("/proc/meminfo")}
+            used = mi["MemTotal"] - mi["MemAvailable"]
+            self.bars["Mémoire"][0].set_value(100.0 * used / mi["MemTotal"])
+            self.bars["Mémoire"][1].set_text("%s / %s" % (GLib.format_size(used * 1024), GLib.format_size(mi["MemTotal"] * 1024)))
+            u = shutil.disk_usage("/")
+            self.bars["Disque"][0].set_value(100.0 * u.used / u.total)
+            self.bars["Disque"][1].set_text("%s / %s" % (GLib.format_size(u.used), GLib.format_size(u.total)))
+            sel = self.tree.get_selection().get_selected()
+            keep = sel[0][sel[1]][0] if sel[1] else None
+            out = subprocess.run(["ps", "-eo", "pid,user:16,pcpu,pmem,comm", "--sort=-pcpu", "--no-headers"], capture_output=True, text=True).stdout
+            self.store.clear()
+            for line in out.splitlines()[:250]:
+                p = line.split(None, 4)
+                if len(p) == 5:
+                    it = self.store.append([int(p[0]), p[1], p[2], p[3], p[4]])
+                    if keep == int(p[0]):
+                        self.tree.get_selection().select_iter(it)
+        except Exception:
+            pass
+        return True
+
+
+# ----------------------------------------------------------------------------
+class NotesApp(Gtk.Window):
+    DIR = os.path.join(HOME, "Documents", "Notes-QUENTIN-OS")
+
+    def __init__(self):
+        super().__init__(title="Notes QUENTIN OS")
+        self.set_default_size(900, 580)
+        os.makedirs(self.DIR, exist_ok=True)
+        self.cur = None
+        self.timer = None
+        self.loading = False
+        paned = Gtk.Paned()
+        self.add(paned)
+        left = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6, margin=8)
+        left.set_size_request(250, -1)
+        self.search = Gtk.SearchEntry()
+        self.search.connect("search-changed", lambda _: self.reload())
+        left.pack_start(self.search, False, False, 0)
+        self.store = Gtk.ListStore(str, str)
+        self.list = Gtk.TreeView(model=self.store, headers_visible=False)
+        self.list.append_column(Gtk.TreeViewColumn("Note", Gtk.CellRendererText(ellipsize=3), text=0))
+        self.list.get_selection().connect("changed", self.on_select)
+        sc = Gtk.ScrolledWindow()
+        sc.add(self.list)
+        left.pack_start(sc, True, True, 0)
+        bb = Gtk.Box(spacing=6)
+        nb = Gtk.Button(label="Nouvelle note")
+        nb.connect("clicked", lambda _: self.new_note())
+        db = Gtk.Button(label="Supprimer")
+        db.connect("clicked", lambda _: self.delete())
+        bb.pack_start(nb, True, True, 0)
+        bb.pack_start(db, True, True, 0)
+        left.pack_start(bb, False, False, 0)
+        paned.pack1(left, False, False)
+        self.view = Gtk.TextView(wrap_mode=Gtk.WrapMode.WORD, left_margin=16, right_margin=16, top_margin=14, sensitive=False)
+        self.buf = self.view.get_buffer()
+        self.buf.connect("changed", self.on_change)
+        sc2 = Gtk.ScrolledWindow()
+        sc2.add(self.view)
+        paned.pack2(sc2, True, False)
+        self.connect("delete-event", lambda *a: (self.flush(), False)[1])
+        self.reload()
+
+    def reload(self, select=None):
+        q = self.search.get_text().lower()
+        items = []
+        for n in os.listdir(self.DIR):
+            if n.endswith(".txt"):
+                p = os.path.join(self.DIR, n)
+                try:
+                    txt = open(p, encoding="utf-8").read()
+                except Exception:
+                    continue
+                if q and q not in txt.lower():
+                    continue
+                items.append((os.path.getmtime(p), (txt.strip().splitlines() or ["(note vide)"])[0][:60], p))
+        items.sort(reverse=True)
+        self.store.clear()
+        for _, t, p in items:
+            it = self.store.append([t, p])
+            if p == (select or self.cur):
+                self.list.get_selection().select_iter(it)
+
+    def on_select(self, sel):
+        model, it = sel.get_selected()
+        if not it:
+            return
+        self.flush()
+        self.cur = model[it][1]
+        self.loading = True
+        try:
+            self.buf.set_text(open(self.cur, encoding="utf-8").read())
+        except Exception:
+            self.buf.set_text("")
+        self.loading = False
+        self.view.set_sensitive(True)
+
+    def on_change(self, buf):
+        if self.loading or not self.cur:
+            return
+        if self.timer:
+            GLib.source_remove(self.timer)
+        self.timer = GLib.timeout_add(700, self.flush)
+
+    def flush(self):
+        if self.timer:
+            GLib.source_remove(self.timer)
+            self.timer = None
+        if self.cur:
+            try:
+                open(self.cur, "w", encoding="utf-8").write(self.buf.get_text(self.buf.get_start_iter(), self.buf.get_end_iter(), True))
+            except Exception as e:
+                info_box(self, "Enregistrement impossible : %s" % e, Gtk.MessageType.ERROR)
+        return False
+
+    def new_note(self):
+        self.flush()
+        p = os.path.join(self.DIR, "note-%s.txt" % time.strftime("%Y%m%d-%H%M%S"))
+        open(p, "w").close()
+        self.cur = p
+        self.reload(select=p)
+        self.view.set_sensitive(True)
+        self.view.grab_focus()
+
+    def delete(self):
+        if self.cur and ask(self, "Supprimer cette note ?"):
+            try:
+                os.remove(self.cur)
+            except Exception:
+                pass
+            self.cur = None
+            self.loading = True
+            self.buf.set_text("")
+            self.loading = False
+            self.view.set_sensitive(False)
+            self.reload()
+
+
+# ----------------------------------------------------------------------------
+OPS = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul, ast.Div: operator.truediv, ast.Pow: operator.pow, ast.Mod: operator.mod}
+
+
+def safe_eval(expr):
+    def ev(n):
+        if isinstance(n, ast.Expression):
+            return ev(n.body)
+        if isinstance(n, ast.Constant) and isinstance(n.value, (int, float)):
+            return n.value
+        if isinstance(n, ast.BinOp) and type(n.op) in OPS:
+            a, b = ev(n.left), ev(n.right)
+            if isinstance(n.op, ast.Pow) and abs(b) > 1000:
+                raise ValueError("exposant trop grand")
+            return OPS[type(n.op)](a, b)
+        if isinstance(n, ast.UnaryOp) and isinstance(n.op, (ast.USub, ast.UAdd)):
+            return -ev(n.operand) if isinstance(n.op, ast.USub) else ev(n.operand)
+        raise ValueError("expression invalide")
+    expr = expr.replace("÷", "/").replace("×", "*").replace("−", "-").replace("^", "**").replace(",", ".").replace("%", "%")
+    return ev(ast.parse(expr, mode="eval"))
+
+
+class CalcApp(Gtk.Window):
+    def __init__(self):
+        super().__init__(title="Calculatrice QUENTIN OS")
+        self.set_resizable(False)
+        v = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8, margin=14)
+        self.add(v)
+        self.hist = Gtk.Label(xalign=1)
+        v.pack_start(self.hist, False, False, 0)
+        self.entry = Gtk.Entry(xalign=1, width_chars=18)
+        self.entry.override_font(__import__("gi.repository.Pango", fromlist=["x"]).FontDescription("Inter 26"))
+        self.entry.connect("activate", lambda _: self.equals())
+        v.pack_start(self.entry, False, False, 0)
+        g = Gtk.Grid(row_spacing=6, column_spacing=6, row_homogeneous=True, column_homogeneous=True)
+        keys = [["C", "(", ")", "÷"], ["7", "8", "9", "×"], ["4", "5", "6", "−"], ["1", "2", "3", "+"], ["0", ".", "⌫", "="]]
+        for r, rowk in enumerate(keys):
+            for c, k in enumerate(rowk):
+                b = Gtk.Button(label=k)
+                b.set_size_request(70, 58)
+                b.connect("clicked", self.press, k)
+                g.attach(b, c, r, 1, 1)
+        v.pack_start(g, False, False, 0)
+
+    def press(self, _, k):
+        if k == "C":
+            self.entry.set_text("")
+            self.hist.set_text("")
+        elif k == "⌫":
+            self.entry.set_text(self.entry.get_text()[:-1])
+        elif k == "=":
+            self.equals()
+        else:
+            self.entry.set_text(self.entry.get_text() + k)
+        self.entry.set_position(-1)
+
+    def equals(self):
+        e = self.entry.get_text()
+        if not e.strip():
+            return
+        try:
+            r = safe_eval(e)
+            txt = "%d" % r if float(r).is_integer() and abs(r) < 1e15 else "%.12g" % r
+            self.hist.set_text(e + " =")
+            self.entry.set_text(txt)
+        except ZeroDivisionError:
+            self.hist.set_text(e)
+            self.entry.set_text("Division par zéro")
+        except Exception:
+            self.hist.set_text(e)
+            self.entry.set_text("Erreur")
+
+
+APPS = {"settings": SettingsApp, "files": FilesApp, "monitor": MonitorApp, "notes": NotesApp, "calc": CalcApp}
+
+if __name__ == "__main__":
+    name = sys.argv[1] if len(sys.argv) > 1 else "settings"
+    if name not in APPS:
+        sys.exit("Usage : quentin_apps.py settings|files|monitor|notes|calc")
+    GLib.set_prgname("quentin-" + name)
+    win = APPS[name](sys.argv[2]) if (name == "files" and len(sys.argv) > 2) else APPS[name]()
+    win.set_icon_name("quentin-" + name)
+    try:
+        win.set_wmclass("quentin-" + name, "quentin-" + name)
+    except Exception:
+        pass
+    win.connect("destroy", Gtk.main_quit)
+    win.show_all()
+    Gtk.main()
+
+QAPPSEOF
+cat > "$DATA/gen_icons.py" <<'QICONEOF'
+#!/usr/bin/env python3
+"""Génère le thème d'icônes QUENTIN OS (tuiles en verre, traits cyan/violet)."""
+import os, sys
+
+OUT = sys.argv[1]
+APPS = os.path.join(OUT, "scalable", "apps")
+os.makedirs(APPS, exist_ok=True)
+
+DEFS = ('<defs>'
+        '<linearGradient id="t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#171a58"/><stop offset="1" stop-color="#3a0f6b"/></linearGradient>'
+        '<linearGradient id="a" gradientUnits="userSpaceOnUse" x1="40" y1="40" x2="216" y2="216"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#c084fc"/></linearGradient>'
+        '</defs>')
+TILE = ('<rect x="12" y="12" width="232" height="232" rx="58" fill="url(#t)" stroke="url(#a)" stroke-width="7"/>'
+        '<path d="M12 76 a58 58 0 0 1 58-58 h116 a58 58 0 0 1 58 58 v14 q-116 44 -232 0z" fill="#ffffff" opacity="0.07"/>')
+G = '<g fill="none" stroke="url(#a)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">%s</g>'
+FILL = 'fill="url(#a)" stroke="none"'
+
+GLYPHS = {
+ "folder": '<path d="M56 100 v-14 a10 10 0 0 1 10-10 h36 l16 18 h72 a10 10 0 0 1 10 10 v68 a10 10 0 0 1 -10 10 h-124 a10 10 0 0 1 -10-10z"/>',
+ "terminal": '<path d="M70 92 l46 36 -46 36"/><path d="M132 172 h58"/>',
+ "globe": '<circle cx="128" cy="128" r="62"/><ellipse cx="128" cy="128" rx="26" ry="62"/><path d="M66 128 h124"/><path d="M78 98 q50 18 100 0"/><path d="M78 158 q50 -18 100 0"/>',
+ "gear": '<circle cx="128" cy="128" r="46"/><circle cx="128" cy="128" r="20"/><circle cx="128" cy="128" r="64" stroke-width="20" stroke-dasharray="15 18.4"/>',
+ "calc": '<rect x="84" y="62" width="88" height="132" rx="14"/><path d="M100 88 h56" stroke-width="10"/>'
+         '<circle cx="104" cy="124" r="3" ' + FILL + '/><circle cx="128" cy="124" r="3" ' + FILL + '/><circle cx="152" cy="124" r="3" ' + FILL + '/>'
+         '<circle cx="104" cy="150" r="3" ' + FILL + '/><circle cx="128" cy="150" r="3" ' + FILL + '/><circle cx="152" cy="150" r="3" ' + FILL + '/>'
+         '<circle cx="104" cy="176" r="3" ' + FILL + '/><circle cx="128" cy="176" r="3" ' + FILL + '/><circle cx="152" cy="176" r="3" ' + FILL + '/>',
+ "monitor": '<path d="M58 170 l32-44 28 22 30-56 50 54"/><path d="M58 196 h140"/>',
+ "notes": '<rect x="80" y="60" width="96" height="136" rx="14"/><path d="M100 98 h56"/><path d="M100 126 h56"/><path d="M100 154 h34"/>',
+ "bag": '<rect x="72" y="98" width="112" height="94" rx="16"/><path d="M104 98 v-10 a24 24 0 0 1 48 0 v10"/><path d="M110 140 q18 18 36 0"/>',
+ "play": '<path d="M102 80 l78 48 -78 48z"/>',
+ "music": '<path d="M112 170 v-84 l62 -14 v82"/><circle cx="96" cy="172" r="16"/><circle cx="158" cy="158" r="16"/>',
+ "image": '<rect x="62" y="82" width="132" height="98" rx="14"/><circle cx="100" cy="114" r="9"/><path d="M70 172 l38 -36 24 22 22 -18 34 32"/>',
+ "record": '<circle cx="128" cy="128" r="58"/><circle cx="128" cy="128" r="22" ' + FILL + '/>',
+ "film": '<rect x="64" y="76" width="128" height="104" rx="14"/><path d="M92 76 v104"/><path d="M164 76 v104"/><path d="M64 110 h28"/><path d="M64 146 h28"/><path d="M164 110 h28"/><path d="M164 146 h28"/>',
+ "pen": '<path d="M70 190 l12 -42 82 -82 30 30 -82 82z"/><path d="M146 84 l30 30"/>',
+ "wave": '<path d="M58 128 h24 l14 -46 26 92 22 -66 16 40 h38"/>',
+ "download": '<path d="M128 70 v86"/><path d="M92 124 l36 36 36 -36"/><path d="M70 190 h116"/>',
+ "mail": '<rect x="62" y="88" width="132" height="92" rx="14"/><path d="M66 98 l62 46 62 -46"/>',
+ "qlogo": '<circle cx="124" cy="124" r="58"/><path d="M146 146 l40 40" stroke-width="16"/>',
+ "generic": '<circle cx="128" cy="128" r="56"/><circle cx="128" cy="128" r="14" ' + FILL + '/>',
+}
+
+# nom d'icône système (ou de l'appli) -> glyphe
+MAP = {
+ "quentin-files": "folder", "quentin-settings": "gear", "quentin-monitor": "monitor", "quentin-notes": "notes", "quentin-calc": "calc",
+ "firefox": "globe", "firefox-esr": "globe", "web-browser": "globe",
+ "nemo": "folder", "system-file-manager": "folder", "org.gnome.Nautilus": "folder",
+ "org.gnome.Terminal": "terminal", "utilities-terminal": "terminal", "gnome-terminal": "terminal",
+ "mintinstall": "bag", "softwarecenter": "bag", "org.gnome.Software": "bag", "system-software-install": "bag",
+ "preferences-system": "gear", "cinnamon-settings": "gear", "preferences-desktop": "gear", "cs-general": "gear",
+ "vlc": "play", "io.github.celluloid_player.Celluloid": "play", "celluloid": "play", "totem": "play", "org.gnome.Totem": "play",
+ "rhythmbox": "music", "org.gnome.Rhythmbox3": "music", "audio-x-generic": "music",
+ "org.gnome.Calculator": "calc", "accessories-calculator": "calc", "gnome-calculator": "calc",
+ "org.gnome.SystemMonitor": "monitor", "utilities-system-monitor": "monitor", "gnome-system-monitor": "monitor",
+ "xed": "notes", "accessories-text-editor": "notes", "org.gnome.gedit": "notes",
+ "gimp": "pen", "org.inkscape.Inkscape": "pen", "inkscape": "pen",
+ "audacity": "wave", "com.obsproject.Studio": "record", "obs": "record",
+ "org.kde.kdenlive": "film", "kdenlive": "film", "fr.handbrake.ghb": "film", "ghb": "film",
+ "shotwell": "image", "org.gnome.Shotwell": "image", "pix": "image", "eog": "image", "org.gnome.eog": "image",
+ "mintupdate": "download", "mintupdate-symbolic": "download", "warpinator": "download", "transmission-gtk": "download",
+ "thunderbird": "mail", "org.mozilla.Thunderbird": "mail", "mail-client": "mail",
+ "mint-logo": "qlogo", "start-here": "qlogo", "linuxmint-logo": "qlogo",
+}
+
+import re
+def fixlines(g):
+    # chemins "M x y h n" / "M x y v n" réécrits en lignes absolues (compatibilité maximale)
+    g = re.sub(r'M(-?\d+) (-?\d+) h(-?\d+)', lambda m: 'M%s %s L%d %s' % (m.group(1), m.group(2), int(m.group(1)) + int(m.group(3)), m.group(2)), g)
+    g = re.sub(r'M(-?\d+) (-?\d+) v(-?\d+)', lambda m: 'M%s %s L%s %d' % (m.group(1), m.group(2), m.group(1), int(m.group(2)) + int(m.group(3))), g)
+    return g
+GLYPHS = {k: fixlines(v) for k, v in GLYPHS.items()}
+
+n = 0
+for name, glyph in MAP.items():
+    svg = ('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">%s%s%s</svg>'
+           % (DEFS, TILE, G % GLYPHS[glyph]))
+    open(os.path.join(APPS, name + ".svg"), "w").write(svg)
+    n += 1
+
+open(os.path.join(OUT, "index.theme"), "w").write(
+"""[Icon Theme]
+Name=Quentin-Icons
+Comment=Icônes QUENTIN OS (tuiles en verre, cyan et violet)
+Inherits=Papirus-Dark,Adwaita,hicolor
+Directories=scalable/apps
+
+[scalable/apps]
+Size=256
+MinSize=8
+MaxSize=512
+Type=Scalable
+Context=Applications
+""")
+print("%d icônes générées dans %s" % (n, OUT))
+
+QICONEOF
+python3 "$DATA/gen_icons.py" "$HOME/.local/share/icons/Quentin-Icons"
+gtk-update-icon-cache -f -t "$HOME/.local/share/icons/Quentin-Icons" 2>/dev/null || true
+chmod +x "$DATA/apps/quentin_apps.py"
+
+mkapp() {  # id  nom  commentaire  mots-clés
+  cat > "$HOME/.local/share/applications/quentin-$1.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=$2
+Comment=$3
+Exec=python3 $DATA/apps/quentin_apps.py $1
+Icon=quentin-$1
+Terminal=false
+StartupWMClass=quentin-$1
+Categories=Utility;
+Keywords=$4
+EOF
+}
+mkapp settings "Paramètres" "Réglages de QUENTIN OS" "paramètres;réglages;thème;fond;barre"
+mkapp files "Fichiers" "Explorateur de fichiers QUENTIN OS" "fichiers;dossiers;explorateur"
+mkapp monitor "Moniteur système" "CPU, mémoire, disque et processus" "moniteur;processus;cpu;ram;tâches"
+mkapp notes "Notes" "Prise de notes QUENTIN OS" "notes;texte"
+mkapp calc "Calculatrice" "Calculatrice QUENTIN OS" "calcul;calculatrice"
+
+# Applications d'origine : renommées (même programme) ou masquées si QUENTIN OS a sa propre version
+python3 - <<'PYEOF2'
+import os
+src = "/usr/share/applications"
+dst = os.path.expanduser("~/.local/share/applications")
+rename = {"nemo.desktop": "Fichiers avancés", "mintinstall.desktop": "Logiciels", "cinnamon-settings.desktop": "Paramètres système",
+          "mintupdate.desktop": "Mises à jour", "xed.desktop": "Éditeur de texte"}
+hide = ["org.gnome.Calculator.desktop", "gnome-calculator.desktop", "org.gnome.SystemMonitor.desktop", "gnome-system-monitor.desktop"]
+for fn in list(rename) + hide:
+    sp = os.path.join(src, fn)
+    if not os.path.exists(sp):
+        continue
+    out = ["# QUENTIN-OS-OVERRIDE"]
+    for line in open(sp, encoding="utf-8"):
+        l = line.rstrip("\n")
+        if l.startswith("Name[") or l.startswith("GenericName[") or l.startswith("Comment["):
+            continue
+        if l.startswith("Name=") and fn in rename:
+            l = "Name=" + rename[fn]
+        out.append(l)
+    if fn in hide:
+        out.append("NoDisplay=true")
+    open(os.path.join(dst, fn), "w", encoding="utf-8").write("\n".join(out) + "\n")
+print("Applications d'origine adaptées.")
+PYEOF2
+update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
+
+# ----------------------------------------------------------------------------
 log "4/8 Création du thème $THEME (GTK + Cinnamon + fenêtres)"
 BASE=""
 for t in Mint-Y-Dark-Aqua Mint-Y-Dark Mint-Y-Dark-Purple; do [ -d "/usr/share/themes/$t" ] && { BASE="$t"; break; }; done
@@ -238,9 +1153,9 @@ CINCSS2='
 .applet-box:hover { background-color: rgba(34,211,238,0.20); box-shadow: 0 0 12px rgba(34,211,238,0.5); }
 .applet-label { color: #e0f2fe; font-weight: bold; padding: 0 6px; }
 .panel-launchers .launcher { border-radius: 14px; }
-.grouped-window-list-item-box { border-radius: 16px; margin: 6px 4px; padding: 0 10px; background-color: rgba(255,255,255,0.05); border-bottom: 3px solid transparent; transition-duration: 150; }
+.grouped-window-list-item-box { border-radius: 16px; margin: 6px 4px; padding: 0 10px; background-color: rgba(34,211,238,0.07); border: 1px solid rgba(34,211,238,0.55); border-bottom: 3px solid rgba(34,211,238,0.55); transition-duration: 150; }
 .grouped-window-list-item-box:hover { background-color: rgba(34,211,238,0.22); box-shadow: 0 0 16px rgba(34,211,238,0.6); }
-.grouped-window-list-item-box:focus, .grouped-window-list-item-box:active { background-color: rgba(168,85,247,0.34); border-bottom: 3px solid #22d3ee; box-shadow: 0 0 16px rgba(168,85,247,0.7); }
+.grouped-window-list-item-box:focus, .grouped-window-list-item-box:active { background-color: rgba(168,85,247,0.34); border: 1px solid #22d3ee; border-bottom: 3px solid #22d3ee; box-shadow: 0 0 16px rgba(168,85,247,0.7); }
 .grouped-window-list-item-box:running { border-bottom: 3px solid rgba(168,85,247,0.9); }
 .grouped-window-list-thumbnail-menu, .grouped-window-list-thumbnail-alert { background-color: rgba(10,12,40,0.94); border: 1px solid rgba(168,85,247,0.6); border-radius: 16px; padding: 8px; }
 .window-list-preview, .grouped-window-list-badge { border-radius: 10px; }
@@ -263,7 +1178,7 @@ rm -rf "$TMP"
 log "5/8 Application de l'interface (thème, icônes, panneau, menu, effets)"
 gs() { gsettings set "$@" 2>/dev/null || log "  (ignoré : $1 $2)"; }
 gs org.cinnamon.desktop.interface gtk-theme "$THEME"
-gs org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
+gs org.cinnamon.desktop.interface icon-theme "Quentin-Icons"
 gs org.cinnamon.desktop.interface font-name "Inter 10"
 gs org.cinnamon.desktop.wm.preferences theme "$THEME"
 gs org.cinnamon.theme name "$THEME"
@@ -292,7 +1207,7 @@ gs org.cinnamon.desktop.screensaver font-message 'Inter 16'
 gs org.cinnamon.desktop.screensaver default-message 'QUENTIN OS'
 gs org.cinnamon.desktop.screensaver show-clock true
 gs org.cinnamon.desktop.screensaver show-album-art false
-gs org.cinnamon favorite-apps "['firefox.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'mintinstall.desktop', 'cinnamon-settings.desktop', 'org.gnome.Calculator.desktop', 'vlc.desktop', 'org.gnome.Rhythmbox3.desktop', 'xed.desktop']"
+gs org.cinnamon favorite-apps "['quentin-files.desktop', 'firefox.desktop', 'org.gnome.Terminal.desktop', 'quentin-settings.desktop', 'mintinstall.desktop', 'vlc.desktop', 'org.gnome.Rhythmbox3.desktop', 'quentin-notes.desktop', 'quentin-calc.desktop', 'quentin-monitor.desktop']"
 gs org.nemo.desktop show-desktop-icons true
 
 # Terminal : SEULEMENT les couleurs (pas de transparence, police et réglages inchangés)
@@ -634,6 +1549,7 @@ EOF
   sudo update-initramfs -u
 fi
 
+if [ "$PLY" -eq 1 ]; then
 log "   Menu de démarrage (GRUB) : fond et couleurs QUENTIN OS"
 sudo mkdir -p /etc/default/grub.d
 sudo tee /etc/default/grub.d/99-quentin.cfg >/dev/null <<EOF
@@ -643,9 +1559,26 @@ GRUB_BACKGROUND="$SYS_BG/wallpaper-fhd.png"
 GRUB_COLOR_NORMAL="light-cyan/black"
 GRUB_COLOR_HIGHLIGHT="white/magenta"
 GRUB_GFXMODE=auto
-GRUB_GFXPAYLOAD_LINUX=keep
 EOF
 sudo update-grub || log "  (update-grub a échoué : le menu GRUB reste inchangé)"
+fi
+
+# ----------------------------------------------------------------------------
+log "7b/8 Nom du système : QUENTIN OS (GRUB, écran de connexion, À propos)"
+mkdir -p "$BACKUP/rename"
+for f in $RENAME_FILES; do
+  [ -f "$f" ] || continue
+  d="$BACKUP/rename/$(echo "$f" | tr / _)"
+  [ -f "$d" ] || cp "$f" "$d"
+done
+sudo sed -i --follow-symlinks -E 's/^(NAME|PRETTY_NAME)=.*/\1="QUENTIN OS"/' /etc/os-release 2>/dev/null || true
+[ -f /etc/lsb-release ] && sudo sed -i --follow-symlinks -E 's/^DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION="QUENTIN OS"/' /etc/lsb-release || true
+[ -f /etc/linuxmint/info ] && sudo sed -i -E 's/^DESCRIPTION=.*/DESCRIPTION="QUENTIN OS"/' /etc/linuxmint/info || true
+[ -f /usr/share/xsessions/cinnamon.desktop ] && sudo sed -i -E '/^Name\[/d; s/^Name=.*/Name=QUENTIN OS/' /usr/share/xsessions/cinnamon.desktop || true
+[ -f /usr/share/xsessions/cinnamon2d.desktop ] && sudo sed -i -E '/^Name\[/d; s/^Name=.*/Name=QUENTIN OS (rendu logiciel)/' /usr/share/xsessions/cinnamon2d.desktop || true
+sudo mkdir -p /etc/default/grub.d
+echo 'GRUB_DISTRIBUTOR="QUENTIN OS"' | sudo tee /etc/default/grub.d/98-quentin-name.cfg >/dev/null
+sudo update-grub >/dev/null 2>&1 || log "  (update-grub a échoué : le nom dans GRUB changera au prochain essai)"
 
 # ----------------------------------------------------------------------------
 log "8/8 Redémarrage de Cinnamon et finition de la barre des tâches (Q seul, sans texte)"
@@ -675,8 +1608,8 @@ def patch(applet, changes):
             print("OK :", f)
         except Exception as e:
             print("Non modifié :", f, e)
-patch("menu@cinnamon.org", {"menu-icon-custom": True, "menu-icon": icon, "menu-label": ""})
-patch("grouped-window-list@cinnamon.org", {"pinned-apps": ["firefox.desktop", "nemo.desktop", "org.gnome.Terminal.desktop", "vlc.desktop", "org.gnome.Rhythmbox3.desktop"]})
+patch("menu@cinnamon.org", {"menu-icon-custom": True, "menu-icon": os.path.expanduser("~/.local/share/icons/Quentin-Icons/scalable/apps/start-here.svg"), "menu-label": ""})
+patch("grouped-window-list@cinnamon.org", {"pinned-apps": ["quentin-files.desktop", "firefox.desktop", "org.gnome.Terminal.desktop", "quentin-settings.desktop", "mintinstall.desktop", "vlc.desktop", "org.gnome.Rhythmbox3.desktop", "quentin-notes.desktop"]})
 PYEOF
 nohup cinnamon --replace >/dev/null 2>&1 &
 disown || true
